@@ -1,0 +1,73 @@
+.footer-padding1 {
+    padding-top: 20px !important;
+    padding-bottom: 20px !important;
+    height: 250px !important
+}
+
+.footer-bottom-area .footer-border {
+    border-top: 1px solid #2d3544;
+    padding: 20px 0px 20px !important
+}
+
+.job-change input[type=radio] {
+    display: none;
+}
+
+#job-tab-1:checked~.job-tab label:nth-child(1),
+#job-tab-2:checked~.job-tab label:nth-child(2) {
+    /* background-color: rgba(0, 0, 0, 0.2); */
+    box-shadow: none;
+    border-bottom: 4px solid rgb(243, 62, 131)
+}
+
+.job-message>div {
+    display: none;
+}
+
+#job-tab-1:checked~.job-message div:nth-child(1),
+#job-tab-2:checked~.job-message div:nth-child(2) {
+    display: block;
+}
+
+.job-change {
+    margin: 0 auto;
+    max-width: 100%;
+}
+
+.job-tab {
+    overflow: hidden;
+}
+
+.job-tab label {
+    font-size: 18px;
+    cursor: pointer;
+    float: left;
+    width: 25%;
+    text-align: center;
+    padding: 15px 0;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 2px;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.job-message {
+    /* background-color: rgba(0, 0, 0, 0.2); */
+    min-height: 800px;
+}
+
+.job-message>div {
+    padding: 30px;
+    line-height: 1.5;
+    font-size: 17px;
+}
+
+.single-job-items .company-img img {
+    overflow: hidden;
+    float: left;
+    margin-right: 32px;
+    z-index: 999;
+    width: 85px !important;
+    height: 85px !important;
+}
