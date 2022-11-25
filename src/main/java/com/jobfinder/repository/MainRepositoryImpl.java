@@ -1,27 +1,28 @@
-package com.jobfinder.service;
+package com.jobfinder.repository;
 
 import com.jobfinder.domain.Job;
 import com.jobfinder.persistence.MainMapper;
-import com.jobfinder.repository.MainRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Service
-public class MainServiceImpl implements MainService {
+@Repository
+public class MainRepositoryImpl implements MainRepository {
+
     @Autowired
-    MainRepository mainRepository;
+    MainMapper mainMapper;
+
 
     @Override
     public List<Job> getList() {
-        List<Job> job_list = mainRepository.getList();
+        List<Job> job_list = mainMapper.getList();
         return job_list;
     }
 
     @Override
     public List<Job> getJobDetail(int super_seq) {
-        List<Job> getJobDetail = mainRepository.getJobDetail(super_seq);
+        List<Job> getJobDetail = mainMapper.getJobDetail(super_seq);
         return getJobDetail;
     }
 }
