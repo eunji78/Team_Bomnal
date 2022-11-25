@@ -1,0 +1,8 @@
+img {
+    width: 100px;
+    height: 100px;
+    float:inline-start;
+}
+.c_icon {
+    box-shadow: 1px 1px 5px grey;
+}
