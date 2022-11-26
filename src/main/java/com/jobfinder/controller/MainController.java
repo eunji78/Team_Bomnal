@@ -30,7 +30,6 @@ public class MainController {
     public List<Job> get_job_detail(@RequestParam("super_seq") int super_seq){
 
         List<Job> jobDetail = mainService.getJobDetail(super_seq);
-        System.out.println("jobDetail = " + jobDetail);
         return jobDetail;
     }
 }
