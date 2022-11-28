@@ -11,7 +11,6 @@ public class CompanyRepositoryImpl implements CompanyRepository {
     @Autowired
     CompanyMapper companyMapper;
 
-
     @Override
     public List<Company_info> list() {
         return null;

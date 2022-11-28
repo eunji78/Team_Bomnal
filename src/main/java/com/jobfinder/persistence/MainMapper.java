@@ -8,8 +8,7 @@ import java.util.List;
 
 @Mapper
 public interface MainMapper {
-
-    public List<Job> jobList();
+    public List<Job> getList();
 
     public List<RegionVO> regionList();
 

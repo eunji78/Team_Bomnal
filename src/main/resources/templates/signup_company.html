@@ -114,28 +114,28 @@
                                     <div class="center-signup-div ">
                                         <div>
                                             <div class="signup-input-box">
-                                                <input id="companyname" type="text" name="companyname" placeholder="사업자 등록번호" >
-                                                <label for="companyname" style="width: auto;">사업자 등록번호 </label>
+                                                <input id="com_num" type="text" name="com_num" placeholder="사업자 등록번호" >
+                                                <label for="com_num" style="width: auto;">사업자 등록번호 </label>
                                             </div>
-                                            <button class="button"> 중복확인 </button>
+                                            <button id="com_num_check" class="button" type="button"> 상태확인 </button>
                                         </div>
                                         <div>
                                             <div class="signup-input-box">
-                                                <input id="username" type="text" name="username" placeholder="아이디" >
-                                                <label for="username">아이디</label>
+                                                <input id="user_id" type="text" name="user_id" placeholder="아이디" >
+                                                <label for="user_id">아이디</label>
                                             </div>
-                                            <button class="button"> 중복확인 </button>
+                                            <button id="user_id_check" class="button" type="button"> 중복확인 </button>
                                         </div>
                                         <div style="padding-right: 110px;">
                                             <div class="signup-input-box">
-                                                <input id="password" type="password" name="password" placeholder="비밀번호">
-                                                <label for="password">비밀번호</label>
+                                                <input id="pwd" type="password" name="pwd" placeholder="비밀번호">
+                                                <label for="pwd">비밀번호</label>
                                             </div>
                                         </div>
                                         <div style="padding-right: 110px;">
                                             <div class="signup-input-box">
-                                                <input id="check_password" type="password" name="check_password" placeholder="비밀번호 확인">
-                                                <label for="check_password">비밀번호 확인</label>
+                                                <input id="check_pwd" type="password" name="check_pwd" placeholder="비밀번호 확인">
+                                                <label for="check_pwd">비밀번호 확인</label>
                                             </div>
                                         </div>
 
@@ -145,9 +145,9 @@
                                             </div>
                                             <hr style="border: solid 1px rgb(53, 114, 138); width: 450px; display: inline-block; margin: 0px 0px 10px 0px;">
                                             <div style="display: inline-block; text-align: left;">
-                                                <p><input type="checkbox" id="a"> (필수) 개인회원 약관에 동의 </p>
-                                                <p><input type="checkbox" id="b"> (필수) 개인정보 수집 및 이용에 동의 </p>
-                                                <p><input type="checkbox" id="c"> (선택) 위치기반서비스 이용약관에 동의 </p>
+                                                <p><input type="checkbox" id="a"> (필수) 기업회원 약관에 동의 ❗ </p>
+                                                <p><input type="checkbox" id="b"> (필수) 개인정보 수집 및 이용에 동의 ❗ </p>
+                                                <p><input type="checkbox" id="c"> (필수) SMS 발송 서비스 약관에 동의 ❗</p>
                                                 <p><input type="checkbox" id="d"> (선택) 마케팅 정보 수신 동의 - 이메일 </p>
                                                 <p><input type="checkbox" id="e"> (선택) 마케팅 정보 수신 동의 - SMS/MMS </p>
                                             </div>
@@ -359,6 +359,70 @@
 <!-- Jquery Plugins, main Jquery -->
 <script src="/js/plugins.js"></script>
 <script src="/js/main.js"></script>
+
+<script>
+
+    $(function(){
+        $('#com_num_check').click(function(){
+            var check_val = $('#com_num').val();
+            var data = {
+                "b_no": [check_val] // 사업자번호 "xxxxxxx" 로 조회 시,
+            };
+
+            $.ajax({
+              url: "https://api.odcloud.kr/api/nts-businessman/v1/status?serviceKey=WTuu0W1dJ4sq7hoRYcDCgKcHRQUaf6UajpAF8xtP%2Fv8PGrKCBEEhgvR5kauONv8s9PxPVjClHgy2mjAzNxB%2Fyw%3D%3D",  // serviceKey 값을 xxxxxx에 입력
+              type: "POST",
+              data: JSON.stringify(data), // json 을 string으로 변환하여 전송
+              dataType: "JSON",
+              contentType: "application/json",
+              accept: "application/json",
+              success: function(result) {
+                  var name = result.data[0].tax_type;
+                  if (name === ""){
+                    alert("올바른 사업자 등록번호를 입력해주세요.");
+                  } else if (name === "국세청에 등록되지 않은 사업자등록번호입니다."){
+                    alert(name);
+                    $('#com_num').val("");
+                  } else {
+                    alert(name + " = 통과!!");
+                  }
+              },
+              error: function(result) {
+                  console.log(result.responseText); //responseText의 에러메세지 확인
+              }
+            });
+        });
+
+        $("#user_id_check").on('click',()=>{
+            var check_val = $('#user_id').val();
+            $.ajax({
+                url: '/login_id_check_com',
+                type: 'POST',
+                data: {insert_id: check_val},
+                success: function(data){
+                    console.log(data + " : success");
+                    if (check_val == "" || check_val.length < 8) {
+                        alert("아이디로 사용할 단어를 8자 이상 입력해주세요.");
+                    } else if (check_val == data){
+                        alert("중복된 아이디 입니다.");
+                        $('#user_id').val("");
+                    } else {
+                        alert("사용할 수 있는 아이디 입니다.");
+                    }
+                },
+                error : function(data){
+                    console.log(data + "error");
+                }
+            });
+        });
+
+        $("#pwd").on('change', ()=>{
+            console.log("password check!!");
+        });
+
+    });
+
+</script>
 
 </body>
 </html>
