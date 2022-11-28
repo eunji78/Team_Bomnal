@@ -15,7 +15,7 @@ import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 
 @Controller
-public class LoginController {
+public class loginController {
     @Autowired
     LoginRepositoryImpl loginmapper;
     @Autowired

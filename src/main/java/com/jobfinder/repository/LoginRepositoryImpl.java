@@ -1,7 +1,7 @@
 package com.jobfinder.repository;
 
 import com.jobfinder.domain.LoginVO;
-import com.jobfinder.persistence.LoginMapper;
+import com.jobfinder.persistence.loginMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -11,7 +11,7 @@ import java.util.List;
 public class LoginRepositoryImpl implements LoginRepository {
 
     @Autowired
-    LoginMapper loginMapper;
+    loginMapper loginMapper;
 
     @Override
     public List<LoginVO> loginList() {
