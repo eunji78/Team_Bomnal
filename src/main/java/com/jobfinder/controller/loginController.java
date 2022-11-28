@@ -1,49 +1,43 @@
 package com.jobfinder.controller;
 
-import java.util.HashMap;
-import java.util.Map;
+import com.jobfinder.repository.LoginRepositoryImpl;
+import com.jobfinder.service.LoginServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Async;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-
-import com.jobfinder.persistence.loginMapper;
-import com.jobfinder.service.loginService;
+import java.util.HashMap;
 
 @Controller
-public class loginController {
-
+public class LoginController {
     @Autowired
-    loginMapper mapper;
-
+    LoginRepositoryImpl loginmapper;
     @Autowired
-    loginService Service;
+    LoginServiceImpl loginService;
 
     @RequestMapping(value = "/loginform")
-    public String loginform() {
-
-        return "loginform";
-    }
+    public String loginform() { return "loginform"; }
 
     @RequestMapping(value = "/signup_local")
-    public String signup_local() {
-
-        return "signup_local";
-    }
+    public String signup_local() { return "signup_local"; }
 
     @RequestMapping(value = "/signup_company")
-    public String signup_company() {
+    public String signup_company() { return "signup_company"; }
 
-        return "signup_company";
+    @RequestMapping(value = "/login_id_check")
+    @ResponseBody
+    public String login_id_check(@RequestParam("insert_id") String insert_id) {
+
+        System.out.println("넘어오는 id값 : " + insert_id);
+        String mem_id = loginmapper.id_check(insert_id);
+
+        return mem_id;
     }
 
     @RequestMapping(value = "/login")
@@ -53,7 +47,7 @@ public class loginController {
 
         System.out.println("####code#####" + code);
 
-        String access_Token = Service.getAccessToken(code);
+        String access_Token = loginService.getAccessToken(code);
         System.out.println("###access_Token#### : " + access_Token);
 
         Cookie token = new Cookie("authorize-access-token", access_Token);
@@ -61,7 +55,7 @@ public class loginController {
         response.addCookie(token);
 
         //*
-        HashMap<String, Object> userInfo = Service.getUserInfo(access_Token);
+        HashMap<String, Object> userInfo = loginService.getUserInfo(access_Token);
         System.out.println("###user_info### : " + userInfo);
 
         session.setAttribute("nickname", userInfo.get("nickname"));

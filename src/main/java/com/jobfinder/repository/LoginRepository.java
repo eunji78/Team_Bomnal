@@ -1,12 +1,12 @@
-package com.jobfinder.persistence;
+package com.jobfinder.repository;
 
 import com.jobfinder.domain.LoginVO;
-import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
-@Mapper
-public interface LoginMapper {
+
+public interface LoginRepository {
     public List<LoginVO> loginList();
+
     public String id_check(String insert_id);
 }
