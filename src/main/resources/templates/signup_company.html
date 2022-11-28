@@ -128,14 +128,14 @@
                                         </div>
                                         <div style="padding-right: 110px;">
                                             <div class="signup-input-box">
-                                                <input id="password" type="password" name="password" placeholder="비밀번호">
-                                                <label for="password">비밀번호</label>
+                                                <input id="pwd" type="password" name="pwd" placeholder="비밀번호">
+                                                <label for="pwd">비밀번호</label>
                                             </div>
                                         </div>
                                         <div style="padding-right: 110px;">
                                             <div class="signup-input-box">
-                                                <input id="check_password" type="password" name="check_password" placeholder="비밀번호 확인">
-                                                <label for="check_password">비밀번호 확인</label>
+                                                <input id="check_pwd" type="password" name="check_pwd" placeholder="비밀번호 확인">
+                                                <label for="check_pwd">비밀번호 확인</label>
                                             </div>
                                         </div>
 
@@ -378,7 +378,9 @@
               accept: "application/json",
               success: function(result) {
                   var name = result.data[0].tax_type;
-                  if (name === "국세청에 등록되지 않은 사업자등록번호입니다."){
+                  if (name === ""){
+                    alert("올바른 사업자 등록번호를 입력해주세요.");
+                  } else if (name === "국세청에 등록되지 않은 사업자등록번호입니다."){
                     alert(name);
                     $('#com_num').val("");
                   } else {
@@ -394,17 +396,30 @@
         $("#user_id_check").on('click',()=>{
             var check_val = $('#user_id').val();
             $.ajax({
-                url: '/login_id_check',
-                type: 'GET',
+                url: '/login_id_check_com',
+                type: 'POST',
                 data: {insert_id: check_val},
                 success: function(data){
-                    console.log(data + "success");
+                    console.log(data + " : success");
+                    if (check_val == "" || check_val.length < 8) {
+                        alert("아이디로 사용할 단어를 8자 이상 입력해주세요.");
+                    } else if (check_val == data){
+                        alert("중복된 아이디 입니다.");
+                        $('#user_id').val("");
+                    } else {
+                        alert("사용할 수 있는 아이디 입니다.");
+                    }
                 },
                 error : function(data){
                     console.log(data + "error");
                 }
             });
         });
+
+        $("#pwd").on('change', ()=>{
+            console.log("password check!!");
+        });
+
     });
 
 </script>

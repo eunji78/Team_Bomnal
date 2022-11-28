@@ -27,7 +27,12 @@ public class LoginServiceImpl implements LoginService{
     }
 
     @Override
-    public String id_check(String insert_id) {
+    public String id_check_com (String insert_id) {
+        return null;
+    }
+
+    @Override
+    public String id_check_per (String insert_id) {
         return null;
     }
 

@@ -20,9 +20,20 @@ public class LoginRepositoryImpl implements LoginRepository {
     }
 
     @Override
-    public String id_check(String insert_id) {
-        System.out.println("Mapper : " + insert_id);
-        String mem_id = loginMapper.id_check(insert_id);
+    public String id_check_com(String insert_id) {
+        System.out.println("com Mapper in : " + insert_id);
+        String com_id = loginMapper.id_check_com(insert_id);
+        //if (com_id == null) com_id = "null";
+        System.out.println("com Mapper out : " + com_id);
+        return com_id;
+    }
+
+    @Override
+    public String id_check_per(String insert_id) {
+        System.out.println("per Mapper in : " + insert_id);
+        String mem_id = loginMapper.id_check_per(insert_id);
+        //if (mem_id == null) mem_id = "null";
+        System.out.println("per Mapper out : " + mem_id);
         return mem_id;
     }
 }

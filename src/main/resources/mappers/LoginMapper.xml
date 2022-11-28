@@ -6,8 +6,12 @@
         select * from members where mem_id = #{mem_id}
     </select>
 
-    <select id="id_check" resultType="String" parameterType="String">
-        select mem_id members where mem_id = #{insert_id}
+    <select id="id_check_per" resultType="String" parameterType="String">
+        select mem_id from members where mem_id = #{insert_id}
+    </select>
+
+    <select id="id_check_com" resultType="String" parameterType="String">
+        select company_id from company where company_id = #{insert_id}
     </select>
 
 </mapper>
