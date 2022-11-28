@@ -1,6 +1,7 @@
 package com.jobfinder.repository;
 
 import com.jobfinder.domain.Job;
+import com.jobfinder.domain.RegionVO;
 import com.jobfinder.persistence.MainMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -16,6 +17,11 @@ public class MainRepository {
     public List<Job> jobList() {
         List<Job> job_list = mainMapper.jobList();
         return job_list;
+    }
+
+    public List<RegionVO> regionList(){
+        List<RegionVO> region_list = mainMapper.regionList();
+        return region_list;
     }
 
     public List<Job> getJobDetail(int super_seq) {

@@ -7,6 +7,11 @@
     <select id="jobList" resultType="Job">
         select super_job_seq,super_job from job group by super_job_seq, super_job
     </select>
+
+    <select id="regionList" resultType="com.jobfinder.domain.RegionVO">
+        select region, region_seq from region where region_seq = super_region_seq
+    </select>
+
     <select id="getJobDetail" resultType="Job">
         select job from job where super_job_seq = #{super_seq}
     </select>

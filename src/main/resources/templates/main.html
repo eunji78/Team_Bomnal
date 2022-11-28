@@ -117,27 +117,18 @@
                         </form>	
                     </div>
                 </div>
+
                 <div class="row search-region" id="region">
                     <div class="detail col-xl-12" >
-                        <div class="select-state">
-                            <div class="first-category">
-                                <label>
-                                    <input type="checkbox">
-                                    <span>서울</span>
-                                </label>
+                        <!--지역 선택 리스트-->
+                        <div class="d-category-list" style="width:200px; height:300px; overflow:auto">
+                            <div class="mt-2 mb-2" style="height:284px">
+                                <ul th:each="region : ${region_list}">
+                                    <li clsss="d-list"><button class="d-list-button" type="button"><span th:text="${region.region}">경영·사무</span></button></li>
+                                    <span th:text="${region.region_seq}" style="display:none"></span>
+                                </ul>
                             </div>
-                            <div class="first-category">
-                                <label>
-                                    <input type="checkbox">
-                                    <span>서울</span>
-                                </label>
-                            </div>
-                            <div class="first-category">
-                                <label>
-                                    <input type="checkbox">
-                                    <span>서울</span>
-                                </label>
-                            </div>
+                            <!-- select-Categories End -->
                         </div>
                         <div class="select-city">
                             <div class="second-category">
