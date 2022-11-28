@@ -18,9 +18,9 @@ public class MainController {
     @Autowired
     MainService mainService;
 
-    @RequestMapping("main")
+    @RequestMapping
     public String main(Model model){
-        List<Job> job_list = mainService.getList();
+        List<Job> job_list = mainService.jobList();
         model.addAttribute("job_list",job_list);
         return "main";
     }
@@ -34,10 +34,10 @@ public class MainController {
     }
 
     @GetMapping(path = "/list")
-    public String list(){
+    public String list(Model model){
+        List<Job> job_list = mainService.jobList();
+        model.addAttribute("job_list",job_list);
         return "searchList";
     }
-
-
 
 }

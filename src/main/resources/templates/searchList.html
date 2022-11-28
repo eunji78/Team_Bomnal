@@ -143,21 +143,9 @@
                             <div>
                                 <div class="d-category-list" style="width:200px; height:300px; overflow:auto">
                                     <div class="mt-2 mb-2" style="height:284px">
-                                        <ul>
-                                            <li clsss="d-list"><button class="d-list-button active" type="button"><span>경영·사무</span></button></li>
-                                            <li class="d-list"><button class="d-list-button" type="button"><span>마케팅·광고·홍보</span></button></li>
-                                            <li class="d-list"><button class="d-list-button" type="button"><span>IT·인터넷</span></button></li>
-                                            <li class="d-list"><button class="d-list-button" type="button"><span>디자인</span></button></li>
-                                            <li class="d-list"><button class="d-list-button" type="button"><span>무역·유통</span></button></li>
-                                            <li class="d-list"><button class="d-list-button" type="button"><span>영업·고객상담</span></button></li>
-                                            <li class="d-list"><button class="d-list-button" type="button"><span>서비스</span></button></li>
-                                            <li class="d-list"><button class="d-list-button" type="button"><span>연구개발·설계</span></button></li>
-                                            <li class="d-list"><button class="d-list-button" type="button"><span>생산·제조</span></button></li>
-                                            <li class="d-list"><button class="d-list-button" type="button"><span>교육</span></button></li>
-                                            <li class="d-list"><button class="d-list-button" type="button"><span>건설</span></button></li>
-                                            <li class="d-list"><button class="d-list-button" type="button"><span>의료</span></button></li>
-                                            <li class="d-list"><button class="d-list-button" type="button"><span>미디어</span></button></li>
-                                            <li class="d-list"><button class="d-list-button" type="button"><span>전문·특수직</span></button></li>
+                                        <ul th:each="job : ${job_list}">
+                                            <li clsss="d-list"><button class="d-list-button" type="button"><span th:text="${job.super_job}">경영·사무</span></button></li>
+                                            <span th:text="${job.super_job_seq}" style="display:none"></span>
                                         </ul>
                                     </div>
                                     <!-- select-Categories End -->
@@ -203,7 +191,7 @@
                                             <ul>
                                                 <li th:text="${list.company}">새 회사</li>
                                                 <li th:text="${list.location}"><i class="fas fa-map-marker-alt"></i>광주광역시</li>
-                                                <li th:text="${list.pay}">협어어어어업상</li>
+                                                <li th:text="${list.pay}">혀어어어어업상</li>
                                             </ul>
                                         </div>
                                     </div>
@@ -377,38 +365,40 @@
 	<!-- JS here -->
 
 		<!-- All JS Custom Plugins Link Here here -->
-        <script src=".//js/vendor/modernizr-3.5.0.min.js"></script>
+        <script src="/js/vendor/modernizr-3.5.0.min.js"></script>
 		<!-- Jquery, Popper, Bootstrap -->
-		<script src=".//js/vendor/jquery-1.12.4.min.js"></script>
-        <script src=".//js/popper.min.js"></script>
-        <script src=".//js/bootstrap.min.js"></script>
+		<script src="/js/vendor/jquery-1.12.4.min.js"></script>
+        <script src="/js/popper.min.js"></script>
+        <script src="/js/bootstrap.min.js"></script>
 	    <!-- Jquery Mobile Menu -->
-        <script src=".//js/jquery.slicknav.min.js"></script>
+        <script src="/js/jquery.slicknav.min.js"></script>
 
 		<!-- Jquery Slick , Owl-Carousel Range -->
-        <script src=".//js/owl.carousel.min.js"></script>
-        <script src=".//js/slick.min.js"></script>
-        <script src=".//js/price_rangs.js"></script>
+        <script src="/js/owl.carousel.min.js"></script>
+        <script src="/js/slick.min.js"></script>
+        <script src="/js/price_rangs.js"></script>
 		<!-- One Page, Animated-HeadLin -->
-        <script src=".//js/wow.min.js"></script>
-		<script src=".//js/animated.headline.js"></script>
-        <script src=".//js/jquery.magnific-popup.js"></script>
+        <script src="/js/wow.min.js"></script>
+		<script src="/js/animated.headline.js"></script>
+        <script src="/js/jquery.magnific-popup.js"></script>
 
 		<!-- Scrollup, nice-select, sticky -->
-        <script src=".//js/jquery.scrollUp.min.js"></script>
-        <script src=".//js/jquery.nice-select.min.js"></script>
-		<script src=".//js/jquery.sticky.js"></script>
+        <script src="/js/jquery.scrollUp.min.js"></script>
+        <script src="/js/jquery.nice-select.min.js"></script>
+		<script src="/js/jquery.sticky.js"></script>
 
         <!-- contact js -->
-        <script src=".//js/contact.js"></script>
-        <script src=".//js/jquery.form.js"></script>
-        <script src=".//js/jquery.validate.min.js"></script>
-        <script src=".//js/mail-script.js"></script>
-        <script src=".//js/jquery.ajaxchimp.min.js"></script>
+        <script src="/js/contact.js"></script>
+        <script src="/js/jquery.form.js"></script>
+        <script src="/js/jquery.validate.min.js"></script>
+        <script src="/js/mail-script.js"></script>
+        <script src="/js/jquery.ajaxchimp.min.js"></script>
 
 		<!-- Jquery Plugins, main Jquery -->
-        <script src=".//js/plugins.js"></script>
-        <script src=".//js/main.js"></script>
+        <script src="/js/plugins.js"></script>
+        <script src="/js/main.js"></script>
+
+        <script src="/js/main-page.js"></script>
 
         <!-- nav 클릭이벤트 -->
         <script>
