@@ -21,7 +21,7 @@ public class MainService{
 
     public List<RegionVO> regionList(){
         List<RegionVO> region_list = mainRepository.regionList();
-        System.out.println(region_list);
+        // System.out.println(region_list);
         return region_list;
     }
 
