@@ -3,11 +3,12 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jobfinder.persistence.CompanyMapper">
-
+    <!--
+    select company_name, indus_name, count(review_seq) as count_review from company a, inudstry b, reviews c where a.indus_seq = b.indus_seq and a.company_id = c.company_id
+    -->
     <select id="list" resultType="Company_info">
-        select company_name, indus_name, count(review_seq) as count_review from company a, inudstry b, reviews c where a.indus_seq = b.indus_seq and a.company_id = c.company_id
+        select * from company
     </select>
-
     <select id="detail" parameterType="Company_info" resultType="Company_info">
         select * from Company where company_id = #{company_id}
     </select>

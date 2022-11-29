@@ -10,10 +10,12 @@ import java.util.List;
 
 @Service
 public class MainService{
+
     @Autowired
     MainRepository mainRepository;
 
     public List<Job> jobList() {
+        System.out.println("service");
         List<Job> job_list = mainRepository.jobList();
         return job_list;
     }

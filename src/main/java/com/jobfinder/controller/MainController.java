@@ -19,9 +19,10 @@ public class MainController {
     @Autowired
     MainService mainService;
 
-    @RequestMapping("main")
+    @RequestMapping
     public String main(Model model){
-        List<Job> job_list = mainService.getList();
+        System.out.println(mainService);
+        List<Job> job_list = mainService.jobList();
         model.addAttribute("job_list",job_list);
         List<RegionVO> region_list = mainService.regionList();
         model.addAttribute("region_list",region_list);
