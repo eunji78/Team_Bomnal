@@ -15,7 +15,7 @@ public class Company {
 	@Autowired
 	CompanyService companyService;
 
-	@GetMapping("/")
+	@GetMapping("/CompanyList")
 	public String CompanyList(Model model){
 		ArrayList<Company_info> list = companyService.list();
 		model.addAttribute("list",list);
