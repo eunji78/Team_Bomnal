@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jobfinder.persistence.RecruitMapper">
+
+    <select id="noticeDetail" resultType="Recruit">
+        select * from r_title, r_career, r_academic_ability, r_job_pattern, r_salary, r_worktime, r_wide_area, r_detail, r_part, r_bisiness, r_license, r_close_date
+    </select>
+</mapper>
