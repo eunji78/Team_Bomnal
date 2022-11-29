@@ -4,6 +4,8 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
+import com.jobfinder.repository.LoginRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.*;
@@ -14,11 +16,20 @@ import java.util.HashMap;
 @Service
 public class LoginService {
 
-    public String id_check_com(){
+    @Autowired
+    LoginRepository loginRepository;
+
+    public String id_check_com(String insert_id){
+        System.out.println("com Service in : " + insert_id);
+        loginRepository.id_check_com(insert_id);
+        System.out.println("com Servoce in : " + insert_id);
         return "";
     }
 
-    public String id_check_per(){
+    public String id_check_per(String insert_id){
+        System.out.println("per Service in : " + insert_id);
+        loginRepository.id_check_per(insert_id);
+        System.out.println("per Service in : " + insert_id);
         return "";
     }
 

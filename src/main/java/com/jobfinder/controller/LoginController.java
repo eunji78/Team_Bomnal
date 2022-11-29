@@ -20,9 +20,6 @@ public class LoginController {
     @Autowired
     LoginService loginService;
 
-    @Autowired
-    LoginRepository loginRepository;
-
     @RequestMapping(value = "/loginform")
     public String loginform() { return "loginform"; }
 
@@ -37,7 +34,7 @@ public class LoginController {
     public String login_id_check_per(@RequestParam("insert_id") String insert_id) {
 
         System.out.println("com 넘어오는 id값 : " + insert_id);
-        String mem_id = loginRepository.id_check_per(insert_id);
+        String mem_id = loginService.id_check_per(insert_id);
         System.out.println("com 받는 id값 : " + mem_id);
         return mem_id;
     }
@@ -47,7 +44,7 @@ public class LoginController {
     public String login_id_check_com(@RequestParam("insert_id") String insert_id) {
 
         System.out.println("per 넘어오는 id값 : " + insert_id);
-        String com_id = loginRepository.id_check_com(insert_id);
+        String com_id = loginService.id_check_com(insert_id);
         System.out.println("per 받는 id값 : " + com_id);
         return com_id;
     }
