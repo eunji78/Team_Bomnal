@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -16,7 +17,7 @@ public class Company {
 
 	@GetMapping("/")
 	public String CompanyList(Model model){
-		List<Company_info> list = companyService.list();
+		ArrayList<Company_info> list = companyService.list();
 		model.addAttribute("list",list);
 		return "CompanyList";
 	}
@@ -25,7 +26,6 @@ public class Company {
 	public String CompanyDetail(Company_info c, Model model) {
 		List<Company_info> detail = companyService.detail(c.getCompany_id());
 		model.addAttribute("detail",detail);
-
 		return "CompanyDetail";
 	}
 
@@ -38,5 +38,6 @@ public class Company {
 	public String Recruit(){
 		return "Recruit";
 	}
+
 
 }

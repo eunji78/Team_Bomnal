@@ -4,6 +4,7 @@ import com.jobfinder.domain.Company_info;
 import com.jobfinder.persistence.CompanyMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CompanyRepositoryImpl implements CompanyRepository {
@@ -12,8 +13,9 @@ public class CompanyRepositoryImpl implements CompanyRepository {
     CompanyMapper companyMapper;
 
     @Override
-    public List<Company_info> list() {
-        return null;
+    public ArrayList<Company_info> list() {
+        ArrayList<Company_info> list = companyMapper.list();
+        return list;
     }
 
     @Override
