@@ -1,22 +1,31 @@
 package com.jobfinder.repository;
 
 import com.jobfinder.domain.Job;
+import com.jobfinder.domain.RegionVO;
 import com.jobfinder.persistence.MainMapper;
-import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
-@RequiredArgsConstructor
 public class MainRepository {
 
-    private final MainMapper mainMapper;
-    public List<Job> jobList(){
-        return mainMapper.jobList();
+    @Autowired
+    MainMapper mainMapper;
+
+    public List<Job> jobList() {
+        List<Job> job_list = mainMapper.jobList();
+        return job_list;
     }
 
-    public List<Job> getJobDetail(int super_seq){
-        return mainMapper.getJobDetail(super_seq);
+    public List<RegionVO> regionList(){
+        List<RegionVO> region_list = mainMapper.regionList();
+        return region_list;
+    }
+
+    public List<Job> getJobDetail(int super_seq) {
+        List<Job> getJobDetail = mainMapper.getJobDetail(super_seq);
+        return getJobDetail;
     }
 }

@@ -1,6 +1,7 @@
 package com.jobfinder.controller;
 
 import com.jobfinder.domain.Job;
+import com.jobfinder.domain.RegionVO;
 import com.jobfinder.service.MainService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,15 +23,28 @@ public class MainController {
     public String main(Model model){
         List<Job> job_list = mainService.jobList();
         model.addAttribute("job_list",job_list);
+        List<RegionVO> region_list = mainService.regionList();
+        model.addAttribute("region_list",region_list);
         return "main";
     }
 
     @RequestMapping("get_job_detail")
     @ResponseBody
     public List<Job> get_job_detail(@RequestParam("super_seq") int super_seq){
+
         List<Job> jobDetail = mainService.getJobDetail(super_seq);
         return jobDetail;
     }
+    /*
+    @RequestMapping("get_region_detail")
+    @ResponseBody
+    public List<RegionVO> get_region_detail(@RequestParam("super_region_seq")){
+
+    @GetMapping(path = "/list")
+    public String list(){
+        return "searchList";
+    }
+    */
 
 
 }

@@ -7,7 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -15,9 +14,9 @@ public class Company {
 	@Autowired
 	CompanyService companyService;
 
-	@GetMapping("/CompanyList")
+	@GetMapping("/companyList")
 	public String CompanyList(Model model){
-		ArrayList<Company_info> list = companyService.list();
+		List<Company_info> list = companyService.list();
 		model.addAttribute("list",list);
 		return "CompanyList";
 	}
@@ -26,18 +25,18 @@ public class Company {
 	public String CompanyDetail(Company_info c, Model model) {
 		List<Company_info> detail = companyService.detail(c.getCompany_id());
 		model.addAttribute("detail",detail);
+
 		return "CompanyDetail";
 	}
 
-	@GetMapping("/CompanyReview")
+	@GetMapping("/companyReview")
 	public String CompanyReview() {
 		return "CompanyReview";
 	}
 
-	@GetMapping("/Recruit")
+	@GetMapping("/recruit")
 	public String Recruit(){
 		return "Recruit";
 	}
-
 
 }
