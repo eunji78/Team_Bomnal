@@ -125,31 +125,11 @@
 
             <div class="table-responsive">
               <table class="table table-lg">
-
                 <tbody>
-                <tr>
-                  <a href="/companyDetail/${company_id}"><td class="text-bold-500" th:text="${detail.company_name}">한국맥도날드(유)</td></a>
-                  <td>서비스업 | 서울</td>
-                  <td class="text-bold-500">2657개의 리뷰</td>
-
-                </tr>
-                <tr>
-                  <td class="text-bold-500">(주)에스씨케이컴퍼니</td>
-                  <td>서비스업 | 서울</td>
-                  <td class="text-bold-500">3786개의 리뷰</td>
-
-                </tr>
-                <tr>
-                  <td class="text-bold-500">롯데리아 (매장)</td>
-                  <td>서비스업 | 기타</td>
-                  <td class="text-bold-500">2446개의 리뷰</td>
-
-                </tr>
-                <tr>
-                  <td class="text-bold-500">(주)트랜스코스모스코리아</td>
-                  <td>서비스업 | 서울</td>
-                  <td class="text-bold-500">1642개의 리뷰</td>
-
+                <tr th:each="c : ${list}">
+                  <a href="/companyDetail/${company_id}"><td class="text-bold-500" th:text="${c.company_name}">한국맥도날드(유)</td></a>
+                  <a href="/companyDetail/${company_id}"><td th:text="${c.company_name}">서비스업 | 서울</td></a>
+                  <a href="/companyDetail/${company_id}"><td class="text-bold-500" th:text="${c.company_industry}">2657개의 리뷰</td></a>
                 </tr>
                 </tbody>
               </table>

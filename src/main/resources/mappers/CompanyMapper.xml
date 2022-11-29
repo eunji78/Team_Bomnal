@@ -5,10 +5,10 @@
 <mapper namespace="com.jobfinder.persistence.CompanyMapper">
 
     <select id="list" resultType="Company_info">
-        select company_name, indus_name, count(review_seq) as count_review from company a, inudstry b, reviews c where a.indus_seq = b.indus_seq and a.company_id = c.company_id
+        select company_logo, company_name, company_industry from company_detail
     </select>
 
     <select id="detail" parameterType="Company_info" resultType="Company_info">
-        select * from Company where company_id = #{company_id}
+        select * from company_detail where company_id = #{company_id}
     </select>
 </mapper>
