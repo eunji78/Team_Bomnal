@@ -1,5 +1,7 @@
 .d-category-list{
+    display:block;
     border:0px solid;
+    float:left;
 }
 .d-list-button{
     width:100%;
@@ -16,7 +18,6 @@
     background-color:#e7f5ff;
     border:1px;
     border-bottom:0px;
-
 }
 
 .d-nav{
@@ -61,4 +62,53 @@
     background-color:white;
     border:0px;
     outline:0;
+}
+
+.searchText{
+    display:inline-block;
+    width:303px;
+    height:40px;
+    border: 1px solid #dbdbdb;;
+}
+
+#detail_list{
+    display:block;
+    overflow:auto;
+    width:100%;
+    height:300px;
+    float:left;
+    margin-left:20px;
+    margin-top:10px;
+    margin-bottom:10px;
+}
+
+.detail_button{
+    width:180px;
+    color:#000000;
+    font-size:13px;
+    text-align:center;
+    height:30px;
+    background-color:transparent;
+    border:0px;
+    padding:3px;
+}
+
+#list_item{
+    margin-left:2px;
+    background-image: url(/img/x-icon.png);
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-size:contain;
+    width:8px;
+    height:10px;
+    border:none;
+}
+
+.selected_keyword{
+    font-size:12px;
+
+}
+
+.search-box > div{
+    padding:15px;
 }

@@ -25,9 +25,6 @@ public class MainService{
         return region_list;
     }
 
-    public String test() {
-        return "test중";
-    }
 
     public List<Job> getJobDetail(int super_seq) {
         List<Job> getJobDetail = mainRepository.getJobDetail(super_seq);

@@ -157,7 +157,7 @@
                     <div class="detail col-12">
                         <!-- 직무 선택 리스트-->
                         <div class="d-category-list" style="width:200px; height:300px; overflow:auto">
-                            <div class="mt-2 mb-2" style="height:284px">
+                            <div class="mt-2 mb-2 job-one" style="height:284px">
                                 <ul th:each="job : ${job_list}">
                                     <li clsss="d-list"><button class="d-list-button" type="button"><span th:text="${job.super_job}">경영·사무</span></button></li>
                                     <span th:text="${job.super_job_seq}" style="display:none"></span>

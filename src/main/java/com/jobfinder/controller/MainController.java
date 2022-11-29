@@ -40,9 +40,6 @@ public class MainController {
     @ResponseBody
     public List<RegionVO> get_region_detail(@RequestParam("super_region_seq")){
 
-        return getRegionDetail;
-    }
-    */
     @GetMapping(path = "/list")
     public String list(){
         return "searchList";
