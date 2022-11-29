@@ -97,31 +97,27 @@
                                 </div>
                                 <div class="job-tittle">
                                     <a href="#">
-                                        <h3>기업이름</h3>
+                                        <h5>기업이름</h5>
                                     </a>
 
-                                    <h5>공고 제목</h5>
+                                    <h3 th:value="${r_title}">공고 제목</h3>
                                     <table width="620" height="120">
                                         <tr>
-                                            <td width="120"><img src="/img/icon/bag.png"
-                                                    style="width: 20px; height: 20px;">&nbsp&nbsp작업개요</td>
-                                            <td>신입·경력</td>
+                                            <td width="120"><img src="/img/icon/bag.png" class="img_logo">&nbsp&nbsp작업개요</td>
+                                            <td th:text="${r_part}">신입·경력</td>
 
                                         </tr>
                                         <tr>
-                                            <td width="120"><img src="/img/icon/pin.png"
-                                                    style="width: 20px; height: 20px;">&nbsp&nbsp근무지</td>
-                                            <td></td>
+                                            <td width="120"><img src="/img/icon/pin.png" class="img_logo">&nbsp&nbsp근무지</td>
+                                            <td th:text="${r_wide_area}"></td>
                                         </tr>
                                         <tr>
-                                            <td width="120"><img src="/img/icon/yen.png"
-                                                    style="width: 20px; height: 20px;">&nbsp&nbsp연례</td>
-                                            <td></td>
+                                            <td width="120"><img src="/img/icon/yen.png" class="img_logo">&nbsp&nbsp연례</td>
+                                            <td th:text="${r_salary}"></td>
                                         </tr>
                                         <tr>
-                                            <td width="120"><img src="/img/icon/sun.png"
-                                                    style="width: 20px; height: 20px;">&nbsp&nbsp휴일·휴가</td>
-                                            <td>정규직 수습기간 3개월</td>
+                                            <td width="120"><img src="/img/icon/sun.png" class="img_logo">&nbsp&nbsp휴일·휴가</td>
+                                            <td th:text="${r_job_pattern}">정규직 수습기간 3개월</td>
                                         </tr>
                                     </table>
                                 </div>
@@ -138,7 +134,7 @@
                             </div>
                             <div class="job-message">
                                 <div class="job-message-dis">
-                                    <img src="/img/test/chi.jpg" style="max-width: 100%; height:auto;">
+                                    <img class = "company_image" src="/img/test/chi.jpg">
                                     기업메시지 넣으세요~
                                 </div>
                                 <div class="job-message-dis">
@@ -146,9 +142,9 @@
                                         <div class="post-details1 mb-50">
                                             <!-- Small Section Tittle -->
                                             <div class="small-section-tittle">
-                                                <h3>모집부문</h3>
+                                                <h3>상세내용</h3>
                                             </div>
-                                            <p>It is a long established fact that a reader will beff distracted by vbthe
+                                            <p th:text="${r_detail}">It is a long established fact that a reader will beff distracted by vbthe
                                                 creadable
                                                 content of a page when looking at its layout. The pointf of using Lorem
                                                 Ipsum is
@@ -159,22 +155,18 @@
                                         <div class="post-details2  mb-50">
                                             <!-- Small Section Tittle -->
                                             <div class="small-section-tittle">
-                                                <h3>근무조건</h3>
+                                                <h3>담당업무</h3>
                                             </div>
                                             <ul>
-                                                <li>System Software Development</li>
-                                                <li>Mobile Applicationin iOS/Android/Tizen or other platform</li>
-                                                <li>Research and code , libraries, APIs and frameworks</li>
-                                                <li>Strong knowledge on software development life cycle</li>
-                                                <li>Strong problem solving and debugging skills</li>
+                                                <p th:text="${r_bisiness}"></p>
                                             </ul>
                                         </div>
                                         <div class="post-details1 mb-50">
                                             <!-- Small Section Tittle -->
                                             <div class="small-section-tittle">
-                                                <h3>전형절차</h3>
+                                                <h3>자격요건</h3>
                                             </div>
-                                            <p>It is a long established fact that a reader will beff distracted by vbthe
+                                            <p th:text="${r_license}">It is a long established fact that a reader will beff distracted by vbthe
                                                 creadable
                                                 content of a page when looking at its layout. The pointf of using Lorem
                                                 Ipsum is
@@ -217,14 +209,14 @@
                     </div>
                     <!-- Right Content -->
                     <div class="col-xl-3 col-lg-3">
-                        <div class="post-details3  mb-50">
+                        <div class="post-details3 mb-50" id = "slidemenu">
                             <!-- Small Section Tittle -->
                             <div class="small-section-tittle">
                                 <h4>회사이름</h4>
                             </div>
                             <ul>
                                 <li>공고 시작 : <span>12 Aug 2019</span></li>
-                                <li>공고 마감 : <span>12 Dec 2022</span></li>
+                                <li>공고 마감 : <span th:text = "${r_close_date}">12 Dec 2022</span></li>
                                 <li class="d-counter"></li>
                             </ul>
                             <div class="apply-btn2">
@@ -232,47 +224,7 @@
                             </div>
                         </div>
                         <div class="blog_right_sidebar">
-                            <aside class="single_sidebar_widget post_category_widget">
-                            <h4 class="widget_title">Category</h4>
-                            <ul class="list cat-list">
-                                <li>
-                                    <a href="#" class="d-flex">
-                                        <p>Resaurant food</p>
-                                        <p>(37)</p>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="d-flex">
-                                        <p>Travel news</p>
-                                        <p>(10)</p>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="d-flex">
-                                        <p>Modern technology</p>
-                                        <p>(03)</p>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="d-flex">
-                                        <p>Product</p>
-                                        <p>(11)</p>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="d-flex">
-                                        <p>Inspiration</p>
-                                        <p>21</p>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="d-flex">
-                                        <p>Health Care (21)</p>
-                                        <p>09</p>
-                                    </a>
-                                </li>
-                            </ul>
-                            </aside>
+
                         </div>
                     </div>
                 </div>
@@ -418,6 +370,7 @@
     <script src="/js/plugins.js"></script>
     <script src="/js/main.js"></script>
 
+    <script src="/js/quickmenu.js"></script>
 </body>
 
 </html>
