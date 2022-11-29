@@ -136,19 +136,51 @@
                                 </form>
                             </div>
                         </div>
-                        <div style="border:1px solid" class="row" >
-                            <div style="width:100%; height:60px; line-height:40px; border-bottom:1px solid">
-                                <input type="text" style="vertical-align:middle; width:200px;">
-                            </div>
-                            <div>
-                                <div class="d-category-list" style="width:200px; height:300px; overflow:auto">
-                                    <div class="mt-2 mb-2" style="height:284px">
-                                        <ul th:each="job : ${job_list}">
-                                            <li clsss="d-list"><button class="d-list-button" type="button"><span th:text="${job.super_job}">경영·사무</span></button></li>
-                                            <span th:text="${job.super_job_seq}" style="display:none"></span>
-                                        </ul>
+                        <div style="border:1px solid rgba(0,0,0,.1); margin-top:30px; display:none" class="row" id="job-list" >
+                            <div class="col-12" style="float:left">
+                                <!-- 직무 검색
+                                <div style="width:100%; height:60px; line-height:40px; border-bottom:1px solid rgba(0,0,0,.1); padding:9px 30px">
+                                    <div>
+                                        <span class="searchText">
+                                            <input type="text" style="border:none; font-size:14px; width:300px; height:30px" placeholder="직업(직무) 또는 전문분야 입력">
+                                        </span>
                                     </div>
-                                    <!-- select-Categories End -->
+                                </div>
+                                -->
+
+                                <div style="display:flex">
+                                    <!-- 직무 상위 카테고리 -->
+                                    <div class="d-category-list" style="width:200px; height:300px; overflow:auto">
+                                        <div class="mt-2 mb-2" style="height:284px">
+                                            <ul th:each="job : ${job_list}">
+                                                <li clsss="d-list">
+                                                    <button class="d-list-button" type="button">
+                                                        <span th:text="${job.super_job}">경영·사무</span>
+                                                        <span id="super-job-seq" th:text="${job.super_job_seq}" style="display:none"></span>
+                                                    </button>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <!-- 상위 카테고리 끝 -->
+
+                                    <!-- 직무 하위 카테고리 -->
+                                    <div id="detail_list">
+                                        <button class='detail_button'>
+                                        하위 카테고리
+                                        </button>
+                                    </div>
+                                    <!-- 하위 카테고리 끝-->
+                                </div>
+
+                                <div>
+                                    <!-- 선택한 옵션 -->
+                                    <div style="border-top:1px solid rgba(0,0,0,.1); padding:20px 15px">
+                                        <span class="selected_keyword">경기전체
+                                            <button type="button" id="list_item" class=""></button>
+                                        </span>
+                                    </div>
+                                    <!-- 옵션 끝 -->
                                 </div>
                             </div>
                         </div>
@@ -245,7 +277,6 @@
                                 </div>
                              </div>
                          </div>
-
                        </div>
                     </div>
                     <div class="col-xl-3 col-lg-3 col-md-4 col-sm-5">
@@ -400,21 +431,10 @@
 
         <script src="/js/main-page.js"></script>
 
-        <!-- nav 클릭이벤트 -->
-        <script>
-            $(".d-li").click(function(){
-                $(".d-li").removeClass("active");
-                $(this).toggleClass("active");
-            })
-        </script>
+        <!-- 검색창 -->
+        <script src="/js/search.js"></script>
 
-        <!-- list-button 클릭이벤트 -->
-        <script>
-                $(".d-list-button").click(function(){
-                    $(".d-list-button").removeClass("active");
-                    $(this).toggleClass("active");
-                })
-        </script>
+
         
     </body>
 </html>

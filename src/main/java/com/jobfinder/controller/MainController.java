@@ -18,9 +18,9 @@ public class MainController {
     @Autowired
     MainService mainService;
 
-    @RequestMapping("main")
+    @RequestMapping
     public String main(Model model){
-        List<Job> job_list = mainService.getList();
+        List<Job> job_list = mainService.jobList();
         model.addAttribute("job_list",job_list);
         return "main";
     }
@@ -28,16 +28,9 @@ public class MainController {
     @RequestMapping("get_job_detail")
     @ResponseBody
     public List<Job> get_job_detail(@RequestParam("super_seq") int super_seq){
-
         List<Job> jobDetail = mainService.getJobDetail(super_seq);
         return jobDetail;
     }
-
-    @GetMapping(path = "/list")
-    public String list(){
-        return "searchList";
-    }
-
 
 
 }
