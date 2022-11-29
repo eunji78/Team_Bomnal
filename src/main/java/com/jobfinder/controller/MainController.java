@@ -21,7 +21,6 @@ public class MainController {
 
     @RequestMapping
     public String main(Model model){
-        System.out.println(mainService);
         List<Job> job_list = mainService.jobList();
         model.addAttribute("job_list",job_list);
         List<RegionVO> region_list = mainService.regionList();

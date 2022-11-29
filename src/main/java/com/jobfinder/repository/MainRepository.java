@@ -15,7 +15,6 @@ public class MainRepository {
     MainMapper mainMapper;
 
     public List<Job> jobList() {
-        System.out.println("repository");
         List<Job> job_list = mainMapper.jobList();
         return job_list;
     }

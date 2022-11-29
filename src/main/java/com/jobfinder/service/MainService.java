@@ -15,7 +15,6 @@ public class MainService{
     MainRepository mainRepository;
 
     public List<Job> jobList() {
-        System.out.println("service");
         List<Job> job_list = mainRepository.jobList();
         return job_list;
     }
