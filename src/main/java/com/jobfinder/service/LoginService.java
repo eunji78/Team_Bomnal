@@ -4,9 +4,10 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
-import com.jobfinder.repository.LoginRepository;
+import com.jobfinder.service.repository.LoginRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.io.*;
 import java.net.HttpURLConnection;
@@ -21,16 +22,16 @@ public class LoginService {
 
     public String id_check_com(String insert_id){
         System.out.println("com Service in : " + insert_id);
-        loginRepository.id_check_com(insert_id);
-        System.out.println("com Servoce in : " + insert_id);
-        return "";
+        String com_id = loginRepository.id_check_com(insert_id);
+        System.out.println("com Service in : " + insert_id);
+        return com_id;
     }
 
     public String id_check_per(String insert_id){
         System.out.println("per Service in : " + insert_id);
-        loginRepository.id_check_per(insert_id);
+        String per_id = loginRepository.id_check_per(insert_id);
         System.out.println("per Service in : " + insert_id);
-        return "";
+        return per_id;
     }
 
     public String getAccessToken (String authorize_code) {

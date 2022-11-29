@@ -2,7 +2,7 @@ package com.jobfinder.service;
 
 import com.jobfinder.domain.Job;
 import com.jobfinder.domain.RegionVO;
-import com.jobfinder.repository.MainRepository;
+import com.jobfinder.service.repository.MainRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

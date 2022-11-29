@@ -1,6 +1,5 @@
 package com.jobfinder.controller;
 
-import com.jobfinder.repository.LoginRepository;
 import com.jobfinder.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -29,13 +28,25 @@ public class LoginController {
     @RequestMapping(value = "/signup_company")
     public String signup_company() { return "signup_company"; }
 
+    @RequestMapping(value = "/signup_com")
+    public String signup_com() {
+
+        return "";
+    };
+
+    @RequestMapping(value = "/signup_per")
+    public String signup_per() {
+
+        return "";
+    };
+
     @RequestMapping(value = "/login_id_check_per")
     @ResponseBody
     public String login_id_check_per(@RequestParam("insert_id") String insert_id) {
 
-        System.out.println("com 넘어오는 id값 : " + insert_id);
+        System.out.println("per 넘어오는 id값 : " + insert_id);
         String mem_id = loginService.id_check_per(insert_id);
-        System.out.println("com 받는 id값 : " + mem_id);
+        System.out.println("per 받는 id값 : " + mem_id);
         return mem_id;
     }
 
@@ -43,9 +54,9 @@ public class LoginController {
     @ResponseBody
     public String login_id_check_com(@RequestParam("insert_id") String insert_id) {
 
-        System.out.println("per 넘어오는 id값 : " + insert_id);
+        System.out.println("com 넘어오는 id값 : " + insert_id);
         String com_id = loginService.id_check_com(insert_id);
-        System.out.println("per 받는 id값 : " + com_id);
+        System.out.println("com 받는 id값 : " + com_id);
         return com_id;
     }
 

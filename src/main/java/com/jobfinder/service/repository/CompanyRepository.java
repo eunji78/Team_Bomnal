@@ -1,4 +1,4 @@
-package com.jobfinder.repository;
+package com.jobfinder.service.repository;
 
 import com.jobfinder.domain.Company_info;
 import com.jobfinder.persistence.CompanyMapper;
