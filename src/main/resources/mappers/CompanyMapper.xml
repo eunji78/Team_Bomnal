@@ -5,7 +5,7 @@
 <mapper namespace="com.jobfinder.persistence.CompanyMapper">
 
     <select id="list" resultType="Company_info">
-        select company_logo, company_name, company_industry from company_detail
+        select company_id, company_name, company_industry, company_logo, company_type from company_detail
     </select>
 
     <select id="detail" parameterType="Company_info" resultType="Company_info">

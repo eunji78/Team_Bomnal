@@ -14,7 +14,7 @@ public class Company {
 	@Autowired
 	CompanyService companyService;
 
-	@GetMapping("/CompanyList")
+	@GetMapping("/companyList")
 	public String CompanyList(Model model){
 		List<Company_info> list = companyService.list();
 		model.addAttribute("list",list);
@@ -29,12 +29,12 @@ public class Company {
 		return "CompanyDetail";
 	}
 
-	@GetMapping("/CompanyReview")
+	@GetMapping("/companyReview")
 	public String CompanyReview() {
 		return "CompanyReview";
 	}
 
-	@GetMapping("/Recruit")
+	@GetMapping("/recruit")
 	public String Recruit(){
 		return "Recruit";
 	}
