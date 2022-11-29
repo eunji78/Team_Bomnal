@@ -116,15 +116,15 @@
                     <div class="single-job-items mb-50">
                         <div class="job-items">
                             <div class="company-img company-img-details">
-                                <a href="#"><img src="https://jpassets.jobplanet.co.kr/production/uploads/company/logo/30139/thumb_0.jpg" alt="" class="c_icon"></a>
+                                <a href="#"><img th:src="${detail.company_logo}" alt="" class="c_icon"></a>
                             </div>
                             <div class="job-tittle">
                                 <a href="#">
-                                    <h1>삼성전자(주)</h1>
+                                    <h1 th:text="${detail.company_name}">삼성전자(주)</h1>
                                 </a>
                                 <ul>
-                                    <li>전기/전자/제어</li>
-                                    <li><i class="fas fa-map-marker-alt"></i>서울</li>
+                                    <li th:text="${detail.company_industry}">전기/전자/제어</li>
+                                    <li th:text="${detail.company_address}"><i class="fas fa-map-marker-alt"></i>서울</li>
                                     <li>대기업</li>
                                 </ul>
                             </div>
@@ -132,7 +132,7 @@
 
                         <div class="button-group-area mt-10">
                             <a href="" class="genric-btn primary radius">기업 상세</a>
-                            <a href="/CompanyReview" class="genric-btn success-border radius">기업리뷰</a>
+                            <a th:href="@{/companyReview/{company_id}(company_id=${detail.company_id})}" class="genric-btn success-border radius">기업리뷰</a>
                             <a href="/Recruit" class="genric-btn warning-border radius">채용공고(4)</a>
                         </div>
 
@@ -149,7 +149,7 @@
                                         <span class="icon-paper-plane"></span>
                                         <a href="">
                                             <img src="/img/industry_icon.png">
-                                            <h3>전기/전자/제어</h3>
+                                            <h3 th:text="${detail.industry_class}">전기/전자/제어</h3>
                                             <p>산업</p>
                                         </a>
                                     </div>
@@ -159,7 +159,7 @@
                                         <span class="icon-tag"></span>
                                         <a href="">
                                             <img src="/img/company_icon.png">
-                                            <h3>대기업</h3>
+                                            <h3 th:text="${detail.company_type}">대기업</h3>
                                             <p>기업형태</p>
                                         </a>
                                     </div>
@@ -169,7 +169,7 @@
                                         <span class="icon-user"></span>
                                         <a href="">
                                             <img src="/img/employee_number_icon.png">
-                                            <h3>98,387명 (2013)</h3>
+                                            <h3 th:text="${detail.staff_volume}">98,387명 (2013)</h3>
                                             <p>사원수</p>
                                         </a>
                                     </div>
@@ -179,7 +179,7 @@
                                         <span class="icon-support"></span>
                                         <a href="">
                                             <img src="/img/found_year_icon2.png">
-                                            <h3>1969.01.13</h3>
+                                            <h3 th:text="${detail.foundation_dt}">1969.01.13</h3>
                                             <p>설립</p>
                                         </a>
                                     </div>
@@ -200,39 +200,39 @@
 
                     <div class="job-post-details" style="padding-left: 100px; padding-right: 100px;">
 
-                        <div class="post-details1 mb-50">
+                        <div class="post-details1 mb-50" th:if="${not #strings.isEmpty(detail.company_intro)}">
                             <!-- Small Section Tittle -->
                             <div class="small-section-tittle">
                                 <h4>기업 소개</h4>
                             </div>
-                            <p>삼성전자(주)는 한국 및 CE, IM 부문 산하 해외 9개 지역총괄과 DS 부문 산하 해외 5개 지역총괄의 생산,판매법인 등 158개의 동종업종을 영위하는 종속기업으로 구성된 글로벌 전자기업임. 제품 특성에 따라 CE 사업부문, IM 사업부문, DS 사업부문 3개의 부문으로 나누어 독립 경영하고 있음. 삼성전자만의 고유 디자인을 바탕으로 프리미엄 리더십과 60인치 이상의 초대형 리더십을 강화하고, 사용자가 원하는 컨텐츠를 간편하게 제공하여 Smart TV시장을 주도할 계획. 메모리 판가는 2012년 시장 악화 지속으로 전년 대비 약 40% 하락하였으나 2013년에는 수급 안정화로 하락폭이 25%수준으로 둔화 되었음</p>
+                            <p th:text="${detail.company_intro}">삼성전자(주)는 한국 및 CE, IM 부문 산하 해외 9개 지역총괄과 DS 부문 산하 해외 5개 지역총괄의 생산,판매법인 등 158개의 동종업종을 영위하는 종속기업으로 구성된 글로벌 전자기업임. 제품 특성에 따라 CE 사업부문, IM 사업부문, DS 사업부문 3개의 부문으로 나누어 독립 경영하고 있음. 삼성전자만의 고유 디자인을 바탕으로 프리미엄 리더십과 60인치 이상의 초대형 리더십을 강화하고, 사용자가 원하는 컨텐츠를 간편하게 제공하여 Smart TV시장을 주도할 계획. 메모리 판가는 2012년 시장 악화 지속으로 전년 대비 약 40% 하락하였으나 2013년에는 수급 안정화로 하락폭이 25%수준으로 둔화 되었음</p>
                         </div>
 
-                        <div class="post-details2  mb-50">
+                        <div class="post-details2  mb-50" th:if="${not #strings.isEmpty(detail.company_intro)}">
                             <div class="small-section-tittle">
                                 <h4>대표</h4>
                             </div>
                             <ul>
-                                <li>한종희, 경계현</li>
+                                <li th:text="${detail.company_owner}">한종희, 경계현</li>
                             </ul>
                         </div>
 
-                        <div class="post-details2  mb-50">
+                        <div class="post-details2  mb-50" th:if="${not #strings.isEmpty(detail.company_intro)}">
                             <div class="small-section-tittle">
                                 <h4>매출</h4>
                             </div>
                             <ul>
-                                <li>158.4조 원 (2013)</li>
+                                <li th:text="${detail.total_sales}">158.4조 원 (2013)</li>
                             </ul>
                         </div>
 
-                        <div class="post-details2  mb-50">
+                        <div class="post-details2  mb-50" th:if="${not #strings.isEmpty(detail.company_intro)}">
                             <!-- Small Section Tittle -->
                             <div class="small-section-tittle">
                                 <h4>연혁</h4>
                             </div>
                             <ul>
-                                <li>3 or more years of professional design experience</li>
+                                <li th:text="${detail.company_history}">3 or more years of professional design experience</li>
                                 <li>Direct response email experience</li>
                                 <li>Ecommerce website design experience</li>
                                 <li>Familiarity with mobile and web apps preferred</li>
@@ -240,21 +240,21 @@
                             </ul>
                         </div>
 
-                        <div class="post-details2  mb-50">
+                        <div class="post-details2  mb-50" th:if="${not #strings.isEmpty(detail.company_intro)}">
                             <div class="small-section-tittle">
                                 <h4>주소</h4>
                             </div>
                             <ul>
-                                <li>경기 수원시 영통구 삼성로 129 (매탄동,주차타워)</li>
+                                <li th:text="${detail.company_address}">경기 수원시 영통구 삼성로 129 (매탄동,주차타워)</li>
                             </ul>
                         </div>
 
-                        <div class="post-details2  mb-50">
+                        <div class="post-details2  mb-50" th:if="${not #strings.isEmpty(detail.company_intro)}">
                             <div class="small-section-tittle">
                                 <h4>웹사이트</h4>
                             </div>
                             <ul>
-                                <li><a href="http://www.samsung.com/sec/">http://www.samsung.com/sec/</a></li>
+                                <li><a th:href="@{${detail.company_url}}">http://www.samsung.com/sec/</a></li>
                             </ul>
                         </div>
 

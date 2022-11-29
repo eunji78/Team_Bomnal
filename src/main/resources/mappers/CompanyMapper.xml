@@ -5,10 +5,15 @@
 <mapper namespace="com.jobfinder.persistence.CompanyMapper">
 
     <select id="list" resultType="Company_info">
-        select company_id, company_name, company_industry, company_logo, company_type from company_detail
+        select * from company_detail
     </select>
 
-    <select id="detail" parameterType="Company_info" resultType="Company_info">
+
+    <select id="detail" parameterType="String" resultType="Company_info">
         select * from company_detail where company_id = #{company_id}
+    </select>
+
+    <select id="review" parameterType="String" resultType="Reviews">
+        select * from reviews where company_id = #{company_id}
     </select>
 </mapper>
