@@ -3,7 +3,7 @@
     border:0px solid;
     float:left;
 }
-.d-list-button{
+.r-list-button{
     width:100%;
     color:#000000;
     font-size:15px;
@@ -13,7 +13,24 @@
     padding:3px;
 }
 
-.d-list-button.active{
+.j-list-button{
+    width:100%;
+    color:#000000;
+    font-size:15px;
+    text-align:center;
+    background-color:transparent;
+    border:0px;
+    padding:3px;
+}
+
+.r-list-button.active{
+    color:#39f;
+    background-color:#e7f5ff;
+    border:1px;
+    border-bottom:0px;
+}
+
+.j-list-button.active{
     color:#39f;
     background-color:#e7f5ff;
     border:1px;
@@ -71,15 +88,14 @@
     border: 1px solid #dbdbdb;;
 }
 
-#detail_list{
-    display:block;
+.detail_list{
     overflow:auto;
-    width:100%;
+    width:1000px;
     height:300px;
     float:left;
-    margin-left:20px;
-    margin-top:10px;
-    margin-bottom:10px;
+    padding-left:20px;
+    padding-top:10px;
+    padding-bottom:10px;
 }
 
 .detail_button{
@@ -93,7 +109,7 @@
     padding:3px;
 }
 
-#list_item{
+.list_item{
     margin-left:2px;
     background-image: url(/img/x-icon.png);
     background-color: transparent;
@@ -106,7 +122,7 @@
 
 .selected_keyword{
     font-size:12px;
-
+    margin-right:10px;
 }
 
 .search-box > div{

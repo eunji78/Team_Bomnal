@@ -28,4 +28,9 @@ public class MainRepository {
         List<Job> getJobDetail = mainMapper.getJobDetail(super_seq);
         return getJobDetail;
     }
+
+    public List<RegionVO> getRegionDetail(int super_seq){
+        List<RegionVO> getRegionDetail = mainMapper.getRegionDetail(super_seq);
+        return getRegionDetail;
+    }
 }

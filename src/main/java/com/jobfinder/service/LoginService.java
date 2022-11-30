@@ -9,6 +9,7 @@ import com.jobfinder.domain.Login_ComVO;
 import com.jobfinder.repository.LoginRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.io.*;
 import java.net.HttpURLConnection;
