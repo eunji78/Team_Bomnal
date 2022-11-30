@@ -17,7 +17,7 @@
 #job-tab-2:checked~.job-tab label:nth-child(2) {
     /* background-color: rgba(0, 0, 0, 0.2); */
     box-shadow: none;
-    border-bottom: 4px solid rgb(051, 000, 255)
+    border-bottom: 4px solid #38a4ff;
 }
 
 .job-message>div {
@@ -112,5 +112,17 @@
 #slidemenu{
     width : 290px;
     height : 310px;
-    position:absolute;
+    position : absolute;
+}
+
+.genric-btn.primary {
+    color: #38a4ff !important;
+    background: #fff !important;
+    border: 1px solid transparent
+}
+
+.genric-btn.primary:hover {
+    color: #38a4ff !important;
+    border: 1px solid #38a4ff !important;
+    background: #fff
 }

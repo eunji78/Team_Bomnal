@@ -12,8 +12,8 @@ public class RecruitRepository {
     @Autowired
     RecruitMapper recruitMapper;
 
-    public List<Recruit> notice(){
-        List<Recruit> notice = recruitMapper.notice();
+    public Recruit notice(){
+        Recruit notice = recruitMapper.notice();
         return notice;
     }
 }

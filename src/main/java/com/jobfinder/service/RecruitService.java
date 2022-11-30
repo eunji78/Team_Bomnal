@@ -13,8 +13,8 @@ public class RecruitService {
     @Autowired
     RecruitRepository recruitRepository;
 
-    public List<Recruit> notice(List<Recruit> RecruitRepository){
-        List<Recruit> notice = recruitRepository.notice();
+    public Recruit notice(Recruit RecruitRepository){
+        Recruit notice = recruitRepository.notice();
         return notice;
     }
 }
