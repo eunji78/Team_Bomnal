@@ -23,13 +23,11 @@ $(document).ready(function(){
 
     /* 직무 가져오기 */
     $(".j-list-button").on('click', function(){
-        console.log("test")
         /* active */
         $(".j-list-button").removeClass("active");
         $(this).toggleClass("active");
 
         var super_seq = document.querySelector('.active #super-job-seq').innerText;
-        console.log(super_seq);
             $.ajax({
                 url : "/get_job_detail",
                 type : "get",
@@ -61,7 +59,6 @@ $(document).ready(function(){
         $(this).toggleClass("active");
 
         var super_seq = document.querySelector('.active #super-region-seq').innerText;
-        console.log(super_seq);
             $.ajax({
                 url : "/get_region_detail",
                 type : "get",

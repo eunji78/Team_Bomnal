@@ -1,6 +1,5 @@
 package com.jobfinder.service;
 
-
 import com.jobfinder.domain.Company_info;
 import com.jobfinder.domain.Reviews;
 import com.jobfinder.repository.CompanyRepository;
