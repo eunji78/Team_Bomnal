@@ -31,7 +31,10 @@ public class LoginService {
         int res = loginRepository.set_signup_per(vo);
         return res;
     }
-
+    public int set_signup_kko(LoginVO vo){
+        int res = loginRepository.set_signup_kko(vo);
+        return res;
+    }
     public String id_check_com(String insert_id){
         System.out.println("com Service in : " + insert_id);
         String com_id = loginRepository.id_check_com(insert_id);
@@ -67,7 +70,7 @@ public class LoginService {
             StringBuilder sb = new StringBuilder();
             sb.append("grant_type=authorization_code");
             sb.append("&client_id=a975f70f0a16a4f131af7f7cdd795234");  //본인이 발급받은 key
-            sb.append("&redirect_uri=http://127.0.0.1:8081/login");     // 본인이 설정해 놓은 경로
+            sb.append("&redirect_uri=http://127.0.0.1:8081/kakaologin");     // 본인이 설정해 놓은 경로
             sb.append("&code=" + authorize_code);
             bw.write(sb.toString());
             bw.flush();
@@ -106,10 +109,10 @@ public class LoginService {
         return access_Token;
     }
 
-    public HashMap<String, Object> getUserInfo (String access_Token) {
+    public HashMap<String, String> getUserInfo (String access_Token) {
 
         //    요청하는 클라이언트마다 가진 정보가 다를 수 있기에 HashMap타입으로 선언
-        HashMap<String, Object> userInfo = new HashMap<>();
+        HashMap<String, String> userInfo = new HashMap<>();
         String reqURL = "https://kapi.kakao.com/v2/user/me";
         try {
             URL url = new URL(reqURL);

@@ -20,7 +20,6 @@ public class LoginController {
     @Autowired
     LoginService loginService;
 
-
     @RequestMapping(value = "/loginform")
     public String loginform() { return "loginform"; }
 
@@ -74,7 +73,8 @@ public class LoginController {
         return com_id;
     }
 
-    @RequestMapping(value = "/login")
+
+    @RequestMapping(value = "/kakaologin")
     public String login(@RequestParam(value = "code", required = false) String code, HttpSession session, HttpServletResponse response) throws Exception{
 
         System.out.println("loginController!!");
@@ -89,16 +89,48 @@ public class LoginController {
         response.addCookie(token);
 
         //*
-        HashMap<String, Object> userInfo = loginService.getUserInfo(access_Token);
+        HashMap<String, String> userInfo = loginService.getUserInfo(access_Token);
         System.out.println("###user_info### : " + userInfo);
 
-        session.setAttribute("nickname", userInfo.get("nickname"));
-        session.setAttribute("email", userInfo.get("email"));
-        session.setAttribute("profile_image", userInfo.get("profile_image"));
-        session.setAttribute("birthday", userInfo.get("birthday"));
-        session.setAttribute("gender", userInfo.get("gender"));
+        String id = userInfo.get("id");
+        String name = userInfo.get("nickname");
+        String email = userInfo.get("email");
 
-        return "login";
+        String check = loginService.id_check_per(id);
+
+        if ( check == null ){
+            //System.out.println(id);
+            //System.out.println(name);
+            //System.out.println(email);
+
+            LoginVO vo = new LoginVO();
+            vo.setMem_id(id);
+            vo.setMem_pw(id);
+            vo.setMem_name(name);
+            vo.setMem_email(email);
+            vo.setMem_phone("");
+            vo.setM_agreement1("Y");
+            vo.setM_agreement2("Y");
+            vo.setM_agreement3("");
+            vo.setM_agreement4("");
+            vo.setM_agreement5("");
+            vo.setM_agreement6("3");
+            int res = loginService.set_signup_kko(vo);
+            //System.out.println(res);
+            session.setAttribute("id", userInfo.get("id"));
+            session.setAttribute("name", userInfo.get("name"));
+//        session.setAttribute("nickname", userInfo.get("nickname"));
+//        session.setAttribute("email", userInfo.get("email"));
+//        session.setAttribute("profile_image", userInfo.get("profile_image"));
+//        session.setAttribute("birthday", userInfo.get("birthday"));
+//        session.setAttribute("gender", userInfo.get("gender"));
+
+            return "redirect:/";
+        } else {
+            session.setAttribute("id", userInfo.get("id"));
+            session.setAttribute("name", userInfo.get("name"));
+            return "redirect:/";
+        }
     }
 
     @RequestMapping(value = "/v1/user/unlink")

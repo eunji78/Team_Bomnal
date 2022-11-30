@@ -27,6 +27,10 @@ public class LoginRepository {
         int res = loginMapper.set_signup_per(vo);
         return res;
     }
+    public int set_signup_kko(LoginVO vo){
+        int res = loginMapper.set_signup_kko(vo);
+        return res;
+    }
 
     public String id_check_com(String insert_id) {
         System.out.println("com Mapper in : " + insert_id);
