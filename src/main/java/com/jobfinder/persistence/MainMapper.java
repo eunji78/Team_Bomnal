@@ -13,4 +13,6 @@ public interface MainMapper {
     public List<RegionVO> regionList();
 
     public List<Job> getJobDetail(int super_seq);
+
+    public List<RegionVO> getRegionDetail(int super_seq);
 }

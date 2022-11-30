@@ -29,6 +29,19 @@
    </head>
 
    <body>
+   <script>
+    function add_list(item){
+        console.log($('.select-option').find('#'+item.id).text());
+
+        var list_name = $("#"+item.id).text();
+        $(".select-option").append("<span class='selected_keyword' id='b_"+item.id+"' onclick='delete_list(this)'>"+list_name+"<button type='button' class='list_item' ></button></span>");
+    }
+
+    function delete_list(item){
+        $("#"+item.id).remove();
+    }
+   </script>
+
     <!-- Preloader Start -->
     <div id="preloader-active">
         <div class="preloader d-flex align-items-center justify-content-center">
@@ -40,7 +53,8 @@
             </div>
         </div>
     </div>
-    <!-- Preloader Start -->
+
+   <!-- Preloader Start -->
     <header>
         <!-- Header Start -->
        <div class="header-area header-transparrent">
@@ -136,25 +150,45 @@
                                 </form>
                             </div>
                         </div>
-                        <div style="border:1px solid rgba(0,0,0,.1); margin-top:30px; display:none" class="row" id="job-list" >
-                            <div class="col-12" style="float:left">
-                                <!-- 직무 검색
-                                <div style="width:100%; height:60px; line-height:40px; border-bottom:1px solid rgba(0,0,0,.1); padding:9px 30px">
-                                    <div>
-                                        <span class="searchText">
-                                            <input type="text" style="border:none; font-size:14px; width:300px; height:30px" placeholder="직업(직무) 또는 전문분야 입력">
-                                        </span>
-                                    </div>
-                                </div>
-                                -->
 
-                                <div style="display:flex">
+                        <!-- 검색 창 -->
+                        <div style="border:1px solid rgba(0,0,0,.1); margin-top:30px; display:none" class="row" id="search" >
+                            <div class="col-12" style="float:left">
+
+                                <!-- 지역 -->
+                                <div style="display:flex" id="region-list" >
+                                    <!-- 지역 상위 카테고리 -->
+                                    <div class="d-category-list" style="width:200px; height:300px; overflow:auto">
+                                        <div class="mt-2 mb-2" style="height:284px">
+                                            <ul th:each="region : ${region_list}">
+                                                <li clsss="d-list">
+                                                    <button class="r-list-button" type="button">
+                                                        <span th:text="${region.region}">경영·사무</span>
+                                                        <span id="super-region-seq" th:text="${region.super_region_seq}" style="display:none"></span>
+                                                    </button>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <!-- 상위 카테고리 끝 -->
+
+                                    <!-- 지역 하위 카테고리 -->
+                                    <div class="detail_list" id="r_detail_list">
+                                        <button class='detail_button'>
+
+                                        </button>
+                                    </div>
+                                    <!-- 하위 카테고리 끝-->
+                                </div>
+
+                                <!-- 직무 -->
+                                <div style="display:flex" id="job-list" >
                                     <!-- 직무 상위 카테고리 -->
                                     <div class="d-category-list" style="width:200px; height:300px; overflow:auto">
                                         <div class="mt-2 mb-2" style="height:284px">
                                             <ul th:each="job : ${job_list}">
                                                 <li clsss="d-list">
-                                                    <button class="d-list-button" type="button">
+                                                    <button class="j-list-button" type="button">
                                                         <span th:text="${job.super_job}">경영·사무</span>
                                                         <span id="super-job-seq" th:text="${job.super_job_seq}" style="display:none"></span>
                                                     </button>
@@ -165,9 +199,9 @@
                                     <!-- 상위 카테고리 끝 -->
 
                                     <!-- 직무 하위 카테고리 -->
-                                    <div id="detail_list">
+                                    <div class="detail_list" id="j_detail_list">
                                         <button class='detail_button'>
-                                        하위 카테고리
+
                                         </button>
                                     </div>
                                     <!-- 하위 카테고리 끝-->
@@ -175,16 +209,16 @@
 
                                 <div>
                                     <!-- 선택한 옵션 -->
-                                    <div style="border-top:1px solid rgba(0,0,0,.1); padding:20px 15px">
-                                        <span class="selected_keyword">경기전체
-                                            <button type="button" id="list_item" class=""></button>
-                                        </span>
+                                    <div style="border-top:1px solid rgba(0,0,0,.1); padding:20px 15px" class="select-option">
+
                                     </div>
                                     <!-- 옵션 끝 -->
                                 </div>
                             </div>
                         </div>
+                        <!-- 검색 창 끝 -->
                     </div>
+
                     <!-- Right content -->
                     <div class="col-xl-12 col-lg-9">
                         <!-- Featured_job_start -->

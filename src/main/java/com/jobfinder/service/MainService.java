@@ -21,7 +21,6 @@ public class MainService{
 
     public List<RegionVO> regionList(){
         List<RegionVO> region_list = mainRepository.regionList();
-        System.out.println(region_list);
         return region_list;
     }
 
@@ -29,5 +28,10 @@ public class MainService{
     public List<Job> getJobDetail(int super_seq) {
         List<Job> getJobDetail = mainRepository.getJobDetail(super_seq);
         return getJobDetail;
+    }
+
+    public List<RegionVO> getRegionDetail(int super_seq) {
+        List<RegionVO> getRegionDetail = mainRepository.getRegionDetail(super_seq);
+        return getRegionDetail;
     }
 }

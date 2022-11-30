@@ -35,6 +35,14 @@ public class MainController {
         List<Job> jobDetail = mainService.getJobDetail(super_seq);
         return jobDetail;
     }
+
+    @RequestMapping("get_region_detail")
+    @ResponseBody
+    public List<RegionVO> get_region_detail(@RequestParam("super_seq") int super_seq){
+        System.out.println("super_seq = " + super_seq);
+        List<RegionVO> regionDetail = mainService.getRegionDetail(super_seq);
+        return regionDetail;
+    }
     /*
     @RequestMapping("get_region_detail")
     @ResponseBody
@@ -45,6 +53,7 @@ public class MainController {
         return "searchList";
     }
 
+     */
 
 
 }
