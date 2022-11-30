@@ -8,10 +8,14 @@
     </select>
 
     <select id="regionList" resultType="RegionVO">
-        select region, region_seq from region where region_seq = super_region_seq
+        select * from region where region_seq = super_region_seq
+    </select>
+
+    <select id="getRegionDetail" parameterType="int" resultType="RegionVO">
+        select * from region where super_region_seq = #{super_seq}
     </select>
 
     <select id="getJobDetail" resultType="Job">
-        select job from job where super_job_seq = #{super_seq}
+        select * from job where super_job_seq = #{super_seq}
     </select>
 </mapper>

@@ -7,5 +7,5 @@ import java.util.List;
 
 @Mapper
 public interface RecruitMapper {
-    public List<Recruit> noticeDetail();
-}
+    public List<Recruit> notice();
+    }

@@ -139,8 +139,8 @@
                         </div>
 
                         <div class="button-group-area mt-10">
-                            <a href="/CompanyDetail" class="genric-btn primary-border radius">기업상세</a>
-                            <a href="/CompanyReview" class="genric-btn success radius">기업리뷰</a>
+                            <a th:href="@{/companyDetail/{company_id}(company_id=${review.company_id})}" class="genric-btn primary-border radius">기업상세</a>
+                            <a href="" class="genric-btn success radius">기업리뷰</a>
                             <a href="/Recruit" class="genric-btn warning-border radius">채용공고(4)</a>
                         </div>
 

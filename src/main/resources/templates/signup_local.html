@@ -121,14 +121,17 @@
                                         </div>
                                         <div style="padding-right: 110px;">
                                             <div class="signup-input-box">
-                                                <input id="pwd" type="password" name="pwd" placeholder="비밀번호" oninput="check_pwd">
+                                                <input id="pwd" type="password" name="pwd" placeholder="비밀번호">
                                                 <label for="pwd">비밀번호</label>
                                             </div>
                                         </div>
                                         <div style="padding-right: 110px;">
                                             <div class="signup-input-box">
-                                                <input id="check_pwd" type="password" name="check_pwd" placeholder="비밀번호 확인">
+                                                <input id="check_pwd" type="password" name="check_pwd" placeholder="비밀번호 확인" oninput="real_check_pwd()">
                                                 <label for="check_pwd">비밀번호 확인</label>
+                                            </div>
+                                            <div class="signup-input-box" style="text-align:left !important; margin:0px !important;">
+                                                <p id="check_pwd_ptag" style="visibility: visible; margin:0px !important;"> 🗝️비밀번호를 입력해주세요. </p>
                                             </div>
                                         </div>
                                         <div style="padding-right: 110px;">
@@ -181,7 +184,7 @@
 
                                         <div class="center-agree-div mt-30" style="display: inline-block; padding: 20px 0px 0px 0px !important;">
                                             ❗정보보유기간 <br><br>
-                                            <input type="radio"> 탈퇴시 &nbsp&nbsp&nbsp <input type="radio"> 5년 &nbsp&nbsp&nbsp <input type="radio"> 3년 &nbsp&nbsp&nbsp <input type="radio"> 1년
+                                            <input type="radio" id="radio_1"> 탈퇴시 &nbsp&nbsp&nbsp <input type="radio" id="radio_2"> 5년 &nbsp&nbsp&nbsp <input type="radio" id="radio_3"> 3년 &nbsp&nbsp&nbsp <input type="radio" id="radio_4"> 1년
                                         </div>
 
                                     </div>
@@ -383,6 +386,28 @@
 
     $(function(){
 
+        $("#radio_1").on('change', function(){
+            $("#radio_2").prop("checked", false);
+            $("#radio_3").prop("checked", false);
+            $("#radio_4").prop("checked", false);
+        });
+        $("#radio_2").on('change', function(){
+            $("#radio_1").prop("checked", false);
+            $("#radio_3").prop("checked", false);
+            $("#radio_4").prop("checked", false);
+        });
+        $("#radio_3").on('change', function(){
+            $("#radio_1").prop("checked", false);
+            $("#radio_2").prop("checked", false);
+            $("#radio_4").prop("checked", false);
+        });
+        $("#radio_4").on('change', function(){
+            $("#radio_1").prop("checked", false);
+            $("#radio_2").prop("checked", false);
+            $("#radio_3").prop("checked", false);
+        });
+
+
         <!--$("#pwd").addEventListener("change", check_pwd);-->
 
         $("#id_check_btn").on('click',()=>{
@@ -414,9 +439,18 @@
 
     });
 
-    function check_pwd(pwd) {
-        console.log(pwd);
-    }
+    function real_check_pwd() {
+        var pwd = $("#pwd").val();
+        var cpwd = $("#check_pwd").val();
+
+        if (cpwd == "") {
+            $("#check_pwd_ptag").html( "<p id='check_pwd_ptag' style='visibility: visible; text-align: left !important; margin:0px !important;'> 🗝️확인 비밀번호를 입력해주세요. </p>" );
+        }else if (pwd==cpwd){
+            $("#check_pwd_ptag").html( "<p id='check_pwd_ptag' style='visibility: visible; text-align: left !important; margin:0px !important;'> 🔑비밀번호가 일치 합니다! </p>" );
+        } else {
+            $("#check_pwd_ptag").html( "<p id='check_pwd_ptag' style='visibility: visible; text-align: left !important; margin:0px !important;'> ❗비밀번호가 일치하지 않습니다! </p>" );
+        }
+    };
 
 </script>
 

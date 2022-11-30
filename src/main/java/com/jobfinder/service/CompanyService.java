@@ -2,12 +2,12 @@ package com.jobfinder.service;
 
 
 import com.jobfinder.domain.Company_info;
+import com.jobfinder.domain.Reviews;
 import com.jobfinder.repository.CompanyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.List;
 
 @Service
 public class CompanyService{
@@ -20,9 +20,14 @@ public class CompanyService{
         return list;
     }
 
-    public List<Company_info> detail(int company_id) {
-        return companyRepository.detail(company_id);
+    public Company_info detail(String company_id) {
+        Company_info detail = companyRepository.detail(company_id);
+        return detail;
     }
 
 
+    public Reviews review(String company_id) {
+        Reviews review = companyRepository.review(company_id);
+        return  review;
+    }
 }

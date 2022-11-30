@@ -127,9 +127,10 @@
               <table class="table table-lg">
                 <tbody>
                 <tr th:each="c : ${list}">
-                  <a href="/companyDetail/${company_id}"><td class="text-bold-500" th:text="${c.company_name}">한국맥도날드(유)</td></a>
-                  <a href="/companyDetail/${company_id}"><td th:text="${c.company_name}">서비스업 | 서울</td></a>
-                  <a href="/companyDetail/${company_id}"><td class="text-bold-500" th:text="${c.company_industry}">2657개의 리뷰</td></a>
+                  <td><img th:src="${c.company_logo}"></td>
+                  <td><a th:href="@{/companyDetail/{company_id}(company_id=${c.company_id})}" class="text-bold-500" th:text="${c.company_name}">한국맥도날드(유)</a></td>
+                  <td><a th:href="@{/companyDetail/{company_id}(company_id=${c.company_id})}" th:text="${c.company_industry}">서비스업</a></td>
+                  <td><a th:href="@{/companyDetail/{company_id}(company_id=${c.company_id})}" class="text-bold-500" th:text="${c.company_type}">대기업</a></td>
                 </tr>
                 </tbody>
               </table>

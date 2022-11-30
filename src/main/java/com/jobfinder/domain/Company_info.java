@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class Company_info {
-    private int company_id;
+    private String company_id;
     private String company_name;
     private String company_industry;
     private String company_type;
@@ -17,4 +17,5 @@ public class Company_info {
     private String company_history;
     private String company_intro;
     private String company_logo;
+    private String industry_class;
 }
