@@ -1,11 +1,12 @@
 package com.jobfinder.controller;
 
+import com.jobfinder.domain.LoginVO;
+import com.jobfinder.domain.Login_ComVO;
 import com.jobfinder.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -19,25 +20,38 @@ public class LoginController {
     @Autowired
     LoginService loginService;
 
+
     @RequestMapping(value = "/loginform")
     public String loginform() { return "loginform"; }
 
     @RequestMapping(value = "/signup_local")
-    public String signup_local() { return "signup_local"; }
+    public String signup_local(Model model, LoginVO loginVO) {
+        model.addAttribute("LoginVO", loginVO);
+        return "signup_local";
+    }
 
     @RequestMapping(value = "/signup_company")
-    public String signup_company() { return "signup_company"; }
+    public String signup_company(Model model, Login_ComVO login_comVO) {
+        model.addAttribute("Login_ComVO",login_comVO);
+        return "signup_company";
+    }
 
     @RequestMapping(value = "/signup_com")
-    public String signup_com() {
-
-        return "";
+    public String signup_com(@ModelAttribute Login_ComVO cvo) {
+        System.out.println("signup_com");
+        System.out.println(cvo);
+        int res = loginService.set_signup_com(cvo);
+        System.out.println(res);
+        return "redirect:/loginform";
     };
 
     @RequestMapping(value = "/signup_per")
-    public String signup_per() {
-
-        return "";
+    public String signup_per(@ModelAttribute LoginVO vo) {
+        System.out.println("signup_per");
+        System.out.println(vo);
+        int res = loginService.set_signup_per(vo);
+        System.out.println(res);
+        return "redirect:/loginform";
     };
 
     @RequestMapping(value = "/login_id_check_per")

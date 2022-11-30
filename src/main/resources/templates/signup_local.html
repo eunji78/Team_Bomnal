@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js" lang="zxx">
+<html class="no-js" lang="zxx" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -103,114 +103,113 @@
     <div class="our-services">
         <div class="container">
             <!-- Section Tittle -->
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="section-tittle text-center">
-                        <hr style="border: solid 1px skyblue;">
-                        <span>sign up page</span>
-                        <div>
-                            <div class="out-div-box" style="padding-top: 0px !important;">
-                                <form action="" method="POST" style="display: inline-block;">
-                                    <div class="center-signup-div ">
-                                        <div>
-                                            <div class="signup-input-box">
-                                                <input id="user_id" type="text" name="user_id" placeholder="아이디" >
-                                                <label for="user_id">아이디</label>
-                                            </div>
-                                            <button id="id_check_btn" type="button" class="button"> 중복확인 </button>
-                                        </div>
-                                        <div style="padding-right: 110px;">
-                                            <div class="signup-input-box">
-                                                <input id="pwd" type="password" name="pwd" placeholder="비밀번호">
-                                                <label for="pwd">비밀번호</label>
-                                            </div>
-                                        </div>
-                                        <div style="padding-right: 110px;">
-                                            <div class="signup-input-box">
-                                                <input id="check_pwd" type="password" name="check_pwd" placeholder="비밀번호 확인" oninput="real_check_pwd()">
-                                                <label for="check_pwd">비밀번호 확인</label>
-                                            </div>
-                                            <div class="signup-input-box" style="text-align:left !important; margin:0px !important;">
-                                                <p id="check_pwd_ptag" style="visibility: visible; margin:0px !important;"> 🗝️비밀번호를 입력해주세요. </p>
-                                            </div>
-                                        </div>
-                                        <div style="padding-right: 110px;">
-                                            <div class="signup-input-box">
-                                                <input id="name" type="text" name="name" placeholder="이름">
-                                                <label for="name">이름</label>
-                                            </div>
-                                        </div>
-                                        <div style="padding-right: 110px;">
-                                            <div class="signup-input-box">
-                                                <input id="brithday" type="text" name="brithday" placeholder="생년월일">
-                                                <label for="brithday">생년월일</label>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <div class="signup-input-box">
-                                                <input id="tel_phone" type="text" name="tel_phone" placeholder="휴대폰">
-                                                <label for="tel_phone">휴대폰</label>
-                                            </div>
-                                            <button id="phone_check_btn" type="button" class="button"> 인증요청 </button>
-                                        </div>
-                                        <div style="padding-right: 110px;">
-                                            <div class="signup-input-box">
-                                                <input id="email" type="text" name="email" placeholder="이메일">
-                                                <label for="email">이메일</label>
-                                                ❗취업에 관련된 정보를 받을 때 필요해요
-                                            </div>
-                                        </div>
-
-                                        <div class="center-agree-div mt-50" style="display: inline-block; padding: 20px 0px 0px 0px !important;">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="section-tittle text-center">
+                            <hr style="border: solid 1px skyblue;">
+                            <span>sign up page</span>
+                            <div>
+                                <div class="out-div-box" style="padding-top: 0px !important;">
+                                    <form id="loginform" th:action="@{/signup_per}" th:object="${loginVO}" method="POST" style="display: inline-block;">
+                                        <div class="center-signup-div ">
                                             <div>
-                                                <p style="margin: 0;"><input type="checkbox" id="total"> 전체 동의 </p>
+                                                <div class="signup-input-box">
+                                                    <input id="mem_id" type="text" th:field="*{mem_id}" placeholder="아이디" >
+                                                    <label for="mem_id">아이디</label>
+                                                </div>
+                                                <button id="id_check_btn" type="button" class="button"> 중복확인 </button>
                                             </div>
-                                            <hr style="border: solid 1px rgb(53, 114, 138); width: 450px; display: inline-block; margin: 0px 0px 10px 0px;">
-                                            <div style="display: inline-block; text-align: left;">
-                                                <p><input type="checkbox" id="a"> (필수) 개인회원 약관에 동의 </p>
-                                                <p><input type="checkbox" id="b"> (필수) 개인정보 수집 및 이용에 동의 </p>
-                                                <p><input type="checkbox" id="c"> (선택) 위치기반서비스 이용약관에 동의 </p>
-                                                <p><input type="checkbox" id="d"> (선택) 마케팅 정보 수신 동의 - 이메일 </p>
-                                                <p><input type="checkbox" id="e"> (선택) 마케팅 정보 수신 동의 - SMS/MMS </p>
+                                            <div style="padding-right: 110px;">
+                                                <div class="signup-input-box">
+                                                    <input id="pwd" type="password" name="pwd" placeholder="비밀번호">
+                                                    <label for="pwd">비밀번호</label>
+                                                </div>
                                             </div>
-                                            <div style="display: inline-block; padding-left: 100px;">
-                                                <P><a href="#" style="color: black; display: block;"> ▶ </a></P>
-                                                <P><a href="#" style="color: black; display: block;"> ▶ </a></P>
-                                                <P><a href="#" style="color: black; display: block;"> ▶ </a></P>
-                                                <P><a href="#" style="color: black; display: block;"> ▶ </a></P>
-                                                <P><a href="#" style="color: black; display: block;"> ▶ </a></P>
+                                            <div style="padding-right: 110px;">
+                                                <div class="signup-input-box">
+                                                    <input id="mem_pw" type="password" th:field="*{mem_pw}" placeholder="비밀번호 확인" oninput="real_check_pwd()">
+                                                    <label for="mem_pw">비밀번호 확인</label>
+                                                </div>
+                                                <div class="signup-input-box" style="text-align:left !important; margin:0px !important;">
+                                                    <p id="check_pwd_ptag" style="visibility: visible; margin:0px !important;"> 🗝️비밀번호를 입력해주세요. </p>
+                                                </div>
+                                            </div>
+                                            <div style="padding-right: 110px;">
+                                                <div class="signup-input-box">
+                                                    <input id="mem_name" type="text" th:field="*{mem_name}" placeholder="이름">
+                                                    <label for="mem_name">이름</label>
+                                                </div>
+                                            </div>
+                                            <div style="padding-right: 110px;">
+                                                <div class="signup-input-box">
+                                                    <input id="mem_bdate" type="text" th:field="*{mem_bdate}" placeholder="생년월일">
+                                                    <label for="mem_bdate">생년월일</label>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <div class="signup-input-box">
+                                                    <input id="mem_phone" type="text" th:field="*{mem_phone}" placeholder="휴대폰">
+                                                    <label for="mem_phone">휴대폰</label>
+                                                </div>
+                                                <button id="phone_check_btn" type="button" class="button"> 인증요청 </button>
+                                            </div>
+                                            <div style="padding-right: 110px;">
+                                                <div class="signup-input-box">
+                                                    <input id="mem_email" type="email" th:field="*{mem_email}" placeholder="이메일">
+                                                    <label for="mem_email">이메일</label>
+                                                    ❗취업에 관련된 정보를 받을 때 필요해요
+                                                </div>
+                                            </div>
+
+                                            <div class="center-agree-div mt-50" style="display: inline-block; padding: 20px 0px 0px 0px !important;">
+                                                <div>
+                                                    <p style="margin: 0;"><input type="checkbox" id="total_checkbox" onclick="all_check()"> 전체 동의 </p>
+                                                </div>
+                                                <hr style="border: solid 1px rgb(53, 114, 138); width: 450px; display: inline-block; margin: 0px 0px 10px 0px;">
+                                                <div style="display: inline-block; text-align: left;">
+                                                    <p><input type="checkbox" id="m_agreement1" th:field="*{m_agreement1}" value="Y"> (필수) 개인회원 약관에 동의 </p>
+                                                    <p><input type="checkbox" id="m_agreement2" th:field="*{m_agreement2}" value="Y"> (필수) 개인정보 수집 및 이용에 동의 </p>
+                                                    <p><input type="checkbox" id="m_agreement3" th:field="*{m_agreement3}" value="Y"> (선택) 위치기반서비스 이용약관에 동의 </p>
+                                                    <p><input type="checkbox" id="m_agreement4" th:field="*{m_agreement4}" value="Y"> (선택) 마케팅 정보 수신 동의 - 이메일 </p>
+                                                    <p><input type="checkbox" id="m_agreement5" th:field="*{m_agreement5}" value="Y"> (선택) 마케팅 정보 수신 동의 - SMS/MMS </p>
+                                                </div>
+                                                <div style="display: inline-block; padding-left: 100px;">
+                                                    <P><a href="#" style="color: black; display: block;"> ▶ </a></P>
+                                                    <P><a href="#" style="color: black; display: block;"> ▶ </a></P>
+                                                    <P><a href="#" style="color: black; display: block;"> ▶ </a></P>
+                                                    <P><a href="#" style="color: black; display: block;"> ▶ </a></P>
+                                                    <P><a href="#" style="color: black; display: block;"> ▶ </a></P>
+                                                </div>
+                                            </div>
+
+                                            <div class="center-agree-div mt-30" style="display: inline-block; padding: 20px 0px 0px 0px !important;">
+                                                ❗정보보유기간 <br><br>
+                                                <input type="radio" id="radio_1" th:field="*{m_agreement6}" value="0"> 탈퇴시 &nbsp&nbsp&nbsp <input type="radio" id="radio_2" th:field="*{m_agreement6}" value="5"> 5년 &nbsp&nbsp&nbsp <input type="radio" id="radio_3" th:field="*{m_agreement6}" value="3"> 3년 &nbsp&nbsp&nbsp <input type="radio" id="radio_4" th:field="*{m_agreement6}" value="1"> 1년
                                             </div>
                                         </div>
-
-                                        <div class="center-agree-div mt-30" style="display: inline-block; padding: 20px 0px 0px 0px !important;">
-                                            ❗정보보유기간 <br><br>
-                                            <input type="radio" id="radio_1"> 탈퇴시 &nbsp&nbsp&nbsp <input type="radio" id="radio_2"> 5년 &nbsp&nbsp&nbsp <input type="radio" id="radio_3"> 3년 &nbsp&nbsp&nbsp <input type="radio" id="radio_4"> 1년
-                                        </div>
-
-                                    </div>
-
-                                </form>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="row d-flex justify-contnet-center">
+                <div class="row d-flex justify-contnet-center">
 
-            </div>
-            <!-- More Btn -->
-            <!-- Section Button -->
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="browse-btn2 text-center mt-50">
-                        <a href="/" class="border-btn2">Sign up</a>
-                        <a href="/" class="border-btn2">Cancle</a>
-                    </div>
-                    <div class="browse-btn2 text-center">
-                        <hr style="border: solid 1px skyblue;">
+                </div>
+                <!-- More Btn -->
+                <!-- Section Button -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="browse-btn2 text-center mt-50">
+                            <!-- <a href="/sign_com" class="border-btn2" type="submit" onclick="document.getElementById('loginform').submit()">Sign up</a> -->
+                            <a href="#" id="sign_up_btn" class="border-btn2" type="button" onclick="sign_check_box()">Sign up</a>
+                            <a href="/loginform" class="border-btn2">Cancle</a>
+                        </div>
+                        <div class="browse-btn2 text-center">
+                            <hr style="border: solid 1px skyblue;">
+                        </div>
                     </div>
                 </div>
-            </div>
         </div>
     </div>
     <!-- Our Services End -->
@@ -408,21 +407,21 @@
         });
 
 
-        <!--$("#pwd").addEventListener("change", check_pwd);-->
+        <!--$("#pwd").addEventListener("change", mem_pw);-->
 
         $("#id_check_btn").on('click',()=>{
-            var check_val = $('#user_id').val();
+            var check_val = $('#mem_id').val();
             $.ajax({
                 url: '/login_id_check_per',
                 type: 'POST',
                 data: {insert_id: check_val},
                 success: function(data){
                     console.log(data + " : success");
-                    if (check_val == "" || check_val.length < 8){
-                        alert("아이디로 사용할 단어를 8자 이상 입력해주세요.");
+                    if (check_val == "" || check_val.length < 5){
+                        alert("아이디로 사용할 단어를 5자 이상 입력해주세요.");
                     } else if (check_val == data){
                         alert("중복된 아이디 입니다.");
-                        $('#user_id').val("");
+                        $('#mem_id').val("");
                     } else {
                         alert("사용할 수 있는 아이디 입니다.");
                     }
@@ -441,7 +440,7 @@
 
     function real_check_pwd() {
         var pwd = $("#pwd").val();
-        var cpwd = $("#check_pwd").val();
+        var cpwd = $("#mem_pw").val();
 
         if (cpwd == "") {
             $("#check_pwd_ptag").html( "<p id='check_pwd_ptag' style='visibility: visible; text-align: left !important; margin:0px !important;'> 🗝️확인 비밀번호를 입력해주세요. </p>" );
@@ -450,6 +449,40 @@
         } else {
             $("#check_pwd_ptag").html( "<p id='check_pwd_ptag' style='visibility: visible; text-align: left !important; margin:0px !important;'> ❗비밀번호가 일치하지 않습니다! </p>" );
         }
+    };
+
+    function all_check(){
+        var total = $("#total_checkbox").is(":checked");
+        if (total == true) {
+            $("#m_agreement1").prop("checked", true);
+            $("#m_agreement2").prop("checked", true);
+            $("#m_agreement3").prop("checked", true);
+            $("#m_agreement4").prop("checked", true);
+            $("#m_agreement5").prop("checked", true);
+        } else if (total == false) {
+            $("#m_agreement1").prop("checked", false);
+            $("#m_agreement2").prop("checked", false);
+            $("#m_agreement3").prop("checked", false);
+            $("#m_agreement4").prop("checked", false);
+            $("#m_agreement5").prop("checked", false);
+        }
+    }
+
+    function sign_check_box() {
+        var check1 = $("#m_agreement1").is(":checked");
+        var check2 = $("#m_agreement2").is(":checked");
+
+        var radio1 = $("#radio_1").is(":checked");
+        var radio2 = $("#radio_2").is(":checked");
+        var radio3 = $("#radio_3").is(":checked");
+        var radio4 = $("#radio_4").is(":checked");
+
+        if (check1 == true && check2 == true && (radio1 == true || radio2 == true || radio3 == true|| radio4 == true) ){
+            document.getElementById("loginform").submit();
+        } else {
+            alert("필수동의 및 정보보유기간을 체크해주세요.");
+            return false;
+        };
     };
 
 </script>

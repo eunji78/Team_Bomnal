@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js" lang="zxx">
+<html class="no-js" lang="zxx" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -110,18 +110,18 @@
                         <span>sign up page</span>
                         <div>
                             <div class="out-div-box" style="padding-top: 0px !important; ">
-                                <form action="" method="POST" style="display: inline-block;">
+                                <form id="loginform" th:action="@{/signup_com}" th:object="${Login_ComVO}" method="POST" style="display: inline-block;">
                                     <div class="center-signup-div ">
                                         <div>
                                             <div class="signup-input-box">
-                                                <input id="com_num" type="text" name="com_num" placeholder="사업자 등록번호" >
+                                                <input id="com_num" type="text" th:field="*{company_bno}" placeholder="사업자 등록번호" >
                                                 <label for="com_num" style="width: auto;">사업자 등록번호 </label>
                                             </div>
                                             <button id="com_num_check" class="button" type="button"> 상태확인 </button>
                                         </div>
                                         <div>
                                             <div class="signup-input-box">
-                                                <input id="user_id" type="text" name="user_id" placeholder="아이디" >
+                                                <input id="user_id" type="text" th:field="*{company_id}" placeholder="아이디" >
                                                 <label for="user_id">아이디</label>
                                             </div>
                                             <button id="user_id_check" class="button" type="button"> 중복확인 </button>
@@ -134,7 +134,7 @@
                                         </div>
                                         <div style="padding-right: 110px;">
                                             <div class="signup-input-box">
-                                                <input id="check_pwd" type="password" name="check_pwd" placeholder="비밀번호 확인" oninput="real_check_pwd()">
+                                                <input id="check_pwd" type="password" th:field="*{company_pw}" placeholder="비밀번호 확인" oninput="real_check_pwd()">
                                                 <label for="check_pwd">비밀번호 확인</label>
                                             </div>
                                             <div class="signup-input-box" style="text-align:left !important; margin:0px !important;">
@@ -144,15 +144,15 @@
 
                                         <div class="center-agree-div mt-50" style="display: inline-block; padding: 20px 0px 0px 0px !important;">
                                             <div>
-                                                <p style="margin: 0;"><input type="checkbox" id="total"> 전체 동의 </p>
+                                                <p style="margin: 0;"><input type="checkbox" id="total_checkbox" onclick="all_check()"> 전체 동의 </p>
                                             </div>
                                             <hr style="border: solid 1px rgb(53, 114, 138); width: 450px; display: inline-block; margin: 0px 0px 10px 0px;">
                                             <div style="display: inline-block; text-align: left;">
-                                                <p><input type="checkbox" id="a"> (필수) 기업회원 약관에 동의 ❗ </p>
-                                                <p><input type="checkbox" id="b"> (필수) 개인정보 수집 및 이용에 동의 ❗ </p>
-                                                <p><input type="checkbox" id="c"> (필수) SMS 발송 서비스 약관에 동의 ❗</p>
-                                                <p><input type="checkbox" id="d"> (선택) 마케팅 정보 수신 동의 - 이메일 </p>
-                                                <p><input type="checkbox" id="e"> (선택) 마케팅 정보 수신 동의 - SMS/MMS </p>
+                                                <p><input type="checkbox" id="c_agreement1" th:field="*{c_agreement1}" value="Y"> (필수) 기업회원 약관에 동의 ❗ </p>
+                                                <p><input type="checkbox" id="c_agreement2" th:field="*{c_agreement2}" value="Y"> (필수) 개인정보 수집 및 이용에 동의 ❗ </p>
+                                                <p><input type="checkbox" id="c_agreement3" th:field="*{c_agreement3}" value="Y"> (필수) SMS 발송 서비스 약관에 동의 ❗</p>
+                                                <p><input type="checkbox" id="c_agreement4" th:field="*{c_agreement4}" value="Y"> (선택) 마케팅 정보 수신 동의 - 이메일 </p>
+                                                <p><input type="checkbox" id="c_agreement5" th:field="*{c_agreement5}" value="Y"> (선택) 위치기반서비스 이용약관에 동의 </p>
                                             </div>
                                             <div style="display: inline-block; padding-left: 100px;">
                                                 <P><a href="#" style="color: black; display: block;"> ▶ </a></P>
@@ -165,7 +165,7 @@
 
                                         <div class="center-agree-div mt-30" style="display: inline-block; padding: 20px 0px 0px 0px !important;">
                                             ❗정보보유기간 <br><br>
-                                            <input type="radio" id="radio_1"> 탈퇴시 &nbsp&nbsp&nbsp <input type="radio" id="radio_2"> 5년 &nbsp&nbsp&nbsp <input type="radio" id="radio_3"> 3년 &nbsp&nbsp&nbsp <input type="radio" id="radio_4"> 1년
+                                            <input type="radio" id="radio_1" th:field="*{c_agreement6}" value="0"> 탈퇴시 &nbsp&nbsp&nbsp <input type="radio" id="radio_2" th:field="*{c_agreement6}" value="5"> 5년 &nbsp&nbsp&nbsp <input type="radio" id="radio_3" th:field="*{c_agreement6}" value="3"> 3년 &nbsp&nbsp&nbsp <input type="radio" id="radio_4" th:field="*{c_agreement6}" value="1"> 1년
                                         </div>
 
                                     </div>
@@ -184,8 +184,8 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="browse-btn2 text-center mt-50">
-                        <a href="/" class="border-btn2">Sign up</a>
-                        <a href="/" class="border-btn2">Cancle</a>
+                        <a href="#" id="sign_up_btn" class="border-btn2" type="button" onclick="sign_check_box()">Sign up</a>
+                        <a href="/loginform" class="border-btn2">Cancle</a>
                     </div>
                     <div class="browse-btn2 text-center">
                         <hr style="border: solid 1px skyblue;">
@@ -426,8 +426,8 @@
                 data: {insert_id: check_val},
                 success: function(data){
                     console.log(data + " : success");
-                    if (check_val == "" || check_val.length < 8) {
-                        alert("아이디로 사용할 단어를 8자 이상 입력해주세요.");
+                    if (check_val == "" || check_val.length < 5) {
+                        alert("아이디로 사용할 단어를 5자 이상 입력해주세요.");
                     } else if (check_val == data){
                         alert("중복된 아이디 입니다.");
                         $('#user_id').val("");
@@ -460,7 +460,40 @@
         }
     };
 
+    function all_check(){
+        var total = $("#total_checkbox").is(":checked");
+        if (total == true) {
+            $("#c_agreement1").prop("checked", true);
+            $("#c_agreement2").prop("checked", true);
+            $("#c_agreement3").prop("checked", true);
+            $("#c_agreement4").prop("checked", true);
+            $("#c_agreement5").prop("checked", true);
+        } else if (total == false) {
+            $("#c_agreement1").prop("checked", false);
+            $("#c_agreement2").prop("checked", false);
+            $("#c_agreement3").prop("checked", false);
+            $("#c_agreement4").prop("checked", false);
+            $("#c_agreement5").prop("checked", false);
+        }
+    }
 
+    function sign_check_box() {
+        var check1 = $("#c_agreement1").is(":checked");
+        var check2 = $("#c_agreement2").is(":checked");
+        var check3 = $("#c_agreement3").is(":checked");
+
+        var radio1 = $("#radio_1").is(":checked");
+        var radio2 = $("#radio_2").is(":checked");
+        var radio3 = $("#radio_3").is(":checked");
+        var radio4 = $("#radio_4").is(":checked");
+
+        if (check1 == true && check2 == true && check3 == true && (radio1 == true || radio2 == true || radio3 == true|| radio4 == true) ){
+            document.getElementById("loginform").submit();
+        } else {
+            alert("약관동의 및 정보보유기간을 체크해주세요.");
+            return false;
+        };
+    };
 
 
 </script>

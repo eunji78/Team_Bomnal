@@ -14,4 +14,13 @@
         select company_id from company where company_id = #{insert_id}
     </select>
 
+    <insert id="set_signup_com" parameterType="Login_ComVO">
+        insert into company(company_bno ,company_id, company_pw) values(#{company_bno}, #{company_id}, #{company_pw})
+    </insert>
+
+    <insert id="set_signup_per" parameterType="LoginVO">
+        insert into members(mem_id, mem_pw, mem_name, mem_bdate, mem_phone, mem_email, m_agreement1, m_agreement2, m_agreement3, m_agreement4, m_agreement5, m_agreement6)
+        values( #{mem_id}, #{mem_pw}, #{mem_name}, #{mem_bdate}, #{mem_phone}, #{mem_email}, #{m_agreement1}, #{m_agreement2}, #{m_agreement3}, #{m_agreement4}, #{m_agreement5}, #{m_agreement6})
+    </insert>
+
 </mapper>

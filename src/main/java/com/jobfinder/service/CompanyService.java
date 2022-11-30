@@ -1,6 +1,5 @@
 package com.jobfinder.service;
 
-
 import com.jobfinder.domain.Company_info;
 import com.jobfinder.domain.Reviews;
 import com.jobfinder.repository.CompanyRepository;
@@ -8,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.List;
 
 @Service
 public class CompanyService{

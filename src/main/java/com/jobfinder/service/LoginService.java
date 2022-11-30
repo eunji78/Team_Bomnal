@@ -4,10 +4,11 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
-import com.jobfinder.service.repository.LoginRepository;
+import com.jobfinder.domain.LoginVO;
+import com.jobfinder.domain.Login_ComVO;
+import com.jobfinder.repository.LoginRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.io.*;
 import java.net.HttpURLConnection;
@@ -19,6 +20,16 @@ public class LoginService {
 
     @Autowired
     LoginRepository loginRepository;
+
+    public int set_signup_com(Login_ComVO cvo){
+        int res = loginRepository.set_signup_com(cvo);
+        return res;
+    }
+
+    public int set_signup_per(LoginVO vo){
+        int res = loginRepository.set_signup_per(vo);
+        return res;
+    }
 
     public String id_check_com(String insert_id){
         System.out.println("com Service in : " + insert_id);
@@ -126,12 +137,14 @@ public class LoginService {
             JsonObject properties = element.getAsJsonObject().get("properties").getAsJsonObject();
             JsonObject kakao_account = element.getAsJsonObject().get("kakao_account").getAsJsonObject();
 
+            String id = element.getAsJsonObject().get("id").getAsString();
             String nickname = properties.getAsJsonObject().get("nickname").getAsString();
             String profile_image = properties.getAsJsonObject().get("profile_image").getAsString();
             String email = kakao_account.getAsJsonObject().get("email").getAsString();
             String birthday = kakao_account.getAsJsonObject().get("birthday").getAsString();
             String gender = kakao_account.getAsJsonObject().get("gender").getAsString();
 
+            userInfo.put("id", id);
             userInfo.put("nickname", nickname);
             userInfo.put("email", email);
             userInfo.put("profile_image", profile_image);
