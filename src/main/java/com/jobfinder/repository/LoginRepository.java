@@ -1,4 +1,4 @@
-package com.jobfinder.service.repository;
+package com.jobfinder.repository;
 
 import com.jobfinder.domain.LoginVO;
 import com.jobfinder.persistence.LoginMapper;
