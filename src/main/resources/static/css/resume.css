@@ -1,0 +1,45 @@
+.asideSection{
+    font-size:15px;
+    font-weight:bold;
+    display:block;
+    padding:30px;
+    border-top:1px solid #ededed;
+}
+
+.category-listing{
+    border:1px solid #ededed;
+    background-color:white
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1199px){
+    .category-listing{
+        padding:15px 20px;
+}}
+
+@media only screen and (min-width: 768px) and (max-width: 991px){
+    .category-listing{
+        padding:15px 20px;
+}}
+
+.asideSection > ul{
+    padding-top:10px;
+    padding-left:10px;
+
+
+}
+
+.aside-list{
+    padding-top:5px;
+    font-weight:normal;
+}
+.aside-list>a{
+    text-decoration:none;
+    color:#000;
+}
+
+
+.resume-section{
+    padding:30px 40px;
+    background-color:white;
+
+}
