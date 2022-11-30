@@ -1,6 +1,6 @@
 package com.jobfinder.service;
 
-import com.jobfinder.repository.MainRepository;
+import com.jobfinder.service.repository.MainRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
