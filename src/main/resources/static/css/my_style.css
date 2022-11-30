@@ -1,3 +1,13 @@
+.head-btn{
+    background-color: #38a4ff !important;
+}
+.head-btn2{
+    border: #38a4ff solid 1px !important;
+    color: #38a4ff !important;
+}
+#scrollUp{
+    background-color: #38a4ff !important;
+}
 .body-top{
     padding-top: 30px !important;
 }
@@ -13,7 +23,60 @@
 .search-form{
     width: 15% !important;
 }
-.search-form-underline{
+.container-inner{
+    margin-bottom: 3em !important;
+}
+.container-inner-padding{
+    padding-left: 1em;
+}
+.box-navy-contents{
+    padding-top: 1em;
+}
+.box-flex{
+    display: flex;
+    margin-bottom: 1em;
+    align-items: center;
+}
+.inner-text{
+    height: 2.5em;
+}
+.box-tel{
+    width: 5.1em;
+    height: 2.5em;
+
+}
+.manager-left{
+    width: 15%;
+}
+.manager-middle{
+    margin-right: 10px;
+    width: 25%;
+}
+.background-navy{
+    background-color: rgba(0, 0, 128, 0.095);
+}
+.related_work_time{
+    padding-right: 1em;
+}
+.white-board{
+    background-color: #fff !important;
+    border-radius: 5px;
+    margin-bottom: 2em;
+    padding-top: 3em;
+}
+.white-board2{
+    background-color: #fff !important;
+    border-radius: 5px;
+    margin-bottom: 2em;
+    padding-top: 1em;
+}
+.check_box_big{
+    width: 1.2em;
+    height: 1.2em;
+}
+.check-big-label{
+    position: relative;
+    top: 0.25em;
 }
 .option-detail{
     width: 100%;
@@ -54,7 +117,7 @@
     padding-left: 15px;
     padding-right: 15px;
     margin-bottom: 20px;
-    
+
 }
 .select-state{
     border-right: lightgray 0.5px solid;
@@ -75,3 +138,56 @@
     width: 33%;
 }
 
+/*채용 공고 페이지 관련*/
+.inner-container{
+    border: #38a4ff solid 1px;
+    border-radius: 5px;
+    box-shadow: 1px 1px 1px 1px rgba(128, 128, 128, 0.5);
+}
+.border-color{
+    border: navy solid 1px;
+}
+.container-items{
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1.5em;
+}
+.width-full{
+    width: 100% !important;
+}
+.text-left{
+    text-align: left;
+}
+.text-bold{
+    font-weight: bold;
+}
+.color-red{
+    font-size: 0.7rem;
+    color: red ;
+}
+.color-black{
+    color: gray !important;
+}
+.link-underline{
+    text-decoration: underline;
+}
+.btn-text{
+    font-size: 1em;
+}
+.between-inner-contents{
+    margin-bottom: 1em;
+}
+.work_per_week{
+    width: 3em;
+}
+
+.check-for-center{
+    position: relative;
+    top: 0.25em;
+}
+
+/*---------------------Summer Note-----------------------------------*/
+@font-face {
+    font-family: 'NotoSansKR';
+    src: url('font/NotoSansKR-Black.otf') format('opentype')
+}
