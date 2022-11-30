@@ -43,16 +43,5 @@ public class MainController {
         List<RegionVO> regionDetail = mainService.getRegionDetail(super_seq);
         return regionDetail;
     }
-    /*
-    @RequestMapping("get_region_detail")
-    @ResponseBody
-    public List<RegionVO> get_region_detail(@RequestParam("super_region_seq")){
-
-    @GetMapping(path = "/list")
-    public String list(){
-        return "searchList";
-    }
-
-
 
 }
