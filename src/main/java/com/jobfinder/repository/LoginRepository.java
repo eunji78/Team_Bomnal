@@ -1,6 +1,7 @@
 package com.jobfinder.repository;
 
 import com.jobfinder.domain.LoginVO;
+import com.jobfinder.domain.Login_ComVO;
 import com.jobfinder.persistence.LoginMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -15,6 +16,20 @@ public class LoginRepository {
     public List<LoginVO> loginList() {
         List<LoginVO> loginVO = loginMapper.loginList();
         return loginVO;
+    }
+
+    public int set_signup_com(Login_ComVO cvo){
+        int res = loginMapper.set_signup_com(cvo);
+        return res;
+    }
+
+    public int set_signup_per(LoginVO vo){
+        int res = loginMapper.set_signup_per(vo);
+        return res;
+    }
+    public int set_signup_kko(LoginVO vo){
+        int res = loginMapper.set_signup_kko(vo);
+        return res;
     }
 
     public String id_check_com(String insert_id) {
