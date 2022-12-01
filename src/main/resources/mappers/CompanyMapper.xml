@@ -4,8 +4,11 @@
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jobfinder.persistence.CompanyMapper">
 
-    <select id="list" resultType="Company_info">
-        select * from company_detail
+    <select id="list" parameterType="Criteria"  resultType="Company_info">
+        select * from company_detail where industry_class = #{industry_class} limit #{pageStart}, #{perPageNum}
+    </select>
+    <select id="count" parameterType="String" resultType="int">
+        select count(industry_class) as counting from company_detail where industry_class = #{indus_class}
     </select>
 
 
@@ -16,4 +19,14 @@
     <select id="review" parameterType="String" resultType="Reviews">
         select * from reviews where company_id = #{company_id}
     </select>
+
+    <select id="avg" parameterType="String" resultType="Reviews">
+        select avg(welfare) as welfare,avg(work_life_balance) as work_life_balance,avg(inner_culture) as inner_culture,avg(p_opportunity) as p_opportunity,avg(management) as management, (avg(welfare)+avg(inner_culture)+avg(work_life_balance)+avg(p_opportunity)+avg(management))/5 as total from reviews where company_id = #{company_id}
+    </select>
+
+
+    <insert id="save" parameterType="Reviews">
+        insert into reviews (company_id, review_content, review_likes, reg_date, mem_id, welfare, work_life_balance, inner_culture, p_opportunity, management, pros, cons, my_salary, current_yn)
+        values ('it_001', #{review_content}, 0, NOW(), 'asdf', #{welfare}, #{work_life_balance}, #{inner_culture}, #{p_opportunity}, #{management}, #{pros}, #{cons}, #{my_salary}, #{current_yn})
+    </insert>
 </mapper>
