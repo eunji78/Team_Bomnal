@@ -115,10 +115,10 @@
 
         <div class="single-post">
           <div class="blog_details">
-            <h2> 서비스업 산업군 검색 결과</h2>
+            <h2 th:text="${industry_class}+' 산업군 검색 결과'">서비스업 산업군 검색 결과</h2>
 
             <ul class="blog-info-link mt-3 mb-4">
-              <li><a href="#"><i class="fa fa-comments"></i> 1393개의 기업 </a></li>
+              <li><a href="#" th:text="${counting}+'개의 기업'" class="fa fa-comments"><i ></i> 1393개의 기업 </a></li>
             </ul>
 
             <br>
@@ -140,26 +140,31 @@
 
           </div>
         </div>
-        <div class="navigation-top">
 
-          <div class="navigation-area">
-            <div class="row">
-              <div
-                      class="col-lg-6 col-md-6 col-12 nav-left flex-row d-flex justify-content-start align-items-center">
-                <nav aria-label="Page navigation example">
-                  <ul class="pagination pagination-primary">
-                    <li class="page-item"><a class="page-link" href="#">Prev</a></li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item active"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                  </ul>
-                </nav>
-              </div>
 
-            </div>
-          </div>
-        </div>
+        <!-- 페이징 -->
+<!--        <div style="text-align:center;">-->
+<!--          <ul class="btn-group pagination">-->
+
+<!--            &lt;!&ndash; 이전페이지 &ndash;&gt;-->
+<!--              <li><i class="fa"><a th:if="${pageMaker.prev}" th:href="@{${pageMaker.startPage-1}}" th:text="◀">◀️</a></i></li>-->
+
+
+<!--                <li th:each="pageNum : ${#numbers.sequence(pageMaker.startPage,pageMaker.endPage)}">-->
+<!--                  <i class="fa"><a th:if="${pageMaker.cri.page == pageNum}" th:href="@{${pageNum}}" th:text="${pageNum}"><font color="red">${pageNum}</font></a></i>-->
+<!--                <i class="fa"><a th:if="${pageMaker.cri.page!=pageNum}" th:href="@{${pageNum}}" th:text="${pageNum}">${pageNum}</a></i>-->
+<!--                </li>-->
+
+
+<!--            &lt;!&ndash; 다음페이지 &ndash;&gt;-->
+<!--              <li><i class="fa"><a th:if="${pageMaker.cri.page!=pageNum}" th:href="@{${pageMaker.endPage+1}}" th:text="▶">▶️</a></i></li>-->
+
+<!--          </ul>-->
+<!--        </div>-->
+
+
+
+
 
 
       </div>
@@ -185,18 +190,16 @@
             <h4 class="widget_title">Category</h4>
             <ul class="list cat-list">
               <li>
-                <a href="#" class="d-flex">
-                  <p>서비스업</p>
+                <a th:href="@{/CompanyList/{industry_class}(industry_class='서비스업')}" class="d-flex">
+                  서비스업
                 </a>
               </li>
               <li>
-                <a href="#" class="d-flex">
-                  <p>제조/화학</p>
-                </a>
+                  <a th:href="@{/CompanyList/{industry_class}(industry_class='제조·화학')}">제조·화학</a>
               </li>
               <li>
                 <a href="#" class="d-flex">
-                  <p>의료/제약/복지</p>
+                  <p>의료·제약·복지</p>
                 </a>
               </li>
               <li>
@@ -210,23 +213,23 @@
                 </a>
               </li>
               <li>
-                <a href="#" class="d-flex">
-                  <p>IT웹/통신</p>
+                <a th:href="@{/CompanyList/{industry_class}(industry_class='IT·웹·통신')}" class="d-flex">
+                  IT·웹·통신
                 </a>
               </li>
               <li>
                 <a href="#" class="d-flex">
-                  <p>미디어/디자인</p>
+                  <p>미디어·디자인</p>
                 </a>
               </li>
               <li>
                 <a href="#" class="d-flex">
-                  <p>은행/금융업</p>
+                  <p>은행·금융업</p>
                 </a>
               </li>
               <li>
                 <a href="#" class="d-flex">
-                  <p>기관/협회</p>
+                  <p>기관·협회</p>
                 </a>
               </li>
             </ul>
@@ -456,6 +459,18 @@
 <!-- Jquery Plugins, main Jquery -->
 <script src="/js/plugins.js"></script>
 <script src="/js/main.js"></script>
+<!--<script th:inline="javascript">-->
+<!--    /*<![CDATA[*/-->
+<!--	$(document).ready(function(){-->
+<!--		$(".pagination a").click(function(e){-->
+<!--			e.preventDefault();-->
+<!--		var page=$(this).attr("href");-->
+<!--		document.frm.page.value=page;-->
+<!--		document.frm.submit();-->
+<!--		});-->
+<!--	});-->
+<!--	/*]]>*/-->
+<!--</script>-->
 
 </body>
 

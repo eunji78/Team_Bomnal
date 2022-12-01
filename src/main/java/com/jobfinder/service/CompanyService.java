@@ -1,6 +1,8 @@
 package com.jobfinder.service;
 
+
 import com.jobfinder.domain.Company_info;
+import com.jobfinder.domain.Criteria;
 import com.jobfinder.domain.Reviews;
 import com.jobfinder.repository.CompanyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +16,8 @@ public class CompanyService{
     @Autowired
     CompanyRepository companyRepository;
 
-    public ArrayList<Company_info> list() {
-        ArrayList<Company_info> list = companyRepository.list();
+    public ArrayList<Company_info> list(Criteria cri) {
+        ArrayList<Company_info> list = companyRepository.list(cri);
         return list;
     }
 
@@ -25,8 +27,22 @@ public class CompanyService{
     }
 
 
-    public Reviews review(String company_id) {
-        Reviews review = companyRepository.review(company_id);
+    public ArrayList<Reviews> review(String company_id) {
+        ArrayList<Reviews> review = companyRepository.review(company_id);
         return  review;
+    }
+
+    public int count(String industry_class) {
+        int counting = companyRepository.count(industry_class);
+        return counting;
+    }
+
+    public void save(Reviews reviews) {
+        companyRepository.save(reviews);
+    }
+
+    public Reviews avg(String company_id){
+        Reviews avg = companyRepository.avg(company_id);
+        return avg;
     }
 }
