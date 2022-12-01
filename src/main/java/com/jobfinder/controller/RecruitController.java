@@ -1,5 +1,6 @@
 package com.jobfinder.controller;
 
+import com.jobfinder.domain.Recruit;
 import com.jobfinder.service.RecruitService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,6 +15,10 @@ public class RecruitController {
 
     @RequestMapping("/noticeDetail")
     public String noticeDetail(Model model){
+
+        Recruit notice = recruitService.notice();
+        model.addAttribute("notice",notice);
+
         return "noticeDetail";
     }
 }

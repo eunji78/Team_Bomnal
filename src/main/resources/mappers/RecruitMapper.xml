@@ -7,6 +7,6 @@
     <select id="notice" resultType="Recruit">
         select company_name, r_title, r_career, r_job_pattern, r_salary, r_wide_area, r_part, r_business, r_license, r_detail, r_close_date, company_logo
         from jobplanet_delete
-        where company_name = '애드매스';
+        where company_name = '애드매스'
     </select>
 </mapper>
