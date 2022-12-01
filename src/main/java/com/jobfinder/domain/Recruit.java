@@ -16,4 +16,5 @@ public class Recruit {
     private String r_detail;
     private String r_close_date;
     private String company_logo;
+    private int r_seq;
 }

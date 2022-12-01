@@ -18,359 +18,251 @@
 </head>
 
 <body>
-    <!-- Preloader Start -->
-    <div id="preloader-active">
-        <div class="preloader d-flex align-items-center justify-content-center">
-            <div class="preloader-inner position-relative">
-                <div class="preloader-circle"></div>
-                <div class="preloader-img pere-text">
-                    <img src="/img/logo/logo.png" alt="">
+<!-- Preloader Start -->
+<div id="preloader-active">
+    <div class="preloader d-flex align-items-center justify-content-center">
+        <div class="preloader-inner position-relative">
+            <div class="preloader-circle"></div>
+            <div class="preloader-img pere-text">
+                <img src="/img/logo/logo.png" alt="">
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Preloader Start -->
+<header>
+    <!-- Header Start -->
+    <th:block th:replace="fragments/header :: headerFragment"></th:block>
+    <!-- Header End -->
+</header>
+<main>
+
+    <!-- job post company Start -->
+    <div class="job-post-company pt-55 pb-120">
+        <div class="container">
+            <div class="row justify-content-between no-gutters">
+                <!-- Left Content -->
+                <div class="col-xl-8 col-lg-9">
+                    <!-- job single -->
+                    <div class="single-job-items mb-30" style="padding-left: 10px; padding: right 10px;">
+                        <div class="job-items">
+                            <div class="company-img company-img-details">
+                                <!-- 로고 이미지가 없을 때 대체 이미지 적용!-->
+                                <a href="#"><img th:src="${notice.company_logo}"
+                                                 onerror="this.src='https://w.namu.la/s/6d37d2792f61b69511edc288e16598d0722ff0407af67089c0004ddeda7ad7b9bdc0b2e4880db9548efe21f2082a4c34545902a67aaa00eafce75c7f89fcdcb8bc870c47b0f4e2476ba53c9dc3e8447d12c8cba6a1b06e82d6ffcbc826cc29b5'"
+                                                 alt=""></a>
+                            </div>
+                            <div class="job-tittle">
+                                <a href="#">
+                                    <h5 th:text="${notice.company_name}">기업이름</h5>
+                                </a>
+
+                                <h3 th:text="${notice.r_title}">공고 제목</h3>
+                                <table width="620" height="120">
+                                    <tr>
+                                        <td width="120"><img src="/img/icon/bag.png" class="img_logo">&nbsp&nbsp작업개요
+                                        </td>
+                                        <td th:text="${notice.r_part}">신입·경력</td>
+
+                                    </tr>
+                                    <tr>
+                                        <td width="120"><img src="/img/icon/pin.png" class="img_logo">&nbsp&nbsp근무지</td>
+                                        <td th:text="${notice.r_wide_area}"></td>
+                                    </tr>
+                                    <tr>
+                                        <td width="120"><img src="/img/icon/yen.png" class="img_logo">&nbsp&nbsp연례</td>
+                                        <td th:text="${notice.r_salary}"></td>
+                                    </tr>
+                                    <tr>
+                                        <td width="120"><img src="/img/icon/sun.png" class="img_logo">&nbsp&nbsp휴일·휴가
+                                        </td>
+                                        <td th:text="${notice.r_job_pattern}">정규직 수습기간 3개월</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- job single End -->
+                    <!-- 버튼 클릭시 div가 바뀌는 부분-->
+                    <div class="job-change">
+                        <input type="radio" id="job-tab-1" name="show" checked/>
+                        <input type="radio" id="job-tab-2" name="show"/>
+                        <div class="job-tab">
+                            <label for="job-tab-1">기업메시지</label>
+                            <label for="job-tab-2">채용정보</label>
+                        </div>
+                        <div class="job-message">
+                            <div class="job-message-dis">
+                                <!--<img class = "company_image" src="/img/test/chi.jpg">-->
+                                <p th:text="${notice.r_detail}">기업메시지 넣으세요~</p>
+                            </div>
+                            <div class="job-message-dis">
+                                <div class="job-post-details">
+                                    <div class="post-details1 mb-50">
+                                        <!-- Small Section Tittle -->
+                                        <div class="small-section-tittle">
+                                            <h4>상세내용</h4>
+                                        </div>
+                                        <p th:text="${notice.r_detail}">It is a long established fact that a reader will
+                                            beff distracted by vbthe
+                                            creadable
+                                            content of a page when looking at its layout. The pointf of using Lorem
+                                            Ipsum is
+                                            that it has ahf mcore or-lgess normal distribution of letters, as
+                                            opposed to using,
+                                            Content here content here making it look like readable.</p>
+                                    </div>
+                                    <div class="post-details2  mb-50">
+                                        <!-- Small Section Tittle -->
+                                        <div class="small-section-tittle">
+                                            <h4>담당업무</h4>
+                                        </div>
+                                        <ul>
+                                            <p th:text="${notice.r_business}"></p>
+                                        </ul>
+                                    </div>
+                                    <div class="post-details1 mb-50">
+                                        <!-- Small Section Tittle -->
+                                        <div class="small-section-tittle">
+                                            <h4>자격요건</h4>
+                                        </div>
+                                        <p th:text="${notice.r_license}">It is a long established fact that a reader
+                                            will beff distracted by vbthe
+                                            creadable
+                                            content of a page when looking at its layout. The pointf of using Lorem
+                                            Ipsum is
+                                            that it has ahf mcore or-lgess normal distribution of letters, as
+                                            opposed to using,
+                                            Content here content here making it look like readable.</p>
+                                    </div>
+                                    <!-- 디데이 계산기 -->
+                                    <div class="post-details1 mb-50">
+                                        <div class="card-group">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <div class="row">
+                                                        <div class="col" id = "dday">
+                                                            <h2> D-day </h2>
+                                                            <h4 id="demo"></h4>
+                                                            <br>
+                                                        </div>
+                                                        <div class="col-8">
+                                                            지원 방법 입사지원<br>
+                                                            담당자 <br>
+                                                            연락처 <br>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 오른쪽 스크롤 메뉴 -->
+                <div class="col-xl-3 col-lg-3">
+                    <div class="post-details3 mb-50" id="slidemenu">
+                        <!-- Small Section Tittle -->
+                        <div class="small-section-tittle">
+                            <h4>회사이름</h4>
+                        </div>
+                        <ul>
+                            <!--<li>공고 시작 : <span>12 Aug 2019</span></li>-->
+                            <li>공고 마감 : <span th:text="${notice.r_close_date}">12 Dec 2022</span></li>
+                            <li id = "expired"></li>
+                        </ul>
+                        <div class="apply-btn2">
+                            <a href="#" class="btn info">입사 지원</a>
+                        </div>
+                    </div>
+                    <div class="blog_right_sidebar">
+
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Preloader Start -->
-    <header>
-        <!-- Header Start -->
-        <div class="header-area header-transparrent">
-            <div class="headder-top header-sticky">
-                <div class="container">
-                    <div class="row align-items-center">
-                        <div class="col-lg-3 col-md-2">
-                            <!-- Logo -->
-                            <div class="logo">
-                                <a href="index.html"><img src="/img/logo/logo.png" alt=""></a>
-                            </div>
-                        </div>
-                        <div class="col-lg-9 col-md-9">
-                            <div class="menu-wrapper">
-                                <!-- Main-menu -->
-                                <div class="main-menu">
-                                    <nav class="d-none d-lg-block">
-                                        <ul id="navigation">
-                                            <li><a href="index.html">Home</a></li>
-                                            <li><a href="job_listing.html">Find a Jobs </a></li>
-                                            <li><a href="about.html">About</a></li>
-                                            <li><a href="#">Page</a>
-                                                <ul class="submenu">
-                                                    <li><a href="blog.html">Blog</a></li>
-                                                    <li><a href="single-blog.html">Blog Details</a></li>
-                                                    <li><a href="elements.html">Elements</a></li>
-                                                    <li><a href="job_details.html">job Details</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="contact.html">Contact</a></li>
-                                        </ul>
-                                    </nav>
-                                </div>
-                                <!-- Header-btn -->
-                                <div class="header-btn d-none f-right d-lg-block">
-                                    <a href="#" class="btn head-btn1">Register</a>
-                                    <a href="#" class="btn head-btn2">Login</a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Mobile Menu -->
-                        <div class="col-12">
-                            <div class="mobile_menu d-block d-lg-none"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Header End -->
-    </header>
-    <main>
+    <!-- job post company End -->
 
-        <!-- job post company Start -->
-        <div class="job-post-company pt-55 pb-120">
-            <div class="container">
-                <div class="row justify-content-between no-gutters">
-                    <!-- Left Content -->
-                    <div class="col-xl-8 col-lg-9">
-                        <!-- job single -->
-                        <div class="single-job-items mb-30" style="padding-left: 10px; padding: right 10px;">
-                            <div class="job-items">
-                                <div class="company-img company-img-details">
-                                    <!-- 로고 이미지가 없을 때 대체 이미지 적용!-->
-                                    <a href="#"><img src="assets/img/about/about_lf.png" onerror = "this.src='https://w.namu.la/s/6d37d2792f61b69511edc288e16598d0722ff0407af67089c0004ddeda7ad7b9bdc0b2e4880db9548efe21f2082a4c34545902a67aaa00eafce75c7f89fcdcb8bc870c47b0f4e2476ba53c9dc3e8447d12c8cba6a1b06e82d6ffcbc826cc29b5'" alt = ""></a>
-                                </div>
-                                <div class="job-tittle">
-                                    <a href="#">
-                                        <h5 th:text="${company_name}">기업이름</h5>
-                                    </a>
+</main>
+<footer>
+    <!-- Footer Start-->
+    <th:block th:replace="fragments/footer :: footerFragment"></th:block>
+    <!-- Footer End-->
+</footer>
+<!-- D-day 계산기 -->
+<script>
 
-                                    <h3 th:value="${r_title}">공고 제목</h3>
-                                    <table width="620" height="120">
-                                        <tr>
-                                            <td width="120"><img src="/img/icon/bag.png" class="img_logo">&nbsp&nbsp작업개요</td>
-                                            <td th:text="${r_part}">신입·경력</td>
+  var countDownDate = new Date("Jan 5, 2023 15:37:25").getTime(); // 디데이
 
-                                        </tr>
-                                        <tr>
-                                            <td width="120"><img src="/img/icon/pin.png" class="img_logo">&nbsp&nbsp근무지</td>
-                                            <td th:text="${r_wide_area}"></td>
-                                        </tr>
-                                        <tr>
-                                            <td width="120"><img src="/img/icon/yen.png" class="img_logo">&nbsp&nbsp연례</td>
-                                            <td th:text="${r_salary}"></td>
-                                        </tr>
-                                        <tr>
-                                            <td width="120"><img src="/img/icon/sun.png" class="img_logo">&nbsp&nbsp휴일·휴가</td>
-                                            <td th:text="${r_job_pattern}">정규직 수습기간 3개월</td>
-                                        </tr>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- job single End -->
-                        <!-- 버튼 클릭시 div가 바뀌는 부분-->
-                        <div class="job-change">
-                            <input type="radio" id="job-tab-1" name="show" checked />
-                            <input type="radio" id="job-tab-2" name="show" />
-                            <div class="job-tab">
-                                <label for="job-tab-1">기업메시지</label>
-                                <label for="job-tab-2">채용정보</label>
-                            </div>
-                            <div class="job-message">
-                                <div class="job-message-dis">
-                                    <img class = "company_image" src="/img/test/chi.jpg">
-                                    기업메시지 넣으세요~
-                                </div>
-                                <div class="job-message-dis">
-                                    <div class="job-post-details">
-                                        <div class="post-details1 mb-50">
-                                            <!-- Small Section Tittle -->
-                                            <div class="small-section-tittle">
-                                                <h3>상세내용</h3>
-                                            </div>
-                                            <p th:text="${r_detail}">It is a long established fact that a reader will beff distracted by vbthe
-                                                creadable
-                                                content of a page when looking at its layout. The pointf of using Lorem
-                                                Ipsum is
-                                                that it has ahf mcore or-lgess normal distribution of letters, as
-                                                opposed to using,
-                                                Content here content here making it look like readable.</p>
-                                        </div>
-                                        <div class="post-details2  mb-50">
-                                            <!-- Small Section Tittle -->
-                                            <div class="small-section-tittle">
-                                                <h3>담당업무</h3>
-                                            </div>
-                                            <ul>
-                                                <p th:text="${r_business}"></p>
-                                            </ul>
-                                        </div>
-                                        <div class="post-details1 mb-50">
-                                            <!-- Small Section Tittle -->
-                                            <div class="small-section-tittle">
-                                                <h3>자격요건</h3>
-                                            </div>
-                                            <p th:text="${r_license}">It is a long established fact that a reader will beff distracted by vbthe
-                                                creadable
-                                                content of a page when looking at its layout. The pointf of using Lorem
-                                                Ipsum is
-                                                that it has ahf mcore or-lgess normal distribution of letters, as
-                                                opposed to using,
-                                                Content here content here making it look like readable.</p>
-                                        </div>
-                                        <div class="post-details2  mb-50">
-                                            <!-- Small Section Tittle -->
-                                            <div class="small-section-tittle">
-                                                <h3>접수기간 및 방법</h3>
-                                            </div>
-                                            <ul>
-                                                <li>3 or more years of professional design experience</li>
-                                                <li>Direct response email experience</li>
-                                                <li>Ecommerce website design experience</li>
-                                                <li>Familiarity with mobile and web apps preferred</li>
-                                                <li>Experience using Invision a plus</li>
-                                            </ul>
-                                        </div>
-                                        <div class="post-details2  mb-50">
-                                            <!-- Small Section Tittle -->
-                                            <div class="small-section-tittle">
-                                                <h3>유의사항</h3>
-                                            </div>
-                                            <ul>
-                                                <li>3 or more years of professional design experience</li>
-                                                <li>Direct response email experience</li>
-                                                <li>Ecommerce website design experience</li>
-                                                <li>Familiarity with mobile and web apps preferred</li>
-                                                <li>Experience using Invision a plus</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+  var x = setInterval(function() {
+
+  var now = new Date().getTime(); // 오늘 날짜
+  var distance = countDownDate - now;
+
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = String(Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, "0");
+  var minutes = String(Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, "0");
+  var seconds = String(Math.floor((distance % (1000 * 60)) / 1000)).padStart(2, "0");
+
+  document.getElementById("demo").innerHTML = days + "일 " + hours + " : " + minutes + " : " + seconds;
+  document.getElementById("expired").innerHTML = days + "일 "
+
+  // If the count down is over, write some text
+  if (distance < 0) {
+    clearInterval(x);
+    document.getElementById("demo").innerHTML = "EXPIRED";
+  }
+}, 1000);
+
+</script>
+
+<!-- JS here -->
+
+<!-- All JS Custom Plugins Link Here here -->
+<script src="/js/vendor/modernizr-3.5.0.min.js"></script>
+<!-- Jquery, Popper, Bootstrap -->
+<script src="/js/vendor/jquery-1.12.4.min.js"></scrip >
+            <script src="./js/popper.min.js">
 
 
-                    </div>
-                    <!-- Right Content -->
-                    <div class="col-xl-3 col-lg-3">
-                        <div class="post-details3 mb-50" id = "slidemenu">
-                            <!-- Small Section Tittle -->
-                            <div class="small-section-tittle">
-                                <h4>회사이름</h4>
-                            </div>
-                            <ul>
-                                <li>공고 시작 : <span>12 Aug 2019</span></li>
-                                <li>공고 마감 : <span th:text = "${r_close_date}">12 Dec 2022</span></li>
-                                <li class="d-counter"></li>
-                            </ul>
-                            <div class="apply-btn2">
-                                <a href="#" class="genric-btn primary e-large">입사 지원</a>
-                            </div>
-                        </div>
-                        <div class="blog_right_sidebar">
 
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- job post company End -->
 
-    </main>
-    <!-- 푸터 부분입니다!! 수정하시면 수정한 거 다시 올려주셔야 해요~! -->
-    <footer>
-        <!-- Footer Start-->
-        <div class="footer-area footer-bg footer-padding1">
-            <div class="container">
-                <div class="row d-flex justify-content-between">
-                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
-                        <div class="single-footer-caption mb-50">
-                            <div class="single-footer-caption mb-30">
-                                <div class="footer-tittle">
-                                    <h4>About Us</h4>
-                                    <div class="footer-pera">
-                                        <p>Heaven frucvitful doesn't cover lesser dvsays appear creeping seasons so
-                                            behold.</p>
-                                    </div>
-                                </div>
-                            </div>
 
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-5">
-                        <div class="single-footer-caption mb-50">
-                            <div class="footer-tittle">
-                                <h4>Contact Info</h4>
-                                <ul>
-                                    <li>
-                                        <p>Address :Your address goes
-                                            here, your demo address.</p>
-                                    </li>
-                                    <li><a href="#">Phone : +8880 44338899</a></li>
-                                    <li><a href="#">Email : info@colorlib.com</a></li>
-                                </ul>
-                            </div>
+</script>
+<script src="/js/bootstrap.min.js"></script>
+<!-- Jquery Mobile Menu -->
+<script src="/js/jquery.slicknav.min.js"></script>
 
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-5">
-                        <div class="single-footer-caption mb-50">
-                            <div class="footer-tittle">
-                                <h4>Important Link</h4>
-                                <ul>
-                                    <li><a href="#"> View Project</a></li>
-                                    <li><a href="#">Contact Us</a></li>
-                                    <li><a href="#">Testimonial</a></li>
-                                    <li><a href="#">Proparties</a></li>
-                                    <li><a href="#">Support</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-5">
-                        <div class="single-footer-caption mb-50">
-                            <div class="footer-tittle">
-                                <h4>Newsletter</h4>
-                                <div class="footer-pera footer-pera2">
-                                    <p>Heaven fruitful doesn't over lesser in days. Appear creeping.</p>
-                                </div>
-                                <!-- Form -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--  -->
-            </div>
-        </div>
-        <!-- footer-bottom area -->
-        <div class="footer-bottom-area footer-bg">
-            <div class="container">
-                <div class="footer-border">
-                    <div class="row d-flex justify-content-between align-items-center">
-                        <div class="col-xl-10 col-lg-10 ">
-                            <div class="footer-copy-right">
-                                <p>
-                                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                                    Copyright &copy;
-                                    <script>document.write(new Date().getFullYear());</script> All rights reserved |
-                                    This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a
-                                        href="https://colorlib.com" target="_blank">Colorlib</a>
-                                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                                </p>
-                            </div>
-                        </div>
+<!-- Jquery Slick , Owl-Carousel Plugins -->
+<script src="/js/owl.carousel.min.js"></script>
+<script src="/js/slick.min.js"></script>
+<script src="/js/price_rangs.js"></script>
 
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Footer End-->
-    </footer>
-    <!-- D-day 계산기 -->
-    <script>
-        let counter = document.querySelector('.d-counter'); // 디데이 표시할 곳 선택
-        let today = new Date(), // 현재 날짜 가져오기
-            dday = new Date("Dec 12,2022, 00:00:00").getTime(), // 디데이
-            gap = dday - today,
-            result = Math.floor(gap / (1000 * 60 * 60 * 24));
+<!-- One Page, Animated-HeadLin -->
+<script src="/js/wow.min.js"></script>
+<script src="/js/animated.headline.js"></script>
+<script src="/js/jquery.magnific-popup.js"></script>
 
-        counter.innerHTML = `D-${result}`
-    </script>
+<!-- Scrollup, nice-select, sticky -->
+<script src="/js/jquery.scrollUp.min.js"></script>
+<script src="/js/jquery.nice-select.min.js"></script>
+<script src="/js/jquery.sticky.js"></script>
 
-    <!-- JS here -->
+<!-- contact js -->
+<script src="/js/contact.js"></script>
+<script src="/js/jquery.form.js"></script>
+<script src="/js/jquery.validate.min.js"></script>
+<script src="/js/mail-script.js"></script>
+<script src="/js/jquery.ajaxchimp.min.js"></script>
 
-    <!-- All JS Custom Plugins Link Here here -->
-    <script src="/js/vendor/modernizr-3.5.0.min.js"></script>
-    <!-- Jquery, Popper, Bootstrap -->
-    <script src="/js/vendor/jquery-1.12.4.min.js"></scrip >
-            <script src="./js/popper.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
-    <!-- Jquery Mobile Menu -->
-    <script src="/js/jquery.slicknav.min.js"></script>
+<!-- Jquery Plugins, main Jquery -->
+<script src="/js/plugins.js"></script>
+<script src="/js/main.js"></script>
 
-    <!-- Jquery Slick , Owl-Carousel Plugins -->
-    <script src="/js/owl.carousel.min.js"></script>
-    <script src="/js/slick.min.js"></script>
-    <script src="/js/price_rangs.js"></script>
-
-    <!-- One Page, Animated-HeadLin -->
-    <script src="/js/wow.min.js"></script>
-    <script src="/js/animated.headline.js"></script>
-    <script src="/js/jquery.magnific-popup.js"></script>
-
-    <!-- Scrollup, nice-select, sticky -->
-    <script src="/js/jquery.scrollUp.min.js"></script>
-    <script src="/js/jquery.nice-select.min.js"></script>
-    <script src="/js/jquery.sticky.js"></script>
-
-    <!-- contact js -->
-    <script src="/js/contact.js"></script>
-    <script src="/js/jquery.form.js"></script>
-    <script src="/js/jquery.validate.min.js"></script>
-    <script src="/js/mail-script.js"></script>
-    <script src="/js/jquery.ajaxchimp.min.js"></script>
-
-    <!-- Jquery Plugins, main Jquery -->
-    <script src="/js/plugins.js"></script>
-    <script src="/js/main.js"></script>
-
-    <script src="/js/quickmenu.js"></script>
+<script src="/js/quickmenu.js"></script>
 </body>
 
 </html>
