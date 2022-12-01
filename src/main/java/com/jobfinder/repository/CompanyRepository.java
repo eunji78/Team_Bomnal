@@ -1,13 +1,13 @@
 package com.jobfinder.repository;
 
 import com.jobfinder.domain.Company_info;
+import com.jobfinder.domain.Criteria;
 import com.jobfinder.domain.Reviews;
 import com.jobfinder.persistence.CompanyMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 @Repository
 public class CompanyRepository {
@@ -15,8 +15,8 @@ public class CompanyRepository {
     @Autowired
     CompanyMapper companyMapper;
 
-    public ArrayList<Company_info> list() {
-        ArrayList<Company_info> list = companyMapper.list();
+    public ArrayList<Company_info> list(Criteria cri) {
+        ArrayList<Company_info> list = companyMapper.list(cri);
         return list;
     }
     public Company_info detail(String company_id) {
@@ -24,8 +24,22 @@ public class CompanyRepository {
         return detail;
     }
 
-    public Reviews review(String company_id) {
-        Reviews review = companyMapper.review(company_id);
+    public ArrayList<Reviews> review(String company_id) {
+        ArrayList<Reviews> review = companyMapper.review(company_id);
         return review;
+    }
+
+    public int count(String industry_class) {
+        int counting = companyMapper.count(industry_class);
+        return counting;
+    }
+
+    public void save(Reviews reviews) {
+        companyMapper.save(reviews);
+    }
+
+    public Reviews avg(String company_id) {
+        Reviews avg = companyMapper.avg(company_id);
+        return avg;
     }
 }

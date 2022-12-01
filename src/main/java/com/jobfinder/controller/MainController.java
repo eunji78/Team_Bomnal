@@ -31,7 +31,6 @@ public class MainController {
     @RequestMapping("get_job_detail")
     @ResponseBody
     public List<Job> get_job_detail(@RequestParam("super_seq") int super_seq){
-
         List<Job> jobDetail = mainService.getJobDetail(super_seq);
         return jobDetail;
     }
@@ -39,7 +38,6 @@ public class MainController {
     @RequestMapping("get_region_detail")
     @ResponseBody
     public List<RegionVO> get_region_detail(@RequestParam("super_seq") int super_seq){
-        System.out.println("super_seq = " + super_seq);
         List<RegionVO> regionDetail = mainService.getRegionDetail(super_seq);
         return regionDetail;
     }
