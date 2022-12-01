@@ -22,6 +22,18 @@ public class LoginService {
     @Autowired
     LoginRepository loginRepository;
 
+    public LoginVO login_per(LoginVO vo){
+        LoginVO rvo = loginRepository.login_per(vo);
+        System.out.println("service_login_per" + rvo);
+        return rvo;
+    }
+
+    public Login_ComVO login_com(Login_ComVO cvo){
+        Login_ComVO rcvo = loginRepository.login_com(cvo);
+        System.out.println("service_login_com" + rcvo);
+        return rcvo;
+    }
+
     public int set_signup_com(Login_ComVO cvo){
         int res = loginRepository.set_signup_com(cvo);
         return res;
@@ -161,5 +173,15 @@ public class LoginService {
         }
 
         return userInfo;
+    }
+
+    public LoginVO get_loginVO(LoginVO vo) {
+        LoginVO rvo = loginRepository.get_loginVO(vo);
+        return rvo;
+    }
+
+    public Login_ComVO get_login_ComVO(Login_ComVO cvo) {
+        Login_ComVO rcvo = loginRepository.Login_ComVO(cvo);
+        return rcvo;
     }
 }

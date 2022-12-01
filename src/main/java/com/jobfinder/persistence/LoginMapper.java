@@ -18,6 +18,10 @@ public interface LoginMapper {
     public String id_check_com(String insert_id);
     public String id_check_per(String insert_id);
 
+    public LoginVO login_per(LoginVO vo);
+    public Login_ComVO login_com(Login_ComVO cvo);
 
+    public LoginVO get_loginVO(LoginVO vo);
 
+    public Login_ComVO Login_ComVO(Login_ComVO cvo);
 }
