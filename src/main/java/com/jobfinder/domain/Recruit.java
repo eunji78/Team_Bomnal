@@ -15,7 +15,9 @@ public class Recruit {
     private String r_business;
     private String r_license;
     private String r_detail;
+    private String r_reg_date;
     private String r_close_date;
+    private int r_volume;
     private String company_logo;
     private String agent_email;
     private String agent_name;
