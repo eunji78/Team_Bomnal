@@ -1,9 +1,12 @@
-.head-btn{
+.head-btn1{
     background-color: #38a4ff !important;
 }
 .head-btn2{
     border: #38a4ff solid 1px !important;
-    color: #38a4ff !important;
+    color: #38a4ff;
+}
+.btn::before{
+    background-color: navy !important;
 }
 #scrollUp{
     background-color: #38a4ff !important;
@@ -53,20 +56,20 @@
     width: 25%;
 }
 .background-navy{
-    background-color: rgba(0, 0, 128, 0.095);
+    background-color: rgba(0, 0, 128, 0.05);
 }
 .related_work_time{
     padding-right: 1em;
 }
 .white-board{
     background-color: #fff !important;
-    border-radius: 5px;
+    border-radius: 10px;
     margin-bottom: 2em;
     padding-top: 3em;
 }
 .white-board2{
     background-color: #fff !important;
-    border-radius: 5px;
+    border-radius: 10px;
     margin-bottom: 2em;
     padding-top: 1em;
 }
@@ -104,9 +107,13 @@
     border-top: #fff 0 !important;
     border-right: #fff 0 !important;
     border-left: #fff 0 !important;
-    border-bottom: #38a4ff solid 5px !important;
+    border-bottom: #007bff solid 5px !important;
     border-bottom-left-radius: 3%;
     border-bottom-right-radius: 3%;
+}
+.genric-btn.primary-border:hover{
+    color: #fff !important;
+    background-color: #007bff;
 }
 .detail{
     display: flex !important;
@@ -142,10 +149,16 @@
 .inner-container{
     border: #38a4ff solid 1px;
     border-radius: 5px;
-    box-shadow: 1px 1px 1px 1px rgba(128, 128, 128, 0.5);
+    box-shadow: 1px 1px 1px 1px rgba(128, 128, 128, 0.2);
 }
 .border-color{
     border: navy solid 1px;
+}
+.border-black{
+    border: black solid 1px;
+}
+.border-sharp{
+    border-radius: 3px
 }
 .container-items{
     margin-left: auto;
@@ -162,7 +175,7 @@
     font-weight: bold;
 }
 .color-red{
-    font-size: 0.7rem;
+    font-size: 0.8rem;
     color: red ;
 }
 .color-black{
@@ -186,8 +199,67 @@
     top: 0.25em;
 }
 
+.work-type-items{
+    width: 10em;
+}
+.career-type-items{
+    width: 6em;
+}
+.right-margin{
+    margin-right: 0.5em;
+}
+.right-margin1{
+    margin-right: 1em;
+}
+.go-down{
+    position: relative;
+    top:0.15em;
+}
+.sub-title{
+    font-size: 1.4em;
+}
+.btn-map{
+    background-color: navy;
+    height: 2.5em;
+    width: 10em;
+    border: 0;
+}
+.text-map{
+    width: 82%;
+}
+.box-date{
+    width: 15em;
+    text-align: center;
+}
+.select-box-size{
+    height: 3em;
+}
+.pt-120-bottom{
+    padding-bottom: 120px;
+}
+.remove-css{
+    all: none;
+}
+.for-center-items{
+    justify-content: center;
+}
+.make-scroll{
+    height: 10em;
+    overflow: auto !important;
+}
 /*---------------------Summer Note-----------------------------------*/
 @font-face {
     font-family: 'NotoSansKR';
     src: url('font/NotoSansKR-Black.otf') format('opentype')
+}
+
+.note-statusbar{display:none;}
+
+/*--------------------kakao map---------------------------------------*/
+.map-size{
+    margin-top: 2em;
+    width: 50%;
+    height: 30em;
+    margin-left: auto;
+    margin-right: auto;
 }
