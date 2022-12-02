@@ -1,12 +1,12 @@
 .footer-padding1 {
     padding-top: 20px !important;
     padding-bottom: 20px !important;
-    height: 250px !important
+    height: 250px !important;
 }
 
 .footer-bottom-area .footer-border {
-    border-top: 1px solid #2d3544;
-    padding: 20px 0px 20px !important
+    border-top: 1px solid #2d3544 !important;
+    padding: 20px 0px 20px !important;
 }
 
 .job-change input[type=radio] {
@@ -66,33 +66,10 @@
 .single-job-items .company-img img {
     overflow: hidden;
     float: left;
-    margin-right: 32px;
+    margin-right: 20px !important;
     z-index: 999;
     width: 85px !important;
     height: 85px !important;
-}
-.btn_d {
-    background: #3366FF !important;
-    -moz-user-select: none;
-    text-transform: capitalize;
-    color: #fff;
-    cursor: pointer;
-    display: inline-block;
-    font-size: 14px;
-    font-weight: 500;
-    letter-spacing: 1px;
-    line-height: 0;
-    margin-bottom: 0;
-    padding: 27px 44px;
-    border-radius: 0px;
-    margin: 10px;
-    cursor: pointer;
-    transition: color 0.4s linear;
-    position: relative;
-    z-index: 1;
-    border: 0;
-    overflow: hidden;
-    margin: 0
 }
 
 .apply-btn2{
@@ -101,7 +78,7 @@
 
 .img_logo{
     width: 20px;
-    height: 20px;d
+    height: 20px;
 }
 
 .company_image{
@@ -114,15 +91,37 @@
     height : 310px;
     position : absolute;
 }
-
-.genric-btn.primary {
-    color: #38a4ff !important;
-    background: #fff !important;
-    border: 1px solid transparent
+#dday{
+    text-align : center;
 }
 
-.genric-btn.primary:hover {
-    color: #38a4ff !important;
-    border: 1px solid #38a4ff !important;
-    background: #fff
+.smallsection h5 {
+    color: black;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+.post-details3 ul li {
+    display: flex;
+    justify-content: flex-start !important;
+    margin-bottom: 12px
+}
+
+.job-items {
+    display: flex;
+    justify-content:center !important;
+    flex-wrap: wrap
+}
+
+.single-job-items {
+    padding: 36px 30px;
+    display: flex;
+    justify-content: center !important;
+    flex-wrap: wrap;
+    -webkit-transition: .4s;
+    -moz-transition: .4s;
+    -o-transition: .4s;
+    transition: .4s
 }
