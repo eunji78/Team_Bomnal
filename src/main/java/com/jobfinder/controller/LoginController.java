@@ -1,11 +1,12 @@
 package com.jobfinder.controller;
 
+import com.jobfinder.domain.LoginVO;
+import com.jobfinder.domain.Login_ComVO;
 import com.jobfinder.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -20,25 +21,98 @@ public class LoginController {
     LoginService loginService;
 
     @RequestMapping(value = "/loginform")
-    public String loginform() { return "loginform"; }
+    public String loginform() {
+        return "loginform";
+    }
+
+    @RequestMapping(value = "/login_per")
+    public String login_per(@RequestParam(value = "mem_id", required=false) String id, @RequestParam(value = "mem_pw", required=false) String pw, HttpSession session){
+        System.out.println("개인로그인시도");
+        System.out.println(id);
+        System.out.println(pw);
+        LoginVO vo = new LoginVO();
+        vo.setMem_id(id);
+        vo.setMem_pw(pw);
+        LoginVO rvo = loginService.login_per(vo);
+        session.setAttribute("id", rvo.getMem_id());
+        session.setAttribute("name", rvo.getMem_name());
+        System.out.println("개인로그인완료");
+        return "redirect:/loginform";
+    };
+
+    @RequestMapping(value = "/login_com")
+    public String login_com(@ModelAttribute("loginform_com") Login_ComVO cvo, HttpSession session){
+        System.out.println("기업로그인시도");
+        System.out.println(cvo);
+        Login_ComVO rcvo = loginService.login_com(cvo);
+        session.setAttribute("id", rcvo.getCompany_id());
+        String name = rcvo.getCompany_name();
+        if (name == null){
+            session.setAttribute("name", rcvo.getCompany_id());
+            System.out.println("기업로그인완료, 이름없음");
+        } else {
+            session.setAttribute("name", rcvo.getCompany_name());
+            System.out.println("기업로그인완료");
+        }
+        return "redirect:/loginform";
+    };
 
     @RequestMapping(value = "/signup_local")
-    public String signup_local() { return "signup_local"; }
+    public String signup_local(Model model, LoginVO loginVO) {
+        model.addAttribute("LoginVO", loginVO);
+        return "signup_local";
+    }
 
     @RequestMapping(value = "/signup_company")
-    public String signup_company() { return "signup_company"; }
+    public String signup_company(Model model, Login_ComVO login_comVO) {
+        model.addAttribute("Login_ComVO",login_comVO);
+        return "signup_company";
+    }
 
     @RequestMapping(value = "/signup_com")
-    public String signup_com() {
-
-        return "";
+    public String signup_com(@ModelAttribute Login_ComVO cvo) {
+        System.out.println("signup_com");
+        System.out.println(cvo);
+        int res = loginService.set_signup_com(cvo);
+        System.out.println(res);
+        return "redirect:/loginform";
     };
 
     @RequestMapping(value = "/signup_per")
-    public String signup_per() {
-
-        return "";
+    public String signup_per(@ModelAttribute LoginVO vo) {
+        System.out.println("signup_per");
+        System.out.println(vo);
+        int res = loginService.set_signup_per(vo);
+        System.out.println(res);
+        return "redirect:/loginform";
     };
+
+    @RequestMapping(value = "/get_loginVO")
+    @ResponseBody
+    public String get_loginVO(@ModelAttribute("loginform_per") LoginVO vo) {
+
+        System.out.println("per 넘어오는 vo값 : " + vo);
+        LoginVO rvo = loginService.get_loginVO(vo);
+        System.out.println("per 받는 vo값 : " + rvo);
+        String res = "";
+        if (rvo == null){ res = "";}
+        else { res = "exist";}
+        return res;
+    }
+
+    @RequestMapping(value = "/get_login_ComVO")
+    @ResponseBody
+    public String get_login_ComVO(@ModelAttribute("loginform_com") Login_ComVO cvo) {
+
+        System.out.println("com 넘어오는 cvo값 : " + cvo);
+        Login_ComVO rcvo = loginService.get_login_ComVO(cvo);
+        System.out.println("com 받는 cvo값 : " + rcvo);
+        String res = "";
+        if (rcvo == null){ res = "";}
+        else { res = "exist";}
+        return res;
+    }
+
 
     @RequestMapping(value = "/login_id_check_per")
     @ResponseBody
@@ -60,7 +134,7 @@ public class LoginController {
         return com_id;
     }
 
-    @RequestMapping(value = "/login")
+    @RequestMapping(value = "/kakaologin")
     public String login(@RequestParam(value = "code", required = false) String code, HttpSession session, HttpServletResponse response) throws Exception{
 
         System.out.println("loginController!!");
@@ -75,20 +149,63 @@ public class LoginController {
         response.addCookie(token);
 
         //*
-        HashMap<String, Object> userInfo = loginService.getUserInfo(access_Token);
+        HashMap<String, String> userInfo = loginService.getUserInfo(access_Token);
         System.out.println("###user_info### : " + userInfo);
 
-        session.setAttribute("nickname", userInfo.get("nickname"));
-        session.setAttribute("email", userInfo.get("email"));
-        session.setAttribute("profile_image", userInfo.get("profile_image"));
-        session.setAttribute("birthday", userInfo.get("birthday"));
-        session.setAttribute("gender", userInfo.get("gender"));
+        String mem_id = userInfo.get("id");
+        String mem_pw = userInfo.get("id");
+        String mem_name = userInfo.get("nickname");
+        String mem_email = userInfo.get("email");
 
-        return "login";
+        LoginVO set_vo = new LoginVO();
+        set_vo.setMem_id(mem_id);
+        set_vo.setMem_pw(mem_pw);
+        set_vo.setMem_name(mem_name);
+        set_vo.setMem_email(mem_email);
+
+        LoginVO check = loginService.get_loginVO(set_vo);
+
+        if ( check == null ){
+            System.out.println(mem_id);
+            System.out.println(mem_name);
+            System.out.println(mem_email);
+
+            LoginVO vo = new LoginVO();
+            vo.setMem_id(mem_id);
+            vo.setMem_pw(mem_pw);
+            vo.setMem_name(mem_name);
+            vo.setMem_email(mem_email);
+            vo.setMem_phone("");
+            vo.setM_agreement1("Y");
+            vo.setM_agreement2("Y");
+            vo.setM_agreement3("");
+            vo.setM_agreement4("");
+            vo.setM_agreement5("");
+            vo.setM_agreement6("3");
+
+            int res = loginService.set_signup_kko(vo);
+
+            LoginVO check2 = loginService.get_loginVO(vo);
+
+            System.out.println(res);
+            session.setAttribute("id", check2.getMem_id());
+            session.setAttribute("name", check2.getMem_name());
+//        session.setAttribute("nickname", userInfo.get("nickname"));
+//        session.setAttribute("email", userInfo.get("email"));
+//        session.setAttribute("profile_image", userInfo.get("profile_image"));
+//        session.setAttribute("birthday", userInfo.get("birthday"));
+//        session.setAttribute("gender", userInfo.get("gender"));
+
+            return "redirect:/loginform";
+        } else {
+            session.setAttribute("id", check.getMem_id());
+            session.setAttribute("name", check.getMem_name());
+            return "redirect:/loginform";
+        }
     }
 
     @RequestMapping(value = "/v1/user/unlink")
-    public String reset(HttpServletResponse response, HttpServletRequest request) throws Exception {
+    public String reset(HttpServletResponse response, HttpSession session) throws Exception {
 
         System.out.println("Reset code");
 
@@ -96,6 +213,9 @@ public class LoginController {
         token.setPath("/");
         token.setMaxAge(0);
         response.addCookie(token);
+
+        session.removeAttribute("id");
+        session.removeAttribute("name");
 
         return "loginform";
     }

@@ -17,15 +17,6 @@ body {
 .rev{
 }
 
-.container2 {
-  background-color: #151728;
-  display: flex;
-  max-width: 1600px;
-  overflow: hidden;
-  margin: 0 auto;
-  margin-left: 500px;
-  margin-right: 500px;
-}
 
 .left-side {
   width: 260px;
@@ -523,14 +514,6 @@ body {
   margin-right: 20px;
 }
 
-.status-main {
-  padding: 0 20px;
-  display: flex;
-  align-items: center;
-  border-bottom: 1px solid #272a3a;
-  padding-bottom: 20px;
-  flex-wrap: wrap;
-}
 
 .status-textarea {
   flex-grow: 1;
@@ -538,7 +521,7 @@ body {
   border: none;
   resize: none;
   margin-top: 15px;
-  color: #fff;
+  color: black;
   max-width: calc(100% - 70px);
 }
 .status-textarea::placeholder {
@@ -643,7 +626,7 @@ body {
 }
 
 .album-actions {
-  padding: 0 20px 20px;
+  padding-top: 20px;
 }
 
 .album-action {
@@ -925,12 +908,3 @@ body {
     margin-bottom : 20px;
 }
 
-.starandreview {
-                   display: flex;
-                   justify-content: space-around;
-               }
-
-.totalstar {
-    display: flex;
-    justify-content: space-around;
-}

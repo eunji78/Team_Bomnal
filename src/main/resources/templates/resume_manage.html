@@ -1,0 +1,197 @@
+<!doctype html>
+<html class="no-js" lang="zxx" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Job board HTML-5 Template </title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico">
+
+    <!-- CSS here -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/css/price_rangs.css">
+    <link rel="stylesheet" href="/css/flaticon.css">
+    <link rel="stylesheet" href="/css/slicknav.css">
+    <link rel="stylesheet" href="/css/animate.min.css">
+    <link rel="stylesheet" href="/css/magnific-popup.css">
+    <link rel="stylesheet" href="/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="/css/themify-icons.css">
+    <link rel="stylesheet" href="/css/slick.css">
+    <link rel="stylesheet" href="/css/nice-select.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/resume.css">
+
+</head>
+
+<body>
+<!-- Preloader Start -->
+<div id="preloader-active">
+    <div class="preloader d-flex align-items-center justify-content-center">
+        <div class="preloader-inner position-relative">
+            <div class="preloader-circle"></div>
+            <div class="preloader-img pere-text">
+                <img src="/img/logo/logo.png" alt="">
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Preloader Start -->
+<header>
+    <!-- Header Start -->
+    <th:block th:replace="fragments/header :: headerFragment"></th:block>
+    <!-- Header End -->
+</header>
+<main>
+
+    <!-- Job List Area Start -->
+    <div class="job-listing-area pt-50 pb-120" style="background-color:#f5f5f5">
+        <div class="container">
+            <div class="row">
+                <!-- Left content -->
+                <div class="col-2 col-lg-3 col-md-4">
+                    <!-- Job Category Listing start -->
+                    <div class="category-listing mb-50">
+                        <!-- single one -->
+                        <div class="asideSection">
+                            개인정보관리
+                        </div>
+
+                        <div class="asideSection">
+                            이력서 관리
+                            <ul>
+                                <li class="aside-list"><a th:href="@{/resume_manage}">이력서 관리</a></li>
+                                <li class="aside-list"><a th:href="@{/resume_form}">이력서 등록</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="asideSection">
+                            입사지원 관리
+                            <ul>
+                                <li class="aside-list"><a href="#">입사지원 현황</a></li>
+                                <li class="aside-list"><a href="#">구직활동 확인서</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="asideSection">
+                            더 넣을게 있나?
+                        </div>
+
+                    </div>
+                    <!-- Job Category Listing End -->
+                </div>
+
+                <!-- Right content -->
+                <div class="col-9 col-lg-9 col-md-8">
+                    <div class="container">
+                        <div class="resume-section mb-30">
+                            <div class="row">
+                                <h2>이력서 관리</h2>
+                                <!-- 이력서 등록 버튼-->
+                                <div class="resume-button">
+                                    <a class ="resume_a" th:href="@{/resume_form}">
+                                        <img src="/img/write_icon.png"/>
+                                        <span>이력서 등록</span>
+                                    </a>
+                                </div>
+                                <!-- 이력서 등록 버튼 End -->
+                            </div>
+
+                            <!-- 이력서 리스트 -->
+                            <div class="resume_list_head mt-50">
+                                <div class="col01" style="text-align:center">이력서 제목</div>
+                                <div class="col02" style="padding-right:40px">이력서 관리</div>
+                            </div>
+                            <div class="resume_list">
+                                <ul>
+                                    <li style="display:table">
+                                        <div class="col01">
+                                            <div class="tit">이력서</div>
+                                            <div class="date">2022.02.22</div>
+                                        </div>
+                                        <div class="col02">
+                                            <div class="btnCell">
+                                                <a class="r-btn" th:href="@{/resume_form}">수정</a>
+                                                <a class="r-btn" th:href="@{/resume_delete}">삭제</a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- 이력서 리스트 End -->
+                        </div>
+                    </div>
+                </div>
+                <!-- Right content End -->
+            </div>
+        </div>
+    </div>
+    <!-- Job List Area End -->
+    <!--Pagination Start  -->
+    <div class="pagination-area pb-115 text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="single-wrap d-flex justify-content-center">
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination justify-content-start">
+                                <li class="page-item active"><a class="page-link" href="#">01</a></li>
+                                <li class="page-item"><a class="page-link" href="#">02</a></li>
+                                <li class="page-item"><a class="page-link" href="#">03</a></li>
+                                <li class="page-item"><a class="page-link" href="#"><span class="ti-angle-right"></span></a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Pagination End  -->
+
+</main>
+<footer>
+    <!-- Footer Start-->
+    <th:block th:replace="fragments/footer :: footerFragment"></th:block>
+    <!-- Footer End-->
+</footer>
+
+<!-- JS here -->
+
+<!-- All JS Custom Plugins Link Here here -->
+<script src="/js/vendor/modernizr-3.5.0.min.js"></script>
+<!-- Jquery, Popper, Bootstrap -->
+<script src="/js/vendor/jquery-1.12.4.min.js"></script>
+<script src="/js/popper.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<!-- Jquery Mobile Menu -->
+<script src="/js/jquery.slicknav.min.js"></script>
+
+<!-- Jquery Slick , Owl-Carousel Range -->
+<script src="/js/owl.carousel.min.js"></script>
+<script src="/js/slick.min.js"></script>
+<script src="/js/price_rangs.js"></script>
+<!-- One Page, Animated-HeadLin -->
+<script src="/js/wow.min.js"></script>
+<script src="/js/animated.headline.js"></script>
+<script src="/js/jquery.magnific-popup.js"></script>
+
+<!-- Scrollup, nice-select, sticky -->
+<script src="/js/jquery.scrollUp.min.js"></script>
+<script src="/js/jquery.nice-select.min.js"></script>
+<script src="/js/jquery.sticky.js"></script>
+
+<!-- contact js -->
+<script src="/js/contact.js"></script>
+<script src="/js/jquery.form.js"></script>
+<script src="/js/jquery.validate.min.js"></script>
+<script src="/js/mail-script.js"></script>
+<script src="/js/jquery.ajaxchimp.min.js"></script>
+
+<!-- Jquery Plugins, main Jquery -->
+<script src="/js/plugins.js"></script>
+<script src="/js/main.js"></script>
+
+</body>
+</html>

@@ -7,13 +7,11 @@
     <title>Job board HTML-5 Template </title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="manifest" href="site.webmanifest">
-    <link rel="shortcut icon" type="image/x-icon" href="/img/good-job_icon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.png">
 
     <!-- CSS here -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="/css/flaticon.css">
     <link rel="stylesheet" href="/css/slicknav.css">
     <link rel="stylesheet" href="/css/price_rangs.css">
     <link rel="stylesheet" href="/css/animate.min.css">
@@ -22,11 +20,9 @@
     <link rel="stylesheet" href="/css/themify-icons.css">
     <link rel="stylesheet" href="/css/slick.css">
     <link rel="stylesheet" href="/css/nice-select.css">
-    <link rel="stylesheet" href="/css/style.css?after">
-    <link rel="stylesheet" href="/css/c_detail.css">
-    <link rel="stylesheet" href="/css/review.css?after">
-    <link rel="stylesheet" href="/css/a.css?after">
-    <link rel="stylesheet" href="/css/star.css?after">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/responsive.css">
+    <link rel="stylesheet" href="/css/star.css">
 </head>
 
 <body>
@@ -36,616 +32,411 @@
         <div class="preloader-inner position-relative">
             <div class="preloader-circle"></div>
             <div class="preloader-img pere-text">
-                <img src="" alt="">
+                <img src="/img/logo/logo.png" alt="">
             </div>
         </div>
     </div>
 </div>
-<!-- Preloader Start -->
+<!-- Preloader Start-->
 <header>
     <!-- Header Start -->
-    <div class="header-area header-transparrent">
-        <div class="headder-top header-sticky">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-lg-3 col-md-2">
-                        <!-- Logo -->
-                        <div class="logo">
-                            <a href="index.html"><img src="/img/good-job_icon.png" alt=""></a>
-                        </div>
-                    </div>
-                    <div class="col-lg-9 col-md-9">
-                        <div class="menu-wrapper">
-                            <!-- Main-menu -->
-                            <div class="main-menu">
-                                <nav class="d-none d-lg-block">
-                                    <ul id="navigation">
-                                        <li><a href="index.html">Home</a></li>
-                                        <li><a href="job_listing.html">Find a Jobs </a></li>
-                                        <li><a href="about.html">About</a></li>
-                                        <li><a href="#">Page</a>
-                                            <ul class="submenu">
-                                                <li><a href="blog.html">Blog</a></li>
-                                                <li><a href="single-blog.html">Blog Details</a></li>
-                                                <li><a href="elements.html">Elements</a></li>
-                                                <li><a href="job_details.html">job Details</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="contact.html">Contact</a></li>
-                                    </ul>
-                                </nav>
-                            </div>
-                            <!-- Header-btn -->
-                            <div class="header-btn d-none f-right d-lg-block">
-                                <a href="#" class="btn head-btn1">Register</a>
-                                <a href="#" class="btn head-btn2">Login</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Mobile Menu -->
-                    <div class="col-12">
-                        <div class="mobile_menu d-block d-lg-none"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <th:block th:replace="fragments/header :: headerFragment"></th:block>
     <!-- Header End -->
 </header>
-<main>
-
-    <!-- Hero Area Start-->
-    <div class="slider-area ">
-        <div class="single-slider section-overly slider-height2 d-flex align-items-center" data-background="">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-12">
-                        <div class="hero-cap text-center">
-                            <h2>UI/UX Designer</h2>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Hero Area End -->
-    <!-- job post company Start -->
-
-    <div class="job-post-company pt-120 pb-120">
+<!-- Hero Area Start-->
+<div class="slider-area ">
+    <div class="single-slider section-overly slider-height2 d-flex align-items-center"
+         data-background="/img/hero/about.jpg">
         <div class="container">
-            <div class="row justify-content-between">
-                <!-- Left Content -->
-                <div class="asdf">
-
-
-                    <!-- 맨 위에 기업 정보 크게 띄워주는거 -->
-                    <div class="single-job-items mb-50">
-                        <div class="job-items">
-                            <div class="company-img company-img-details">
-                                <a href="#"><img
-                                        src="https://jpassets.jobplanet.co.kr/production/uploads/company/logo/30139/thumb_0.jpg"
-                                        alt="" class="c_icon"></a>
-                            </div>
-                            <div class="job-tittle">
-                                <a href="#">
-                                    <h1>삼성전자(주)</h1>
-                                </a>
-                                <ul>
-                                    <li>전기/전자/제어</li>
-                                    <li><i class="fas fa-map-marker-alt"></i>서울</li>
-                                    <li>대기업</li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="button-group-area mt-10">
-                            <a th:href="@{/companyDetail/{company_id}(company_id=${review.company_id})}" class="genric-btn primary-border radius">기업상세</a>
-                            <a href="" class="genric-btn success radius">기업리뷰</a>
-                            <a href="/Recruit" class="genric-btn warning-border radius">채용공고(4)</a>
-                        </div>
-
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="hero-cap text-center">
+                        <h2>Blog Details</h2>
                     </div>
-                    <!-- 맨 위에 기업 크게 띄워주는거 End -->
-
-
                 </div>
-                <!-- Right Content -->
-
             </div>
         </div>
     </div>
-    <!-- job post company End -->
+</div>
+<!-- Hero Area End -->
+<!--================Blog Area =================-->
+<section class="blog_area single-post-area section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="">
 
-    <div class="container2" x-data="{ rightSide: false, leftSide: false }">
+                <!-- 맨 위에 기업 정보 크게 띄워주는거 -->
+                <div class="single-job-items mb-50">
+                    <div class="job-items">
+                        <div class="company-img company-img-details">
+                            <a href="#"><img th:src="${detail.company_logo}" alt="" class="c_icon"></a>
+                        </div>
+                        <div class="job-tittle">
+                            <a href="#">
+                                <h1 th:text="${detail.company_name}">삼성전자(주)</h1>
+                            </a>
+                            <ul>
+                                <li th:text="${detail.company_industry}">전기/전자/제어</li>
+                                <li th:text="${#strings.listSplit(detail.company_address,' ')[0]}"><i
+                                        class="fas fa-map-marker-alt"></i>서울
+                                </li>
+                                <li>대기업</li>
+                            </ul>
+                        </div>
+                    </div>
 
-        <div class="main">
-
-            <div class="main-container">
-                <div class="timeline">
-
-                    <div class="timeline-right">
-                        <div>
-                        <div class="album box">
-                            <div class="status-main">
-                                <div class="album-detail">
-                                    <div class="album-title"><strong>삼성전자</strong> Review <span>album</span></div>
-                                    <div class="totalsalary">
-                                        <strong>전체 평균 연봉</strong>
-                                        <b>4300 만원</b>
-                                    </div>
-                                    <div class="album-date">2022.11.28</div>
-                                </div>
-
-                            </div>
-                            <div class="totalstar">
-                                <div class="totalstars">
-                                    <form name="myform" id="myform" method="post" action="./save">
-                                        <fieldset>
-                                            <legend>전체</legend>
-                                            <input type="radio" name="rating" value="5" id="rate1"><label
-                                                for="rate11">⭐</label>
-                                            <input type="radio" name="rating" value="4" id="rate2"><label
-                                                for="rate22">⭐</label>
-                                            <input type="radio" name="rating" value="3" id="rate3"><label
-                                                for="rate33">⭐</label>
-                                            <input type="radio" name="rating" value="2" id="rate4"><label
-                                                for="rate44">⭐</label>
-                                            <input type="radio" name="rating" value="1" id="rate5"><label
-                                                for="rate55">⭐</label>
-                                        </fieldset>
-                                    </form>
-                                    <br>
-                                    <form name="myform" id="myform" method="post" action="./save">
-                                        <fieldset>
-                                            <legend>기업 복지</legend>
-                                            <input type="radio" name="rating" value="5" id="rate1"><label
-                                                for="rate1">⭐</label>
-                                            <input type="radio" name="rating" value="4" id="rate2"><label
-                                                for="rate2">⭐</label>
-                                            <input type="radio" name="rating" value="3" id="rate3"><label
-                                                for="rate3">⭐</label>
-                                            <input type="radio" name="rating" value="2" id="rate4"><label
-                                                for="rate4">⭐</label>
-                                            <input type="radio" name="rating" value="1" id="rate5"><label
-                                                for="rate5">⭐</label>
-                                        </fieldset>
-                                    </form>
-
-                                    <form name="myform" id="myform" method="post" action="./save">
-                                        <fieldset>
-                                            <legend>워라벨</legend>
-                                            <input type="radio" name="rating" value="5" id="rate1"><label
-                                                for="rate11">⭐</label>
-                                            <input type="radio" name="rating" value="4" id="rate2"><label
-                                                for="rate22">⭐</label>
-                                            <input type="radio" name="rating" value="3" id="rate3"><label
-                                                for="rate33">⭐</label>
-                                            <input type="radio" name="rating" value="2" id="rate4"><label
-                                                for="rate44">⭐</label>
-                                            <input type="radio" name="rating" value="1" id="rate5"><label
-                                                for="rate55">⭐</label>
-                                        </fieldset>
-                                    </form>
-
-                                    <form name="myform" id="myform" method="post" action="./save">
-                                        <fieldset>
-                                            <legend>사내 문화</legend>
-                                            <input type="radio" name="rating" value="5" id="rate1"><label
-                                                for="rate11">⭐</label>
-                                            <input type="radio" name="rating" value="4" id="rate2"><label
-                                                for="rate22">⭐</label>
-                                            <input type="radio" name="rating" value="3" id="rate3"><label
-                                                for="rate33">⭐</label>
-                                            <input type="radio" name="rating" value="2" id="rate4"><label
-                                                for="rate44">⭐</label>
-                                            <input type="radio" name="rating" value="1" id="rate5"><label
-                                                for="rate55">⭐</label>
-                                        </fieldset>
-                                    </form>
-
-                                    <form name="myform" id="myform" method="post" action="./save">
-                                        <fieldset>
-                                            <legend>승진 기회</legend>
-                                            <input type="radio" name="rating" value="5" id="rate1"><label
-                                                for="rate11">⭐</label>
-                                            <input type="radio" name="rating" value="4" id="rate2"><label
-                                                for="rate22">⭐</label>
-                                            <input type="radio" name="rating" value="3" id="rate3"><label
-                                                for="rate33">⭐</label>
-                                            <input type="radio" name="rating" value="2" id="rate4"><label
-                                                for="rate44">⭐</label>
-                                            <input type="radio" name="rating" value="1" id="rate5"><label
-                                                for="rate55">⭐</label>
-                                        </fieldset>
-                                    </form>
-
-                                    <form name="myform" id="myform" method="post" action="./save">
-                                        <fieldset>
-                                            <legend>경영진</legend>
-                                            <input type="radio" name="rating" value="5" id="rate1"><label
-                                                for="rate11">⭐</label>
-                                            <input type="radio" name="rating" value="4" id="rate2"><label
-                                                for="rate22">⭐</label>
-                                            <input type="radio" name="rating" value="3" id="rate3"><label
-                                                for="rate33">⭐</label>
-                                            <input type="radio" name="rating" value="2" id="rate4"><label
-                                                for="rate44">⭐</label>
-                                            <input type="radio" name="rating" value="1" id="rate5"><label
-                                                for="rate55">⭐</label>
-                                        </fieldset>
-                                    </form>
-                                </div>
+                    <div class="button-group-area mt-10">
+                        <a th:href="@{/companyDetail/{company_id}(company_id=${detail.company_id})}"
+                           class="genric-btn primary-border radius">기업상세</a>
+                        <a href="" class="genric-btn success radius">기업리뷰</a>
+                        <a th:href="@{/companyRecruit/{company_id}(company_id=${detail.company_id})}"
+                           class="genric-btn warning-border radius" th:text="'채용공고('+${countgongo}+')'">채용공고(4)</a>
+                    </div>
+                </div>
+                <!-- 맨 위에 기업 크게 띄워주는거 End -->
 
 
+                <!-- 전체 평균 평점 -->
+                <div class="col-lg-8 posts-list">
+                    <div class="single-post">
+                        <div class="blog_details">
+                            <h2>삼성전자 Review
+                            </h2>
+                            <ul class="blog-info-link mt-3 mb-4">
+                                <li><a href="#"><i class="fa fa-comments"></i> 03 Comments</a></li>
+                            </ul>
 
+                            <table class="reviewstar">
+                                <tr>
+                                    <td>전체 평점</td>
+                                    <td th:if="${avg.totalstar < 2}" th:text="'⭐'+${avg.totalstar}"></td>
+                                    <td th:if="${avg.totalstar >= 2} and ${avg.totalstar < 3}"
+                                        th:text="'⭐⭐'+${avg.totalstar}"></td>
+                                    <td th:if="${avg.totalstar >= 3} and ${avg.totalstar < 4}"
+                                        th:text="'⭐⭐⭐'+${avg.totalstar}"></td>
+                                    <td th:if="${avg.totalstar >= 4} and ${avg.totalstar < 5}"
+                                        th:text="'⭐⭐⭐⭐'+${avg.totalstar}"></td>
+                                    <td th:if="${avg.totalstar == 5}" th:text="'⭐⭐⭐⭐⭐'+${avg.totalstar}"></td>
+                                </tr>
+                                <tr>
+                                    <td>기업 복지</td>
+                                    <td th:if="${avg.welfare < 2}" th:text="'⭐'+${avg.welfare}"></td>
+                                    <td th:if="${avg.welfare >= 2} and ${avg.welfare < 3}"
+                                        th:text="'⭐⭐'+${avg.welfare}"></td>
+                                    <td th:if="${avg.welfare >= 3} and ${avg.welfare < 4}"
+                                        th:text="'⭐⭐⭐'+${avg.welfare}"></td>
+                                    <td th:if="${avg.welfare >= 4} and ${avg.welfare < 5}"
+                                        th:text="'⭐⭐⭐⭐'+${avg.welfare}"></td>
+                                    <td th:if="${avg.welfare == 5}" th:text="'⭐⭐⭐⭐⭐'+${avg.welfare}"></td>
+                                </tr>
+                                <tr>
+                                    <td>워라벨</td>
+                                    <td th:if="${avg.work_life_balance < 2}"
+                                        th:text="'⭐'+${avg.work_life_balance}"></td>
+                                    <td th:if="${avg.work_life_balance >= 2} and ${avg.work_life_balance < 3}"
+                                        th:text="'⭐⭐'+${avg.work_life_balance}"></td>
+                                    <td th:if="${avg.work_life_balance >= 3} and ${avg.work_life_balance < 4}"
+                                        th:text="'⭐⭐⭐'+${avg.work_life_balance}"></td>
+                                    <td th:if="${avg.work_life_balance >= 4} and ${avg.work_life_balance < 5}"
+                                        th:text="'⭐⭐⭐⭐'+${avg.work_life_balance}"></td>
+                                    <td th:if="${avg.work_life_balance == 5}"
+                                        th:text="'⭐⭐⭐⭐⭐'+${avg.work_life_balance}"></td>
+                                </tr>
+                                <tr>
+                                    <td>사내 문화</td>
+                                    <td th:if="${avg.inner_culture < 2}" th:text="'⭐'+${avg.inner_culture}"></td>
+                                    <td th:if="${avg.inner_culture >= 2} and ${avg.inner_culture < 3}"
+                                        th:text="'⭐⭐'+${avg.inner_culture}"></td>
+                                    <td th:if="${avg.inner_culture >= 3} and ${avg.inner_culture < 4}"
+                                        th:text="'⭐⭐⭐'+${avg.inner_culture}"></td>
+                                    <td th:if="${avg.inner_culture >= 4} and ${avg.inner_culture < 5}"
+                                        th:text="'⭐⭐⭐⭐'+${avg.inner_culture}"></td>
+                                    <td th:if="${avg.inner_culture == 5}" th:text="'⭐⭐⭐⭐⭐'+${avg.inner_culture}"></td>
+                                </tr>
+                                <tr>
+                                    <td>승진 기회</td>
+                                    <td th:if="${avg.p_opportunity < 2}" th:text="'⭐'+${avg.p_opportunity}"></td>
+                                    <td th:if="${avg.p_opportunity >= 2} and ${avg.p_opportunity < 3}"
+                                        th:text="'⭐⭐'+${avg.p_opportunity}"></td>
+                                    <td th:if="${avg.p_opportunity >= 3} and ${avg.p_opportunity < 4}"
+                                        th:text="'⭐⭐⭐'+${avg.p_opportunity}"></td>
+                                    <td th:if="${avg.p_opportunity >= 4} and ${avg.p_opportunity < 5}"
+                                        th:text="'⭐⭐⭐⭐'+${avg.p_opportunity}"></td>
+                                    <td th:if="${avg.p_opportunity == 5}" th:text="'⭐⭐⭐⭐⭐'+${avg.p_opportunity}"></td>
+                                </tr>
+                                <tr>
+                                    <td>경영진</td>
+                                    <td th:if="${avg.management < 2}" th:text="'⭐'+${avg.management}"></td>
+                                    <td th:if="${avg.management >= 2} and ${avg.management < 3}"
+                                        th:text="'⭐⭐'+${avg.management}"></td>
+                                    <td th:if="${avg.management >= 3} and ${avg.management < 4}"
+                                        th:text="'⭐⭐⭐'+${avg.management}"></td>
+                                    <td th:if="${avg.management >= 4} and ${avg.management < 5}"
+                                        th:text="'⭐⭐⭐⭐'+${avg.management}"></td>
+                                    <td th:if="${avg.management == 5}" th:text="'⭐⭐⭐⭐⭐'+${avg.management}"></td>
+                                </tr>
+                            </table>
+                            <br>
 
-                            </div>
-                            <div class="album-actions">
-                                <a href="#" class="album-action">
-                                    <svg stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"
-                                         stroke-linejoin="round" viewBox="0 0 24 24">
-                                        <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/>
-                                    </svg>
-                                    87
-                                </a>
-                                <a href="#" class="album-action">
-                                    <svg stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"
-                                         stroke-linejoin="round" class="css-i6dzq1" viewBox="0 0 24 24">
-                                        <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
-                                    </svg>
-                                    20
-                                </a>
-                                <a href="#" class="album-action">
-                                    <svg stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"
-                                         stroke-linejoin="round" class="css-i6dzq1" viewBox="0 0 24 24">
-                                        <path d="M17 1l4 4-4 4"/>
-                                        <path d="M3 11V9a4 4 0 014-4h14M7 23l-4-4 4-4"/>
-                                        <path d="M21 13v2a4 4 0 01-4 4H3"/>
-                                    </svg>
-                                    13
-                                </a>
-                            </div>
-                            </div>
-                            <div class="status box">
-                                <div class="status-menu">
-                                    <a class="status-menu-item active" href="#">Status</a>
-                                    <a class="status-menu-item" href="#">Photos</a>
-                                    <a class="status-menu-item" href="#">Videos</a>
-                                </div>
-                                <div class="status-main">
-                                    <textarea class="status-textarea"
-                                              placeholder="Write something to Quan Ha.."></textarea>
-                                </div>
-                                <div class="status-actions">
-                                    <a href="#" class="status-action">
-                                        <svg viewBox="-42 0 512 512" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M333.7 123.3c0 33.9-12.2 63.2-36.2 87.2-24 24-53.3 36.1-87.1 36.1h-.1c-33.9 0-63.2-12.1-87.1-36.1-24-24-36.2-53.3-36.2-87.2 0-33.9 12.2-63.2 36.2-87.2 24-24 53.2-36 87-36.1h.2c33.8 0 63.2 12.2 87.1 36.1 24 24 36.2 53.3 36.2 87.2zm0 0"
-                                                  fill="#ffbb85"/>
-                                            <path d="M427.2 424c0 26.7-8.5 48.3-25.3 64.3-16.5 15.7-38.4 23.7-65 23.7H90.2c-26.6 0-48.5-8-65-23.7C8.5 472.3 0 450.7 0 423.9c0-10.2.3-20.4 1-30.2a302.7 302.7 0 0112.1-64.9c3.3-10.3 7.8-20.5 13.4-30.3 5.8-10.2 12.5-19 20.1-26.3a89 89 0 0129-18.2c11.2-4.4 23.7-6.7 37-6.7 5.2 0 10.3 2.2 20 8.5l21 13.5c6.6 4.3 15.7 8.3 27 11.9a107.7 107.7 0 0033 5.3c11 0 22-1.8 33-5.3 11.2-3.6 20.3-7.6 27-12l21-13.4c9.7-6.3 14.7-8.5 20-8.5 13.3 0 25.7 2.3 37 6.7a89 89 0 0128.9 18.2c7.6 7.3 14.4 16.1 20.2 26.3 5.5 9.8 10 20 13.3 30.3a305.5 305.5 0 0112.1 64.9c.7 9.8 1 20 1 30.2zm0 0"
-                                                  fill="#6aa9ff"/>
-                                            <path d="M210.4 246.6h-.1V0c34 0 63.3 12.2 87.2 36.1 24 24 36.2 53.3 36.2 87.2 0 33.9-12.2 63.2-36.2 87.2-24 24-53.3 36.1-87.1 36.1zm0 0"
-                                                  fill="#f5a86c"/>
-                                            <path d="M427.2 424c0 26.7-8.5 48.3-25.3 64.3-16.5 15.7-38.4 23.7-65 23.7H210.2V286.5h3.3c11 0 22-1.8 33-5.3 11.2-3.6 20.3-7.6 27-12l21-13.4c9.7-6.3 14.7-8.5 20-8.5 13.3 0 25.7 2.3 37 6.7a89 89 0 0128.9 18.2c7.6 7.3 14.4 16.1 20.2 26.3 5.5 9.8 10 20 13.3 30.3a305.5 305.5 0 0112.1 64.9c.7 9.8 1 20 1 30.2zm0 0"
-                                                  fill="#2682ff"/>
-                                        </svg>
-                                        People
-                                    </a>
-                                    <a href="#" class="status-action">
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                                            <path d="M87.084 192c-.456-5.272-.688-10.6-.688-16C86.404 78.8 162.34 0 256.004 0s169.6 78.8 169.6 176c0 5.392-.232 10.728-.688 16h.688c0 96.184-169.6 320-169.6 320s-169.6-223.288-169.6-320h.68zm168.92 32c36.392 1.024 66.744-27.608 67.84-64-1.096-36.392-31.448-65.024-67.84-64-36.392-1.024-66.744 27.608-67.84 64 1.096 36.392 31.448 65.024 67.84 64z"
-                                                  fill="#e21b1b"/>
-                                        </svg>
-                                        Check in
-                                    </a>
-                                    <a href="#" class="status-action">
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                                            <circle cx="256" cy="256" r="256" fill="#ffca28"/>
-                                            <g fill="#6d4c41">
-                                                <path d="M399.68 208.32c-8.832 0-16-7.168-16-16 0-17.632-14.336-32-32-32s-32 14.368-32 32c0 8.832-7.168 16-16 16s-16-7.168-16-16c0-35.296 28.704-64 64-64s64 28.704 64 64c0 8.864-7.168 16-16 16zM207.68 208.32c-8.832 0-16-7.168-16-16 0-17.632-14.368-32-32-32s-32 14.368-32 32c0 8.832-7.168 16-16 16s-16-7.168-16-16c0-35.296 28.704-64 64-64s64 28.704 64 64c0 8.864-7.168 16-16 16z"/>
-                                            </g>
-                                            <path d="M437.696 294.688c-3.04-4-7.744-6.368-12.736-6.368H86.4c-5.024 0-9.728 2.336-12.736 6.336-3.072 4.032-4.032 9.184-2.688 14.016C94.112 390.88 170.08 448.32 255.648 448.32s161.536-57.44 184.672-139.648c1.376-4.832.416-9.984-2.624-13.984z"
-                                                  fill="#fafafa"/>
-                                        </svg>
-                                        Mood
-                                    </a>
-                                    <button class="status-share">Share</button>
-                                </div>
-                            </div>
-                            <div class="album box box2">
-                                <div class="status-main">
-                                    <div class="album-detail">
-                                        <div class="album-title"><strong>현직자</strong>의 리뷰</div>
-                                        <div class="album-title"><strong>연봉</strong><span>3800만원</span></div>
-                                        <div class="album-date">2022.11.28</div>
-                                    </div>
-                                    <button class="intro-menu"></button>
-                                </div>
-                                <div class="starandreview">
-                                    <div class="restar">
-                                        <form name="myform" id="myform" method="post" action="./save">
+                            <div class="comment-form">
+                                <h4>Leave a Reivew</h4>
+                                <form class="form-contact comment_form" id="myform" method="post"
+                                      th:action="@{/companyReview/{company_id}(company_id=${detail.company_id})}">
+                                    <div class="row">
+
+                                        <div class="starform" style="text-align: center;">
                                             <fieldset>
                                                 <legend>기업 복지</legend>
-                                                <input type="radio" name="rating" value="5" id="rate1"><label
-                                                    for="rate1">⭐</label>
-                                                <input type="radio" name="rating" value="4" id="rate2"><label
-                                                    for="rate2">⭐</label>
-                                                <input type="radio" name="rating" value="3" id="rate3"><label
-                                                    for="rate3">⭐</label>
-                                                <input type="radio" name="rating" value="2" id="rate4"><label
-                                                    for="rate4">⭐</label>
-                                                <input type="radio" name="rating" value="1" id="rate5"><label
-                                                    for="rate5">⭐</label>
+                                                <input type="radio" name="welfare" value="5" id="wel1"><label
+                                                    for="wel1">⭐</label>
+                                                <input type="radio" name="welfare" value="4" id="wel2"><label
+                                                    for="wel2">⭐</label>
+                                                <input type="radio" name="welfare" value="3" id="wel3"><label
+                                                    for="wel3">⭐</label>
+                                                <input type="radio" name="welfare" value="2" id="wel4"><label
+                                                    for="wel4">⭐</label>
+                                                <input type="radio" name="welfare" value="1" id="wel5"><label
+                                                    for="wel5">⭐</label>
                                             </fieldset>
-                                        </form>
-                                        <form name="myform" id="myform" method="post" action="./save">
                                             <fieldset>
                                                 <legend>워라벨</legend>
-                                                <input type="radio" name="rating" value="5" id="rate1"><label
-                                                    for="rate1">⭐</label>
-                                                <input type="radio" name="rating" value="4" id="rate2"><label
-                                                    for="rate2">⭐</label>
-                                                <input type="radio" name="rating" value="3" id="rate3"><label
-                                                    for="rate3">⭐</label>
-                                                <input type="radio" name="rating" value="2" id="rate4"><label
-                                                    for="rate4">⭐</label>
-                                                <input type="radio" name="rating" value="1" id="rate5"><label
-                                                    for="rate5">⭐</label>
+                                                <input type="radio" name="work_life_balance" value="5" id="wor1"><label
+                                                    for="wor1">⭐</label>
+                                                <input type="radio" name="work_life_balance" value="4" id="wor2"><label
+                                                    for="wor2">⭐</label>
+                                                <input type="radio" name="work_life_balance" value="3" id="wor3"><label
+                                                    for="wor3">⭐</label>
+                                                <input type="radio" name="work_life_balance" value="2" id="wor4"><label
+                                                    for="wor4">⭐</label>
+                                                <input type="radio" name="work_life_balance" value="1" id="wor5"><label
+                                                    for="wor5">⭐</label>
                                             </fieldset>
-                                        </form>
-                                        <form name="myform" id="myform" method="post" action="./save">
                                             <fieldset>
                                                 <legend>사내 문화</legend>
-                                                <input type="radio" name="rating" value="5" id="rate1"><label
-                                                    for="rate1">⭐</label>
-                                                <input type="radio" name="rating" value="4" id="rate2"><label
-                                                    for="rate2">⭐</label>
-                                                <input type="radio" name="rating" value="3" id="rate3"><label
-                                                    for="rate3">⭐</label>
-                                                <input type="radio" name="rating" value="2" id="rate4"><label
-                                                    for="rate4">⭐</label>
-                                                <input type="radio" name="rating" value="1" id="rate5"><label
-                                                    for="rate5">⭐</label>
+                                                <input type="radio" name="inner_culture" value="5" id="cul1"><label
+                                                    for="cul1">⭐</label>
+                                                <input type="radio" name="inner_culture" value="4" id="cul2"><label
+                                                    for="cul2">⭐</label>
+                                                <input type="radio" name="inner_culture" value="3" id="cul3"><label
+                                                    for="cul3">⭐</label>
+                                                <input type="radio" name="inner_culture" value="2" id="cul4"><label
+                                                    for="cul4">⭐</label>
+                                                <input type="radio" name="inner_culture" value="1" id="cul5"><label
+                                                    for="cul5">⭐</label>
                                             </fieldset>
-                                        </form>
-                                        <form name="myform" id="myform" method="post" action="./save">
                                             <fieldset>
                                                 <legend>승진 기회</legend>
-                                                <input type="radio" name="rating" value="5" id="rate1"><label
-                                                    for="rate1">⭐</label>
-                                                <input type="radio" name="rating" value="4" id="rate2"><label
-                                                    for="rate2">⭐</label>
-                                                <input type="radio" name="rating" value="3" id="rate3"><label
-                                                    for="rate3">⭐</label>
-                                                <input type="radio" name="rating" value="2" id="rate4"><label
-                                                    for="rate4">⭐</label>
-                                                <input type="radio" name="rating" value="1" id="rate5"><label
-                                                    for="rate5">⭐</label>
+                                                <input type="radio" name="p_opportunity" value="5" id="promo1"><label
+                                                    for="promo1">⭐</label>
+                                                <input type="radio" name="p_opportunity" value="4" id="promo2"><label
+                                                    for="promo2">⭐</label>
+                                                <input type="radio" name="p_opportunity" value="3" id="promo3"><label
+                                                    for="promo3">⭐</label>
+                                                <input type="radio" name="p_opportunity" value="2" id="promo4"><label
+                                                    for="promo4">⭐</label>
+                                                <input type="radio" name="p_opportunity" value="1" id="promo5"><label
+                                                    for="promo5">⭐</label>
                                             </fieldset>
-                                        </form>
-                                        <form name="myform" id="myform" method="post" action="./save">
                                             <fieldset>
                                                 <legend>경영진</legend>
-                                                <input type="radio" name="rating" value="5" id="rate1"><label
-                                                    for="rate1">⭐</label>
-                                                <input type="radio" name="rating" value="4" id="rate2"><label
-                                                    for="rate2">⭐</label>
-                                                <input type="radio" name="rating" value="3" id="rate3"><label
-                                                    for="rate3">⭐</label>
-                                                <input type="radio" name="rating" value="2" id="rate4"><label
-                                                    for="rate4">⭐</label>
-                                                <input type="radio" name="rating" value="1" id="rate5"><label
-                                                    for="rate5">⭐</label>
+                                                <input type="radio" name="management" value="5" id="manage1"><label
+                                                    for="manage1">⭐</label>
+                                                <input type="radio" name="management" value="4" id="manage2"><label
+                                                    for="manage2">⭐</label>
+                                                <input type="radio" name="management" value="3" id="manage3"><label
+                                                    for="manage3">⭐</label>
+                                                <input type="radio" name="management" value="2" id="manage4"><label
+                                                    for="manage4">⭐</label>
+                                                <input type="radio" name="management" value="1" id="manage5"><label
+                                                    for="manage5">⭐</label>
                                             </fieldset>
-                                        </form>
+
+                                        </div>
+
+
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <h4 style="color: orangered;">단점</h4>
+                                                <textarea class="form-control w-100" name="comment" id="comment"
+                                                          cols="30" rows="9"
+                                                          placeholder="단점을 입력하세요"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <h4 style="color: royalblue;">장점</h4>
+                                                <textarea class="form-control w-100" name="comment" id="comment"
+                                                          cols="30" rows="9"
+                                                          placeholder="장점을 입력하세요"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <h4 style="color: green;">전체 리뷰</h4>
+                                                <textarea class="form-control w-100" name="comment" id="comment"
+                                                          cols="30" rows="9"
+                                                          placeholder="Write Comment"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12">
+                                            <div class="form-group">
+                                                <h4 style="display: inline;">나의 연봉은</h4>
+                                                <input class="form-control" name="number" id="email" type="number"
+                                                       placeholder="연봉" style="display: inline; width:90px;">만원
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12">
+                                            <div class="form-group">
+                                                <h4 style="display: inline;">나는 지금</h4>
+                                                <input type="checkbox" name="current_yn" value="y"
+                                                       onclick="checkOnlyOne(this)" style="display: inline;"/>현직자
+                                                <input type="checkbox" name="current_yn" value="n"
+                                                       onclick="checkOnlyOne(this)" style="display: inline;"/>전직자
+                                            </div>
+                                        </div>
+
                                     </div>
-
-                                    <div class="conspros">
-                                        단점
-                                        <div class="album-content">일을 많이 시킵니다.
-                                            <div class="album-photos">
-                                                <div class="album-right">
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                        장점
-                                        <div class="album-content"> 돈을 많이 줍니다.
-                                            <div class="album-photos">
-                                                <div class="album-right">
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                        종합리뷰
-                                        <div class="album-content"> 다니기 좋습니다.추천합니다.
-                                            <div class="album-photos">
-                                                <div class="album-right">
-
-                                                </div>
-
-                                            </div>
-
-                                        </div>
+                                    <div class="form-group" style="text-align: center;">
+                                        <button type="submit" class="button button-contactForm btn_1 boxed-btn">Share
+                                        </button>
                                     </div>
+                                </form>
+                            </div>
 
+
+                            <div th:each="r : ${review}">
+                                <!-- 현직자 리뷰 보여주기-->
+                                <!--                                <h4 th:if="${r.current_yn} == 'y'" th:text="'현직자' Review">현직자 Review  <small th:text="${#strings.substring(r.reg_date,0,10)}+ ' | '">2022.12.02 | <medium>연봉 <b th:text="${r.my_salary}">4700만원</b></medium></h4></small>-->
+                                <!--                                <h4 th:if="${r.current_yn} == 'n'" th:text="'현직자' Review">현직자 Review  <small th:text="${#strings.substring(r.reg_date,0,10)}+ ' | '">2022.12.02 | <medium>연봉 <b th:text="${r.my_salary}">4700만원</b></medium></h4></small>-->
+
+                                <br>
+                                <table>
+                                    <tr>
+                                        <td>기업 복지</td>
+                                        <td th:if="${r.welfare == 1}" th:text="'⭐'"></td>
+                                        <td th:if="${r.welfare == 2}" th:text="'⭐⭐'"></td>
+                                        <td th:if="${r.welfare == 3}" th:text="'⭐⭐⭐'"></td>
+                                        <td th:if="${r.welfare == 4}" th:text="'⭐⭐⭐⭐'"></td>
+                                        <td th:if="${r.welfare == 5}" th:text="'⭐⭐⭐⭐⭐'"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>워라벨</td>
+                                        <td th:if="${r.work_life_balance == 1}" th:text="'⭐'"></td>
+                                        <td th:if="${r.work_life_balance == 2}" th:text="'⭐⭐'"></td>
+                                        <td th:if="${r.work_life_balance == 3}" th:text="'⭐⭐⭐'"></td>
+                                        <td th:if="${r.work_life_balance == 4}" th:text="'⭐⭐⭐⭐'"></td>
+                                        <td th:if="${r.work_life_balance == 5}" th:text="'⭐⭐⭐⭐⭐'"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>사내 문화</td>
+                                        <td th:if="${r.inner_culture == 1}" th:text="'⭐'"></td>
+                                        <td th:if="${r.inner_culture == 2}" th:text="'⭐⭐'"></td>
+                                        <td th:if="${r.inner_culture == 3}" th:text="'⭐⭐⭐'"></td>
+                                        <td th:if="${r.inner_culture == 4}" th:text="'⭐⭐⭐⭐'"></td>
+                                        <td th:if="${r.inner_culture == 5}" th:text="'⭐⭐⭐⭐⭐'"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>승진 기회</td>
+                                        <td th:if="${r.p_opportunity == 1}" th:text="'⭐'"></td>
+                                        <td th:if="${r.p_opportunity == 2}" th:text="'⭐⭐'"></td>
+                                        <td th:if="${r.p_opportunity == 3}" th:text="'⭐⭐⭐'"></td>
+                                        <td th:if="${r.p_opportunity == 4}" th:text="'⭐⭐⭐⭐'"></td>
+                                        <td th:if="${r.p_opportunity == 5}" th:text="'⭐⭐⭐⭐⭐'"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>경영진</td>
+                                        <td th:if="${r.management == 1}" th:text="'⭐'"></td>
+                                        <td th:if="${r.management == 2}" th:text="'⭐⭐'"></td>
+                                        <td th:if="${r.management == 3}" th:text="'⭐⭐⭐'"></td>
+                                        <td th:if="${r.management == 4}" th:text="'⭐⭐⭐⭐'"></td>
+                                        <td th:if="${r.management == 5}" th:text="'⭐⭐⭐⭐⭐'"></td>
+                                    </tr>
+                                </table>
+                                <br>
+
+                                <h6 style="color: orangered;">단점</h6>
+                                <p class="excert" th:text="${r.cons}">
+                                    MCSE boot camps have its supporters and its detractors. Some people do not
+                                    understand why you
+                                    should have to spend money on boot camp when you can get the MCSE study materials
+                                    yourself at a
+                                    fraction of the camp price. However, who has the willpower
+                                </p>
+                                <br>
+                                <h6 style="color: royalblue;">장점</h6>
+                                <p th:text="${r.pros}">
+                                    MCSE boot camps have its supporters and its detractors. Some people do not
+                                    understand why you
+                                    should have to spend money on boot camp when you can get the MCSE study materials
+                                    yourself at a
+                                    fraction of the camp price. However, who has the willpower to actually sit through a
+                                    self-imposed MCSE training. who has the willpower to actually
+                                </p>
+                                <br>
+                                <h6 style="color: green;">종합 리뷰</h6>
+                                <div class="quote-wrapper">
+                                    <div class="quotes" th:text="${r.review_content}">
+                                        MCSE boot camps have its supporters and its detractors. Some people do not
+                                        understand why you
+                                        should have to spend money on boot camp when you can get the MCSE study
+                                        materials yourself at
+                                        a fraction of the camp price. However, who has the willpower to actually sit
+                                        through a
+                                        self-imposed MCSE training.
+                                    </div>
                                 </div>
-                                <div class="album-actions">
-                                    <a href="#" class="album-action">
-                                        <svg stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"
-                                             stroke-linejoin="round" viewBox="0 0 24 24">
-                                            <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/>
-                                        </svg>
-                                        87
-                                    </a>
-                                    <a href="#" class="album-action">
-                                        <svg stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"
-                                             stroke-linejoin="round" class="css-i6dzq1" viewBox="0 0 24 24">
-                                            <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
-                                        </svg>
-                                        20
-                                    </a>
-                                    <a href="#" class="album-action">
-                                        <svg stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"
-                                             stroke-linejoin="round" class="css-i6dzq1" viewBox="0 0 24 24">
-                                            <path d="M17 1l4 4-4 4"/>
-                                            <path d="M3 11V9a4 4 0 014-4h14M7 23l-4-4 4-4"/>
-                                            <path d="M21 13v2a4 4 0 01-4 4H3"/>
-                                        </svg>
-                                        13
-                                    </a>
+                                <p>
+                                    MCSE boot camps have its supporters and its detractors. Some people do not
+                                    understand why you
+                                    should have to spend money on boot camp when you can get the MCSE study materials
+                                    yourself at a
+                                    fraction of the camp price. However, who has the willpower
+                                </p>
+                                <p>
+                                    MCSE boot camps have its supporters and its detractors. Some people do not
+                                    understand why you
+                                    should have to spend money on boot camp when you can get the MCSE study materials
+                                    yourself at a
+                                    fraction of the camp price. However, who has the willpower to actually sit through a
+                                    self-imposed MCSE training. who has the willpower to actually
+                                </p>
+                            <div class="navigation-top">
+                                <div class="d-sm-flex justify-content-between text-center">
+                                    <p class="like-info" th:text="${r.review_likes}"><span class="align-middle"><i
+                                            class="fa fa-heart"></i></span>
+                                        people like this</p>
+                                    <div class="col-sm-4 text-center my-2 my-sm-0">
+                                        <!-- <p class="comment-count"><span class="align-middle"><i class="fa fa-comment"></i></span> 06 Comments</p> -->
+                                    </div>
                                 </div>
-
-
                             </div>
                         </div>
                     </div>
+
+
+                    <!-- 얜 나중에 혹시 쓸일이 있을까 싶어서 냅둔애-->
+                    <div class="blog-author">
+                        <div class="media align-items-center">
+                            <img src="/img/blog/author.png" alt="">
+                            <div class="media-body">
+                                <a href="#">
+                                    <h4>Harvard milan</h4>
+                                </a>
+                                <p>Second divided from form fish beast made. Every of seas all gathered use saying
+                                    you're, he
+                                    our dominion twon Second divided from</p>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
-
-            <div class="overlay" @click="rightSide = false; leftSide = false"
-                 :class="{ 'active': rightSide || leftSide }"></div>
         </div>
-
-</main>
-<footer id="fo">
+</section>
+<!--================ Blog Area end =================-->
+<footer>
     <!-- Footer Start-->
-    <div class="footer-area footer-bg footer-padding">
-        <div class="container">
-            <div class="row d-flex justify-content-between">
-                <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
-                    <div class="single-footer-caption mb-50">
-                        <div class="single-footer-caption mb-30">
-                            <div class="footer-tittle">
-                                <h4>About Us</h4>
-                                <div class="footer-pera">
-                                    <p>Heaven frucvitful doesn't cover lesser dvsays appear creeping seasons so
-                                        behold.</p>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-3 col-md-4 col-sm-5">
-                    <div class="single-footer-caption mb-50">
-                        <div class="footer-tittle">
-                            <h4>Contact Info</h4>
-                            <ul>
-                                <li>
-                                    <p>Address :Your address goes
-                                        here, your demo address.</p>
-                                </li>
-                                <li><a href="#">Phone : +8880 44338899</a></li>
-                                <li><a href="#">Email : info@colorlib.com</a></li>
-                            </ul>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-3 col-md-4 col-sm-5">
-                    <div class="single-footer-caption mb-50">
-                        <div class="footer-tittle">
-                            <h4>Important Link</h4>
-                            <ul>
-                                <li><a href="#"> View Project</a></li>
-                                <li><a href="#">Contact Us</a></li>
-                                <li><a href="#">Testimonial</a></li>
-                                <li><a href="#">Proparties</a></li>
-                                <li><a href="#">Support</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-3 col-md-4 col-sm-5">
-                    <div class="single-footer-caption mb-50">
-                        <div class="footer-tittle">
-                            <h4>Newsletter</h4>
-                            <div class="footer-pera footer-pera2">
-                                <p>Heaven fruitful doesn't over lesser in days. Appear creeping.</p>
-                            </div>
-                            <!-- Form -->
-                            <div class="footer-form">
-                                <div id="mc_embed_signup">
-                                    <form target="_blank"
-                                          action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"
-                                          method="get" class="subscribe_form relative mail_part">
-                                        <input type="email" name="email" id="newsletter-form-email"
-                                               placeholder="Email Address" class="placeholder hide-on-focus"
-                                               onfocus="this.placeholder = ''"
-                                               onblur="this.placeholder = ' Email Address '">
-                                        <div class="form-icon">
-                                            <button type="submit" name="submit" id="newsletter-submit"
-                                                    class="email_icon newsletter-submit button-contactForm"><img
-                                                    src="assets/img/icon/form.png" alt=""></button>
-                                        </div>
-                                        <div class="mt-10 info"></div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--  -->
-            <div class="row footer-wejed justify-content-between">
-                <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
-                    <!-- logo -->
-                    <div class="footer-logo mb-20">
-                        <a href="index.html"><img src="assets/img/logo/logo2_footer.png" alt=""></a>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-3 col-md-4 col-sm-5">
-                    <div class="footer-tittle-bottom">
-                        <span>5000+</span>
-                        <p>Talented Hunter</p>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-3 col-md-4 col-sm-5">
-                    <div class="footer-tittle-bottom">
-                        <span>451</span>
-                        <p>Talented Hunter</p>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-3 col-md-4 col-sm-5">
-                    <!-- Footer Bottom Tittle -->
-                    <div class="footer-tittle-bottom">
-                        <span>568</span>
-                        <p>Talented Hunter</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- footer-bottom area -->
-    <div class="footer-bottom-area footer-bg">
-        <div class="container">
-            <div class="footer-border">
-                <div class="row d-flex justify-content-between align-items-center">
-                    <div class="col-xl-10 col-lg-10 ">
-                        <div class="footer-copy-right">
-                            <p>
-                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                                Copyright &copy;
-                                <script>document.write(new Date().getFullYear());</script>
-                                All rights reserved |
-                                This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a
-                                    href="https://colorlib.com" target="_blank">Colorlib</a>
-                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col-xl-2 col-lg-2">
-                        <div class="footer-social f-right">
-                            <a href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#"><i class="fab fa-twitter"></i></a>
-                            <a href="#"><i class="fas fa-globe"></i></a>
-                            <a href="#"><i class="fab fa-behance"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <th:block th:replace="fragments/footer :: footerFragment"></th:block>
     <!-- Footer End-->
 </footer>
 
@@ -664,7 +455,8 @@
 <script src="/js/owl.carousel.min.js"></script>
 <script src="/js/slick.min.js"></script>
 <script src="/js/price_rangs.js"></script>
-
+<!-- Date Picker -->
+<script src="/js/gijgo.min.js"></script>
 <!-- One Page, Animated-HeadLin -->
 <script src="/js/wow.min.js"></script>
 <script src="/js/animated.headline.js"></script>
@@ -686,7 +478,20 @@
 <script src="/js/plugins.js"></script>
 <script src="/js/main.js"></script>
 
+<script th:inline="javascript">
+         function checkOnlyOne(element) {
 
+            const checkboxes
+                = document.getElementsByName("[[${current_yn}]]");
+
+            checkboxes.forEach((cb) => {
+              cb.checked = false;
+            })
+
+            element.checked = true;
+         }
+
+
+</script>
 </body>
-
 </html>

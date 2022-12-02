@@ -4,9 +4,12 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
+import com.jobfinder.domain.LoginVO;
+import com.jobfinder.domain.Login_ComVO;
 import com.jobfinder.repository.LoginRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.io.*;
 import java.net.HttpURLConnection;
@@ -19,6 +22,31 @@ public class LoginService {
     @Autowired
     LoginRepository loginRepository;
 
+    public LoginVO login_per(LoginVO vo){
+        LoginVO rvo = loginRepository.login_per(vo);
+        System.out.println("service_login_per" + rvo);
+        return rvo;
+    }
+
+    public Login_ComVO login_com(Login_ComVO cvo){
+        Login_ComVO rcvo = loginRepository.login_com(cvo);
+        System.out.println("service_login_com" + rcvo);
+        return rcvo;
+    }
+
+    public int set_signup_com(Login_ComVO cvo){
+        int res = loginRepository.set_signup_com(cvo);
+        return res;
+    }
+
+    public int set_signup_per(LoginVO vo){
+        int res = loginRepository.set_signup_per(vo);
+        return res;
+    }
+    public int set_signup_kko(LoginVO vo){
+        int res = loginRepository.set_signup_kko(vo);
+        return res;
+    }
     public String id_check_com(String insert_id){
         System.out.println("com Service in : " + insert_id);
         String com_id = loginRepository.id_check_com(insert_id);
@@ -54,7 +82,7 @@ public class LoginService {
             StringBuilder sb = new StringBuilder();
             sb.append("grant_type=authorization_code");
             sb.append("&client_id=a975f70f0a16a4f131af7f7cdd795234");  //본인이 발급받은 key
-            sb.append("&redirect_uri=http://127.0.0.1:8081/login");     // 본인이 설정해 놓은 경로
+            sb.append("&redirect_uri=http://127.0.0.1:8081/kakaologin");     // 본인이 설정해 놓은 경로
             sb.append("&code=" + authorize_code);
             bw.write(sb.toString());
             bw.flush();
@@ -93,10 +121,10 @@ public class LoginService {
         return access_Token;
     }
 
-    public HashMap<String, Object> getUserInfo (String access_Token) {
+    public HashMap<String, String> getUserInfo (String access_Token) {
 
         //    요청하는 클라이언트마다 가진 정보가 다를 수 있기에 HashMap타입으로 선언
-        HashMap<String, Object> userInfo = new HashMap<>();
+        HashMap<String, String> userInfo = new HashMap<>();
         String reqURL = "https://kapi.kakao.com/v2/user/me";
         try {
             URL url = new URL(reqURL);
@@ -125,12 +153,14 @@ public class LoginService {
             JsonObject properties = element.getAsJsonObject().get("properties").getAsJsonObject();
             JsonObject kakao_account = element.getAsJsonObject().get("kakao_account").getAsJsonObject();
 
+            String id = element.getAsJsonObject().get("id").getAsString();
             String nickname = properties.getAsJsonObject().get("nickname").getAsString();
             String profile_image = properties.getAsJsonObject().get("profile_image").getAsString();
             String email = kakao_account.getAsJsonObject().get("email").getAsString();
             String birthday = kakao_account.getAsJsonObject().get("birthday").getAsString();
             String gender = kakao_account.getAsJsonObject().get("gender").getAsString();
 
+            userInfo.put("id", id);
             userInfo.put("nickname", nickname);
             userInfo.put("email", email);
             userInfo.put("profile_image", profile_image);
@@ -143,5 +173,15 @@ public class LoginService {
         }
 
         return userInfo;
+    }
+
+    public LoginVO get_loginVO(LoginVO vo) {
+        LoginVO rvo = loginRepository.get_loginVO(vo);
+        return rvo;
+    }
+
+    public Login_ComVO get_login_ComVO(Login_ComVO cvo) {
+        Login_ComVO rcvo = loginRepository.Login_ComVO(cvo);
+        return rcvo;
     }
 }

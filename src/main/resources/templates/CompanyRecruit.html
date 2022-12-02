@@ -1,0 +1,213 @@
+<!doctype html>
+<html class="no-js" lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Job board HTML-5 Template </title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="shortcut icon" type="image/x-icon" href="/img/good-job_icon.png">
+
+    <!-- CSS here -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css?after">
+    <link rel="stylesheet" href="/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/css/flaticon.css">
+    <link rel="stylesheet" href="/css/slicknav.css">
+    <link rel="stylesheet" href="/css/price_rangs.css">
+    <link rel="stylesheet" href="/css/animate.min.css">
+    <link rel="stylesheet" href="/css/magnific-popup.css">
+    <link rel="stylesheet" href="/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="/css/themify-icons.css">
+    <link rel="stylesheet" href="/css/slick.css">
+    <link rel="stylesheet" href="/css/nice-select.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/c_detail.css?after">
+</head>
+
+<body>
+<!-- Preloader Start -->
+<div id="preloader-active">
+    <div class="preloader d-flex align-items-center justify-content-center">
+        <div class="preloader-inner position-relative">
+            <div class="preloader-circle"></div>
+            <div class="preloader-img pere-text">
+                <img src="" alt="">
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Preloader Start -->
+<header>
+    <!-- Header Start -->
+    <th:block th:replace="fragments/header :: headerFragment"></th:block>
+    <!-- Header End -->
+</header>
+<main>
+
+    <!-- Hero Area Start-->
+    <div class="slider-area ">
+        <div class="single-slider section-overly slider-height2 d-flex align-items-center" data-background="">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="hero-cap text-center">
+                            <h2>UI/UX Designer</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Hero Area End -->
+    <!-- job post company Start -->
+
+    <div class="job-post-company pt-120 pb-120">
+        <div class="container">
+            <div class="row justify-content-between">
+                <!-- Left Content -->
+                <div class="">
+                    <!-- job single -->
+                    <div class="single-job-items mb-50">
+                        <div class="job-items">
+                            <div class="company-img company-img-details">
+                                <a href="#"><img
+                                        src="https://jpassets.jobplanet.co.kr/production/uploads/company/logo/30139/thumb_0.jpg"
+                                        alt="" class="c_icon"></a>
+                            </div>
+                            <div class="job-tittle">
+                                <a href="#">
+                                    <h1 th:text="${detail.company_name}">삼성전자(주)</h1>
+                                </a>
+                                <ul>
+                                    <li th:text="${detail.company_industry}">전기/전자/제어</li>
+                                    <li th:text="${#strings.listSplit(detail.company_address,' ')[0]}"><i
+                                            class="fas fa-map-marker-alt"></i>서울
+                                    </li>
+                                    <li>대기업</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="button-group-area mt-10">
+                            <a th:href="@{/companyDetail/{company_id}(company_id=${detail.company_id})}"
+                               class="genric-btn primary-border radius">기업상세</a>
+                            <a th:href="@{/companyReview/{company_id}(company_id=${detail.company_id})}"
+                               class="genric-btn success-border radius">기업리뷰</a>
+                            <a href="" class="genric-btn warning radius" th:text="'채용공고('+${countgongo}+')'">채용공고(4)</a>
+                        </div>
+
+                    </div>
+                    <!-- job single End -->
+
+                    <div class="col-lg-8 posts-list">
+
+
+                        <div class="single-post">
+                            <div class="blog_details">
+
+
+                                <h2 th:text="${detail.company_name}+' 채용공고'">삼성전자 채용공고</h2>
+
+                                <ul class="blog-info-link mt-3 mb-4">
+                                    <li><a href="#"><i class="fa fa-comments" th:text="${countgongo}+'개의 채용공고'"></i></a>
+                                    </li>
+                                </ul>
+
+                                <br>
+
+
+                                <section id="groups">
+                                    <div class="row match-height">
+                                        <div class="col-12">
+                                            <div class="card-group">
+                                                <div class="card" th:each="r:${gongo}">
+                                                    <div class="card-content">
+                                                        <div class="card-body">
+                                                            <h4 class="card-title" th:text="${r.r_title}">Card
+                                                                title</h4>
+                                                            <p class="card-text" th:text="${r.r_business}">
+                                                                This card has supporting text below as a natural lead-in
+                                                                to additional
+                                                                content.</p>
+                                                            <p class="card-text" th:text="${r.r_job_pattern}">
+                                                                This card has supporting text below as a natural lead-in
+                                                                to additional
+                                                                content.</p>
+                                                            <p class="card-text" th:text="${r.r_part}">
+                                                                This card has supporting text below as a natural lead-in
+                                                                to additional
+                                                                content.</p>
+                                                            <small class="text-muted"
+                                                                   th:text="${#strings.substring(r.r_reg_date,0,10)}+' 등록'">Last
+                                                                updated 3 mins ago</small><br>
+                                                            <small class="text-muted"
+                                                                   th:text="${#strings.substring(r.r_close_date,0,10)}+' 마감'">Last
+                                                                updated 3 mins ago</small>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+
+
+                            </div>
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+        <!-- job post company End -->
+    </div>
+</main>
+<footer>
+    <!-- Footer Start-->
+    <th:block th:replace="fragments/footer :: footerFragment"></th:block>
+    <!-- Footer End-->
+</footer>
+
+<!-- JS here -->
+
+<!-- All JS Custom Plugins Link Here here -->
+<script src="/js/vendor/modernizr-3.5.0.min.js"></script>
+<!-- Jquery, Popper, Bootstrap -->
+<script src="/js/vendor/jquery-1.12.4.min.js"></script>
+<script src="/js/popper.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<!-- Jquery Mobile Menu -->
+<script src="/js/jquery.slicknav.min.js"></script>
+
+<!-- Jquery Slick , Owl-Carousel Plugins -->
+<script src="/js/owl.carousel.min.js"></script>
+<script src="/js/slick.min.js"></script>
+<script src="/js/price_rangs.js"></script>
+
+<!-- One Page, Animated-HeadLin -->
+<script src="/js/wow.min.js"></script>
+<script src="/js/animated.headline.js"></script>
+<script src="/js/jquery.magnific-popup.js"></script>
+
+<!-- Scrollup, nice-select, sticky -->
+<script src="/js/jquery.scrollUp.min.js"></script>
+<script src="/js/jquery.nice-select.min.js"></script>
+<script src="/js/jquery.sticky.js"></script>
+
+<!-- contact js -->
+<script src="/js/contact.js"></script>
+<script src="/js/jquery.form.js"></script>
+<script src="/js/jquery.validate.min.js"></script>
+<script src="/js/mail-script.js"></script>
+<script src="/js/jquery.ajaxchimp.min.js"></script>
+
+<!-- Jquery Plugins, main Jquery -->
+<script src="/js/plugins.js"></script>
+<script src="/js/main.js"></script>
+
+</body>
+</html>
