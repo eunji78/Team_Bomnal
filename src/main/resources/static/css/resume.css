@@ -155,7 +155,7 @@
     padding-top: 10px;
     width: 150px;
     color: #222;
-    font-size: 16px;
+    font-size: 17px;
 }
 
 .form_section {
@@ -170,4 +170,71 @@
     width:400px;
     padding-left:20px;
     font-size:14px;
+}
+
+.input_text::placeholder{
+    color:rgba(0,0,0, .3)
+}
+
+
+.resume_radio{
+    padding-bottom:50px;
+    border-bottom:1px solid #ebebeb;
+    text-align:center;
+    display:table;
+    width:100%;
+}
+
+.inp_check{
+  top: 0;
+  left: 0;
+  width: 18px;
+  height: 18px;
+  opacity: 0.01;
+  filter: alpha(opacity=0.1);
+}
+
+.sri_check{
+    display: inline-block;
+    height: 18px;
+    vertical-align: middle;
+    cursor: pointer;
+    height: auto;
+}
+
+.sri_check .inp_check{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 18px;
+    height: 18px;
+    opacity: 0.01;
+    filter: alpha(opacity=0.1);
+}
+
+.sri_check .sri_radio{
+    margin-left: -1px;
+    height: auto;
+    float: left;
+}
+
+.resume_radio .sri_check .txt_check {
+    padding: 15px 0 0 0;
+    width: 220px;
+    height: 60px;
+    display: block;
+    padding: 15px 0 0;
+    border: 1px solid #dfdfdf;
+    color: #888;
+    font-size: 16px;
+    text-align: center;
+    background: none;
+}
+
+.resume_radio .sri_radio.check_on .txt_check {
+    position: relative;
+    z-index: 1;
+    border: 1px solid #38a4ff;
+    color: #fff;
+    background-color: #38a4ff;
 }

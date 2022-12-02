@@ -20,9 +20,12 @@ public class Company {
 		cri.setIndustry_class(industry_class);
 		List<Company_info> list = companyService.list(cri);
 		int counting = companyService.count(industry_class);
+
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(cri);
 		pageMaker.setTotalCount((companyService.count(industry_class)));
+
+
 		model.addAttribute("list",list);
 		model.addAttribute("counting",counting);
 		session.setAttribute("pageMaker",pageMaker);
@@ -32,7 +35,9 @@ public class Company {
 	@GetMapping("/companyDetail/{company_id}")
 	public String CompanyDetail(@PathVariable String company_id, Model model) {
 		Company_info detail = companyService.detail(company_id);
+		int countgongo = companyService.countgongo(company_id);
 		model.addAttribute("detail",detail);
+		model.addAttribute("countgongo",countgongo);
 		return "CompanyDetail";
 	}
 
@@ -41,9 +46,11 @@ public class Company {
 		Company_info detail = companyService.detail(company_id);
 		ArrayList<Reviews> review = companyService.review(company_id);
 		Reviews avg = companyService.avg(company_id);
+		int countgongo = companyService.countgongo(company_id);
 		model.addAttribute("review",review);
 		model.addAttribute("detail",detail);
 		model.addAttribute("avg",avg);
+		model.addAttribute("countgongo",countgongo);
 
 		return "CompanyReview";
 	}
@@ -59,7 +66,11 @@ public class Company {
 	@GetMapping("/companyRecruit/{company_id}")
 	public String Recruit(@PathVariable String company_id, Model model){
 		Company_info detail = companyService.detail(company_id);
+		ArrayList<Recruit> gongo = companyService.gongo(company_id);
+		int countgongo = companyService.countgongo(company_id);
 		model.addAttribute("detail",detail);
+		model.addAttribute("gongo",gongo);
+		model.addAttribute("countgongo",countgongo);
 		return "CompanyRecruit";
 	}
 
