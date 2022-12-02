@@ -2,6 +2,7 @@ package com.jobfinder.repository;
 
 import com.jobfinder.domain.Company_info;
 import com.jobfinder.domain.Criteria;
+import com.jobfinder.domain.Recruit;
 import com.jobfinder.domain.Reviews;
 import com.jobfinder.persistence.CompanyMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,5 +42,15 @@ public class CompanyRepository {
     public Reviews avg(String company_id) {
         Reviews avg = companyMapper.avg(company_id);
         return avg;
+    }
+
+    public ArrayList<Recruit> gongo(String company_id) {
+        ArrayList<Recruit> gongo = companyMapper.gongo(company_id);
+        return gongo;
+    }
+
+    public int countgongo(String company_id) {
+        int countgongo = companyMapper.countgongo(company_id);
+        return countgongo;
     }
 }

@@ -2,6 +2,7 @@ package com.jobfinder.persistence;
 
 import com.jobfinder.domain.Company_info;
 import com.jobfinder.domain.Criteria;
+import com.jobfinder.domain.Recruit;
 import com.jobfinder.domain.Reviews;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
@@ -21,4 +22,8 @@ public interface CompanyMapper {
     public void save(Reviews reviews);
 
     public Reviews avg(String company_id);
+
+    ArrayList<Recruit> gongo(String company_id);
+
+    int countgongo(String company_id);
 }

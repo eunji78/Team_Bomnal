@@ -136,31 +136,29 @@
               </table>
             </div>
 
-
-
           </div>
         </div>
 
 
-        <!-- 페이징 -->
-<!--        <div style="text-align:center;">-->
-<!--          <ul class="btn-group pagination">-->
+         <!--페이징-->
+        <div style="text-align:center;">
+          <ul class="btn-group pagination">
 
-<!--            &lt;!&ndash; 이전페이지 &ndash;&gt;-->
-<!--              <li><i class="fa"><a th:if="${pageMaker.prev}" th:href="@{${pageMaker.startPage-1}}" th:text="◀">◀️</a></i></li>-->
-
-
-<!--                <li th:each="pageNum : ${#numbers.sequence(pageMaker.startPage,pageMaker.endPage)}">-->
-<!--                  <i class="fa"><a th:if="${pageMaker.cri.page == pageNum}" th:href="@{${pageNum}}" th:text="${pageNum}"><font color="red">${pageNum}</font></a></i>-->
-<!--                <i class="fa"><a th:if="${pageMaker.cri.page!=pageNum}" th:href="@{${pageNum}}" th:text="${pageNum}">${pageNum}</a></i>-->
-<!--                </li>-->
+            <!-- 이전페이지 -->
+              <li><i class="fa"><a th:if="${session.pageMaker.prev}" th:href="@{${session.pageMaker.startPage-1}}" th:text="'◀'">◀️</a></i></li>
 
 
-<!--            &lt;!&ndash; 다음페이지 &ndash;&gt;-->
-<!--              <li><i class="fa"><a th:if="${pageMaker.cri.page!=pageNum}" th:href="@{${pageMaker.endPage+1}}" th:text="▶">▶️</a></i></li>-->
+                <li th:each="pageNum : ${#numbers.sequence(session.pageMaker.startPage,session.pageMaker.endPage)}">
+                  <i class="fa"><a th:if="${session.pageMaker.cri.page == pageNum}" th:href="@{${pageNum}}" th:text="${pageNum}"><font color="red">${pageNum}</font></a></i>
+                <i class="fa"><a th:if="${session.pageMaker.cri.page!=pageNum}" th:href="@{${pageNum}}" th:text="${pageNum}">${pageNum}</a></i>
+                </li>
 
-<!--          </ul>-->
-<!--        </div>-->
+
+            <!-- 다음페이지 -->
+              <li><i class="fa"><a th:if="${session.pageMaker.cri.page!=pageNum}" th:href="@{${session.pageMaker.endPage+1}}" th:text="'▶'">▶️</a></i></li>
+
+          </ul>
+        </div>
 
 
 
@@ -198,17 +196,17 @@
                   <a th:href="@{/CompanyList/{industry_class}(industry_class='제조·화학')}">제조·화학</a>
               </li>
               <li>
-                <a href="#" class="d-flex">
+                <a th:href="@{/CompanyList/{industry_class}(industry_class='의료·제약·복지')}" class="d-flex">
                   <p>의료·제약·복지</p>
                 </a>
               </li>
               <li>
-                <a href="#" class="d-flex">
+                <a th:href="@{/CompanyList/{industry_class}(industry_class='교육업')}" class="d-flex">
                   <p>교육업</p>
                 </a>
               </li>
               <li>
-                <a href="#" class="d-flex">
+                <a th:href="@{/CompanyList/{industry_class}(industry_class='건설업')}" class="d-flex">
                   <p>건설업</p>
                 </a>
               </li>
@@ -218,17 +216,17 @@
                 </a>
               </li>
               <li>
-                <a href="#" class="d-flex">
+                <a th:href="@{/CompanyList/{industry_class}(industry_class='미디어·디자인')}" class="d-flex">
                   <p>미디어·디자인</p>
                 </a>
               </li>
               <li>
-                <a href="#" class="d-flex">
+                <a th:href="@{/CompanyList/{industry_class}(industry_class='은행·금융업')}" class="d-flex">
                   <p>은행·금융업</p>
                 </a>
               </li>
               <li>
-                <a href="#" class="d-flex">
+                <a th:href="@{/CompanyList/{industry_class}(industry_class='기관·협회')}" class="d-flex">
                   <p>기관·협회</p>
                 </a>
               </li>
@@ -459,18 +457,16 @@
 <!-- Jquery Plugins, main Jquery -->
 <script src="/js/plugins.js"></script>
 <script src="/js/main.js"></script>
-<!--<script th:inline="javascript">-->
-<!--    /*<![CDATA[*/-->
-<!--	$(document).ready(function(){-->
-<!--		$(".pagination a").click(function(e){-->
-<!--			e.preventDefault();-->
-<!--		var page=$(this).attr("href");-->
-<!--		document.frm.page.value=page;-->
-<!--		document.frm.submit();-->
-<!--		});-->
-<!--	});-->
-<!--	/*]]>*/-->
-<!--</script>-->
+<script th:inline="javascript">
+	$(document).ready(function(){
+		$(".pagination a").click(function(e){
+			e.preventDefault();
+		var page=$(this).attr("href");
+		document.frm.page.value=page;
+		document.frm.submit();
+		});
+	});
+</script>
 
 </body>
 

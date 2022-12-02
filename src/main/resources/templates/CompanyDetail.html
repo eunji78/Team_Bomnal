@@ -124,18 +124,18 @@
                                 </a>
                                 <ul>
                                     <li th:text="${detail.company_industry}">전기/전자/제어</li>
-                                    <li th:text="${detail.company_address}"><i class="fas fa-map-marker-alt"></i>서울</li>
+                                    <li th:text="${#strings.listSplit(detail.company_address,' ')[0]}"><i class="fas fa-map-marker-alt"></i>서울</li>
                                     <li>대기업</li>
                                 </ul>
                             </div>
                         </div>
 
                         <div class="button-group-area mt-10">
-                            <a href="" class="genric-btn primary radius">기업 상세</a>
+                            <a href="" class="genric-btn primary radius">기업상세</a>
                             <a th:href="@{/companyReview/{company_id}(company_id=${detail.company_id})}"
                                class="genric-btn success-border radius">기업리뷰</a>
                             <a th:href="@{/companyReview/{company_id}(company_id=${detail.company_id})}"
-                               class="genric-btn warning-border radius">채용공고(4)</a>
+                               class="genric-btn warning-border radius" th:text="'채용공고('+${countgongo}+')'">채용공고(4)</a>
                         </div>
 
                     </div>

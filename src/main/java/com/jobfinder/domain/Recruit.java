@@ -14,6 +14,8 @@ public class Recruit {
     private String r_business;
     private String r_license;
     private String r_detail;
+    private String r_reg_date;
     private String r_close_date;
     private String company_logo;
+    private String r_volume;
 }
