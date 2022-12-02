@@ -538,7 +538,7 @@ body {
   border: none;
   resize: none;
   margin-top: 15px;
-  color: #fff;
+  color: black;
   max-width: calc(100% - 70px);
 }
 .status-textarea::placeholder {
@@ -643,7 +643,7 @@ body {
 }
 
 .album-actions {
-  padding: 0 20px 20px;
+  padding-top: 20px;
 }
 
 .album-action {
@@ -924,13 +924,24 @@ body {
 .status.box {
     margin-bottom : 20px;
 }
-
 .starandreview {
-                   display: flex;
-                   justify-content: space-around;
-               }
-
-.totalstar {
+    display:flex;
+    justify-content: space-around;
+}
+.reviewform {
     display: flex;
     justify-content: space-around;
+    flex-direction: column;
+    }
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.proscons {
+    border-spacing : 20px;
+    border-collapse: separate;
 }

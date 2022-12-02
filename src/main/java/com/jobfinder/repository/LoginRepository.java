@@ -18,6 +18,18 @@ public class LoginRepository {
         return loginVO;
     }
 
+    public LoginVO login_per(LoginVO vo){
+        LoginVO rvo = loginMapper.login_per(vo);
+        System.out.println("Repository_login_per" + rvo);
+        return rvo;
+    }
+
+    public Login_ComVO login_com(Login_ComVO cvo){
+        Login_ComVO rcvo = loginMapper.login_com(cvo);
+        System.out.println("Repository_login_com" + rcvo);
+        return rcvo;
+    }
+
     public int set_signup_com(Login_ComVO cvo){
         int res = loginMapper.set_signup_com(cvo);
         return res;
@@ -46,5 +58,15 @@ public class LoginRepository {
         //if (mem_id == null) mem_id = "null";
         System.out.println("per Mapper out : " + mem_id);
         return mem_id;
+    }
+
+    public LoginVO get_loginVO(LoginVO vo) {
+        LoginVO rvo = loginMapper.login_per(vo);
+        return rvo;
+    }
+
+    public Login_ComVO Login_ComVO(Login_ComVO cvo) {
+        Login_ComVO rcvo = loginMapper.login_com(cvo);
+        return rcvo;
     }
 }

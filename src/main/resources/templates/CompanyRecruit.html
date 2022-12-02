@@ -120,7 +120,7 @@
               </div>
               <div class="job-tittle">
                 <a href="#">
-                  <h1>삼성전자(주)</h1>
+                  <h1 th:text="${detail.company_name}">삼성전자(주)</h1>
                 </a>
                 <ul>
                   <li>전기/전자/제어</li>
@@ -131,8 +131,8 @@
             </div>
 
             <div class="button-group-area mt-10">
-              <a href="/CompanyDetail" class="genric-btn primary radius">기업 상세</a>
-              <a href="/CompanyReview" class="genric-btn success-border radius">기업리뷰</a>
+              <a th:href="@{/companyDetail/{company_id}(company_id=${detail.company_id})}" class="genric-btn primary-border radius">기업 상세</a>
+              <a th:href="@{/companyReview/{company_id}(company_id=${detail.company_id})}" class="genric-btn success-border radius">기업리뷰</a>
               <a href="" class="genric-btn warning radius">채용공고(4)</a>
             </div>
 

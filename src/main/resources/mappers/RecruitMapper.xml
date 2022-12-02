@@ -4,7 +4,9 @@
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jobfinder.persistence.RecruitMapper">
 
-    <select id="noticeDetail" resultType="Recruit">
-        select * from r_title, r_career, r_academic_ability, r_job_pattern, r_salary, r_worktime, r_wide_area, r_detail, r_part, r_bisiness, r_license, r_close_date
+    <select id="notice" parameterType="int" resultType="Recruit">
+        select company_name, r_title, r_career, r_job_pattern, r_salary, r_wide_area, r_part, r_business, r_license, r_detail, r_close_date, company_logo
+        from jobplanet_delete
+        where r_seq = #{r_seq}
     </select>
 </mapper>

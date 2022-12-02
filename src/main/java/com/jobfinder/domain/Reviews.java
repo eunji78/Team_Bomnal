@@ -18,5 +18,6 @@ public class Reviews {
     private String pros;
     private String cons;
     private int my_salary;
-    private char retire_yn;
+    private char current_yn;
+    private double total;
 }
