@@ -44,7 +44,7 @@
                 <!-- Left Content -->
                 <div class="col-xl-8 col-lg-9">
                     <!-- job single -->
-                    <div class="single-job-items mb-30" style="padding-left: 10px; padding: right 10px;">
+                    <div class="single-job-items mb-30" style="padding-left: 10px; padding-right: 10px;">
                         <div class="job-items">
                             <div class="company-img company-img-details">
                                 <!-- 로고 이미지가 없을 때 대체 이미지 적용!-->
@@ -57,26 +57,33 @@
                                     <h5 th:text="${notice.company_name}">기업이름</h5>
                                 </a>
 
-                                <h3 th:text="${notice.r_title}">공고 제목</h3>
+                                <h4 th:text="${notice.r_title}">공고 제목</h4>
+                                <br>
                                 <table width="620" height="120">
                                     <tr>
-                                        <td width="120"><img src="/img/icon/bag.png" class="img_logo">&nbsp&nbsp작업개요
+                                        <td width="120"><img src="/img/icon/bag.png" class="img_logo">&nbsp&nbsp모집부문
                                         </td>
-                                        <td th:text="${notice.r_part}">신입·경력</td>
-
+                                        <td colspan="3" th:text="${notice.r_part}">개발자</td>
                                     </tr>
                                     <tr>
-                                        <td width="120"><img src="/img/icon/pin.png" class="img_logo">&nbsp&nbsp근무지</td>
-                                        <td th:text="${notice.r_wide_area}"></td>
-                                    </tr>
-                                    <tr>
-                                        <td width="120"><img src="/img/icon/yen.png" class="img_logo">&nbsp&nbsp연례</td>
-                                        <td th:text="${notice.r_salary}"></td>
-                                    </tr>
-                                    <tr>
-                                        <td width="120"><img src="/img/icon/sun.png" class="img_logo">&nbsp&nbsp휴일·휴가
+                                        <td width="120"><img src="/img/icon/career.png" class="img_logo">&nbsp&nbsp경력
                                         </td>
-                                        <td th:text="${notice.r_job_pattern}">정규직 수습기간 3개월</td>
+                                        <td th:text="${notice.r_career}" width="190">경력무관</td>
+                                        <td width="120"><img src="/img/icon/sun.png" class="img_logo">&nbsp&nbsp근무형태
+                                        </td>
+                                        <td th:text="${notice.r_job_pattern}" width="190">정규직</td>
+                                    </tr>
+                                    <tr>
+                                        <td width="120"><img src="/img/icon/education.png" class="img_logo">&nbsp&nbsp학력
+                                        </td>
+                                        <td width="190">학력무관</td>
+                                        <td width="120"><img src="/img/icon/pin.png" class="img_logo">&nbsp&nbsp근무지역
+                                        </td>
+                                        <td th:text="${notice.r_wide_area}" width="190">서울</td>
+                                    </tr>
+                                    <tr>
+                                        <td width="100"><img src="/img/icon/yen.png" class="img_logo">&nbsp&nbsp급여</td>
+                                        <td th:text="${notice.r_salary}" width="210">회사 내규에 따름</td>
                                     </tr>
                                 </table>
                             </div>
@@ -93,8 +100,10 @@
                         </div>
                         <div class="job-message">
                             <div class="job-message-dis">
-                                <!--<img class = "company_image" src="/img/test/chi.jpg">-->
-                                <p th:text="${notice.r_detail}">기업메시지 넣으세요~</p>
+                                <div class="job-post-details">
+                                    <!--<img class = "company_image" src="/img/test/chi.jpg">-->
+                                    <p th:text="${notice.r_detail}">기업메시지 넣으세요~</p>
+                                </div>
                             </div>
                             <div class="job-message-dis">
                                 <div class="job-post-details">
@@ -112,7 +121,7 @@
                                             opposed to using,
                                             Content here content here making it look like readable.</p>
                                     </div>
-                                    <div class="post-details2  mb-50">
+                                    <div class="post-details1  mb-50">
                                         <!-- Small Section Tittle -->
                                         <div class="small-section-tittle">
                                             <h4>담당업무</h4>
@@ -141,15 +150,25 @@
                                             <div class="card">
                                                 <div class="card-body">
                                                     <div class="row">
-                                                        <div class="col" id = "dday">
-                                                            <h2> D-day </h2>
+                                                        <div class="col align-self-center" id="dday">
+                                                            <h3> 남은 기간 </h3>
+                                                            <br>
                                                             <h4 id="demo"></h4>
                                                             <br>
                                                         </div>
-                                                        <div class="col-8">
-                                                            지원 방법 입사지원<br>
-                                                            담당자 <br>
-                                                            연락처 <br>
+                                                        <div class="col-8 align-self-center">
+                                                            <div class="small-section-tittle h4">
+                                                                <h4>담당자 정보</h4>
+                                                            </div>
+                                                            <div class="smallsection h5">
+                                                                <h5>이메일</h5>
+                                                            </div>
+                                                            <div class="smallsection h5">
+                                                                <h5>이름</h5>
+                                                            </div>
+                                                            <div class="smallsection h5">
+                                                                <h5>전화번호</h5>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -166,12 +185,12 @@
                     <div class="post-details3 mb-50" id="slidemenu">
                         <!-- Small Section Tittle -->
                         <div class="small-section-tittle">
-                            <h4>회사이름</h4>
+                            <h4 th:text="${notice.company_name}">회사이름</h4>
                         </div>
                         <ul>
-                            <!--<li>공고 시작 : <span>12 Aug 2019</span></li>-->
-                            <li>공고 마감 : <span th:text="${notice.r_close_date}">12 Dec 2022</span></li>
-                            <li id = "expired"></li>
+                            <li><span th:text="${notice.r_title}"></span></li>
+                            <li>공고 마감&nbsp:&nbsp<span th:text="${notice.r_close_date}">12 Dec 2022</span></li>
+                            <li id="expired"></li>
                         </ul>
                         <div class="apply-btn2">
                             <a href="#" class="btn info">입사 지원</a>
@@ -217,6 +236,8 @@
   }
 }, 1000);
 
+
+
 </script>
 
 <!-- JS here -->
@@ -226,6 +247,8 @@
 <!-- Jquery, Popper, Bootstrap -->
 <script src="/js/vendor/jquery-1.12.4.min.js"></scrip >
             <script src="./js/popper.min.js">
+
+
 
 
 
@@ -261,8 +284,10 @@
 <!-- Jquery Plugins, main Jquery -->
 <script src="/js/plugins.js"></script>
 <script src="/js/main.js"></script>
-
+<!-- 따라다니는 메뉴 -->
 <script src="/js/quickmenu.js"></script>
+<!-- 날짜 라이브러리 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
 </body>
 
 </html>

@@ -66,7 +66,7 @@
 .single-job-items .company-img img {
     overflow: hidden;
     float: left;
-    margin-right: 32px;
+    margin-right: 20px !important;
     z-index: 999;
     width: 85px !important;
     height: 85px !important;
@@ -93,4 +93,35 @@
 }
 #dday{
     text-align : center;
+}
+
+.smallsection h5 {
+    color: black;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+.post-details3 ul li {
+    display: flex;
+    justify-content: flex-start !important;
+    margin-bottom: 12px
+}
+
+.job-items {
+    display: flex;
+    justify-content:center !important;
+    flex-wrap: wrap
+}
+
+.single-job-items {
+    padding: 36px 30px;
+    display: flex;
+    justify-content: center !important;
+    flex-wrap: wrap;
+    -webkit-transition: .4s;
+    -moz-transition: .4s;
+    -o-transition: .4s;
+    transition: .4s
 }

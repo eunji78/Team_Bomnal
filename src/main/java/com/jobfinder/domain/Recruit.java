@@ -4,6 +4,7 @@ import lombok.Data;
 
 @Data
 public class Recruit {
+    private int r_seq;
     private String company_name;
     private String r_title;
     private String r_career;
@@ -16,5 +17,7 @@ public class Recruit {
     private String r_detail;
     private String r_close_date;
     private String company_logo;
-    private int r_seq;
+    private String agent_email;
+    private String agent_name;
+    private String agent_phone;
 }
