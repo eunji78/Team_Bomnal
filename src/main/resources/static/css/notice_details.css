@@ -1,14 +1,3 @@
-.footer-padding1 {
-    padding-top: 20px !important;
-    padding-bottom: 20px !important;
-    height: 250px !important;
-}
-
-.footer-bottom-area .footer-border {
-    border-top: 1px solid #2d3544 !important;
-    padding: 20px 0px 20px !important;
-}
-
 .job-change input[type=radio] {
     display: none;
 }
@@ -53,7 +42,6 @@
 }
 
 .job-message {
-    /* background-color: rgba(0, 0, 0, 0.2); */
     min-height: 800px;
 }
 
@@ -95,7 +83,7 @@
     text-align : center;
 }
 
-.smallsection h5 {
+.smallsection h5{
     color: black;
     font-size: 15px;
     font-weight: 400;
@@ -124,4 +112,38 @@
     -moz-transition: .4s;
     -o-transition: .4s;
     transition: .4s
+}
+
+.post-details3 ul li:last-child {
+    margin-bottom: 20px !important;
+}
+
+.notice_r{
+    width : 620px;
+    text-overflow:ellipsis;
+    overflow:hidden;
+}
+
+.notice_table{
+    width : 620px;
+    height : 120px;
+    table-layout : fixed;
+}
+
+.notice_td1{
+    width : 120px;
+}
+
+.notice_td2{
+    width : 190px;
+    text-overflow:ellipsis;
+    overflow:hidden;
+    white-space:nowrap;
+}
+
+.deadline{
+    width : 144px;
+    text-overflow:ellipsis;
+    overflow:hidden;
+    white-space:nowrap;
 }

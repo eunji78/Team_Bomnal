@@ -8,7 +8,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="manifest" href="site.webmanifest">
     <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico">
-    <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
 
     <!-- CSS here -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -56,34 +55,36 @@
                                 <a href="#">
                                     <h5 th:text="${notice.company_name}">기업이름</h5>
                                 </a>
-
-                                <h4 th:text="${notice.r_title}">공고 제목</h4>
+                                <div class="notice_r">
+                                    <h4 th:text="${notice.r_title}">공고 제목</h4>
+                                </div>
                                 <br>
-                                <table width="620" height="120">
+                                <table class="notice_table">
                                     <tr>
-                                        <td width="120"><img src="/img/icon/bag.png" class="img_logo">&nbsp&nbsp모집부문
+                                        <td class="notice_td1"><img src="/img/icon/bag.png" class="img_logo">&nbsp&nbsp모집부문
                                         </td>
                                         <td colspan="3" th:text="${notice.r_part}">개발자</td>
                                     </tr>
                                     <tr>
-                                        <td width="120"><img src="/img/icon/career.png" class="img_logo">&nbsp&nbsp경력
+                                        <td class="notice_td1"><img src="/img/icon/career.png" class="img_logo">&nbsp&nbsp경력
                                         </td>
-                                        <td th:text="${notice.r_career}" width="190">경력무관</td>
-                                        <td width="120"><img src="/img/icon/sun.png" class="img_logo">&nbsp&nbsp근무형태
+                                        <td th:text="${notice.r_career}" class="notice_td2">경력무관</td>
+                                        <td class="notice_td1"><img src="/img/icon/sun.png" class="img_logo">&nbsp&nbsp근무형태
                                         </td>
-                                        <td th:text="${notice.r_job_pattern}" width="190">정규직</td>
+                                        <td th:text="${notice.r_job_pattern}" class="notice_td2">정규직</td>
                                     </tr>
                                     <tr>
-                                        <td width="120"><img src="/img/icon/education.png" class="img_logo">&nbsp&nbsp학력
+                                        <td class="notice_td1"><img src="/img/icon/education.png" class="img_logo">&nbsp&nbsp학력
                                         </td>
-                                        <td width="190">학력무관</td>
-                                        <td width="120"><img src="/img/icon/pin.png" class="img_logo">&nbsp&nbsp근무지역
+                                        <td class="notice_td2">학력무관</td>
+                                        <td class="notice_td1"><img src="/img/icon/pin.png" class="img_logo">&nbsp&nbsp근무지역
                                         </td>
-                                        <td th:text="${notice.r_wide_area}" width="190">서울</td>
+                                        <td th:text="${notice.r_wide_area}" class="notice_td2">서울</td>
                                     </tr>
                                     <tr>
-                                        <td width="100"><img src="/img/icon/yen.png" class="img_logo">&nbsp&nbsp급여</td>
-                                        <td th:text="${notice.r_salary}" width="210">회사 내규에 따름</td>
+                                        <td class="notice_td1"><img src="/img/icon/yen.png" class="img_logo">&nbsp&nbsp급여
+                                        </td>
+                                        <td th:text="${notice.r_salary}" class="notice_td2">회사 내규에 따름</td>
                                     </tr>
                                 </table>
                             </div>
@@ -112,14 +113,7 @@
                                         <div class="small-section-tittle">
                                             <h4>상세내용</h4>
                                         </div>
-                                        <p th:text="${notice.r_detail}">It is a long established fact that a reader will
-                                            beff distracted by vbthe
-                                            creadable
-                                            content of a page when looking at its layout. The pointf of using Lorem
-                                            Ipsum is
-                                            that it has ahf mcore or-lgess normal distribution of letters, as
-                                            opposed to using,
-                                            Content here content here making it look like readable.</p>
+                                        <p th:text="${notice.r_detail}">기업소개라고 합시다~</p>
                                     </div>
                                     <div class="post-details1  mb-50">
                                         <!-- Small Section Tittle -->
@@ -135,14 +129,7 @@
                                         <div class="small-section-tittle">
                                             <h4>자격요건</h4>
                                         </div>
-                                        <p th:text="${notice.r_license}">It is a long established fact that a reader
-                                            will beff distracted by vbthe
-                                            creadable
-                                            content of a page when looking at its layout. The pointf of using Lorem
-                                            Ipsum is
-                                            that it has ahf mcore or-lgess normal distribution of letters, as
-                                            opposed to using,
-                                            Content here content here making it look like readable.</p>
+                                        <p th:text="${notice.r_license}">자격요건이에요~</p>
                                     </div>
                                     <!-- 디데이 계산기 -->
                                     <div class="post-details1 mb-50">
@@ -160,15 +147,23 @@
                                                             <div class="small-section-tittle h4">
                                                                 <h4>담당자 정보</h4>
                                                             </div>
-                                                            <div class="smallsection h5">
-                                                                <h5>이메일</h5>
-                                                            </div>
-                                                            <div class="smallsection h5">
-                                                                <h5>이름</h5>
-                                                            </div>
-                                                            <div class="smallsection h5">
-                                                                <h5>전화번호</h5>
-                                                            </div>
+                                                            <table>
+                                                                <tr>
+                                                                    <div class="smallsection h5">
+                                                                        <h5>이메일</h5>
+                                                                    </div>
+                                                                </tr>
+                                                                <tr>
+                                                                    <div class="smallsection h5">
+                                                                        <h5>이름</h5>
+                                                                    </div>
+                                                                </tr>
+                                                                <tr>
+                                                                    <div class="smallsection h5">
+                                                                        <h5>전화번호</h5>
+                                                                    </div>
+                                                                </tr>
+                                                            </table>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -189,7 +184,8 @@
                         </div>
                         <ul>
                             <li><span th:text="${notice.r_title}"></span></li>
-                            <li>공고 마감&nbsp:&nbsp<span th:text="${notice.r_close_date}">12 Dec 2022</span></li>
+                            <li>공고 마감&nbsp:&nbsp<span th:text="${notice.r_close_date}"
+                                                      class="deadline">12 Dec 2022</span></li>
                             <li id="expired"></li>
                         </ul>
                         <div class="apply-btn2">
@@ -214,7 +210,7 @@
 <!-- D-day 계산기 -->
 <script>
 
-  var countDownDate = new Date("Jan 5, 2023 15:37:25").getTime(); // 디데이
+  var countDownDate = new Date("Dec 14, 2022 09:00:00").getTime(); // 디데이
 
   var x = setInterval(function() {
 
@@ -238,6 +234,7 @@
 
 
 
+
 </script>
 
 <!-- JS here -->
@@ -247,12 +244,6 @@
 <!-- Jquery, Popper, Bootstrap -->
 <script src="/js/vendor/jquery-1.12.4.min.js"></scrip >
             <script src="./js/popper.min.js">
-
-
-
-
-
-
 
 </script>
 <script src="/js/bootstrap.min.js"></script>
@@ -284,10 +275,10 @@
 <!-- Jquery Plugins, main Jquery -->
 <script src="/js/plugins.js"></script>
 <script src="/js/main.js"></script>
+
 <!-- 따라다니는 메뉴 -->
 <script src="/js/quickmenu.js"></script>
-<!-- 날짜 라이브러리 -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+
 </body>
 
 </html>
