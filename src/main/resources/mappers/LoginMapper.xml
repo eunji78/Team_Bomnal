@@ -2,10 +2,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jobfinder.persistence.LoginMapper">
 
-    <select id="loginList" resultType="LoginVO" parameterType="String">
-        select * from members where mem_id = #{mem_id}
-    </select>
-
     <select id="id_check_per" resultType="String" parameterType="String">
         select mem_id from members where mem_id = #{insert_id}
     </select>
@@ -37,4 +33,11 @@
         select * from company where company_id=#{company_id} and company_pw=#{company_pw}
     </select>
 
+    <update id="update_vo" parameterType="LoginVO">
+        update members set mem_pw=#{mem_pw}, mem_email=#{mem_email}, mem_phone=#{mem_phone} where mem_id=#{mem_id}
+    </update>
+
+    <update id="update_cvo" parameterType="Login_ComVO">
+        update company set company_pw=#{company_pw}, company_email=#{company_email}, company_phone=#{company_phone} where company_id=#{company_id}
+    </update>
 </mapper>

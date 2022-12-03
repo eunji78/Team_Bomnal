@@ -9,7 +9,7 @@
 
 .center-signup-div{
     width: 700px !important;
-    border: 1px solid #d8d8e0 ;
+    border: 1px solid #007bff ;
     padding-top: 40px !important;
     padding-bottom: 50px !important;
     border-radius:0.4em;
@@ -32,7 +32,7 @@
 }
 
 .button {
-    background: #67687e;
+    background: #38a4ff;
     -moz-user-select: none;
     text-transform: capitalize;
     color: #fff;
@@ -56,8 +56,8 @@
 }
 
 .select-border-btn2 {
-    border: 1px solid #0015ff;
-    color: #0015ff;
+    border: 1px solid #007bff;
+    color: #007bff;
     font: "Muli", sans-serif;
     background: none;
     -moz-user-select: none;
@@ -92,7 +92,7 @@
     top: 0;
     width: 101%;
     height: 101%;
-    background: #0015ff;
+    background: #007bff;
     z-index: -1;
     transition: transform 0.5s;
     transition-timing-function: ease;
@@ -122,7 +122,7 @@
 
 .center-login-div{
     width: 500px !important;
-    border: 1px solid #8b92dd ;
+    border: 1px solid #007bff ;
     padding-top: 40px !important;
     padding-bottom: 50px !important;
     border-radius:0.4em;
