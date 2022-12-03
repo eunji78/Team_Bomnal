@@ -37,10 +37,12 @@
                             </div>
                             <!-- Header-btn -->
                             <div class="header-btn d-none f-right d-lg-block">
-                                <a th:if="${session.id == null}" th:href="@{/loginform}" class="btn head-btn1">Register</a>
-                                <a th:if="${session.id == null}" th:href="@{/loginform}" class="btn head-btn2">Login</a>
-                                <h5 style="display:inline !important; margin-top:20px !important;" th:if="${session.id != null}" th:text="${session.name} + '님 환영합니다'"> name</h5> &nbsp&nbsp
-                                <a style="display:inline !important;" th:if="${session.id != null}" class="btn head-btn2" id="logout-btn" type="button" th:href="@{/v1/user/unlink}">Log-Out</a>
+                                <a th:if="${session.VO == null}" th:href="@{/loginform}" class="btn head-btn1" style="width: 100px !important; height: 30px !important; padding: 18px 5px !important;" >회원가입</a>
+                                <a th:if="${session.VO == null}" th:href="@{/loginform}" class="btn head-btn2" style="width: 100px !important; height: 30px !important; padding: 18px 5px !important;" >로그인</a>
+                                <p th:if="${session.VO != null} and ${session.type == 'C'}" th:text="'✨' + ${session.VO.company_name} + '님 환영합니다✨ '" style="display:inline !important; line-height:0px !important;"> name</p>
+                                <p th:if="${session.VO != null} and ${session.type == 'P'}" th:text="'✨' + ${session.VO.mem_name} + '님 환영합니다✨ '" style="display:inline !important; line-height:0px !important;"> name</p>
+                                <a th:if="${session.VO != null}" th:href="@{/ump}" ><img src="/img/icon-gear2.png" style="width:30px; height:23px;" alt="gear.png" onmouseover="this.src='/img/icon-gear.png'" onmouseout="this.src='/img/icon-gear2.png'"></a>
+                                <a th:if="${session.VO != null}" th:href="@{/v1/user/unlink}" class="btn head-btn2" id="logout-btn" type="button" style="display:inline !important; width: 100px !important; height: 30px !important; padding: 18px 5px !important;">로그아웃</a>
                             </div>
                         </div>
                     </div>

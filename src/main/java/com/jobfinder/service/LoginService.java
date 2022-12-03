@@ -38,7 +38,6 @@ public class LoginService {
         int res = loginRepository.set_signup_com(cvo);
         return res;
     }
-
     public int set_signup_per(LoginVO vo){
         int res = loginRepository.set_signup_per(vo);
         return res;
@@ -47,6 +46,7 @@ public class LoginService {
         int res = loginRepository.set_signup_kko(vo);
         return res;
     }
+
     public String id_check_com(String insert_id){
         System.out.println("com Service in : " + insert_id);
         String com_id = loginRepository.id_check_com(insert_id);
@@ -175,13 +175,11 @@ public class LoginService {
         return userInfo;
     }
 
-    public LoginVO get_loginVO(LoginVO vo) {
-        LoginVO rvo = loginRepository.get_loginVO(vo);
-        return rvo;
+    public void update_vo(LoginVO vo) {
+        loginRepository.update_vo(vo);
     }
 
-    public Login_ComVO get_login_ComVO(Login_ComVO cvo) {
-        Login_ComVO rcvo = loginRepository.Login_ComVO(cvo);
-        return rcvo;
+    public void update_cvo(Login_ComVO cvo) {
+        loginRepository.update_cvo(cvo);
     }
 }
