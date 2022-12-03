@@ -41,7 +41,7 @@ $(document).ready(function(){
     function result_search_job(data){
         var html = "";
         for (i=0; i<data.length; i++){
-            html += "<button class='detail_button' id='"+data[i].job_seq+"' onclick='add_list(this)'>";
+            html += "<button class='detail_button' type='button' id='"+data[i].job_seq+"' onclick='add_list(this)'>";
             html += data[i].job
             html += "</button>";
         }
