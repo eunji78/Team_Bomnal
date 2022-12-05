@@ -26,14 +26,82 @@ public class LoginController {
         model.addAttribute("loginVO", loginVO);
         return "update_mypage";
     }
+    @RequestMapping(value = "/umpc")
+    public String umpc(Model model, Login_ComVO login_comVO){
+        model.addAttribute("login_comVO", login_comVO);
+        return "update_mypage_com";
+    }
 
     @RequestMapping(value = "/update_my_page")
     public String update_my_page(@ModelAttribute("umpform_per") LoginVO vo, HttpSession session){
+        System.out.println("session : " + session.getAttribute("VO"));
         System.out.println("update : " + vo);
+
+        LoginVO sessionVO = (LoginVO) session.getAttribute("VO");
+
+        if (vo.getMem_pw() == "") {
+            vo.setMem_pw(sessionVO.getMem_pw());
+        }
+        if (vo.getMem_phone() == "") {
+            vo.setMem_phone(sessionVO.getMem_phone());
+        } else {
+            StringBuffer sb = new StringBuffer();
+            sb.append(vo.getMem_phone());
+            if (sb.substring(0,1) == "02"){
+                sb.insert(2,"-");
+            } else {
+                sb.insert(3,"-");
+            }
+            sb.insert(vo.getMem_phone().length()-3,"-");
+            vo.setMem_phone(sb.toString());
+        }
+        if (vo.getMem_email() == "") {
+            vo.setMem_email(sessionVO.getMem_email());
+        }
+        if (vo.getMem_addr() == "") {
+            vo.setMem_addr(sessionVO.getMem_addr());
+        }
+
         loginService.update_vo(vo);
 
         return "redirect:/loginform";
     }
+    @RequestMapping(value = "/update_my_page_com")
+    public String update_my_page_com(@ModelAttribute("umpform_com") Login_ComVO cvo, HttpSession session){
+        System.out.println("session : " + session.getAttribute("VO"));
+        System.out.println("update : " + cvo);
+
+        Login_ComVO sessionVO = (Login_ComVO) session.getAttribute("VO");
+
+        if (cvo.getCompany_pw() == "") {
+            cvo.setCompany_pw(sessionVO.getCompany_pw());
+        }
+        if (cvo.getCompany_phone() == "") {
+            cvo.setCompany_phone(sessionVO.getCompany_pw());
+        } else {
+            StringBuffer sb = new StringBuffer();
+            sb.append(cvo.getCompany_phone());
+            if (sb.substring(0,1) == "02"){
+                sb.insert(2,"-");
+            } else {
+                sb.insert(3,"-");
+            }
+            sb.insert(cvo.getCompany_phone().length()-3,"-");
+            cvo.setCompany_phone(sb.toString());
+        }
+        if (cvo.getCompany_email() == "") {
+            cvo.setCompany_email(sessionVO.getCompany_email());
+        }
+        if (cvo.getCompany_addrcompany() == "") {
+            cvo.setCompany_addrcompany(sessionVO.getCompany_addrcompany());
+        }
+
+        loginService.update_cvo(cvo);
+
+        return "redirect:/loginform";
+    }
+
+
 
 
 
@@ -86,6 +154,17 @@ public class LoginController {
     public String signup_com(@ModelAttribute Login_ComVO cvo) {
         System.out.println("signup_com");
         System.out.println(cvo);
+
+        StringBuffer sb = new StringBuffer();
+        sb.append(cvo.getCompany_phone());
+        if (sb.substring(0,1) == "02"){
+            sb.insert(2,"-");
+        } else {
+            sb.insert(3,"-");
+        }
+        sb.insert(cvo.getCompany_phone().length()-3,"-");
+        cvo.setCompany_phone(sb.toString());
+
         int res = loginService.set_signup_com(cvo);
         System.out.println(res);
         return "redirect:/loginform";
@@ -95,6 +174,17 @@ public class LoginController {
     public String signup_per(@ModelAttribute LoginVO vo) {
         System.out.println("signup_per");
         System.out.println(vo);
+
+        StringBuffer sb = new StringBuffer();
+        sb.append(vo.getMem_phone());
+        if (sb.substring(0,1) == "02"){
+            sb.insert(2,"-");
+        } else {
+            sb.insert(3,"-");
+        }
+        sb.insert(vo.getMem_phone().length()-3,"-");
+        vo.setMem_phone(sb.toString());
+
         int res = loginService.set_signup_per(vo);
         System.out.println(res);
         return "redirect:/loginform";

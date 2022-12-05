@@ -7,7 +7,7 @@
     <div class="header-area header-transparrent">
         <div class="headder-top header-sticky">
             <div class="container">
-                <div class="row align-items-center" style="display:flex;">
+                <div class="row align-items-center">
                     <div class="col-lg-3 col-md-2">
                         <!-- Logo -->
                         <div class="logo">
@@ -36,14 +36,27 @@
                                 </nav>
                             </div>
                             <!-- Header-btn -->
-                            <div class="header-btn d-none f-right d-lg-block">
+                            <div th:if="${session.VO == null}" class="header-btn d-none f-right d-lg-block">
                                 <a th:if="${session.VO == null}" th:href="@{/loginform}" class="btn head-btn1" style="width: 100px !important; height: 30px !important; padding: 18px 5px !important;" >회원가입</a>
                                 <a th:if="${session.VO == null}" th:href="@{/loginform}" class="btn head-btn2" style="width: 100px !important; height: 30px !important; padding: 18px 5px !important;" >로그인</a>
-                                <p th:if="${session.VO != null} and ${session.type == 'C'}" th:text="'✨' + ${session.VO.company_name} + '님 환영합니다✨ '" style="display:inline !important; line-height:0px !important;"> name</p>
-                                <p th:if="${session.VO != null} and ${session.type == 'P'}" th:text="'✨' + ${session.VO.mem_name} + '님 환영합니다✨ '" style="display:inline !important; line-height:0px !important;"> name</p>
-                                <a th:if="${session.VO != null}" th:href="@{/ump}" ><img src="/img/icon-gear2.png" style="width:30px; height:23px;" alt="gear.png" onmouseover="this.src='/img/icon-gear.png'" onmouseout="this.src='/img/icon-gear2.png'"></a>
-                                <a th:if="${session.VO != null}" th:href="@{/v1/user/unlink}" class="btn head-btn2" id="logout-btn" type="button" style="display:inline !important; width: 100px !important; height: 30px !important; padding: 18px 5px !important;">로그아웃</a>
                             </div>
+                            <div th:if="${session.VO != null}" style="border: solid 1px dodgerblue; width: 250px !important; height: 80px !important; padding: 5px 10px 5px 15px!important;">
+
+                                <div style="display: inline-block !important;">
+                                    <div style="display: inline-block !important;">
+                                        <a href="javascript:void(0)" type="button" style=" width:auto; height:auto; border : solid 0.5px black !important; border-radius:1.5em;">사진</a>
+                                    </div>
+                                    <p th:if="${session.VO != null} and ${session.type == 'C'}" th:text=" ${session.VO.company_name} + '님 '" style="display:inline !important; line-height:0px !important;"> name</p>
+                                    <p th:if="${session.VO != null} and ${session.type == 'P'}" th:text=" ${session.VO.mem_name} + '님 '" style="display:inline !important; line-height:0px !important;"> name</p>
+                                    <a th:if="${session.VO != null} and ${session.type == 'C'}" th:href="@{/umpc}" ><img src="/img/icon-gear2.png" style="width:30px; height:23px;" alt="gear.png" onmouseover="this.src='/img/icon-gear.png'" onmouseout="this.src='/img/icon-gear2.png'"></a>
+                                    <a th:if="${session.VO != null} and ${session.type == 'P'}" th:href="@{/ump}" ><img src="/img/icon-gear2.png" style="width:30px; height:23px;" alt="gear.png" onmouseover="this.src='/img/icon-gear.png'" onmouseout="this.src='/img/icon-gear2.png'"></a>
+
+                                    <div style="margin-top:5px !important;">
+                                        <a th:if="${session.VO != null}" th:href="@{/v1/user/unlink}" class="btn head-btn2" id="logout-btn" type="button" style="display:inline-block !important; width: 100px !important; height: 30px !important; padding: 11px 5px !important;">로그아웃</a>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                     <!-- Mobile Menu -->

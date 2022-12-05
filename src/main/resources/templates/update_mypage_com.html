@@ -112,7 +112,7 @@
             <div class="asideSection">
               개인정보관리
               <ul>
-                <li class="aside-list"><a th:href="@{/ump}">회원 정보 수정</a></li>
+                <li class="aside-list"><a th:href="@{/ump}">기업회원 정보 수정</a></li>
               </ul>
             </div>
 
@@ -145,7 +145,7 @@
           <div class="container">
             <div class="resume-section mb-30">
               <div class="row">
-                <h2>회원 정보 수정</h2>
+                <h2>기업회원 정보 수정</h2>
               </div>
 
               <!-- 시작 -->
@@ -153,37 +153,29 @@
 
                 <article class="col-lg-12 mb-5 mb-lg-0 blog_item">
                   <div>
-                    <form id="umpform_per" th:action="@{/update_my_page}" th:object="${loginVO}"  method="POST" >
+                    <form id="umpform_com" th:action="@{/update_my_page_com}" th:object="${login_comVO}"  method="POST" >
 
                       <div style="justify-content : center; margin-bottom:30px !important;">
                         <div class="col-lg-4 mb-5 mb-lg-0" style="display: inline-block; justify-content : center;">
                           <h6>아이디</h6> </div>
                         <div class="col-lg-7 mb-5 mb-lg-0" style="display: inline-block; justify-content : center;">
-                          <input readonly id="mem_id" name="mem_id" th:value="${session.VO.mem_id}" style="border:none"> </div>
+                          <input readonly id="mem_id" name="mem_id" th:value="${session.VO.company_id}" style="border:none"> </div>
                         <hr style="border: solid 0.3px #ff87OEEB; background-color: #ff87OEEB; width:645px; display:block; margin:0px !important;">
                       </div>
 
                       <div style="justify-content : center; margin-bottom:30px !important;">
                         <div class="col-lg-4 mb-5 mb-lg-0" style="display: inline-block; justify-content : center;">
-                          <h6>이름</h6> </div>
+                          <h6>기업명</h6> </div>
                         <div class="col-lg-7 mb-5 mb-lg-0" style="display: inline-block; justify-content : center;">
-                          <input readonly th:value="${session.VO.mem_name}" style="border:none"> </div>
+                          <input readonly th:value="${session.VO.company_name}" style="border:none"> </div>
                         <hr style="border: solid 0.3px #ff87OEEB; background-color: #ff87OEEB; width:645px; display:block; margin:0px !important;">
                       </div>
 
                       <div style="justify-content : center; margin-bottom:30px !important;">
                         <div class="col-lg-4 mb-5 mb-lg-0" style="display: inline-block; justify-content : center;">
-                          <h6>성별</h6> </div>
+                          <h6>가입일</h6> </div>
                         <div class="col-lg-7 mb-5 mb-lg-0" style="display: inline-block; justify-content : center;">
-                          <input readonly type="text" id="mem_gender" th:value="${session.VO.mem_gender}" style="border:none"> </div>
-                        <hr style="border: solid 0.3px #ff87OEEB; background-color: #ff87OEEB; width:645px; display:block; margin:0px !important;">
-                      </div>
-
-                      <div style="justify-content : center; margin-bottom:30px !important;">
-                        <div class="col-lg-4 mb-5 mb-lg-0" style="display: inline-block; justify-content : center;">
-                          <h6>생년월일</h6> </div>
-                        <div class="col-lg-7 mb-5 mb-lg-0" style="display: inline-block; justify-content : center;">
-                          <input readonly th:value="${session.VO.mem_bdate.split(' ')[0]}" style="border:none"> </div>
+                          <input readonly th:value="${session.VO.company_joindate.split(' ')[0]}" style="border:none"> </div>
                         <hr style="border: solid 0.3px #ff87OEEB; background-color: #ff87OEEB; width:645px; display:block; margin:0px !important;">
                       </div>
 
@@ -198,7 +190,7 @@
                         <div class="col-lg-4 mb-5 mb-lg-0" style="display: inline-block; justify-content : center;">
                           <h6>비밀번호 확인</h6> </div>
                         <div class="col-lg-7 mb-5 mb-lg-0" style="display: inline; justify-content : center;">
-                          ✔<input id="mem_pw" th:field="*{mem_pw}" type="password" oninput="real_check_pwd()" style="width: 380px; border:none"> </div>
+                          ✔<input id="company_pw" th:field="*{company_pw}" type="password" oninput="real_check_pwd()" style="width: 380px; border:none"> </div>
                         <hr style="border: solid 0.3px #ff87OEEB; background-color: #ff87OEEB; width:645px; display:block; margin:0px !important;">
                       </div>
 
@@ -217,14 +209,14 @@
                         <div class="col-lg-4 mb-5 mb-lg-0" style="display: inline-block; justify-content : center;">
                           <h6>이전 주소</h6> </div>
                         <div class="col-lg-7 mb-5 mb-lg-0" style="display: inline-block; justify-content : center;">
-                          <input readonly th:value="${session.VO.mem_addr}" style="border:none"> </div>
+                          <input readonly th:value="${session.VO.company_addrcompany}" style="border:none"> </div>
                       </div>
 
                       <div style="justify-content : center; margin-bottom:30px !important;">
                         <div class="col-lg-4 mb-5 mb-lg-0" style="display: inline-block; justify-content : center;">
                           <h6>주소</h6> </div>
                         <div class="col-lg-7 mb-5 mb-lg-0" style="display: inline !important; justify-content : center;">
-                          ✔<input id="mem_addr" th:field="*{mem_addr}" style="width: 380px; border:none; display: inline-block !important;"> </div>
+                          ✔<input id="company_addrcompany" th:field="*{company_addrcompany}" style="width: 380px; border:none; display: inline-block !important;"> </div>
                         <hr style="border: solid 0.3px #ff87OEEB; background-color: #ff87OEEB; width:645px; display:block; margin:0px !important;">
                       </div>
 
@@ -232,14 +224,14 @@
                         <div class="col-lg-4 mb-5 mb-lg-0" style="display: inline-block; justify-content : center;">
                           <h6>이전 이메일</h6> </div>
                         <div class="col-lg-7 mb-5 mb-lg-0" style="display: inline-block; justify-content : center;">
-                          <input readonly th:value="${session.VO.mem_email}" style="border:none"> </div>
+                          <input readonly th:value="${session.VO.company_email}" style="border:none"> </div>
                       </div>
 
                       <div style="justify-content : center; margin-bottom:30px !important;">
                         <div class="col-lg-4 mb-5 mb-lg-0" style="display: inline-block; justify-content : center;">
                           <h6>이메일</h6> </div>
                         <div class="col-lg-7 mb-5 mb-lg-0" style="display: inline; justify-content : center;">
-                          ✔<input id="mem_email" th:field="*{mem_email}" style="width: 380px; border:none"> </div>
+                          ✔<input id="company_email" th:field="*{company_email}" style="width: 380px; border:none"> </div>
                         <hr style="border: solid 0.3px #ff87OEEB; background-color: #ff87OEEB; width:645px; display:block; margin:0px !important;">
                       </div>
 
@@ -247,14 +239,14 @@
                         <div class="col-lg-4 mb-5 mb-lg-0" style="display: inline-block; justify-content : center;">
                           <h6>이전 전화번호</h6> </div>
                         <div class="col-lg-7 mb-5 mb-lg-0" style="display: inline-block; justify-content : center;">
-                          <input readonly th:value="${session.VO.mem_phone}" style="border:none"> </div>
+                          <input readonly th:value="${session.VO.company_phone}" style="border:none"> </div>
                       </div>
 
                       <div style="justify-content : center; ">
                         <div class="col-lg-4 mb-5 mb-lg-0" style="display: inline-block; justify-content : center;">
                           <h6>전화번호</h6> </div>
                         <div class="col-lg-7 mb-5 mb-lg-0" style="display: inline; justify-content : center;">
-                          ✔<input id="mem_phone" th:field="*{mem_phone}" style="width: 380px; border:none"> </div>
+                          ✔<input id="company_phone" th:field="*{company_phone}" style="width: 380px; border:none"> </div>
                         <hr style="border: solid 0.3px #ff87OEEB; background-color: #ff87OEEB; width:645px; display:block; margin:0px !important;">
                       </div>
 
@@ -269,7 +261,7 @@
                         <div class="col-lg-4 mb-5 mb-lg-0" style="display: inline-block; justify-content : center;">
                           <p></p> </div>
                         <div class="col-lg-7 mb-5 mb-lg-0" style="display:inline-block; justify-content : center;">
-                          <a href="javascript:void(0)" type="button" onclick="document.getElementById('umpform_per').submit()" class="ump-border-btn2" style=" width:70px !important; height:40px !important; padding: 5px 0px 0px 0px !important; text-align:center !important;"><span style="color: #FFOOBFFF; font-size:20px; margin:0px; padding:0px;">수정</span></a>
+                          <a href="javascript:void(0)" type="button" onclick="document.getElementById('umpform_com').submit()" class="ump-border-btn2" style=" width:70px !important; height:40px !important; padding: 5px 0px 0px 0px !important; text-align:center !important;"><span style="color: #FFOOBFFF; font-size:20px; margin:0px; padding:0px;">수정</span></a>
                           <a href="/loginform" class="ump-border-btn2" style=" width:70px !important; height:40px !important; padding: 5px 0px 0px 0px !important; text-align:center !important;" type="button"><span style="color: #FFOOBFFF; font-size:20px; margin:0px; padding:0px;">취소</span></a> </div>
                       </div>
 
