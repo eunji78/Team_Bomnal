@@ -374,7 +374,7 @@
                 <!-- 학력 End -->
 
                 <!-- 경력 -->
-                <div class="col-11 col-lg-11 col-md-8 mb-50">
+                <div class="col-11 col-lg-11 col-md-8 mb-50" >
                     <h2 class="header">경력사항</h2>
                     <div class="resume_radio resume-section focus">
                         <label class="career sri_check sri_radio check_on" for="career_cd_1">
@@ -388,7 +388,7 @@
                         <p class="txt_error"></p>
                     </div>
 
-                    <div class="resume-section">
+                    <div class="resume-section" style="display:none" id="career">
                         <div class="resume_row">
                             <div class="input_title">회사명</div>
                             <div class="form-select" style="display:inline-block; width:400px;">
@@ -419,7 +419,67 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
 
+                        <div class="resume_row">
+                            <div class="input_title">근무부서</div>
+                            <div class="form-select" style="display:inline-block; width:400px;">
+                                <input class="input_text" name="" type="text" placeholder="근무부서 입력">
+                            </div>
+                        </div>
+
+                        <div class="resume_row">
+                            <div class="input_title">직급</div>
+                            <div class="form-select" style="display:inline-block; width:400px; position:relative">
+                                <div class="form-select" style="display:inline-block">
+                                    <select style="display:none">
+                                        <option value="1">사원</option>
+                                        <option value="1">주임/계장</option>
+                                        <option value="1">대리</option>
+                                        <option value="1">과장</option>
+                                        <option value="1">차장</option>
+                                        <option value="1">부장</option>
+                                        <option value="1">임원</option>
+                                        <option value="1">연구원</option>
+                                        <option value="1">선임연구원</option>
+                                        <option value="1">책임연구원</option>
+                                        <option value="1">수석연구원</option>
+                                        <option value="1">연구소장</option>
+                                    </select>
+                                    <div class="nice-select"
+                                         style="padding-left:20px; border:1px solid #ddd; background-color:white">
+                                        <span class="current">직급 선택</span>
+                                        <ul class="list" style="border:1px solid #ddd; height:200px; overflow:auto">
+                                            <li class="option">사원</li>
+                                            <li class="option">주임/계장</li>
+                                            <li class="option">대리</li>
+                                            <li class="option">과장</li>
+                                            <li class="option">차장</li>
+                                            <li class="option">부장</li>
+                                            <li class="option">임원</li>
+                                            <li class="option">연구원</li>
+                                            <li class="option">선임연구원</li>
+                                            <li class="option">책임연구원</li>
+                                            <li class="option">수석연구원</li>
+                                            <li class="option">연구소장</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="resume_row">
+                            <div class="input_title">연봉</div>
+                            <div class="form-select" style="display:inline-block; width:400px;">
+                                <input class="input_text" type="text" placeholder="연봉">
+                            </div>
+                        </div>
+
+                        <div class="resume_row">
+                            <div class="input_title">담당업무</div>
+                            <div class="form-select" style="display:inline-block; width:700px;">
+                                <input class="input_text" type="text" placeholder="담당업무 입력">
+                            </div>
                         </div>
 
                     </div>
@@ -430,17 +490,64 @@
                 <div class="col-11 col-lg-11 col-md-8 mb-50">
                     <h2 class="header">자격증</h2>
                     <div class="resume-section">
+                        <div class="resume_row">
+                            <div class="input_title">자격증명</div>
+                            <div class="form-select" style="display:inline-block; width:400px;">
+                                <input class="input_text" type="text" placeholder="자격증명 입력">
+                            </div>
+                        </div>
 
+                        <div class="resume_row">
+                            <div class="input_title">발행처/기관</div>
+                            <div class="form-select" style="display:inline-block; width:400px;">
+                                <input class="input_text" type="text" placeholder="발행처/기관 입력">
+                            </div>
+                        </div>
+
+                        <div class="resume_row">
+                            <div class="input_title">연봉</div>
+                            <div class="form-select" style="display:inline-block; width:400px;">
+                                <input class="input_text" type="text" placeholder="연봉">
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <!-- 자격증 End -->
 
                 <!-- 수상 -->
-                <div class="col-11 col-lg-11 col-md-8 mb-50">
+                <div class="col-11 col-lg-11 col-md-8 mb-50" id="awards">
                     <h2 class="header">수상</h2>
-                    <div class="resume-section">
+                    <div class="resume-section" >
+                        <div class="resume_row">
+                            <div class="input_title">수상명</div>
+                            <div class="form-select" style="display:inline-block; width:400px;">
+                                <input class="input_text" type="text" placeholder="수상명 입력">
+                            </div>
 
+                            <div style="display:inline-block; float:right">
+                                <button type="button" id="add_resume">
+                                    <span>수상내역 추가 + </span>
+                                </button>
+                            </div>
+                        </div>
+
+
+
+                        <div class="resume_row">
+                            <div class="input_title">수여기관</div>
+                            <div class="form-select" style="display:inline-block; width:400px;">
+                                <input class="input_text" type="text" placeholder="수여기관 입력">
+                            </div>
+                        </div>
+
+                        <div class="resume_row">
+                            <div class="input_title">수상/공모일</div>
+                            <div class="form-select" style="display:inline-block; width:200px;">
+                                <input class="input_text" type="text" placeholder="YYYYMM">
+                            </div>
+                        </div>
                     </div>
+
                 </div>
                 <!-- 수상 End -->
 
