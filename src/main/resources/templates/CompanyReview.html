@@ -103,7 +103,7 @@
                 <div class="col-lg-8 posts-list hmcontent">
                     <div class="single-post">
                         <div class="blog_details">
-                            <h2>삼성전자 Review</h2>
+                            <h2 th:text="${detail.company_name}+' Review'">삼성전자 Review</h2>
                             <ul class="blog-info-link mt-3 mb-4">
                                 <li><a href="#"><i class="fa fa-comments" th:text="${countreview}+ '개의 리뷰'"></i></a></li>
                             </ul>
