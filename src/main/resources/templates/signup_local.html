@@ -81,12 +81,12 @@
                                                     <label for="pwd">비밀번호</label>
                                                 </div>
                                             </div>
-                                            <div >
-                                                <div class="signup-input-box">
+                                            <div style="display:inline-block;">
+                                                <div class="signup-input-box" style="display:block;">
                                                     <input id="mem_pw" type="password" th:field="*{mem_pw}" placeholder="비밀번호 확인" oninput="real_check_pwd()">
                                                     <label for="mem_pw">비밀번호 확인</label>
                                                 </div>
-                                                <div class="signup-input-box" style="text-align:left !important; margin:0px !important;">
+                                                <div class="signup-input-box" style="text-align:left !important; margin:0px !important; display:block;">
                                                     <p id="check_pwd_ptag" style="visibility: visible; margin:0px !important;"> ✔ 비밀번호를 입력해주세요. </p>
                                                 </div>
                                             </div>
@@ -97,14 +97,14 @@
                                                 </div>
                                             </div>
 
-                                            <div >
+                                            <div style="display:inline-block;">
                                                 <div style="display: inline-block; margin-top:20px; margin-bottom: 15px;">
                                                     <input type="radio" id="mem_gender_man" th:field="*{mem_gender}" value="남자">남자
                                                 </div>
-                                                <div style="display: inline-block; margin-top:20px; margin-bottom: 15px; margin-right: 320px; ">
+                                                <div style="display: inline-block; margin-top:20px; margin-bottom: 15px; margin-right: 330px; ">
                                                     <input type="radio" id="mem_gender_girl" th:field="*{mem_gender}" value="여자" style="margin-left: 20px;">여자
                                                 </div>
-                                                <div style="margin-left: 150px !important; margin-bottom: 15px;">
+                                                <div style="margin-bottom: 15px;">
                                                     <hr style="border: solid 0.5px #c8cddd !important; background-color: #c8cddd !important; width:450px; display:block; margin:0px !important;">
                                                 </div>
                                             </div>
@@ -128,12 +128,12 @@
                                                 </div>
                                                 <button id="phone_check_btn" type="button" class="sm-button"> 인증요청 </button>
                                             </div>
-                                            <div >
-                                                <div class="signup-input-box">
+                                            <div style="display:inline-block;">
+                                                <div class="signup-input-box" style="display:block;">
                                                     <input id="mem_email" type="email" th:field="*{mem_email}" placeholder="이메일">
                                                     <label for="mem_email">이메일</label>
                                                 </div>
-                                                <div class="signup-input-box" style="text-align:left !important; margin:0px !important;">
+                                                <div class="signup-input-box" style="text-align:left !important; margin:0px !important; display:block;">
                                                     <p style="visibility: visible; margin:0px !important;"> ✔ 취업에 관련된 정보를 받을 때 필요해요 </p>
                                                 </div>
                                             </div>
