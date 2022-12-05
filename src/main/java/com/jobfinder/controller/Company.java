@@ -47,10 +47,12 @@ public class Company {
 		ArrayList<Reviews> review = companyService.review(company_id);
 		Reviews avg = companyService.avg(company_id);
 		int countgongo = companyService.countgongo(company_id);
+		int countreview = companyService.countreview(company_id);
 		model.addAttribute("review",review);
 		model.addAttribute("detail",detail);
 		model.addAttribute("avg",avg);
 		model.addAttribute("countgongo",countgongo);
+		model.addAttribute("countreview",countreview);
 
 		return "CompanyReview";
 	}

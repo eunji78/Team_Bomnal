@@ -22,7 +22,7 @@
   <link rel="stylesheet" href="/css/nice-select.css">
   <link rel="stylesheet" href="/css/style.css">
   <link rel="stylesheet" href="/css/responsive.css">
-  <link rel="stylesheet" href="s.css">
+  <link rel="stylesheet" href="/css/c_detail.css">
 </head>
 
 <body>
@@ -81,11 +81,12 @@
             <div class="table-responsive">
               <table class="table table-lg">
                 <tbody>
-                <tr th:each="c : ${list}">
-                  <td><img th:src="${c.company_logo}"></td>
-                  <td><a th:href="@{/companyDetail/{company_id}(company_id=${c.company_id})}" class="text-bold-500" th:text="${c.company_name}">한국맥도날드(유)</a></td>
-                  <td><a th:href="@{/companyDetail/{company_id}(company_id=${c.company_id})}" th:text="${c.company_industry}">서비스업</a></td>
-                  <td><a th:href="@{/companyDetail/{company_id}(company_id=${c.company_id})}" class="text-bold-500" th:text="${c.company_type}">대기업</a></td>
+                <tr th:each="c : ${list}" class="">
+                  <td><img class="c_icon" th:src="${c.company_logo}"></td>
+                  <td class="company_list" style="vertical-align:middle;"><a th:href="@{/companyDetail/{company_id}(company_id=${c.company_id})}" class="text-bold-500" th:text="${c.company_name}">한국맥도날드(유)</a>
+                  </td>
+                  <td class="company_list" style="vertical-align:middle;"><a th:href="@{/companyDetail/{company_id}(company_id=${c.company_id})}" th:text="${c.company_industry}">서비스업</a></td>
+                  <td class="company_list" style="vertical-align:middle;"><a th:href="@{/companyDetail/{company_id}(company_id=${c.company_id})}" class="text-bold-500" th:text="${c.company_type}">대기업</a></td>
                 </tr>
                 </tbody>
               </table>
@@ -131,11 +132,11 @@
                          onfocus="this.placeholder = ''"
                          onblur="this.placeholder = 'Search Keyword'">
                   <div class="input-group-append">
-                    <button class="btns" type="button"><i class="ti-search"></i></button>
+                    <button class="btns" type="button" style="background-color:#38a4ff;"><i class="ti-search"></i></button>
                   </div>
                 </div>
               </div>
-              <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
+              <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn" style="border:1px solid #38a4ff; color:#38a4ff!important"
                       type="submit">Search</button>
             </form>
           </aside>
@@ -187,45 +188,7 @@
               </li>
             </ul>
           </aside>
-          <aside class="single_sidebar_widget popular_post_widget">
-            <h3 class="widget_title">Recent Post</h3>
-            <div class="media post_item">
-              <img src="assets/img/post/post_1.png" alt="post">
-              <div class="media-body">
-                <a href="single-blog.html">
-                  <h3>From life was you fish...</h3>
-                </a>
-                <p>January 12, 2019</p>
-              </div>
-            </div>
-            <div class="media post_item">
-              <img src="assets/img/post/post_2.png" alt="post">
-              <div class="media-body">
-                <a href="single-blog.html">
-                  <h3>The Amazing Hubble</h3>
-                </a>
-                <p>02 Hours ago</p>
-              </div>
-            </div>
-            <div class="media post_item">
-              <img src="assets/img/post/post_3.png" alt="post">
-              <div class="media-body">
-                <a href="single-blog.html">
-                  <h3>Astronomy Or Astrology</h3>
-                </a>
-                <p>03 Hours ago</p>
-              </div>
-            </div>
-            <div class="media post_item">
-              <img src="assets/img/post/post_4.png" alt="post">
-              <div class="media-body">
-                <a href="single-blog.html">
-                  <h3>Asteroids telescope</h3>
-                </a>
-                <p>01 Hours ago</p>
-              </div>
-            </div>
-          </aside>
+
 
 
         </div>

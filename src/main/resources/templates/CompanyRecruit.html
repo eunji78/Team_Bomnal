@@ -71,9 +71,7 @@
                     <div class="single-job-items mb-50">
                         <div class="job-items">
                             <div class="company-img company-img-details">
-                                <a href="#"><img
-                                        src="https://jpassets.jobplanet.co.kr/production/uploads/company/logo/30139/thumb_0.jpg"
-                                        alt="" class="c_icon"></a>
+                                <a href="#"><img th:src="${detail.company_logo}" alt="" class="c_icon"></a>
                             </div>
                             <div class="job-tittle">
                                 <a href="#">
@@ -100,11 +98,11 @@
                     </div>
                     <!-- job single End -->
 
-                    <div class="col-lg-8 posts-list">
+                    <div class="col-lg-8 posts-list hmcontent">
 
 
                         <div class="single-post">
-                            <div class="blog_details">
+                            <div class="">
 
 
                                 <h2 th:text="${detail.company_name}+' 채용공고'">삼성전자 채용공고</h2>
@@ -151,6 +149,7 @@
                                         </div>
                                     </div>
                                 </section>
+                                <br><br><br><br>
 
 
                             </div>

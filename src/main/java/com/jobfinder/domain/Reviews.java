@@ -21,4 +21,5 @@ public class Reviews {
     private char current_yn;
     private double totalstar;
     private int avgsalary;
+    private int countreview;
 }
