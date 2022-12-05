@@ -19,5 +19,6 @@ public class Reviews {
     private String cons;
     private int my_salary;
     private char current_yn;
-    private double total;
+    private double totalstar;
+    private int avgsalary;
 }

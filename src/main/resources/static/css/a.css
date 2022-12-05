@@ -17,15 +17,6 @@ body {
 .rev{
 }
 
-.container2 {
-  background-color: #151728;
-  display: flex;
-  max-width: 1600px;
-  overflow: hidden;
-  margin: 0 auto;
-  margin-left: 500px;
-  margin-right: 500px;
-}
 
 .left-side {
   width: 260px;
@@ -523,14 +514,6 @@ body {
   margin-right: 20px;
 }
 
-.status-main {
-  padding: 0 20px;
-  display: flex;
-  align-items: center;
-  border-bottom: 1px solid #272a3a;
-  padding-bottom: 20px;
-  flex-wrap: wrap;
-}
 
 .status-textarea {
   flex-grow: 1;
@@ -924,24 +907,4 @@ body {
 .status.box {
     margin-bottom : 20px;
 }
-.starandreview {
-    display:flex;
-    justify-content: space-around;
-}
-.reviewform {
-    display: flex;
-    justify-content: space-around;
-    flex-direction: column;
-    }
-}
 
-input[type="number"]::-webkit-outer-spin-button,
-input[type="number"]::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
-
-.proscons {
-    border-spacing : 20px;
-    border-collapse: separate;
-}

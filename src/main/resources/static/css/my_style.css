@@ -1,3 +1,16 @@
+.head-btn1{
+    background-color: #38a4ff !important;
+}
+.head-btn2{
+    border: #38a4ff solid 1px !important;
+    color: #38a4ff;
+}
+.btn::before{
+    background-color: navy !important;
+}
+#scrollUp{
+    background-color: #38a4ff !important;
+}
 .body-top{
     padding-top: 30px !important;
 }
@@ -13,7 +26,60 @@
 .search-form{
     width: 15% !important;
 }
-.search-form-underline{
+.container-inner{
+    margin-bottom: 3em !important;
+}
+.container-inner-padding{
+    padding-left: 1em;
+}
+.box-navy-contents{
+    padding-top: 1em;
+}
+.box-flex{
+    display: flex;
+    margin-bottom: 1em;
+    align-items: center;
+}
+.inner-text{
+    height: 2.5em;
+}
+.box-tel{
+    width: 5.1em;
+    height: 2.5em;
+
+}
+.manager-left{
+    width: 15%;
+}
+.manager-middle{
+    margin-right: 10px;
+    width: 25%;
+}
+.background-navy{
+    background-color: rgba(0, 0, 128, 0.05);
+}
+.related_work_time{
+    padding-right: 1em;
+}
+.white-board{
+    background-color: #fff !important;
+    border-radius: 10px;
+    margin-bottom: 2em;
+    padding-top: 3em;
+}
+.white-board2{
+    background-color: #fff !important;
+    border-radius: 10px;
+    margin-bottom: 2em;
+    padding-top: 1em;
+}
+.check_box_big{
+    width: 1.2em;
+    height: 1.2em;
+}
+.check-big-label{
+    position: relative;
+    top: 0.25em;
 }
 .option-detail{
     width: 100%;
@@ -41,9 +107,13 @@
     border-top: #fff 0 !important;
     border-right: #fff 0 !important;
     border-left: #fff 0 !important;
-    border-bottom: #38a4ff solid 5px !important;
+    border-bottom: #007bff solid 5px !important;
     border-bottom-left-radius: 3%;
     border-bottom-right-radius: 3%;
+}
+.genric-btn.primary-border:hover{
+    color: #fff !important;
+    background-color: #007bff;
 }
 .detail{
     display: flex !important;
@@ -54,7 +124,7 @@
     padding-left: 15px;
     padding-right: 15px;
     margin-bottom: 20px;
-    
+
 }
 .select-state{
     border-right: lightgray 0.5px solid;
@@ -75,3 +145,121 @@
     width: 33%;
 }
 
+/*채용 공고 페이지 관련*/
+.inner-container{
+    border: #38a4ff solid 1px;
+    border-radius: 5px;
+    box-shadow: 1px 1px 1px 1px rgba(128, 128, 128, 0.2);
+}
+.border-color{
+    border: navy solid 1px;
+}
+.border-black{
+    border: black solid 1px;
+}
+.border-sharp{
+    border-radius: 3px
+}
+.container-items{
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1.5em;
+}
+.width-full{
+    width: 100% !important;
+}
+.text-left{
+    text-align: left;
+}
+.text-bold{
+    font-weight: bold;
+}
+.color-red{
+    font-size: 0.8rem;
+    color: red ;
+}
+.color-black{
+    color: gray !important;
+}
+.link-underline{
+    text-decoration: underline;
+}
+.btn-text{
+    font-size: 1em;
+}
+.between-inner-contents{
+    margin-bottom: 1em;
+}
+.work_per_week{
+    width: 3em;
+}
+
+.check-for-center{
+    position: relative;
+    top: 0.25em;
+}
+
+.work-type-items{
+    width: 10em;
+}
+.career-type-items{
+    width: 6em;
+}
+.right-margin{
+    margin-right: 0.5em;
+}
+.right-margin1{
+    margin-right: 1em;
+}
+.go-down{
+    position: relative;
+    top:0.15em;
+}
+.sub-title{
+    font-size: 1.4em;
+}
+.btn-map{
+    background-color: navy;
+    height: 2.5em;
+    width: 10em;
+    border: 0;
+}
+.text-map{
+    width: 82%;
+}
+.box-date{
+    width: 15em;
+    text-align: center;
+}
+.select-box-size{
+    height: 3em;
+}
+.pt-120-bottom{
+    padding-bottom: 120px;
+}
+.remove-css{
+    all: none;
+}
+.for-center-items{
+    justify-content: center;
+}
+.make-scroll{
+    height: 10em;
+    overflow: auto !important;
+}
+/*---------------------Summer Note-----------------------------------*/
+@font-face {
+    font-family: 'NotoSansKR';
+    src: url('font/NotoSansKR-Black.otf') format('opentype')
+}
+
+.note-statusbar{display:none;}
+
+/*--------------------kakao map---------------------------------------*/
+.map-size{
+    margin-top: 2em;
+    width: 50%;
+    height: 30em;
+    margin-left: auto;
+    margin-right: auto;
+}
