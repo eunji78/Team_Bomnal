@@ -6,7 +6,7 @@
 
     <select id="notice" parameterType="int" resultType="Recruit">
         select company_name, r_title, r_career, r_job_pattern, r_salary, r_wide_area, r_part, r_business, r_license, r_detail, r_close_date, company_logo
-        from jobplanet_delete
+        from jobinfo
         where r_seq = #{r_seq}
     </select>
 </mapper>
