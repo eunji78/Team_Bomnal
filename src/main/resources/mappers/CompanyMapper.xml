@@ -17,12 +17,16 @@
     </select>
 
     <select id="review" parameterType="String" resultType="Reviews">
-        select * from reviews where company_id = #{company_id}
+        select * from reviews where company_id = #{company_id} order by reg_date desc;
+    </select>
+
+    <select id="countreview" parameterType="String" resultType="int">
+        select count(*) as countreview from reviews where company_id=#{company_id}
     </select>
 
 
     <select id="avg" parameterType="String" resultType="Reviews">
-        select avg(welfare) as welfare,avg(work_life_balance) as work_life_balance,avg(inner_culture) as inner_culture,avg(p_opportunity) as p_opportunity,avg(management) as management, (avg(welfare)+avg(inner_culture)+avg(work_life_balance)+avg(p_opportunity)+avg(management))/5 as totalstar, avg(my_salary) as avgsalary from reviews where company_id = #{company_id}
+        select TRUNCATE(avg(welfare),1) AS welfare, TRUNCATE(avg(work_life_balance),1) as work_life_balance,TRUNCATE(avg(inner_culture),1) as inner_culture,TRUNCATE(avg(p_opportunity),1) as p_opportunity,TRUNCATE(avg(management),1) as management, TRUNCATE((avg(welfare)+avg(inner_culture)+avg(work_life_balance)+avg(p_opportunity)+avg(management))/5,1) as totalstar, TRUNCATE(avg(my_salary),0) as avgsalary from reviews where company_id = #{company_id}
     </select>
 
     <insert id="save" parameterType="Reviews">
