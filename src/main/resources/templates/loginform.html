@@ -56,17 +56,17 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section-tittle text-center">
-                        <hr style="border: solid 1.5px #007bff; background-color: #007bff; width:600px; display:inline-block;">
+
                         <span>Login page</span>
                         <div>
                             <div class="browse-btn2 text-center">
                                 <div style="display: inline-block;">
                                     <hr id="per_upper_line" style="border: solid 1.5px #007bff; background-color: #007bff; width: 195px; margin: 0px 0px 5px; display:block;">
-                                    <a id="per_login_btn" type="button" href="javascript:void(0)" class="border-btn2">개인회원</a>
+                                    <a id="per_login_btn" type="button" onclick="per_login_select()" href="javascript:void(0)" class="select-border-btn2">개인회원</a>
                                 </div>
                                 <div style="display: inline-block;">
                                     <hr id="com_upper_line" style="border: solid 1.5px #007bff; background-color: #007bff; width: 195px; margin: 0px 0px 5px; display:none;">
-                                    <a id="com_login_btn" type="button" href="javascript:void(0)" class="select-border-btn2">기업회원</a>
+                                    <a id="com_login_btn" type="button" onclick="com_login_select()" href="javascript:void(0)" class="border-btn2">기업회원</a>
                                 </div>
                             </div>
 
@@ -127,15 +127,15 @@
                     </div>
 
 
-                    <div class="browse-btn2 text-center">
+                    <div class="browse-btn2 text-center" style="margin-bottom: 100px !important;">
                         <!-- kakao -->
                         <a id="kakao-login-btn" href="javascript:loginWithKakao()" style="display:inline-block;">
                             <img src="https://k.kakaocdn.net/14/dn/btroDszwNrM/I6efHub1SN5KCJqLm1Ovx1/o.jpg" width="222" alt="카카오 로그인 버튼" />
                         </a>
                         <!-- 네이버 로그인 버튼 노출 영역 -->
-                        <div id="naver_id_login" style="display:inline-block;"></div>
+                        <div id="naver_id_login" style="display:inline-block"></div>
                     </div>
-                    <hr style="border: solid 1.5px #007bff; background-color: #007bff; width:600px; display:inline-block;">
+
                 </div>
             </div>
         </div>
@@ -188,50 +188,46 @@
 
 <!-- kakako login -->
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
-<!-- Naver login -->
-<script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
-<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+
 <script type='text/javascript'>
-        	
-            $(function (){
-               $("#per_login_btn").on('click', ()=>{
-                    console.log("per_login");
-                    $("#per_login_div").css('display', 'block');
-                    document.getElementById('per_login_btn').className='select-border-btn2';
-                    $("hr#per_upper_line").css('display', 'block');
-                    $("hr#per_upper_line").css("border",'solid 1.5px #007bff');
-                    document.getElementById('com_login_btn').className='border-btn2';
-                    $("hr#com_upper_line").css('display', 'none');
-                    $("hr#com_upper_line").css('border','solid 1.5px #38a4ff');
-                    $("#per_sign_div").css('display', 'inline-block');
 
-                    $("#com_login_div").css('display', 'none');
-                    $("hr#com_upper_line").css('display', 'none');
-                    $("#com_sign_div").css('display', 'none');
+            function per_login_select(){
+                console.log("per_login");
 
-                    $("#com_login_alert").html();
-                    error_cnt = 0;
-               });
+                $("#per_login_div").css('display', 'block');
+                document.getElementById('per_login_btn').className='select-border-btn2';
+                $("hr#per_upper_line").css('display', 'block');
+                $("hr#per_upper_line").css("border",'solid 1.5px #007bff');
+                document.getElementById('com_login_btn').className='border-btn2';
+                $("hr#com_upper_line").css('display', 'none');
+                $("hr#com_upper_line").css('border','solid 1.5px #38a4ff');
+                $("#per_sign_div").css('display', 'inline-block');
 
-               $("#com_login_btn").on('click', ()=>{
-                    console.log("com_login");
-                    $("#per_login_div").css('display', 'none');
-                    document.getElementById('com_login_btn').className='select-border-btn2';
-                    $("hr#com_upper_line").css('display', 'block');
-                    $("hr#com_upper_line").css('border','solid 1.5px #007bff');
-                    document.getElementById('per_login_btn').className='border-btn2';
-                    $("hr#per_upper_line").css('display', 'none');
-                    $("hr#per_upper_line").css("border",'solid 1.5px #38a4ff');
-                    $("#per_sign_div").css('display', 'none');
+                $("#com_login_div").css('display', 'none');
+                $("hr#com_upper_line").css('display', 'none');
+                $("#com_sign_div").css('display', 'none');
 
-                    $("#com_login_div").css('display', 'block');
-                    $("hr#com_upper_line").css('display', 'block');
-                    $("#com_sign_div").css('display', 'inline-block');
+                $("#com_login_alert").html();
+                error_cnt = 0;
+            }
+            function com_login_select(){
+                console.log("com_login");
+                $("#per_login_div").css('display', 'none');
+                document.getElementById('com_login_btn').className='select-border-btn2';
+                $("hr#com_upper_line").css('display', 'block');
+                $("hr#com_upper_line").css('border','solid 1.5px #007bff');
+                document.getElementById('per_login_btn').className='border-btn2';
+                $("hr#per_upper_line").css('display', 'none');
+                $("hr#per_upper_line").css("border",'solid 1.5px #38a4ff');
+                $("#per_sign_div").css('display', 'none');
 
-                    $("#per_login_alert").html();
-                    error_cnt = 0;
-               });
-            });
+                $("#com_login_div").css('display', 'block');
+                $("hr#com_upper_line").css('display', 'block');
+                $("#com_sign_div").css('display', 'inline-block');
+
+                $("#per_login_alert").html();
+                error_cnt = 0;
+            }
 
 	        function loginWithKakao() {
 	        	Kakao.init('a975f70f0a16a4f131af7f7cdd795234'); // 사용하려는 앱의 키 입력
@@ -259,7 +255,7 @@
                         } else if (data == "") {
                             <!--console.log("per_data : null")-->
                             error_cnt += 1;
-                            $("#per_login_alert").html("❗ID 및 Password를 찾을 수 없습니다 틀린 횟수 : " + error_cnt + "❗")
+                            $("#per_login_alert").html("❕ ID 및 Password를 찾을 수 없습니다 틀린 횟수 : " + error_cnt)
                             $("#mem_id").val("");
                             $("#mem_pw").val("");
                         } else{
@@ -287,7 +283,7 @@
                         } else if (data == "") {
                             <!--console.log("com_data : null")-->
                             error_cnt += 1;
-                            $("#com_login_alert").html("❗ID 및 Password를 찾을 수 없습니다 틀린 횟수 : " + error_cnt + "❗")
+                            $("#com_login_alert").html("❕ ID 및 Password를 찾을 수 없습니다 틀린 횟수 : " + error_cnt)
                             $("#company_id").val("");
                             $("#company_pw").val("");
                         } else{
@@ -302,14 +298,19 @@
 	         
         </script>
 
+        <!-- Naver login -->
+        <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
+        <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+
         <script type="text/javascript">
             var naver_id_login = new naver_id_login("0ywzNhrfe4R0vRXSFeOf", "http://127.0.0.1:8081/loginform");
             var state = naver_id_login.getUniqState();
-            naver_id_login.setButton("green", 2,55);
-            naver_id_login.setDomain("http://127.0.0.1:8081");
+            naver_id_login.setButton("green", 5,46);
+            naver_id_login.setDomain("YOUR_SERVICE_URL");
             naver_id_login.setState(state);
             naver_id_login.setPopup();
             naver_id_login.init_naver_id_login();
         </script>
+
 </body>
 </html>

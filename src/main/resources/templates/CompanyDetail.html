@@ -79,17 +79,19 @@
                                 </a>
                                 <ul>
                                     <li th:text="${detail.company_industry}">전기/전자/제어</li>
-                                    <li th:text="${#strings.listSplit(detail.company_address,' ')[0]}"><i class="fas fa-map-marker-alt"></i>서울</li>
+                                    <li th:if="${not #strings.isEmpty(detail.company_address)}" th:text="${#strings.listSplit(detail.company_address,' ')[0]}"><i class="fas fa-map-marker-alt"></i>서울</li>
+                                    <li th:if="${#strings.isEmpty(detail.company_address)}" th:text="''"><i class="fas fa-map-marker-alt"></i>서울</li>
                                     <li>대기업</li>
                                 </ul>
                             </div>
                         </div>
 
                         <div class="button-group-area mt-10">
-                            <a href="" class="genric-btn primary radius">기업상세</a>
+                            <a href=""
+                               class="genric-btn primary radius">기업상세</a>
                             <a th:href="@{/companyReview/{company_id}(company_id=${detail.company_id})}"
                                class="genric-btn success-border radius">기업리뷰</a>
-                            <a th:href="@{/companyReview/{company_id}(company_id=${detail.company_id})}"
+                            <a th:href="@{/companyRecruit/{company_id}(company_id=${detail.company_id})}"
                                class="genric-btn warning-border radius" th:text="'채용공고('+${countgongo}+')'">채용공고(4)</a>
                         </div>
 
@@ -104,8 +106,8 @@
                                     <div class="service text-center">
                                         <span class="icon-paper-plane"></span>
                                         <a href="">
-                                            <img src="/img/industry_icon.png">
-                                            <h3 th:text="${detail.industry_class}">전기/전자/제어</h3>
+                                            <img src="/img/settings.png" class="detail4">
+                                            <h3 th:text="${detail.industry_class}" class="detail4">전기/전자/제어</h3>
                                             <p>산업</p>
                                         </a>
                                     </div>
@@ -114,8 +116,8 @@
                                     <div class="service text-center">
                                         <span class="icon-tag"></span>
                                         <a href="">
-                                            <img src="/img/company_icon.png">
-                                            <h3 th:text="${detail.company_type}">대기업</h3>
+                                            <img src="/img/home.png" class="detail4">
+                                            <h3 th:text="${detail.company_type}" class="detail4">대기업</h3>
                                             <p>기업형태</p>
                                         </a>
                                     </div>
@@ -124,8 +126,8 @@
                                     <div class="service text-center">
                                         <span class="icon-user"></span>
                                         <a href="">
-                                            <img src="/img/employee_number_icon.png">
-                                            <h3 th:text="${detail.staff_volume}">98,387명 (2013)</h3>
+                                            <img src="/img/users.png" class="detail4">
+                                            <h3 th:text="${detail.staff_volume}" class="detail4">98,387명 (2013)</h3>
                                             <p>사원수</p>
                                         </a>
                                     </div>
@@ -134,8 +136,8 @@
                                     <div class="service text-center">
                                         <span class="icon-support"></span>
                                         <a href="">
-                                            <img src="/img/found_year_icon2.png">
-                                            <h3 th:text="${detail.foundation_dt}">1969.01.13</h3>
+                                            <img src="/img/calendar.png" class="detail4">
+                                            <h3 th:text="${detail.foundation_dt}" class="detail4">1969.01.13</h3>
                                             <p>설립</p>
                                         </a>
                                     </div>
@@ -150,7 +152,7 @@
                     <br>
 
 
-                    <div class="job-post-details" style="padding-left: 100px; padding-right: 100px;">
+                    <div class="col-lg-8 job-post-details hmcontent">
 
                         <div class="post-details1 mb-50" th:if="${not #strings.isEmpty(detail.company_intro)}">
                             <!-- Small Section Tittle -->
@@ -164,7 +166,7 @@
                                 2013년에는 수급 안정화로 하락폭이 25%수준으로 둔화 되었음</p>
                         </div>
 
-                        <div class="post-details2  mb-50" th:if="${not #strings.isEmpty(detail.company_intro)}">
+                        <div class="post-details2  mb-50" th:if="${not #strings.isEmpty(detail.company_owner)}">
                             <div class="small-section-tittle">
                                 <h4>대표</h4>
                             </div>
@@ -173,7 +175,7 @@
                             </ul>
                         </div>
 
-                        <div class="post-details2  mb-50" th:if="${not #strings.isEmpty(detail.company_intro)}">
+                        <div class="post-details2  mb-50" th:if="${not #strings.isEmpty(detail.total_sales)}">
                             <div class="small-section-tittle">
                                 <h4>매출</h4>
                             </div>
@@ -182,23 +184,18 @@
                             </ul>
                         </div>
 
-                        <div class="post-details2  mb-50" th:if="${not #strings.isEmpty(detail.company_intro)}">
+                        <div class="post-details2  mb-50" th:if="${not #strings.isEmpty(detail.company_history)}">
                             <!-- Small Section Tittle -->
                             <div class="small-section-tittle">
                                 <h4>연혁</h4>
                             </div>
-                            <ul>
-                                <li th:text="${detail.company_history}">3 or more years of professional design
-                                    experience
+                            <ul th:each="hist : ${#strings.listSplit(detail.company_history,'\n')}">
+                                <li th:text="${hist}">3 or more years of professional design experience
                                 </li>
-                                <li>Direct response email experience</li>
-                                <li>Ecommerce website design experience</li>
-                                <li>Familiarity with mobile and web apps preferred</li>
-                                <li>Experience using Invision a plus</li>
                             </ul>
                         </div>
 
-                        <div class="post-details2  mb-50" th:if="${not #strings.isEmpty(detail.company_intro)}">
+                        <div class="post-details2  mb-50" th:if="${not #strings.isEmpty(detail.company_address)}">
                             <div class="small-section-tittle">
                                 <h4>주소</h4>
                             </div>
@@ -207,12 +204,12 @@
                             </ul>
                         </div>
 
-                        <div class="post-details2  mb-50" th:if="${not #strings.isEmpty(detail.company_intro)}">
+                        <div class="post-details2  mb-50" th:if="${not #strings.isEmpty(detail.company_url)}">
                             <div class="small-section-tittle">
                                 <h4>웹사이트</h4>
                             </div>
                             <ul>
-                                <li><a th:href="@{${detail.company_url}}">http://www.samsung.com/sec/</a></li>
+                                <li><a th:href="@{${detail.company_url}}" th:text="${detail.company_url}" style="color:black;">http://www.samsung.com/sec/</a></li>
                             </ul>
                         </div>
 

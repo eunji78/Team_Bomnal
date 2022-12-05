@@ -53,4 +53,9 @@ public class CompanyRepository {
         int countgongo = companyMapper.countgongo(company_id);
         return countgongo;
     }
+
+    public int countreview(String company_id) {
+        int countreview = companyMapper.countreview(company_id);
+        return countreview;
+    }
 }

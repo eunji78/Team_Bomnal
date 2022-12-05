@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/responsive.css">
     <link rel="stylesheet" href="/css/star.css">
+    <link rel="stylesheet" href="/css/c_detail.css">
 </head>
 
 <body>
@@ -60,7 +61,7 @@
 </div>
 <!-- Hero Area End -->
 <!--================Blog Area =================-->
-<section class="blog_area single-post-area section-padding">
+<section class="single-post-area section-padding">
     <div class="container">
         <div class="row">
             <div class="">
@@ -88,36 +89,33 @@
                     <div class="button-group-area mt-10">
                         <a th:href="@{/companyDetail/{company_id}(company_id=${detail.company_id})}"
                            class="genric-btn primary-border radius">기업상세</a>
-                        <a href="" class="genric-btn success radius">기업리뷰</a>
+                        <a th:href="@{/companyReview/{company_id}(company_id=${detail.company_id})}"
+                           class="genric-btn success radius">기업리뷰</a>
                         <a th:href="@{/companyRecruit/{company_id}(company_id=${detail.company_id})}"
                            class="genric-btn warning-border radius" th:text="'채용공고('+${countgongo}+')'">채용공고(4)</a>
                     </div>
+
                 </div>
                 <!-- 맨 위에 기업 크게 띄워주는거 End -->
 
 
                 <!-- 전체 평균 평점 -->
-                <div class="col-lg-8 posts-list">
+                <div class="col-lg-8 posts-list hmcontent">
                     <div class="single-post">
                         <div class="blog_details">
-                            <h2>삼성전자 Review
-                            </h2>
+                            <h2 th:text="${detail.company_name}+' Review'">삼성전자 Review</h2>
                             <ul class="blog-info-link mt-3 mb-4">
-                                <li><a href="#"><i class="fa fa-comments"></i> 03 Comments</a></li>
+                                <li><a href="#"><i class="fa fa-comments" th:text="${countreview}+ '개의 리뷰'"></i></a></li>
                             </ul>
+                            <br>
+                            <h4 th:if="${avg.totalstar < 2}" th:text="'전체 평점⭐'+${avg.totalstar}" >전체 평점 ⭐⭐⭐</h4>
+                            <h4 th:if="${avg.totalstar >= 2} and ${avg.totalstar < 3}" th:text="'전체 평점⭐⭐'+${avg.totalstar}" >전체 평점 ⭐⭐⭐</h4>
+                            <h4 th:if="${avg.totalstar >= 3} and ${avg.totalstar < 4}" th:text="'전체 평점⭐⭐⭐'+${avg.totalstar}" >전체 평점 ⭐⭐⭐</h4>
+                            <h4 th:if="${avg.totalstar >= 4} and ${avg.totalstar < 5}" th:text="'전체 평점⭐⭐⭐⭐'+${avg.totalstar}" >전체 평점 ⭐⭐⭐</h4>
+                            <h4 th:if="${avg.totalstar == 5}" th:text="'전체 평점⭐⭐⭐⭐⭐'+${avg.totalstar}" >전체 평점 ⭐⭐⭐</h4>
 
+                            <div class = "totalreview">
                             <table class="reviewstar">
-                                <tr>
-                                    <td>전체 평점</td>
-                                    <td th:if="${avg.totalstar < 2}" th:text="'⭐'+${avg.totalstar}"></td>
-                                    <td th:if="${avg.totalstar >= 2} and ${avg.totalstar < 3}"
-                                        th:text="'⭐⭐'+${avg.totalstar}"></td>
-                                    <td th:if="${avg.totalstar >= 3} and ${avg.totalstar < 4}"
-                                        th:text="'⭐⭐⭐'+${avg.totalstar}"></td>
-                                    <td th:if="${avg.totalstar >= 4} and ${avg.totalstar < 5}"
-                                        th:text="'⭐⭐⭐⭐'+${avg.totalstar}"></td>
-                                    <td th:if="${avg.totalstar == 5}" th:text="'⭐⭐⭐⭐⭐'+${avg.totalstar}"></td>
-                                </tr>
                                 <tr>
                                     <td>기업 복지</td>
                                     <td th:if="${avg.welfare < 2}" th:text="'⭐'+${avg.welfare}"></td>
@@ -176,12 +174,14 @@
                                     <td th:if="${avg.management == 5}" th:text="'⭐⭐⭐⭐⭐'+${avg.management}"></td>
                                 </tr>
                             </table>
+                                <h4 style="margin: revert; padding-right: 40px;">전체 평균 연봉 <b th:text="${avg.avgsalary}+'만원'">3400만원</b></h4>
+                            </div>
                             <br>
 
                             <div class="comment-form">
                                 <h4>Leave a Reivew</h4>
                                 <form class="form-contact comment_form" id="myform" method="post"
-                                      th:action="@{/companyReview/{company_id}(company_id=${detail.company_id})}">
+                                      th:action="@{/save/{company_id}(company_id=${detail.company_id})}">
                                     <div class="row">
 
                                         <div class="starform" style="text-align: center;">
@@ -252,20 +252,21 @@
                                             </fieldset>
 
                                         </div>
-
+                                        <br><br>
 
                                         <div class="col-12">
                                             <div class="form-group">
                                                 <h4 style="color: orangered;">단점</h4>
-                                                <textarea class="form-control w-100" name="comment" id="comment"
+                                                <textarea class="form-control w-100" name="cons" id="comment"
                                                           cols="30" rows="9"
                                                           placeholder="단점을 입력하세요"></textarea>
                                             </div>
                                         </div>
+                                        <br><br>
                                         <div class="col-12">
                                             <div class="form-group">
                                                 <h4 style="color: royalblue;">장점</h4>
-                                                <textarea class="form-control w-100" name="comment" id="comment"
+                                                <textarea class="form-control w-100" name="pros" id="comment"
                                                           cols="30" rows="9"
                                                           placeholder="장점을 입력하세요"></textarea>
                                             </div>
@@ -273,7 +274,7 @@
                                         <div class="col-12">
                                             <div class="form-group">
                                                 <h4 style="color: green;">전체 리뷰</h4>
-                                                <textarea class="form-control w-100" name="comment" id="comment"
+                                                <textarea class="form-control w-100" name="review_content" id="comment"
                                                           cols="30" rows="9"
                                                           placeholder="Write Comment"></textarea>
                                             </div>
@@ -281,7 +282,7 @@
                                         <div class="col-sm-12">
                                             <div class="form-group">
                                                 <h4 style="display: inline;">나의 연봉은</h4>
-                                                <input class="form-control" name="number" id="email" type="number"
+                                                <input class="form-control" name="my_salary" id="email" type="number"
                                                        placeholder="연봉" style="display: inline; width:90px;">만원
                                             </div>
                                         </div>
@@ -297,18 +298,19 @@
 
                                     </div>
                                     <div class="form-group" style="text-align: center;">
-                                        <button type="submit" class="button button-contactForm btn_1 boxed-btn">Share
+                                        <button type="submit" class="button button-contactForm btn_1 boxed-btn" style="color:#38a4ff!important;">Share
                                         </button>
                                     </div>
                                 </form>
                             </div>
-
-
+                            <h4 class="moabogi">모아보기</h4>
+                            <div class="rev">
+                            <!-- 전체 리뷰 보여주기 -->
                             <div th:each="r : ${review}">
-                                <!-- 현직자 리뷰 보여주기-->
-                                <!--                                <h4 th:if="${r.current_yn} == 'y'" th:text="'현직자' Review">현직자 Review  <small th:text="${#strings.substring(r.reg_date,0,10)}+ ' | '">2022.12.02 | <medium>연봉 <b th:text="${r.my_salary}">4700만원</b></medium></h4></small>-->
-                                <!--                                <h4 th:if="${r.current_yn} == 'n'" th:text="'현직자' Review">현직자 Review  <small th:text="${#strings.substring(r.reg_date,0,10)}+ ' | '">2022.12.02 | <medium>연봉 <b th:text="${r.my_salary}">4700만원</b></medium></h4></small>-->
-
+                                <h5 th:if="${r.current_yn} == 'y'" th:text="'현직자 Review '" style="display:inline;">현직자 Review</h5>
+                                <h5 th:if="${r.current_yn} == 'n'" th:text="'전직자 Review '" style="display:inline;">현직자 Review</h5>
+                                <medium th:text="${#strings.substring(r.reg_date,0,10)}+ ' | '">2022.12.02 |</medium><medium>연봉 <b th:text="${r.my_salary} +'만원'">4700만원</b></medium>
+                                <br>
                                 <br>
                                 <table>
                                     <tr>
@@ -385,53 +387,27 @@
                                         self-imposed MCSE training.
                                     </div>
                                 </div>
-                                <p>
-                                    MCSE boot camps have its supporters and its detractors. Some people do not
-                                    understand why you
-                                    should have to spend money on boot camp when you can get the MCSE study materials
-                                    yourself at a
-                                    fraction of the camp price. However, who has the willpower
-                                </p>
-                                <p>
-                                    MCSE boot camps have its supporters and its detractors. Some people do not
-                                    understand why you
-                                    should have to spend money on boot camp when you can get the MCSE study materials
-                                    yourself at a
-                                    fraction of the camp price. However, who has the willpower to actually sit through a
-                                    self-imposed MCSE training. who has the willpower to actually
-                                </p>
-                            <div class="navigation-top">
-                                <div class="d-sm-flex justify-content-between text-center">
-                                    <p class="like-info" th:text="${r.review_likes}"><span class="align-middle"><i
-                                            class="fa fa-heart"></i></span>
-                                        people like this</p>
-                                    <div class="col-sm-4 text-center my-2 my-sm-0">
-                                        <!-- <p class="comment-count"><span class="align-middle"><i class="fa fa-comment"></i></span> 06 Comments</p> -->
+
+                                <div class="navigation-top">
+                                    <div class="d-sm-flex justify-content-between text-center">
+<!--                                        <p class="like-info" th:text="${r.review_likes}"><span class="align-middle"><i-->
+<!--                                                class="fa fa-heart"></i></span>-->
+<!--                                            people like this</p>-->
+                                        <div class="col-sm-4 text-center my-2 my-sm-0">
+                                            <!-- <p class="comment-count"><span class="align-middle"><i class="fa fa-comment"></i></span> 06 Comments</p> -->
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-
-
-                    <!-- 얜 나중에 혹시 쓸일이 있을까 싶어서 냅둔애-->
-                    <div class="blog-author">
-                        <div class="media align-items-center">
-                            <img src="/img/blog/author.png" alt="">
-                            <div class="media-body">
-                                <a href="#">
-                                    <h4>Harvard milan</h4>
-                                </a>
-                                <p>Second divided from form fish beast made. Every of seas all gathered use saying
-                                    you're, he
-                                    our dominion twon Second divided from</p>
                             </div>
                         </div>
-                    </div>
 
+
+                    </div>
                 </div>
             </div>
         </div>
+    </div>
 </section>
 <!--================ Blog Area end =================-->
 <footer>
@@ -478,11 +454,11 @@
 <script src="/js/plugins.js"></script>
 <script src="/js/main.js"></script>
 
-<script th:inline="javascript">
+<script>
          function checkOnlyOne(element) {
 
             const checkboxes
-                = document.getElementsByName("[[${current_yn}]]");
+                = document.getElementsByName("current_yn");
 
             checkboxes.forEach((cb) => {
               cb.checked = false;
@@ -490,8 +466,6 @@
 
             element.checked = true;
          }
-
-
 </script>
 </body>
 </html>

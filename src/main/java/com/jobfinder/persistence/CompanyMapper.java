@@ -26,4 +26,7 @@ public interface CompanyMapper {
     ArrayList<Recruit> gongo(String company_id);
 
     int countgongo(String company_id);
+
+    int countreview(String company_id);
+
 }
