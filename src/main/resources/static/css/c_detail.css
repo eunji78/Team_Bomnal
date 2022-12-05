@@ -28,3 +28,7 @@ a: hover{
 .boxed-btn{
     border : 1px solid #38a4ff!important;
 }
+
+.job-title {
+    float:right;
+}
