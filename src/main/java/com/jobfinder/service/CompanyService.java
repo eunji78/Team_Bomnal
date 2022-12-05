@@ -55,4 +55,9 @@ public class CompanyService{
         int countgongo = companyRepository.countgongo(company_id);
         return countgongo;
     }
+
+    public int countreview(String company_id) {
+        int countreview = companyRepository.countreview(company_id);
+        return countreview;
+    }
 }

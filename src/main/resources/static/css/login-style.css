@@ -8,7 +8,7 @@
 }
 
 .center-signup-div{
-    width: 700px !important;
+    width: 750px !important;
     border: 1px solid #007bff ;
     padding-top: 40px !important;
     padding-bottom: 50px !important;
@@ -18,7 +18,7 @@
 .signup-input-box{
     position:relative !important;
     margin:10px 0 !important;
-    width: 300px;  
+    width: 450px;
     display: inline-block;
 }
 
@@ -29,6 +29,30 @@
     padding:20px 0px 5px 0px !important;
     font-size:14pt !important;
     width:100% !important;      
+}
+
+.sm-button {
+    background: #38a4ff;
+    -moz-user-select: none;
+    text-transform: capitalize;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    line-height: 0;
+    margin-bottom: 0;
+    padding: 17px 14px;
+    border-radius: 5px;
+    margin: 5px;
+    cursor: pointer;
+    transition: color 0.4s linear;
+    position: relative;
+    z-index: 1;
+    border: 0;
+    overflow: hidden;
+    margin: 0
 }
 
 .button {
