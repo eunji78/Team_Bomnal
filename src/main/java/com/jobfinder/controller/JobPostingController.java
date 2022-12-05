@@ -24,7 +24,7 @@ public class JobPostingController {
     @Autowired
     MainService mainService;
 
-    @RequestMapping("/jobPosting")
+    @RequestMapping("/jobPostingForm")
     public String jobPosting(Model model){
         List<Job> job_list = mainService.jobList();
         model.addAttribute("job_list",job_list);
@@ -66,6 +66,11 @@ public class JobPostingController {
         return jsonObject;
     }
 
+    @RequestMapping("/jobPosting")
+    public String jobPosting(){
+
+        return "/";
+    }
 
 
 
