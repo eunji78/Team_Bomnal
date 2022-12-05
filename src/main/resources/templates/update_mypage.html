@@ -1,0 +1,351 @@
+<!doctype html>
+<html class="no-js" lang="zxx" xmlns:th="http://www.thymeleaf.org">
+<
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Job board HTML-5 Template </title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico">
+
+  <!-- CSS here -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/owl.carousel.min.css">
+  <link rel="stylesheet" href="/css/price_rangs.css">
+  <link rel="stylesheet" href="/css/flaticon.css">
+  <link rel="stylesheet" href="/css/slicknav.css">
+  <link rel="stylesheet" href="/css/animate.min.css">
+  <link rel="stylesheet" href="/css/magnific-popup.css">
+  <link rel="stylesheet" href="/css/fontawesome-all.min.css">
+  <link rel="stylesheet" href="/css/themify-icons.css">
+  <link rel="stylesheet" href="/css/slick.css">
+  <link rel="stylesheet" href="/css/nice-select.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/resume.css">
+
+  <style>
+    .ump-border-btn2 {
+        border: 1px solid rgb(182, 180, 180);
+        color: rgb(182, 180, 180);
+        font: "Muli", sans-serif;
+        background: none;
+        -moz-user-select: none;
+        padding: 19px 69px;
+        margin: 0px;
+        text-transform: uppercase;
+        cursor: pointer;
+        display: inline-block;
+        font-size: 14px;
+        font-weight: 500;
+        letter-spacing: 1px;
+        margin-bottom: 0;
+        border-radius: 5px;
+        position: relative;
+        transition: color 0.4s linear;
+        position: relative;
+        overflow: hidden;
+        margin: 0
+    }
+
+    @media (max-width: 767px) {
+        .ump-border-btn2 {
+            padding: 19px 30px
+        }
+    }
+
+    .ump-border-btn2::before {
+        border: 1px solid transparent;
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 101%;
+        height: 101%;
+        background: rgb(182, 180, 180);
+        z-index: -1;
+        transition: transform 0.5s;
+        transition-timing-function: ease;
+        transform-origin: 0 0;
+        transition-timing-function: cubic-bezier(0.5, 1.6, 0.4, 0.7);
+        transform: scaleY(0);
+        border-radius: 0px
+    }
+
+    .ump-border-btn2:hover::before {
+        transform: scaleY(1);
+        order: 2px solid transparent
+    }
+  </style>
+</head>
+
+<body>
+<!-- Preloader Start -->
+<div id="preloader-active">
+  <div class="preloader d-flex align-items-center justify-content-center">
+    <div class="preloader-inner position-relative">
+      <div class="preloader-circle"></div>
+      <div class="preloader-img pere-text">
+        <img src="/img/logo/logo.png" alt="">
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Preloader Start -->
+<header>
+  <!-- Header Start -->
+  <th:block th:replace="fragments/header :: headerFragment"></th:block>
+  <!-- Header End -->
+</header>
+<main>
+
+  <!-- Job List Area Start -->
+  <div class="job-listing-area pt-50 pb-120" style="background-color:#f5f5f5">
+    <div class="container">
+      <div class="row">
+        <!-- Left content -->
+        <div class="col-2 col-lg-3 col-md-4">
+          <!-- Job Category Listing start -->
+          <div class="category-listing mb-50">
+            <!-- single one -->
+            <div class="asideSection">
+              개인정보관리
+              <ul>
+                <li class="aside-list"><a th:href="@{/ump}">회원 정보 수정</a></li>
+              </ul>
+            </div>
+
+            <div class="asideSection">
+              이력서 관리
+              <ul>
+                <li class="aside-list"><a th:href="@{/resume}">이력서 관리</a></li>
+                <li class="aside-list"><a th:href="@{/resume_manage}">이력서 등록</a></li>
+              </ul>
+            </div>
+
+            <div class="asideSection">
+              입사지원 관리
+              <ul>
+                <li class="aside-list"><a href="#">입사지원 현황</a></li>
+                <li class="aside-list"><a href="#">구직활동 확인서</a></li>
+              </ul>
+            </div>
+
+            <div class="asideSection">
+              더 넣을게 있나?
+            </div>
+
+          </div>
+          <!-- Job Category Listing End -->
+        </div>
+
+        <!-- Right content -->
+        <div class="col-9 col-lg-9 col-md-8">
+          <div class="container">
+            <div class="resume-section mb-30">
+              <div class="row">
+                <h2>회원 정보 수정</h2>
+              </div>
+
+              <!-- 시작 -->
+              <div style="justify-content : center; margin-top: 30px; " class="blog_details">
+
+                <article class="col-lg-12 mb-5 mb-lg-0 blog_item">
+                  <div>
+                    <form id="umpform_per" th:action="@{/update_my_page}" th:object="${loginVO}"  method="POST" >
+
+                      <div style="justify-content : center; margin-bottom:30px !important;">
+                        <div class="col-lg-4 mb-5 mb-lg-0" style="display: inline-block; justify-content : center;">
+                          <h6>아이디</h6> </div>
+                        <div class="col-lg-7 mb-5 mb-lg-0" style="display: inline-block; justify-content : center;">
+                          <input readonly id="mem_id" name="mem_id" th:value="${session.VO.mem_id}" style="border:none"> </div>
+                        <hr style="border: solid 0.3px #ff87OEEB; background-color: #ff87CEEB; width:645px; display:block; margin:0px !important;">
+                      </div>
+
+                      <div style="justify-content : center; margin-bottom:30px !important;">
+                        <div class="col-lg-4 mb-5 mb-lg-0" style="display: inline-block; justify-content : center;">
+                          <h6>이름</h6> </div>
+                        <div class="col-lg-7 mb-5 mb-lg-0" style="display: inline-block; justify-content : center;">
+                          <input readonly th:value="${session.VO.mem_name}" style="border:none"> </div>
+                        <hr style="border: solid 0.3px #ff87OEEB; background-color: #ff87CEEB; width:645px; display:block; margin:0px !important;">
+                      </div>
+
+                      <div style="justify-content : center; margin-bottom:30px !important;">
+                        <div class="col-lg-4 mb-5 mb-lg-0" style="display: inline-block; justify-content : center;">
+                          <h6>성별</h6> </div>
+                        <div class="col-lg-7 mb-5 mb-lg-0" style="display: inline-block; justify-content : center;">
+                          <input readonly type="text" id="mem_gender" th:value="${session.VO.mem_gender}" style="border:none"> </div>
+                        <hr style="border: solid 0.3px #ff87OEEB; background-color: #ff87CEEB; width:645px; display:block; margin:0px !important;">
+                      </div>
+
+                      <div style="justify-content : center; margin-bottom:30px !important;">
+                        <div class="col-lg-4 mb-5 mb-lg-0" style="display: inline-block; justify-content : center;">
+                          <h6>생년월일</h6> </div>
+                        <div class="col-lg-7 mb-5 mb-lg-0" style="display: inline-block; justify-content : center;">
+                          <input readonly th:value="${session.VO.mem_bdate.split(' ')[0]}" style="border:none"> </div>
+                        <hr style="border: solid 0.3px #ff87OEEB; background-color: #ff87CEEB; width:645px; display:block; margin:0px !important;">
+                      </div>
+
+                      <div style="justify-content : center; margin-bottom:10px !important;">
+                        <div class="col-lg-4 mb-5 mb-lg-0" style="display: inline-block; justify-content : center;">
+                          <h6>수정 비밀번호</h6> </div>
+                        <div class="col-lg-7 mb-5 mb-lg-0" style="display: inline; justify-content : center;">
+                          ✔<input id="pwd" value="" type="password" style="width: 380px; border:none "> </div>
+                      </div >
+
+                      <div style="justify-content : center;">
+                        <div class="col-lg-4 mb-5 mb-lg-0" style="display: inline-block; justify-content : center;">
+                          <h6>비밀번호 확인</h6> </div>
+                        <div class="col-lg-7 mb-5 mb-lg-0" style="display: inline; justify-content : center;">
+                          ✔<input id="mem_pw" th:field="*{mem_pw}" type="password" oninput="real_check_pwd()" style="width: 380px; border:none"> </div>
+                        <hr style="border: solid 0.3px #ff87OEEB; background-color: #ff87CEEB; width:645px; display:block; margin:0px !important;">
+                      </div>
+
+                      <div style="margin-bottom:20px !important;">
+                        <div class="col-lg-4 mb-5 mb-lg-0" style="display: inline-block; justify-content : center;">
+                          <p></p> </div>
+                        <div class="col-lg-7 mb-5 mb-lg-0" style="display: inline-block; justify-content : center;">
+                          <p id="check_pwd_ptag" style="visibility: visible; margin:0px !important;"> ◼ 비밀번호를 입력해주세요. </p></div>
+                      </div>
+
+                      <div style="justify-content : center;">
+                        <p></p>
+                      </div>
+
+                      <div style="justify-content : center; margin-bottom:10px !important;">
+                        <div class="col-lg-4 mb-5 mb-lg-0" style="display: inline-block; justify-content : center;">
+                          <h6>이전 주소</h6> </div>
+                        <div class="col-lg-7 mb-5 mb-lg-0" style="display: inline-block; justify-content : center;">
+                          <input readonly th:value="${session.VO.mem_addr}" style="border:none"> </div>
+                      </div>
+
+                      <div style="justify-content : center; margin-bottom:30px !important;">
+                        <div class="col-lg-4 mb-5 mb-lg-0" style="display: inline-block; justify-content : center;">
+                          <h6>주소</h6> </div>
+                        <div class="col-lg-7 mb-5 mb-lg-0" style="display: inline !important; justify-content : center;">
+                          ✔<input id="mem_addr" th:field="*{mem_addr}" style="width: 380px; border:none; display: inline-block !important;"> </div>
+                        <hr style="border: solid 0.3px #ff87OEEB; background-color: #ff87CEEB; width:645px; display:block; margin:0px !important;">
+                      </div>
+
+                      <div style="justify-content : center; margin-bottom:10px !important;">
+                        <div class="col-lg-4 mb-5 mb-lg-0" style="display: inline-block; justify-content : center;">
+                          <h6>이전 이메일</h6> </div>
+                        <div class="col-lg-7 mb-5 mb-lg-0" style="display: inline-block; justify-content : center;">
+                          <input readonly th:value="${session.VO.mem_email}" style="border:none"> </div>
+                      </div>
+
+                      <div style="justify-content : center; margin-bottom:30px !important;">
+                        <div class="col-lg-4 mb-5 mb-lg-0" style="display: inline-block; justify-content : center;">
+                          <h6>이메일</h6> </div>
+                        <div class="col-lg-7 mb-5 mb-lg-0" style="display: inline; justify-content : center;">
+                          ✔<input id="mem_email" th:field="*{mem_email}" style="width: 380px; border:none"> </div>
+                        <hr style="border: solid 0.3px #ff87OEEB; background-color: #ff87CEEB; width:645px; display:block; margin:0px !important;">
+                      </div>
+
+                      <div style="justify-content : center; margin-bottom:10px !important;">
+                        <div class="col-lg-4 mb-5 mb-lg-0" style="display: inline-block; justify-content : center;">
+                          <h6>이전 전화번호</h6> </div>
+                        <div class="col-lg-7 mb-5 mb-lg-0" style="display: inline-block; justify-content : center;">
+                          <input readonly th:value="${session.VO.mem_phone}" style="border:none"> </div>
+                      </div>
+
+                      <div style="justify-content : center; ">
+                        <div class="col-lg-4 mb-5 mb-lg-0" style="display: inline-block; justify-content : center;">
+                          <h6>전화번호</h6> </div>
+                        <div class="col-lg-7 mb-5 mb-lg-0" style="display: inline; justify-content : center;">
+                          ✔<input id="mem_phone" th:field="*{mem_phone}" style="width: 380px; border:none"> </div>
+                        <hr style="border: solid 0.3px #ff87OEEB; background-color: #ff87CEEB; width:645px; display:block; margin:0px !important;">
+                      </div>
+
+                      <div style="margin-bottom:50px !important;">
+                        <div class="col-lg-4 mb-5 mb-lg-0" style="display: inline-block; justify-content : center;">
+                          <p></p> </div>
+                        <div class="col-lg-7 mb-5 mb-lg-0" style="display: inline-block; justify-content : center;">
+                          <p style="visibility: visible; margin:0px !important;"> ◼ 전화번호는 -없이 작성해주세요. </p></div>
+                      </div>
+
+                      <div style="justify-content : center; margin-bottom:40px !important;">
+                        <div class="col-lg-4 mb-5 mb-lg-0" style="display: inline-block; justify-content : center;">
+                          <p></p> </div>
+                        <div class="col-lg-7 mb-5 mb-lg-0" style="display:inline-block; justify-content : center;">
+                          <a href="javascript:void(0)" type="button" onclick="document.getElementById('umpform_per').submit()" class="ump-border-btn2" style=" width:70px !important; height:40px !important; padding: 5px 0px 0px 0px !important; text-align:center !important;"><span style="color: #FFOOBFFF; font-size:20px; margin:0px; padding:0px;">수정</span></a>
+                          <a href="/loginform" class="ump-border-btn2" style=" width:70px !important; height:40px !important; padding: 5px 0px 0px 0px !important; text-align:center !important;" type="button"><span style="color: #FFOOBFFF; font-size:20px; margin:0px; padding:0px;">취소</span></a> </div>
+                      </div>
+
+                    </form>
+                  </div>
+                </article>
+
+              </div>
+              <!-- 끝 -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Job List Area End -->
+
+</main>
+<footer>
+  <!-- Footer Start-->
+  <th:block th:replace="fragments/footer :: footerFragment"></th:block>
+  <!-- Footer End-->
+</footer>
+
+<!-- JS here -->
+
+<!-- All JS Custom Plugins Link Here here -->
+<script src="/js/vendor/modernizr-3.5.0.min.js"></script>
+<!-- Jquery, Popper, Bootstrap -->
+<script src="/js/vendor/jquery-1.12.4.min.js"></script>
+<script src="/js/popper.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<!-- Jquery Mobile Menu -->
+<script src="/js/jquery.slicknav.min.js"></script>
+
+<!-- Jquery Slick , Owl-Carousel Range -->
+<script src="/js/owl.carousel.min.js"></script>
+<script src="/js/slick.min.js"></script>
+<script src="/js/price_rangs.js"></script>
+<!-- One Page, Animated-HeadLin -->
+<script src="/js/wow.min.js"></script>
+<script src="/js/animated.headline.js"></script>
+<script src="/js/jquery.magnific-popup.js"></script>
+
+<!-- Scrollup, nice-select, sticky -->
+<script src="/js/jquery.scrollUp.min.js"></script>
+<script src="/js/jquery.nice-select.min.js"></script>
+<script src="/js/jquery.sticky.js"></script>
+
+<!-- contact js -->
+<script src="/js/contact.js"></script>
+<script src="/js/jquery.form.js"></script>
+<script src="/js/jquery.validate.min.js"></script>
+<script src="/js/mail-script.js"></script>
+<script src="/js/jquery.ajaxchimp.min.js"></script>
+
+<!-- Jquery Plugins, main Jquery -->
+<script src="/js/plugins.js"></script>
+<script src="/js/main.js"></script>
+
+<script>
+
+  function real_check_pwd() {
+        var pwd = $("#pwd").val();
+        var cpwd = $("#mem_pw").val();
+
+        if (cpwd == "") {
+            $("#check_pwd_ptag").html( "<p id='check_pwd_ptag' style='visibility: visible; text-align: left !important; margin:0px !important;'> ✔ 비밀번호를 입력해주세요. </p>" );
+        }else if (pwd==cpwd){
+            $("#check_pwd_ptag").html( "<p id='check_pwd_ptag' style=' color: green; visibility: visible; text-align: left !important; margin:0px !important;'> 비밀번호가 일치 합니다! </p>" );
+        } else {
+            $("#check_pwd_ptag").html( "<p id='check_pwd_ptag' style=' color: red; visibility: visible; text-align: left !important; margin:0px !important;'> 비밀번호가 일치하지 않습니다! </p>" );
+        }
+    };
+
+</script>
+
+</body>
+</html>

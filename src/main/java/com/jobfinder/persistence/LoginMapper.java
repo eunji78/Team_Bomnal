@@ -9,8 +9,6 @@ import java.util.List;
 @Mapper
 public interface LoginMapper {
 
-    public List<LoginVO> loginList();
-
     public int set_signup_per(LoginVO vo);
     public int set_signup_kko(LoginVO vo);
     public int set_signup_com(Login_ComVO cvo);
@@ -21,7 +19,7 @@ public interface LoginMapper {
     public LoginVO login_per(LoginVO vo);
     public Login_ComVO login_com(Login_ComVO cvo);
 
-    public LoginVO get_loginVO(LoginVO vo);
+    public void update_vo(LoginVO vo);
 
-    public Login_ComVO Login_ComVO(Login_ComVO cvo);
+    public void update_cvo(Login_ComVO cvo);
 }

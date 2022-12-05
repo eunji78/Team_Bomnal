@@ -2,10 +2,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jobfinder.persistence.LoginMapper">
 
-    <select id="loginList" resultType="LoginVO" parameterType="String">
-        select * from members where mem_id = #{mem_id}
-    </select>
-
     <select id="id_check_per" resultType="String" parameterType="String">
         select mem_id from members where mem_id = #{insert_id}
     </select>
@@ -15,13 +11,13 @@
     </select>
 
     <insert id="set_signup_com" parameterType="Login_ComVO">
-        insert into company(company_bno ,company_id, company_pw, c_agreement1, c_agreement2, c_agreement3, c_agreement4, c_agreement5, c_agreement6, company_name, company_addrcompany, company_phone, company_email, company_info, company_type, company_joindate, indus_seq)
-        values(#{company_bno}, #{company_id}, #{company_pw}, #{c_agreement1}, #{c_agreement2}, #{c_agreement3}, #{c_agreement4}, #{c_agreement5}, #{c_agreement6}, "", "", "", "", "", "", sysdate(), 0)
+        insert into company(company_bno ,company_id, company_pw, company_name, c_agreement1, c_agreement2, c_agreement3, c_agreement4, c_agreement5, c_agreement6, company_addrcompany, company_phone, company_email, company_joindate, company_info, company_type, indus_seq)
+        values(#{company_bno}, #{company_id}, #{company_pw}, #{company_name}, #{c_agreement1}, #{c_agreement2}, #{c_agreement3}, #{c_agreement4}, #{c_agreement5}, #{c_agreement6}, #{company_addrcompany}, #{company_phone}, #{company_email}, sysdate(), "", "", 0)
     </insert>
 
     <insert id="set_signup_per" parameterType="LoginVO">
-        insert into members(mem_id, mem_pw, mem_name, mem_bdate, mem_phone, mem_email, m_agreement1, m_agreement2, m_agreement3, m_agreement4, m_agreement5, m_agreement6, mem_info, mem_resume, mem_type)
-        values( #{mem_id}, #{mem_pw}, #{mem_name}, #{mem_bdate}, #{mem_phone}, #{mem_email}, #{m_agreement1}, #{m_agreement2}, #{m_agreement3}, #{m_agreement4}, #{m_agreement5}, #{m_agreement6}, "", 0, 0)
+        insert into members(mem_id, mem_pw, mem_name, mem_bdate, mem_gender, mem_addr, mem_phone, mem_email, m_agreement1, m_agreement2, m_agreement3, m_agreement4, m_agreement5, m_agreement6, mem_info, mem_resume, mem_type)
+        values( #{mem_id}, #{mem_pw}, #{mem_name}, #{mem_bdate}, #{mem_gender}, #{mem_addr}, #{mem_phone}, #{mem_email}, #{m_agreement1}, #{m_agreement2}, #{m_agreement3}, #{m_agreement4}, #{m_agreement5}, #{m_agreement6}, "", 0, 0)
     </insert>
 
     <insert id="set_signup_kko" parameterType="LoginVO">
@@ -37,4 +33,11 @@
         select * from company where company_id=#{company_id} and company_pw=#{company_pw}
     </select>
 
+    <update id="update_vo" parameterType="LoginVO">
+        update members set mem_pw=#{mem_pw}, mem_email=#{mem_email}, mem_addr=#{mem_addr}, mem_phone=#{mem_phone} where mem_id=#{mem_id}
+    </update>
+
+    <update id="update_cvo" parameterType="Login_ComVO">
+        update company set company_pw=#{company_pw}, company_email=#{company_email}, company_phone=#{company_phone} where company_id=#{company_id}
+    </update>
 </mapper>

@@ -13,10 +13,6 @@ public class LoginRepository {
     @Autowired
     LoginMapper loginMapper;
 
-    public List<LoginVO> loginList() {
-        List<LoginVO> loginVO = loginMapper.loginList();
-        return loginVO;
-    }
 
     public LoginVO login_per(LoginVO vo){
         LoginVO rvo = loginMapper.login_per(vo);
@@ -60,13 +56,11 @@ public class LoginRepository {
         return mem_id;
     }
 
-    public LoginVO get_loginVO(LoginVO vo) {
-        LoginVO rvo = loginMapper.login_per(vo);
-        return rvo;
+    public void update_vo(LoginVO vo) {
+        loginMapper.update_vo(vo);
     }
 
-    public Login_ComVO Login_ComVO(Login_ComVO cvo) {
-        Login_ComVO rcvo = loginMapper.login_com(cvo);
-        return rcvo;
+    public void update_cvo(Login_ComVO cvo) {
+        loginMapper.update_cvo(cvo);
     }
 }

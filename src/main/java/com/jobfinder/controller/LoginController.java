@@ -3,6 +3,7 @@ package com.jobfinder.controller;
 import com.jobfinder.domain.LoginVO;
 import com.jobfinder.domain.Login_ComVO;
 import com.jobfinder.service.LoginService;
+import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,6 +21,92 @@ public class LoginController {
     @Autowired
     LoginService loginService;
 
+    @RequestMapping(value = "/ump")
+    public String ump(Model model, LoginVO loginVO){
+        model.addAttribute("loginVO", loginVO);
+        return "update_mypage";
+    }
+    @RequestMapping(value = "/umpc")
+    public String umpc(Model model, Login_ComVO login_comVO){
+        model.addAttribute("login_comVO", login_comVO);
+        return "update_mypage_com";
+    }
+
+    @RequestMapping(value = "/update_my_page")
+    public String update_my_page(@ModelAttribute("umpform_per") LoginVO vo, HttpSession session){
+        System.out.println("session : " + session.getAttribute("VO"));
+        System.out.println("update : " + vo);
+
+        LoginVO sessionVO = (LoginVO) session.getAttribute("VO");
+
+        if (vo.getMem_pw() == "") {
+            vo.setMem_pw(sessionVO.getMem_pw());
+        }
+        if (vo.getMem_phone() == "") {
+            vo.setMem_phone(sessionVO.getMem_phone());
+        } else {
+            StringBuffer sb = new StringBuffer();
+            sb.append(vo.getMem_phone());
+            if (sb.substring(0,1) == "02"){
+                sb.insert(2,"-");
+            } else {
+                sb.insert(3,"-");
+            }
+            sb.insert(vo.getMem_phone().length()-3,"-");
+            vo.setMem_phone(sb.toString());
+        }
+        if (vo.getMem_email() == "") {
+            vo.setMem_email(sessionVO.getMem_email());
+        }
+        if (vo.getMem_addr() == "") {
+            vo.setMem_addr(sessionVO.getMem_addr());
+        }
+
+        loginService.update_vo(vo);
+
+        return "redirect:/loginform";
+    }
+    @RequestMapping(value = "/update_my_page_com")
+    public String update_my_page_com(@ModelAttribute("umpform_com") Login_ComVO cvo, HttpSession session){
+        System.out.println("session : " + session.getAttribute("VO"));
+        System.out.println("update : " + cvo);
+
+        Login_ComVO sessionVO = (Login_ComVO) session.getAttribute("VO");
+
+        if (cvo.getCompany_pw() == "") {
+            cvo.setCompany_pw(sessionVO.getCompany_pw());
+        }
+        if (cvo.getCompany_phone() == "") {
+            cvo.setCompany_phone(sessionVO.getCompany_pw());
+        } else {
+            StringBuffer sb = new StringBuffer();
+            sb.append(cvo.getCompany_phone());
+            if (sb.substring(0,1) == "02"){
+                sb.insert(2,"-");
+            } else {
+                sb.insert(3,"-");
+            }
+            sb.insert(cvo.getCompany_phone().length()-3,"-");
+            cvo.setCompany_phone(sb.toString());
+        }
+        if (cvo.getCompany_email() == "") {
+            cvo.setCompany_email(sessionVO.getCompany_email());
+        }
+        if (cvo.getCompany_addrcompany() == "") {
+            cvo.setCompany_addrcompany(sessionVO.getCompany_addrcompany());
+        }
+
+        loginService.update_cvo(cvo);
+
+        return "redirect:/loginform";
+    }
+
+
+
+
+
+
+
     @RequestMapping(value = "/loginform")
     public String loginform() {
         return "loginform";
@@ -34,8 +121,8 @@ public class LoginController {
         vo.setMem_id(id);
         vo.setMem_pw(pw);
         LoginVO rvo = loginService.login_per(vo);
-        session.setAttribute("id", rvo.getMem_id());
-        session.setAttribute("name", rvo.getMem_name());
+        session.setAttribute("type","P");
+        session.setAttribute("VO", rvo);
         System.out.println("개인로그인완료");
         return "redirect:/loginform";
     };
@@ -45,15 +132,9 @@ public class LoginController {
         System.out.println("기업로그인시도");
         System.out.println(cvo);
         Login_ComVO rcvo = loginService.login_com(cvo);
-        session.setAttribute("id", rcvo.getCompany_id());
-        String name = rcvo.getCompany_name();
-        if (name == null){
-            session.setAttribute("name", rcvo.getCompany_id());
-            System.out.println("기업로그인완료, 이름없음");
-        } else {
-            session.setAttribute("name", rcvo.getCompany_name());
-            System.out.println("기업로그인완료");
-        }
+        session.setAttribute("type","C");
+        session.setAttribute("VO", rcvo);
+        System.out.println("기업로그인완료");
         return "redirect:/loginform";
     };
 
@@ -73,6 +154,17 @@ public class LoginController {
     public String signup_com(@ModelAttribute Login_ComVO cvo) {
         System.out.println("signup_com");
         System.out.println(cvo);
+
+        StringBuffer sb = new StringBuffer();
+        sb.append(cvo.getCompany_phone());
+        if (sb.substring(0,1) == "02"){
+            sb.insert(2,"-");
+        } else {
+            sb.insert(3,"-");
+        }
+        sb.insert(cvo.getCompany_phone().length()-3,"-");
+        cvo.setCompany_phone(sb.toString());
+
         int res = loginService.set_signup_com(cvo);
         System.out.println(res);
         return "redirect:/loginform";
@@ -82,6 +174,17 @@ public class LoginController {
     public String signup_per(@ModelAttribute LoginVO vo) {
         System.out.println("signup_per");
         System.out.println(vo);
+
+        StringBuffer sb = new StringBuffer();
+        sb.append(vo.getMem_phone());
+        if (sb.substring(0,1) == "02"){
+            sb.insert(2,"-");
+        } else {
+            sb.insert(3,"-");
+        }
+        sb.insert(vo.getMem_phone().length()-3,"-");
+        vo.setMem_phone(sb.toString());
+
         int res = loginService.set_signup_per(vo);
         System.out.println(res);
         return "redirect:/loginform";
@@ -92,7 +195,7 @@ public class LoginController {
     public String get_loginVO(@ModelAttribute("loginform_per") LoginVO vo) {
 
         System.out.println("per 넘어오는 vo값 : " + vo);
-        LoginVO rvo = loginService.get_loginVO(vo);
+        LoginVO rvo = loginService.login_per(vo);
         System.out.println("per 받는 vo값 : " + rvo);
         String res = "";
         if (rvo == null){ res = "";}
@@ -105,7 +208,7 @@ public class LoginController {
     public String get_login_ComVO(@ModelAttribute("loginform_com") Login_ComVO cvo) {
 
         System.out.println("com 넘어오는 cvo값 : " + cvo);
-        Login_ComVO rcvo = loginService.get_login_ComVO(cvo);
+        Login_ComVO rcvo = loginService.login_com(cvo);
         System.out.println("com 받는 cvo값 : " + rcvo);
         String res = "";
         if (rcvo == null){ res = "";}
@@ -157,13 +260,7 @@ public class LoginController {
         String mem_name = userInfo.get("nickname");
         String mem_email = userInfo.get("email");
 
-        LoginVO set_vo = new LoginVO();
-        set_vo.setMem_id(mem_id);
-        set_vo.setMem_pw(mem_pw);
-        set_vo.setMem_name(mem_name);
-        set_vo.setMem_email(mem_email);
-
-        LoginVO check = loginService.get_loginVO(set_vo);
+        String check = loginService.id_check_per(mem_id);
 
         if ( check == null ){
             System.out.println(mem_id);
@@ -185,21 +282,21 @@ public class LoginController {
 
             int res = loginService.set_signup_kko(vo);
 
-            LoginVO check2 = loginService.get_loginVO(vo);
+            LoginVO rvo = loginService.login_per(vo);
 
-            System.out.println(res);
-            session.setAttribute("id", check2.getMem_id());
-            session.setAttribute("name", check2.getMem_name());
-//        session.setAttribute("nickname", userInfo.get("nickname"));
-//        session.setAttribute("email", userInfo.get("email"));
-//        session.setAttribute("profile_image", userInfo.get("profile_image"));
-//        session.setAttribute("birthday", userInfo.get("birthday"));
-//        session.setAttribute("gender", userInfo.get("gender"));
+            session.setAttribute("type","P");
+            session.setAttribute("VO", rvo);
 
             return "redirect:/loginform";
         } else {
-            session.setAttribute("id", check.getMem_id());
-            session.setAttribute("name", check.getMem_name());
+            LoginVO vo = new LoginVO();
+            vo.setMem_id(mem_id);
+            vo.setMem_pw(mem_pw);
+
+            LoginVO rvo = loginService.login_per(vo);
+
+            session.setAttribute("type","P");
+            session.setAttribute("VO", rvo);
             return "redirect:/loginform";
         }
     }
@@ -214,8 +311,8 @@ public class LoginController {
         token.setMaxAge(0);
         response.addCookie(token);
 
-        session.removeAttribute("id");
-        session.removeAttribute("name");
+        session.removeAttribute("type");
+        session.removeAttribute("VO");
 
         return "loginform";
     }
