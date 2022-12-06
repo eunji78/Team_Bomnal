@@ -109,30 +109,14 @@
                             <div class="col-12" style="float:left">
 
                                 <!-- 지역 -->
-                                <div style="display:flex" id="region-list" >
-                                    <!-- 지역 상위 카테고리 -->
-                                    <div class="d-category-list" style="width:200px; height:300px; overflow:auto">
-                                        <div class="mt-2 mb-2" style="height:284px">
-                                            <ul th:each="region : ${region_list}">
-                                                <li clsss="d-list">
-                                                    <button class="r-list-button" type="button">
-                                                        <span th:text="${region.region}">경영·사무</span>
-                                                        <span id="super-region-seq" th:text="${region.super_region_seq}" style="display:none"></span>
-                                                    </button>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <!-- 상위 카테고리 끝 -->
-
-                                    <!-- 지역 하위 카테고리 -->
-                                    <div class="detail_list" id="r_detail_list">
-                                        <button class='detail_button'>
-
+                                <div style="display:flex; width:100%" id="region-list" >
+                                    <div class="detail_list" style="width:100%" id="r_detail_list">
+                                        <button th:each="region : ${region_list} " class="detail_button" th:id="${region.region_seq}" onclick="add_list(this)">
+                                            [[${region.region}]]
                                         </button>
                                     </div>
-                                    <!-- 하위 카테고리 끝-->
                                 </div>
+                                <!-- 지역 끝 -->
 
                                 <!-- 직무 -->
                                 <div style="display:flex" id="job-list" >
@@ -181,7 +165,7 @@
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="count-job mt-30 mb-35">
-                                            <span>39, 782 Jobs found</span>
+                                            <span>1 Jobs found</span>
                                             <!-- Select job items start -->
                                             <div class="select-job-items">
                                                 <span>Sort by</span>
@@ -205,12 +189,12 @@
                                         </div>
                                         <div class="job-tittle job-tittle2">
                                             <a href="#">
-                                                <h4 th:text="${list.title}">백엔드 엔지니어 채용</h4>
+                                                <h4 th:text="${list.title}">서버/백엔드</h4>
                                             </a>
                                             <ul>
-                                                <li th:text="${list.company}">새 회사</li>
+                                                <li th:text="${list.company}">(주)언플러</li>
                                                 <li th:text="${list.location}"><i class="fas fa-map-marker-alt"></i>광주광역시</li>
-                                                <li th:text="${list.pay}">혀어어어어업상</li>
+                                                <li th:text="${list.pay}">회사내규에 따름</li>
                                             </ul>
                                         </div>
                                     </div>
@@ -219,6 +203,29 @@
                                         <span>7 hours ago</span>
                                     </div>
                                 </div>
+                                <div class="single-job-items mb-30">
+                                    <div class="job-items">
+                                        <div class="company-img">
+                                            <a href="#"><img src="/img/icon/job-list1.png" alt=""></a>
+                                        </div>
+                                        <div class="job-tittle job-tittle2">
+                                            <a href="#">
+                                                <h4 >서버/백엔드</h4>
+                                            </a>
+                                            <ul>
+                                                <li>(주)언플러</li>
+                                                <li><i class="fas fa-map-marker-alt"></i>광주광역시</li>
+                                                <li>회사내규에 따름</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="items-link items-link2 f-right">
+                                        <a href="job_details.html">Full Time</a>
+                                        <span>7 hours ago</span>
+                                    </div>
+                                </div>
+
+
                             </div>
                         </section>
                         <!-- Featured_job_end -->
