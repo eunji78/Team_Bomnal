@@ -8,7 +8,7 @@
     </select>
 
     <select id="regionList" resultType="RegionVO">
-        select * from region where region_seq = super_region_seq
+        select * from region_japan
     </select>
 
     <select id="getRegionDetail" parameterType="int" resultType="RegionVO">
