@@ -155,7 +155,7 @@
     border: navy solid 1px;
 }
 .border-black{
-    border: black solid 1px;
+    border: black solid 1px !important;
 }
 .border-sharp{
     border-radius: 3px
@@ -198,7 +198,22 @@
     position: relative;
     top: 0.25em;
 }
-
+.select-box{
+    width: 5em !important;
+    border-radius: 3px !important;
+}
+.nice-select-left-1{
+    position: relative;
+    top: -5px;
+    padding-left: 1em !important;
+    background-color: white !important;
+}
+.font-size1{
+    font-size: 1em !important;
+}
+.font-size-1rem{
+    font-size: 1.1rem !important;
+}
 .work-type-items{
     width: 10em;
 }

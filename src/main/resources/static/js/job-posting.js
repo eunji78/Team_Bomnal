@@ -99,11 +99,11 @@ $(document).ready(function() {
         }
       
        });
-     $('input[type="checkbox"][name="career"]').click(function(){
+     $('input[type="checkbox"][name="r_career"]').click(function(){
 
       if($(this).prop('checked')){
 
-         $('input[type="checkbox"][name="career"]').prop('checked',false);
+         $('input[type="checkbox"][name="r_career"]').prop('checked',false);
 
          $(this).prop('checked',true);
 
@@ -111,11 +111,11 @@ $(document).ready(function() {
 
        });
 
-   $('input[type="checkbox"][name="work_type"]').click(function(){
+   $('input[type="checkbox"][name="r_job_pattern"]').click(function(){
 
          if($(this).prop('checked')){
 
-            $('input[type="checkbox"][name="work_type"]').prop('checked',false);
+            $('input[type="checkbox"][name="r_job_pattern"]').prop('checked',false);
 
             $(this).prop('checked',true);
 
@@ -123,11 +123,11 @@ $(document).ready(function() {
 
           });
 
-    $('input[type="checkbox"][name="work_place"]').click(function(){
+    $('input[type="checkbox"][name="r_work_place"]').click(function(){
 
              if($(this).prop('checked')){
 
-                $('input[type="checkbox"][name="work_place"]').prop('checked',false);
+                $('input[type="checkbox"][name="r_work_place"]').prop('checked',false);
 
                 $(this).prop('checked',true);
 
