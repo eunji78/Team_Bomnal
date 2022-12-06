@@ -19,7 +19,7 @@ $(document).ready(function(){
 
 
     // 키워드로 장소를 검색합니다
-    ps.keywordSearch('광주 동구 예술길 31-15,3층', placesSearchCB);
+    ps.keywordSearch('광주 인공지능 사관학교', placesSearchCB);
     $("#button-map").on("click", function(){
         addr = $("#addr-box").val();
         $("#kakao-map").html("");

@@ -2,24 +2,75 @@ package com.jobfinder.controller;
 
 import com.jobfinder.domain.LoginVO;
 import com.jobfinder.domain.Login_ComVO;
+import com.jobfinder.domain.Recruit;
 import com.jobfinder.service.LoginService;
-import lombok.extern.java.Log;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
+import java.util.List;
 
 @Controller
 public class LoginController {
 
     @Autowired
     LoginService loginService;
+
+    @RequestMapping(value = "/all_delete_data")
+    public int all_delete_data(HttpSession session, Model model){
+        System.out.println("회원탈퇴진행!");
+        int res = 0;
+        String type = (String) session.getAttribute("type");
+        if (type == "P"){
+            LoginVO vo = (LoginVO)session.getAttribute("VO");
+            String mem_id = vo.getMem_id();
+            res = loginService.all_delete_data_per(mem_id);
+        } else if(type == "C"){
+            Login_ComVO cvo = (Login_ComVO)session.getAttribute("VO");
+            String company_id = cvo.getCompany_id();
+            res = loginService.all_delete_data_com(company_id);
+        }
+        return res;
+    }
+
+
+
+
+
+
+
+
+
+    @RequestMapping(value = "/Com_gonggo_list")
+    public String Com_gonggo_list(HttpSession session, Model model){
+
+        Login_ComVO cvo = (Login_ComVO) session.getAttribute("VO");
+        List<Recruit> rec_list = loginService.rec_list(cvo.getCompany_id());
+        model.addAttribute("rec_list", rec_list);
+        return "Com_gonggo_list";
+    }
+
+    @RequestMapping(value = "/Com_emp_list")
+    public String Com_emp_list(HttpSession session, Model model){
+
+        /*Login_ComVO cvo = (Login_ComVO) session.getAttribute("VO");
+        List<resume> resume_list = loginService.resume_list(cvo.getCompany_id());
+        model.addAttribute("resume_list", resume_list);*/
+        return "Com_emp_list";
+    }
+
+
+
+
+
+
+
 
     @RequestMapping(value = "/ump")
     public String ump(Model model, LoginVO loginVO){
@@ -124,7 +175,7 @@ public class LoginController {
         session.setAttribute("type","P");
         session.setAttribute("VO", rvo);
         System.out.println("개인로그인완료");
-        return "redirect:/loginform";
+        return "redirect:/";
     };
 
     @RequestMapping(value = "/login_com")
@@ -135,7 +186,7 @@ public class LoginController {
         session.setAttribute("type","C");
         session.setAttribute("VO", rcvo);
         System.out.println("기업로그인완료");
-        return "redirect:/loginform";
+        return "redirect:/";
     };
 
     @RequestMapping(value = "/signup_local")
@@ -167,7 +218,7 @@ public class LoginController {
 
         int res = loginService.set_signup_com(cvo);
         System.out.println(res);
-        return "redirect:/loginform";
+        return "redirect:/";
     };
 
     @RequestMapping(value = "/signup_per")
@@ -187,7 +238,7 @@ public class LoginController {
 
         int res = loginService.set_signup_per(vo);
         System.out.println(res);
-        return "redirect:/loginform";
+        return "redirect:/";
     };
 
     @RequestMapping(value = "/get_loginVO")
