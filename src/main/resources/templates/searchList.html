@@ -109,30 +109,14 @@
                             <div class="col-12" style="float:left">
 
                                 <!-- 지역 -->
-                                <div style="display:flex" id="region-list" >
-                                    <!-- 지역 상위 카테고리 -->
-                                    <div class="d-category-list" style="width:200px; height:300px; overflow:auto">
-                                        <div class="mt-2 mb-2" style="height:284px">
-                                            <ul th:each="region : ${region_list}">
-                                                <li clsss="d-list">
-                                                    <button class="r-list-button" type="button">
-                                                        <span th:text="${region.region}">경영·사무</span>
-                                                        <span id="super-region-seq" th:text="${region.super_region_seq}" style="display:none"></span>
-                                                    </button>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <!-- 상위 카테고리 끝 -->
-
-                                    <!-- 지역 하위 카테고리 -->
-                                    <div class="detail_list" id="r_detail_list">
-                                        <button class='detail_button'>
-
+                                <div style="display:flex; width:100%" id="region-list" >
+                                    <div class="detail_list" style="width:100%" id="r_detail_list">
+                                        <button th:each="region : ${region_list} " class="detail_button" th:id="${region.region_seq}" onclick="add_list(this)">
+                                            [[${region.region}]]
                                         </button>
                                     </div>
-                                    <!-- 하위 카테고리 끝-->
                                 </div>
+                                <!-- 지역 끝 -->
 
                                 <!-- 직무 -->
                                 <div style="display:flex" id="job-list" >
