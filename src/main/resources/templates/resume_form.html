@@ -28,6 +28,13 @@
 </head>
 
 <body>
+<script>
+    /* 삭제 버튼 */
+    function delete_btn(num){
+        var num_id = num.parentNode.parentNode.parentNode.id;
+        $("#"+num_id).remove();
+    }
+</script>
 <!-- Preloader Start -->
 <div id="preloader-active">
     <div class="preloader d-flex align-items-center justify-content-center">
@@ -487,13 +494,18 @@
                 <!-- 경력 End -->
 
                 <!-- 자격증 -->
-                <div class="col-11 col-lg-11 col-md-8 mb-50">
+                <div class="col-11 col-lg-11 col-md-8 mb-50" id="certificate">
                     <h2 class="header">자격증</h2>
                     <div class="resume-section">
                         <div class="resume_row">
                             <div class="input_title">자격증명</div>
                             <div class="form-select" style="display:inline-block; width:400px;">
                                 <input class="input_text" type="text" placeholder="자격증명 입력">
+                            </div>
+                            <div style="display:inline-block; float:right">
+                                <button type="button" class="btn" id="add_certificate">
+                                    <span>자격증 추가 + </span>
+                                </button>
                             </div>
                         </div>
 
@@ -525,13 +537,11 @@
                             </div>
 
                             <div style="display:inline-block; float:right">
-                                <button type="button" id="add_resume">
+                                <button type="button" class="btn" id="add_awards">
                                     <span>수상내역 추가 + </span>
                                 </button>
                             </div>
                         </div>
-
-
 
                         <div class="resume_row">
                             <div class="input_title">수여기관</div>
@@ -552,10 +562,92 @@
                 <!-- 수상 End -->
 
                 <!-- 어학 -->
-                <div class="col-11 col-lg-11 col-md-8 mb-50">
+                <div class="col-11 col-lg-11 col-md-8 mb-50" id="lang">
                     <h2 class="header">어학</h2>
                     <div class="resume-section">
+                        <div class="resume_row">
+                            <div class="input_title">언어</div>
+                            <div class="form-select" style="display:inline-block; width:400px; position:relative">
+                                <div class="form-select" style="display:inline-block">
+                                    <select style="display:none">
+                                        <option value="1">영어</option>
+                                        <option value="1">일본어</option>
+                                        <option value="1">중국어</option>
+                                        <option value="1">독일어</option>
+                                        <option value="1">불어</option>
+                                        <option value="1">스페인어</option>
+                                        <option value="1">러시아어</option>
+                                        <option value="1">이탈리아어</option>
+                                        <option value="1">한국어</option>
+                                        <option value="1">기타</option>
+                                    </select>
+                                    <div class="nice-select"
+                                         style="padding-left:20px; border:1px solid #ddd; background-color:white">
+                                        <span class="current">언어 선택</span>
+                                        <ul class="list" style="border:1px solid #ddd; height:200px; overflow:auto">
+                                            <li class="option">영어</li>
+                                            <li class="option">일본어</li>
+                                            <li class="option">중국어</li>
+                                            <li class="option">독일어</li>
+                                            <li class="option">불어</li>
+                                            <li class="option">스페인어</li>
+                                            <li class="option">러시아어</li>
+                                            <li class="option">이탈리아어</li>
+                                            <li class="option">한국어</li>
+                                            <li class="option">기타</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
 
+                            <div style="display:inline-block; float:right">
+                                <button type="button" class="btn" id="add_lang">
+                                    <span>수상내역 추가 + </span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="resume_row">
+                            <div class="input_title">시험종류</div>
+                            <div class="form-select" style="display:inline-block; width:400px;">
+                                <input class="input_text" type="text" placeholder="시험종류 입력">
+                            </div>
+                        </div>
+
+                        <div class="resume_row">
+                            <div class="input_title">점수</div>
+                            <div class="form-select" style="display:inline-block; width:400px;">
+                                <input class="input_text" type="text" placeholder="점수 입력">
+                            </div>
+                        </div>
+
+                        <div class="resume_row">
+                            <div class="input_title">급수</div>
+                            <div class="form-select" style="display:inline-block; width:400px;">
+                                <input class="input_text" type="text" placeholder="급수 입력">
+                            </div>
+                        </div>
+
+                        <div class="resume_row">
+                            <div class="input_title">취득여부</div>
+                            <div class="form-select" style="display:inline-block; width:400px;">
+                                <input class="input_text" type="text" placeholder="취득여부 선택">
+                            </div>
+                        </div>
+
+                        <div class="resume_row">
+                            <div class="input_title">급수</div>
+                            <div class="form-select" style="display:inline-block; width:400px;">
+                                <input class="input_text" type="text" placeholder="급수 입력">
+                            </div>
+                        </div>
+
+                        <div class="resume_row">
+                            <div class="input_title">취득일</div>
+                            <div class="form-select" style="display:inline-block; width:200px;">
+                                <input class="input_text" type="text" placeholder="YYYYMM">
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <!-- 어학 End -->
@@ -573,7 +665,12 @@
                 <div class="col-11 col-lg-11 col-md-8 mb-50">
                     <h2 class="header">포트폴리오</h2>
                     <div class="resume-section">
-
+                        <div class="resume_row">
+                            <div class="input_title">포트폴리오 링크</div>
+                            <div class="form-select" style="display:inline-block; width:400px;">
+                                <input class="input_text" type="text" placeholder="URL 입력">
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <!-- 포트폴리오 End -->
