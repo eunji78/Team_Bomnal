@@ -65,7 +65,7 @@ $(document).ready(function(){
         html += '<input class="input_text" type="text" placeholder="수상명 입력">';
         html += '</div>';
         html += '<div style="position:absolute; float:right; top:0px; right:0px">'
-        html += '<button type="button" class="btn" onclick="delete_btn(this)">'
+        html += '<button type="button" class="btn fixed_button" onclick="delete_btn(this)">'
         html += '<span>삭제 </span>'
         html += '</button>'
         html += '</div></div>';
@@ -79,7 +79,7 @@ $(document).ready(function(){
         html += '<div class="resume_row">';
         html += '<div class="input_title">수상/공모일</div>';
         html += '<div class="form-select" style="display:inline-block; width:200px;">';
-        html += '<input class="input_text" type="text" placeholder="YYYYMM">';
+        html += '<input class="input_text" type="date" placeholder="YYYYMM">';
         html += '</div></div></div>';
 
         $("#awards").append(html);
@@ -96,7 +96,7 @@ $(document).ready(function(){
         html += '<input class="input_text" type="text" placeholder="자격증명 입력">'
         html += '</div>'
         html += '<div style="position:absolute; float:right; top:0px; right:0px">'
-        html += '<button type="button" class="btn" onclick="delete_btn(this)">'
+        html += '<button type="button" class="btn fixed_button" onclick="delete_btn(this)">'
         html += '<span>삭제</span>'
         html += '</button>'
         html += '</div>'
@@ -161,7 +161,7 @@ $(document).ready(function(){
             html += '</div>'
             html += '</div>'
             html += '<div style="position:absolute; float:right; top:0px; right:0px">'
-            html += '<button type="button" class="btn" onclick="delete_btn(this)">'
+            html += '<button type="button" class="btn fixed_button" onclick="delete_btn(this)">'
             html += '<span>삭제</span>'
             html += '</button>'
             html += '</div>'
@@ -204,7 +204,7 @@ $(document).ready(function(){
             html += '<div class="resume_row">'
             html += '<div class="input_title">취득일</div>'
             html += '<div class="form-select" style="display:inline-block; width:200px;">'
-            html += '<input class="input_text" type="text" placeholder="YYYYMM">'
+            html += '<input class="input_text" type="date" placeholder="YYYYMM">'
             html += '</div>'
             html += '</div>'
             html += '</div>'
