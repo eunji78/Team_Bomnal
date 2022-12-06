@@ -262,6 +262,11 @@
     height: 10em;
     overflow: auto !important;
 }
+.textarea-box{
+    width: 100% !important;
+    height: 100px !important;
+    resize: none !important;
+}
 /*---------------------Summer Note-----------------------------------*/
 @font-face {
     font-family: 'NotoSansKR';
