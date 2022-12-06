@@ -1,6 +1,6 @@
 <!doctype html>
 <html class="no-js" lang="zxx" xmlns:th="http://www.thymeleaf.org">
-<
+
 <head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -26,6 +26,29 @@
   <link rel="stylesheet" href="/css/resume.css">
 
   <style>
+    .sm-button {
+        background: #38a4ff;
+        -moz-user-select: none;
+        text-transform: capitalize;
+        color: #fff;
+        cursor: pointer;
+        display: inline-block;
+        font-size: 14px;
+        font-weight: 500;
+        letter-spacing: 1px;
+        line-height: 0;
+        margin-bottom: 0;
+        padding: 17px 14px;
+        border-radius: 5px;
+        margin: 5px;
+        cursor: pointer;
+        transition: color 0.4s linear;
+        position: relative;
+        z-index: 1;
+        border: 0;
+        overflow: hidden;
+        margin: 0
+    }
     .ump-border-btn2 {
         border: 1px solid rgb(182, 180, 180);
         color: rgb(182, 180, 180);
@@ -110,30 +133,24 @@
           <div class="category-listing mb-50">
             <!-- single one -->
             <div class="asideSection">
-              개인정보관리
+              기업정보관리
               <ul>
-                <li class="aside-list"><a th:href="@{/ump}">기업회원 정보 수정</a></li>
+                <li class="aside-list"><a th:href="@{/umpc}">기업회원 정보 수정</a></li>
               </ul>
             </div>
 
             <div class="asideSection">
-              이력서 관리
+              채용 관리
               <ul>
-                <li class="aside-list"><a th:href="@{/resume}">이력서 관리</a></li>
-                <li class="aside-list"><a th:href="@{/resume_manage}">이력서 등록</a></li>
+                <li class="aside-list"><a th:href="@{/Com_gonggo_list}">채용공고 관리</a></li>
               </ul>
             </div>
 
             <div class="asideSection">
               입사지원 관리
               <ul>
-                <li class="aside-list"><a href="#">입사지원 현황</a></li>
-                <li class="aside-list"><a href="#">구직활동 확인서</a></li>
+                <li class="aside-list"><a th:href="@{/Com_emp_list}">입사지원 현황</a></li>
               </ul>
-            </div>
-
-            <div class="asideSection">
-              더 넣을게 있나?
             </div>
 
           </div>
@@ -260,9 +277,11 @@
                       <div style="justify-content : center; margin-bottom:40px !important;">
                         <div class="col-lg-4 mb-5 mb-lg-0" style="display: inline-block; justify-content : center;">
                           <p></p> </div>
-                        <div class="col-lg-7 mb-5 mb-lg-0" style="display:inline-block; justify-content : center;">
+                        <div class="col-lg-4 mb-5 mb-lg-0" style="display:inline-block; justify-content : center;">
                           <a href="javascript:void(0)" type="button" onclick="document.getElementById('umpform_com').submit()" class="ump-border-btn2" style=" width:70px !important; height:40px !important; padding: 5px 0px 0px 0px !important; text-align:center !important;"><span style="color: #FFOOBFFF; font-size:20px; margin:0px; padding:0px;">수정</span></a>
                           <a href="/loginform" class="ump-border-btn2" style=" width:70px !important; height:40px !important; padding: 5px 0px 0px 0px !important; text-align:center !important;" type="button"><span style="color: #FFOOBFFF; font-size:20px; margin:0px; padding:0px;">취소</span></a> </div>
+                        <div class="col-lg-4 mb-5 mb-lg-0" style="display: inline; text-align: right !important; position: absolute !important;">
+                          <a href="javascript:void(0)" onclick="all_delete()" type="button" class="sm-button" style=" height:30px !important; text-align:center !important;"><span style="color: #FFOOBFFF; font-size:15px; margin:0px; padding:0px;">회원탈퇴</span></a></div>
                       </div>
 
                     </form>
@@ -336,6 +355,31 @@
             $("#check_pwd_ptag").html( "<p id='check_pwd_ptag' style=' color: red; visibility: visible; text-align: left !important; margin:0px !important;'> 비밀번호가 일치하지 않습니다! </p>" );
         }
     };
+
+    function all_delete(){
+      var check = confirm("정말 회원탈퇴를 진행하시겠습니까? \n(주의! 데이터는 복구 되지 않습니다)");
+
+      if (check){
+        console.log("회원탈퇴진행");
+        $.ajax({
+          url:"/all_delete_data",
+          type: "POST",
+
+          success:function(data){
+            console.log("success : " + data)
+            if (data == 1){
+              location.href="/loginform";
+            }
+          },
+          error: function(data){
+            console.log("error : " + data)
+          }
+        })
+      } else {
+        console.log("회원탈퇴취소");
+
+      }
+  }
 
 </script>
 

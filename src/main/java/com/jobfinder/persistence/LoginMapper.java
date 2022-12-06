@@ -2,6 +2,7 @@ package com.jobfinder.persistence;
 
 import com.jobfinder.domain.LoginVO;
 import com.jobfinder.domain.Login_ComVO;
+import com.jobfinder.domain.Recruit;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -22,4 +23,10 @@ public interface LoginMapper {
     public void update_vo(LoginVO vo);
 
     public void update_cvo(Login_ComVO cvo);
+
+    public List<Recruit> rec_list(String company_id);
+
+    public int all_delete_data_per(String mem_id);
+
+    public int all_delete_data_com(String company_id);
 }

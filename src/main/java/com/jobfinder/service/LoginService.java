@@ -6,6 +6,7 @@ import com.google.gson.JsonParser;
 
 import com.jobfinder.domain.LoginVO;
 import com.jobfinder.domain.Login_ComVO;
+import com.jobfinder.domain.Recruit;
 import com.jobfinder.repository.LoginRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,6 +16,7 @@ import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.HashMap;
+import java.util.List;
 
 @Service
 public class LoginService {
@@ -182,4 +184,21 @@ public class LoginService {
     public void update_cvo(Login_ComVO cvo) {
         loginRepository.update_cvo(cvo);
     }
+
+    public List<Recruit> rec_list(String company_id) {
+        List<Recruit> rec = loginRepository.rec_list(company_id);
+        return rec;
+    }
+
+
+    public int all_delete_data_per(String mem_id) {
+        int res = loginRepository.all_delete_data_per(mem_id);
+        return res;
+    }
+    public int all_delete_data_com(String company_id) {
+        int res = loginRepository.all_delete_data_com(company_id);
+        return res;
+    }
+
+
 }

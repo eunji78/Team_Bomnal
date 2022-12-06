@@ -40,4 +40,16 @@
     <update id="update_cvo" parameterType="Login_ComVO">
         update company set company_pw=#{company_pw}, company_email=#{company_email}, company_phone=#{company_phone} where company_id=#{company_id}
     </update>
+
+    <select id="rec_list" parameterType="String" resultType="Recruit">
+        select * from recruit where company_id=#{company_id}
+    </select>
+
+    <delete id="all_delete_date_per">
+        delete from members where mem_id=#{mem_id}
+    </delete>
+    <delete id="all_delete_date_com">
+        delete from company where company_id=#{company_id}
+    </delete>
+
 </mapper>
