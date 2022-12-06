@@ -238,3 +238,25 @@
     color: #fff;
     background-color: #38a4ff;
 }
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+	color: rgba(0, 0, 0, 0);
+	opacity: 1;
+	display: block;
+	background: url(https://cdn3.iconfinder.com/data/icons/linecons-free-vector-icons-pack/32/calendar-16.png)
+		center/80% no-repeat white;
+	width: 20px;
+	height: 20px;
+	border-width: thin;
+	cursor: pointer;
+}
+
+input[type="date"]{
+    padding-right:20px;
+}
+
+.fixed_button{
+    position: absolute;
+    right: -50px;
+    top: -70px;
+}

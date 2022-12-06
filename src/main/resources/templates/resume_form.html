@@ -89,7 +89,8 @@
                         <div class="resume_row">
                             <div class="input_title">생년월일</div>
                             <div class="form-select" style="display:inline-block; width:400px;">
-                                <input class="input_text" name="mem_bdate" type="text" placeholder="YYYYMMDD">
+                                <input class="input_text" data-placeholder="날짜 선택"
+                                       required aria-required="true" name="mem_bdate" type="date" placeholder="YYYYMMDD">
                             </div>
                         </div>
 
@@ -177,10 +178,10 @@
                             <div class="input_title">재학기간</div>
                             <div class="form-select" style="display:inline-block; width:400px;">
                                 <input class="input_text" style="padding:0px; width:120px; text-align:center"
-                                       name="e_date" type="text" placeholder="YYYY / MM">
+                                       name="e_date" type="date" placeholder="YYYY / MM">
                                 <span style="padding:0px 20px 0px 20px">-</span>
                                 <input class="input_text" style="padding:0px; width:120px; text-align:center"
-                                       name="g_date" type="text" placeholder="YYYY / MM">
+                                       name="g_date" type="date" placeholder="YYYY / MM">
                             </div>
                         </div>
 
@@ -266,10 +267,10 @@
                             <div class="input_title">재학기간</div>
                             <div class="form-select" style="display:inline-block; width:400px;">
                                 <input class="input_text" style="padding:0px; width:120px; text-align:center"
-                                       name="e_date" type="text" placeholder="YYYY / MM">
+                                       name="e_date" type="date" placeholder="YYYY / MM">
                                 <span style="padding:0px 20px 0px 20px">-</span>
                                 <input class="input_text" style="padding:0px; width:120px; text-align:center"
-                                       name="g_date" type="text" placeholder="YYYY / MM">
+                                       name="g_date" type="date" placeholder="YYYY / MM">
                             </div>
                         </div>
                     </div>
@@ -288,10 +289,10 @@
                             <div class="input_title">재학기간</div>
                             <div class="form-select" style="display:inline-block; width:400px;">
                                 <input class="input_text" style="padding:0px; width:120px; text-align:center"
-                                       name="e_date" type="text" placeholder="YYYY / MM">
+                                       name="e_date" type="date" placeholder="YYYY / MM">
                                 <span style="padding:0px 20px 0px 20px">-</span>
                                 <input class="input_text" style="padding:0px; width:120px; text-align:center"
-                                       name="g_date" type="text" placeholder="YYYY / MM">
+                                       name="g_date" type="date" placeholder="YYYY / MM">
                             </div>
                         </div>
                     </div>
@@ -310,10 +311,10 @@
                             <div class="input_title">재학기간</div>
                             <div class="form-select" style="display:inline-block; width:400px;">
                                 <input class="input_text" style="padding:0px; width:120px; text-align:center"
-                                       name="e_date" type="text" placeholder="YYYY / MM">
+                                       name="e_date" type="date" placeholder="YYYY / MM">
                                 <span style="padding:0px 20px 0px 20px">-</span>
                                 <input class="input_text" style="padding:0px; width:120px; text-align:center"
-                                       name="g_date" type="text" placeholder="YYYY / MM">
+                                       name="g_date" type="date" placeholder="YYYY / MM">
                             </div>
                         </div>
 
@@ -407,10 +408,10 @@
                             <div class="input_title">재직기간</div>
                             <div class="form-select" style="display:flex; width:400px;">
                                 <input class="input_text" style="padding:0px; width:120px; text-align:center"
-                                       name="e_date" type="text" placeholder="YYYY / MM">
+                                       name="e_date" type="date" placeholder="YYYY / MM">
                                 <span style="padding:0px 20px 0px 20px">-</span>
                                 <input class="input_text" style="padding:0px; width:120px; text-align:center"
-                                       name="g_date" type="text" placeholder="YYYY / MM">
+                                       name="g_date" type="date" placeholder="YYYY / MM">
                                 <div class="form-select" style="display:inline-block; width:100px;">
                                     <select style="display:none">
                                         <option value="1">퇴사</option>
@@ -484,7 +485,7 @@
 
                         <div class="resume_row">
                             <div class="input_title">담당업무</div>
-                            <div class="form-select" style="display:inline-block; width:700px;">
+                            <div class="form-select" style="display:inline-block; width:400px;">
                                 <input class="input_text" type="text" placeholder="담당업무 입력">
                             </div>
                         </div>
@@ -503,7 +504,7 @@
                                 <input class="input_text" type="text" placeholder="자격증명 입력">
                             </div>
                             <div style="display:inline-block; float:right">
-                                <button type="button" class="btn" id="add_certificate">
+                                <button type="button" class="btn fixed_button" id="add_certificate">
                                     <span>자격증 추가 + </span>
                                 </button>
                             </div>
@@ -517,9 +518,9 @@
                         </div>
 
                         <div class="resume_row">
-                            <div class="input_title">연봉</div>
+                            <div class="input_title">취득일</div>
                             <div class="form-select" style="display:inline-block; width:400px;">
-                                <input class="input_text" type="text" placeholder="연봉">
+                                <input class="input_text" type="date" placeholder="취득일">
                             </div>
                         </div>
                     </div>
@@ -537,7 +538,7 @@
                             </div>
 
                             <div style="display:inline-block; float:right">
-                                <button type="button" class="btn" id="add_awards">
+                                <button type="button" class="btn fixed_button" id="add_awards">
                                     <span>수상내역 추가 + </span>
                                 </button>
                             </div>
@@ -553,7 +554,7 @@
                         <div class="resume_row">
                             <div class="input_title">수상/공모일</div>
                             <div class="form-select" style="display:inline-block; width:200px;">
-                                <input class="input_text" type="text" placeholder="YYYYMM">
+                                <input class="input_text" type="date" placeholder="YYYYMM">
                             </div>
                         </div>
                     </div>
@@ -601,8 +602,8 @@
                             </div>
 
                             <div style="display:inline-block; float:right">
-                                <button type="button" class="btn" id="add_lang">
-                                    <span>수상내역 추가 + </span>
+                                <button type="button" class="btn fixed_button" id="add_lang">
+                                    <span>어학내역 추가 + </span>
                                 </button>
                             </div>
                         </div>
@@ -645,7 +646,7 @@
                         <div class="resume_row">
                             <div class="input_title">취득일</div>
                             <div class="form-select" style="display:inline-block; width:200px;">
-                                <input class="input_text" type="text" placeholder="YYYYMM">
+                                <input class="input_text" type="date" placeholder="YYYYMM">
                             </div>
                         </div>
                     </div>
@@ -703,6 +704,7 @@
 <script src="/js/owl.carousel.min.js"></script>
 <script src="/js/slick.min.js"></script>
 <script src="/js/price_rangs.js"></script>
+
 <!-- One Page, Animated-HeadLin -->
 <script src="/js/wow.min.js"></script>
 <script src="/js/animated.headline.js"></script>

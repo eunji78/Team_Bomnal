@@ -2,6 +2,7 @@ package com.jobfinder.repository;
 
 import com.jobfinder.domain.LoginVO;
 import com.jobfinder.domain.Login_ComVO;
+import com.jobfinder.domain.Recruit;
 import com.jobfinder.persistence.LoginMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -62,5 +63,20 @@ public class LoginRepository {
 
     public void update_cvo(Login_ComVO cvo) {
         loginMapper.update_cvo(cvo);
+    }
+
+    public List<Recruit> rec_list(String company_id) {
+        List<Recruit> rec = loginMapper.rec_list(company_id);
+        return rec ;
+    }
+
+    public int all_delete_data_per(String mem_id) {
+        int res = loginMapper.all_delete_data_per(mem_id);
+        return res;
+    }
+
+    public int all_delete_data_com(String company_id) {
+        int res = loginMapper.all_delete_data_com(company_id);
+        return res;
     }
 }
