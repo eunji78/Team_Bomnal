@@ -35,9 +35,9 @@ public class Company {
 	@GetMapping("/companyDetail/{company_id}")
 	public String CompanyDetail(@PathVariable String company_id, Model model) {
 		Company_info detail = companyService.detail(company_id);
-		int countgongo = companyService.countgongo(company_id);
+//		int countgongo = companyService.countgongo(company_id);
 		model.addAttribute("detail",detail);
-		model.addAttribute("countgongo",countgongo);
+//		model.addAttribute("countgongo",countgongo);
 		return "CompanyDetail";
 	}
 
@@ -46,19 +46,19 @@ public class Company {
 		Company_info detail = companyService.detail(company_id);
 		ArrayList<Reviews> review = companyService.review(company_id);
 		Reviews avg = companyService.avg(company_id);
-		int countgongo = companyService.countgongo(company_id);
+//		int countgongo = companyService.countgongo(company_id);
 		int countreview = companyService.countreview(company_id);
 		model.addAttribute("review",review);
 		model.addAttribute("detail",detail);
 		model.addAttribute("avg",avg);
-		model.addAttribute("countgongo",countgongo);
+//		model.addAttribute("countgongo",countgongo);
 		model.addAttribute("countreview",countreview);
 
 		return "CompanyReview";
 	}
 
-	@PostMapping("/save/{company_id}")
-	public String save(@ModelAttribute Reviews reviews, @PathVariable String company_id){
+	@PostMapping("/save/{company_id}/{mem_id}")
+	public String save(@ModelAttribute Reviews reviews, @PathVariable String company_id,@PathVariable String mem_id){
 		System.out.println("reviews = " + reviews);
 		companyService.save(reviews);
 
@@ -68,11 +68,11 @@ public class Company {
 	@GetMapping("/companyRecruit/{company_id}")
 	public String Recruit(@PathVariable String company_id, Model model){
 		Company_info detail = companyService.detail(company_id);
-		ArrayList<Recruit> gongo = companyService.gongo(company_id);
-		int countgongo = companyService.countgongo(company_id);
+//		ArrayList<Recruit> gongo = companyService.gongo(company_id);
+//		int countgongo = companyService.countgongo(company_id);
 		model.addAttribute("detail",detail);
-		model.addAttribute("gongo",gongo);
-		model.addAttribute("countgongo",countgongo);
+//		model.addAttribute("gongo",gongo);
+//		model.addAttribute("countgongo",countgongo);
 		return "CompanyRecruit";
 	}
 

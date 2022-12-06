@@ -31,7 +31,7 @@
 
     <insert id="save" parameterType="Reviews">
         insert into reviews (company_id, review_content, review_likes, reg_date, mem_id, welfare, work_life_balance, inner_culture, p_opportunity, management, pros, cons, my_salary, current_yn)
-        values ('it_001', #{review_content}, 0, NOW(), 'asdf', #{welfare}, #{work_life_balance}, #{inner_culture}, #{p_opportunity}, #{management}, #{pros}, #{cons}, #{my_salary}, #{current_yn})
+        values ('it_001', #{review_content}, 0, NOW(), '#{mem_id}', #{welfare}, #{work_life_balance}, #{inner_culture}, #{p_opportunity}, #{management}, #{pros}, #{cons}, #{my_salary}, #{current_yn})
     </insert>
 
     <select id="gongo" parameterType="String" resultType="Recruit">
