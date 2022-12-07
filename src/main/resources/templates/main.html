@@ -254,7 +254,7 @@
         </div>
         <!-- Online CV Area End-->
         <!-- Featured_job_start -->
-        <section class="featured-job-area feature-padding">
+        <section class="featured-job-area feature-padding background-navy">
             <div class="container">
                 <!-- Section Tittle -->
                 <div class="row">
@@ -264,87 +264,42 @@
                         </div>
                     </div>
                 </div>
-                <div class="row justify-content-center">
+                <div class="row justify-content-center border-recruit white-board2">
                     <div class="col-xl-10">
                         <!-- single-job-content -->
-                        <div class="single-job-items mb-30">
+                        <div th:each="recruit,i:${recruit_list}" class="single-job-items mb-30 border-bottom-sing-job">
                             <div class="job-items">
+
                                 <div class="company-img">
-                                    <a href="job_details.html"><img src="/img/icon/job-list1.png" alt=""></a>
+                                    <a href="job_details.html"><img th:src="@{${recruit.company_logo }}" alt=""></a>
                                 </div>
                                 <div class="job-tittle">
-                                    <a href="job_details.html"><h4>Digital Marketer</h4></a>
+                                    <p th:text="${recruit.company_name}" class="margin-bottom-none"></p>
+                                    <a href="job_details.html"><h4>[[${recruit.r_title}]]</h4></a>
                                     <ul>
-                                        <li>Creative Agency</li>
-                                        <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>
-                                        <li>$3500 - $4000</li>
+                                        <li class="border-right-single">[[${recruit.r_part}]]</li>
+                                        <li class="border-right-single"><i class="fas fa-map-marker-alt"></i>[[${recruit.r_work_area}]]</li>
+                                        <li >
+                                            <span th:text="${recruit.r_salary}"></span>
+                                            <span th:if="${#strings. isEmpty(recruit.r_salary)}" th:text="'회사 내규에 따름'"></span>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
-                            <div class="items-link f-right">
-                                <a href="job_details.html">Full Time</a>
-                                <span>7 hours ago</span>
+                            <div class="items-link f-right text-to-center">
+                                <th:block th:switch="${recruit.r_job_pattern}">
+                                    <a href="job_details.html" class="career-tag" th:case="full">정규직</a>
+                                    <a href="job_details.html" class="career-tag" th:case="contract">계약직</a>
+                                    <a href="job_details.html" class="career-tag" th:case="alba">아르바이트</a>
+                                    <a href="job_details.html" class="career-tag" th:case="intern">인턴</a>
+                                    <a href="job_details.html" class="career-tag" th:case="free">프리랜서</a>
+                                    <a href="job_details.html" class="career-tag" th:case="part">파트타임</a>
+                                </th:block>
+                                <span th:text="${recruit.r_close_date}+'days ago'"></span>
                             </div>
                         </div>
-                        <!-- single-job-content -->
                         <div class="single-job-items mb-30">
-                            <div class="job-items">
-                                <div class="company-img">
-                                    <a href="job_details.html"><img src="/img/icon/job-list2.png" alt=""></a>
-                                </div>
-                                <div class="job-tittle">
-                                    <a href="job_details.html"><h4>Digital Marketer</h4></a>
-                                    <ul>
-                                        <li>Creative Agency</li>
-                                        <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>
-                                        <li>$3500 - $4000</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="items-link f-right">
-                                <a href="job_details.html">Full Time</a>
-                                <span>7 hours ago</span>
-                            </div>
-                        </div>
-                         <!-- single-job-content -->
-                        <div class="single-job-items mb-30">
-                            <div class="job-items">
-                                <div class="company-img">
-                                    <a href="job_details.html"><img src="/img/icon/job-list3.png" alt=""></a>
-                                </div>
-                                <div class="job-tittle">
-                                    <a href="job_details.html"><h4>Digital Marketer</h4></a>
-                                    <ul>
-                                        <li>Creative Agency</li>
-                                        <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>
-                                        <li>$3500 - $4000</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="items-link f-right">
-                                <a href="job_details.html">Full Time</a>
-                                <span>7 hours ago</span>
-                            </div>
-                        </div>
-                         <!-- single-job-content -->
-                        <div class="single-job-items mb-30">
-                            <div class="job-items">
-                                <div class="company-img">
-                                    <a href="job_details.html"><img src="/img/icon/job-list4.png" alt=""></a>
-                                </div>
-                                <div class="job-tittle">
-                                    <a href="job_details.html"><h4>Digital Marketer</h4></a>
-                                    <ul>
-                                        <li>Creative Agency</li>
-                                        <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>
-                                        <li>$3500 - $4000</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="items-link f-right">
-                                <a href="job_details.html">Full Time</a>
-                                <span>7 hours ago</span>
-                            </div>
+                            <button class="genric-btn info-border btn_recruit_list margin-left-right btn-big btn-font-big">채용 공고 모아보기</button>
                         </div>
                     </div>
                 </div>
@@ -358,13 +313,13 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="section-tittle text-center">
-                            <span>Our latest blog</span>
-                            <h2>Recent news</h2>
+                            <span>Our Company Information</span>
+                            <h2>기업 정보</h2>
                         </div>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-xl-6 col-lg-6 col-md-6">
+                    <div th:each="company_info:${company_info_list}"  class="col-xl-6 col-lg-6 col-md-6">
                         <div class="home-blog-single mb-30">
                             <div class="blog-img-cap">
                                 <div class="blog-img">
@@ -375,11 +330,17 @@
                                         <p>Now</p>
                                     </div>
                                 </div>
-                                <div class="blog-cap">
-                                    <p>|   Properties</p>
-                                    <h3><a href="single-blog.html">Footprints in Time is perfect House in Kurashiki</a></h3>
-                                    <a href="#" class="more-btn">Read more »</a>
+                                <div class="box-flex">
+                                    <div class="blog-cap main-company-detail border-right-none">
+                                        <p th:text="${company_info.company_industry}">|   Properties</p>
+                                        <h3><a href="#">[[${company_info.company_name}]]</a></h3>
+                                        <a th:href="@{${company_info.company_url}}" class="more-btn">홈페이지 바로가기</a>
+                                    </div>
+                                    <div class="main-company-logo">
+                                        <img th:src="@{${company_info.company_logo}}">
+                                    </div>
                                 </div>
+
                             </div>
                         </div>
                     </div>
@@ -394,11 +355,14 @@
                                         <p>Now</p>
                                     </div>
                                 </div>
-                                <div class="blog-cap">
-                                    <p>|   Properties</p>
-                                    <h3><a href="single-blog.html">Footprints in Time is perfect House in Kurashiki</a></h3>
-                                    <a href="#" class="more-btn">Read more »</a>
+                                <div>
+                                    <div class="blog-cap">
+                                        <p>|   Properties</p>
+                                        <h3><a href="single-blog.html">Footprints in Time is perfect House in Kurashiki</a></h3>
+                                        <a href="#" class="more-btn">Read more »</a>
+                                    </div>
                                 </div>
+                                
                             </div>
                         </div>
                     </div>

@@ -24,4 +24,10 @@
         #{r_work_addr}, #{r_manager_email}, #{r_manager_name}, #{r_manager_phone_first}, #{r_manager_phone_second},
         #{r_manager_phone_third}, #{r_manager_email_public}, #{r_manager_name_public}, #{r_manager_phone_public}, #{company_logo})
     </insert>
+
+    <select id="getLatestRecruits" resultType="Recruit">
+        select company_name, r_title, (select job from job where job_seq = r_part) as r_part, r_work_area, r_salary_type, r_salary,
+        r_salary_bylaws, r_job_pattern, datediff(sysdate(), r_open_date) as r_close_date, company_logo
+        from recruit order by r_close_date limit 2,10;
+    </select>
 </mapper>

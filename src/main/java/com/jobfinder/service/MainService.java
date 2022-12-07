@@ -1,5 +1,6 @@
 package com.jobfinder.service;
 
+import com.jobfinder.domain.Company_info;
 import com.jobfinder.domain.Job;
 import com.jobfinder.domain.RegionVO;
 import com.jobfinder.repository.MainRepository;
@@ -33,5 +34,10 @@ public class MainService{
     public List<RegionVO> getRegionDetail(int super_seq) {
         List<RegionVO> getRegionDetail = mainRepository.getRegionDetail(super_seq);
         return getRegionDetail;
+    }
+
+    public List<Company_info> getBestCompanies(){
+        List<Company_info> company_info = mainRepository.getBestCompanies();
+        return company_info;
     }
 }

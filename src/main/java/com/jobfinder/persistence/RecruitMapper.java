@@ -9,5 +9,7 @@ import java.util.List;
 public interface RecruitMapper {
     public Recruit notice(int r_seq);
 
-    void insertJobPosting(Recruit recruit);
+    public void insertJobPosting(Recruit recruit);
+
+    public List<Recruit> getLatestRecruits();
 }
