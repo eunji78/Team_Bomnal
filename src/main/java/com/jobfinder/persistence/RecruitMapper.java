@@ -8,4 +8,6 @@ import java.util.List;
 @Mapper
 public interface RecruitMapper {
     public Recruit notice(int r_seq);
-    }
+
+    void insertJobPosting(Recruit recruit);
+}

@@ -4,6 +4,7 @@ import com.google.gson.JsonObject;
 import com.jobfinder.domain.Job;
 import com.jobfinder.domain.Recruit;
 import com.jobfinder.service.MainService;
+import com.jobfinder.service.RecruitService;
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,6 +22,9 @@ import java.util.UUID;
 public class JobPostingController {
     @Autowired
     MainService mainService;
+
+    @Autowired
+    RecruitService recruitService;
 
     @RequestMapping("/jobPostingForm")
     public String jobPosting(Model model){
@@ -67,6 +71,8 @@ public class JobPostingController {
     @RequestMapping("/insertJobPosting")
     public String jobPosting(@ModelAttribute Recruit recruit){
         System.out.println(recruit);
+        recruitService.insertJobPosting(recruit);
+        System.out.println("입력 완료!");
         return "redirect:/";
     }
 

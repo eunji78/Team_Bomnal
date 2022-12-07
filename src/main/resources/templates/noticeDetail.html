@@ -94,10 +94,10 @@
                                     <tr>
                                         <td class="notice_td1"><img src="/img/icon/education.png" class="img_logo">&nbsp&nbsp학력
                                         </td>
-                                        <td class="notice_td2">학력무관</td>
+                                        <td th:text="${notice.r_academic_ability}"class="notice_td2">학력무관</td>
                                         <td class="notice_td1"><img src="/img/icon/pin.png" class="img_logo">&nbsp&nbsp근무지역
                                         </td>
-                                        <td th:text="${notice.r_wide_area}" class="notice_td2">서울</td>
+                                        <td th:text="${notice.r_work_area}" class="notice_td2">서울</td>
                                     </tr>
                                     <tr>
                                         <td class="notice_td1"><img src="/img/icon/yen.png" class="img_logo">&nbsp&nbsp급여
@@ -105,7 +105,7 @@
                                         <td th:text="${notice.r_salary}" class="notice_td2">회사 내규에 따름</td>
                                         <td class="notice_td1"><img src="/img/icon/clock.png" class="img_logo">&nbsp&nbsp근무시간
                                         </td>
-                                        <td class="notice_td2">주 5일 9:00~18:00</td>
+                                        <td th:text="${notice.r_work_time}"class="notice_td2">주 5일 9:00~18:00</td>
                                     </tr>
                                 </table>
                             </div>
@@ -127,6 +127,7 @@
                                     <p th:text="${notice.r_detail}">기업메시지 넣으세요~</p>
                                 </div>
                                 <div id="kakao-map" style="width:400px; height:300px;"></div>
+                                <button type="button" id="button-map" class="fas fa-map-marker-alt btn-map" style="display : none;">지도위치확인</button>
                             </div>
                             <div class="job-message-dis">
                                 <div class="job-post-details">
@@ -206,7 +207,7 @@
                         </div>
                         <ul>
                             <li><span th:text="${notice.r_title}"></span></li>
-                            <li>공고 시작&nbsp:&nbsp<span>2022.12.06</span></li>
+                            <li>공고 시작&nbsp:&nbsp<span th:text="${notice.r_open_date}">2022.12.06</span></li>
                             <li>공고 마감&nbsp:&nbsp<span th:text="${notice.r_close_date}"
                                                       class="deadline">12 Dec 2022</span></li>
                             <li id="expired"></li>
@@ -250,7 +251,7 @@
   var seconds = String(Math.floor((distance % (1000 * 60)) / 1000)).padStart(2, "0");
 
   document.getElementById("demo").innerHTML = days + "일 " + hours + " : " + minutes + " : " + seconds;
-  document.getElementById("expired").innerHTML = days + "일 "
+  document.getElementById("expired").innerHTML = days + "일 남았습니다."
 
   // If the count down is over, write some text
   if (distance < 0) {
@@ -261,7 +262,6 @@
 
 </script>
 
-<!-- 모달창 -->
 
 <!-- JS here -->
 
@@ -270,8 +270,6 @@
 <!-- Jquery, Popper, Bootstrap -->
 <script src="/js/vendor/jquery-1.12.4.min.js"></scrip >
             <script src="./js/popper.min.js">
-
-
 
 </script>
 <script src="/js/bootstrap.min.js"></script>
@@ -311,6 +309,7 @@
 <script type="text/javascript"
         src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ac752e8987937c47d4968465e562e320&libraries=services,clusterer,drawing"></script>
 <script src="/js/noticemap.js"></script>
+<!--<script type="text/javascript" th:src="@{/js/noticemap.js}"></script>-->
 
 </body>
 

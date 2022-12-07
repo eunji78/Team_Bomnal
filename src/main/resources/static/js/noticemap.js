@@ -15,11 +15,12 @@ $(document).ready(function(){
     var ps = new kakao.maps.services.Places();
 
     //검색어
-    var addr = $("#addr-box").val();
-
+    //if (/*[[${notice.company_name}]]*/ != null){
+      //  var addr = /*[[${notice.company_name}]]*/
+    //}
 
     // 키워드로 장소를 검색합니다
-    ps.keywordSearch('광주 동구 예술길 31-15,3층', placesSearchCB);
+    ps.keywordSearch('스매치코퍼레이션', placesSearchCB);
     $("#button-map").on("click", function(){
         addr = $("#addr-box").val();
         $("#kakao-map").html("");
@@ -65,4 +66,5 @@ $(document).ready(function(){
         });
     }
 })
+
 // 마커를 클릭하면 장소명을 표출할 인포윈도우 입니다

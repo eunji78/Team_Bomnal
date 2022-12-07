@@ -15,7 +15,7 @@ public class Company {
 	@Autowired
 	CompanyService companyService;
 
-	@GetMapping("/CompanyList/{industry_class}")
+	@GetMapping("/companyList/{industry_class}")
 	public String CompanyList(@PathVariable String industry_class, Criteria cri, Model model, HttpSession session){
 		cri.setIndustry_class(industry_class);
 		List<Company_info> list = companyService.list(cri);

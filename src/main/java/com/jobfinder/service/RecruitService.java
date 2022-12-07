@@ -17,4 +17,8 @@ public class RecruitService {
         Recruit notice = recruitRepository.notice(r_seq);
         return notice;
     }
+
+    public void insertJobPosting(Recruit recruit) {
+        recruitRepository.insertJobPosting(recruit);
+    }
 }
