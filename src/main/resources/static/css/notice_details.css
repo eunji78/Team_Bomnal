@@ -147,3 +147,9 @@
     overflow:hidden;
     white-space:nowrap;
 }
+
+.notice_table2{
+     width : 440px;
+     height : 120px;
+     table-layout : fixed;
+ }

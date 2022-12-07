@@ -36,7 +36,8 @@
 </header>
 <main>
     <!-- 모달창 -->
-    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -46,7 +47,8 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <p th:if="${session.VO != null} and ${session.type == 'P'}" th:text=" ${session.VO.mem_name} + '님 입사지원하실건가요??'"></p>
+                    <p th:if="${session.VO != null} and ${session.type == 'P'}"
+                       th:text=" ${session.VO.mem_name} + '님 입사지원하실건가요??'"></p>
                     <p th:unless="${session.VO != null} and ${session.type == 'P'}">로그인 해주세요~</p>
                 </div>
                 <div class="modal-footer">
@@ -72,7 +74,7 @@
                                                  alt=""></a>
                             </div>
                             <div class="job-tittle">
-                                    <h5 th:text="${notice.company_name}">기업이름</h5>
+                                <h5 th:text="${notice.company_name}">기업이름</h5>
                                 <div class="notice_r">
                                     <h4 th:text="${notice.r_title}">공고 제목</h4>
                                 </div>
@@ -94,7 +96,7 @@
                                     <tr>
                                         <td class="notice_td1"><img src="/img/icon/education.png" class="img_logo">&nbsp&nbsp학력
                                         </td>
-                                        <td th:text="${notice.r_academic_ability}"class="notice_td2">학력무관</td>
+                                        <td th:text="${notice.r_academic_ability}" class="notice_td2">학력무관</td>
                                         <td class="notice_td1"><img src="/img/icon/pin.png" class="img_logo">&nbsp&nbsp근무지역
                                         </td>
                                         <td th:text="${notice.r_work_area}" class="notice_td2">서울</td>
@@ -102,10 +104,10 @@
                                     <tr>
                                         <td class="notice_td1"><img src="/img/icon/yen.png" class="img_logo">&nbsp&nbsp급여
                                         </td>
-                                        <td th:text="${notice.r_salary}" class="notice_td2">회사 내규에 따름</td>
+                                        <td th:text="${notice.r_salary_bylaws}" class="notice_td2">회사 내규에 따름</td>
                                         <td class="notice_td1"><img src="/img/icon/clock.png" class="img_logo">&nbsp&nbsp근무시간
                                         </td>
-                                        <td th:text="${notice.r_work_time}"class="notice_td2">주 5일 9:00~18:00</td>
+                                        <td th:text="${notice.r_work_time}" class="notice_td2">주 5일 9:00~18:00</td>
                                     </tr>
                                 </table>
                             </div>
@@ -124,10 +126,17 @@
                             <div class="job-message-dis">
                                 <div class="job-post-details">
                                     <!--<img class = "company_image" src="/img/test/chi.jpg">-->
-                                    <p th:text="${notice.r_detail}">기업메시지 넣으세요~</p>
+                                    <div class="detail_title">
+                                        <di class="detail_img">
+
+                                        </di>
+                                    </div>
+                                    <p th:utext="${notice.r_detail}">기업메시지 넣으세요~</p>
                                 </div>
                                 <div id="kakao-map" style="width:400px; height:300px;"></div>
-                                <button type="button" id="button-map" class="fas fa-map-marker-alt btn-map" style="display : none;">지도위치확인</button>
+                                <button type="button" id="button-map" class="fas fa-map-marker-alt btn-map"
+                                        style="display : none;">지도위치확인
+                                </button>
                             </div>
                             <div class="job-message-dis">
                                 <div class="job-post-details">
@@ -136,7 +145,7 @@
                                         <div class="small-section-tittle">
                                             <h4>상세내용</h4>
                                         </div>
-                                        <p th:text="${notice.r_detail}">기업소개라고 합시다~</p>
+                                        <p th:utext="${notice.r_detail}">기업소개라고 합시다~</p>
                                     </div>
                                     <div class="post-details1  mb-50">
                                         <!-- Small Section Tittle -->
@@ -170,23 +179,37 @@
                                                             <div class="small-section-tittle h4">
                                                                 <h4>담당자 정보</h4>
                                                             </div>
-                                                            <table>
+                                                            <table class="notice_table2">
                                                                 <tr>
-                                                                    <div class="smallsection h5">
-                                                                        <h5>이메일</h5>
-                                                                    </div>
+                                                                    <td class="notice_td1">&nbsp&nbsp이메일
+                                                                    </td>
+                                                                    <td colspan="2" th:text="${notice.r_manager_email}">개발자</td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <div class="smallsection h5">
-                                                                        <h5>이름</h5>
-                                                                    </div>
+                                                                    <td class="notice_td1">&nbsp&nbsp이름
+                                                                    </td>
+                                                                    <td colspan="2" th:text="${notice.r_manager_name}">개발자</td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <div class="smallsection h5">
-                                                                        <h5>전화번호</h5>
-                                                                    </div>
+                                                                    <td class="notice_td1">&nbsp&nbsp전화번호
+                                                                    </td>
+                                                                    <td colspan="2" th:text="${notice.r_manager_phone_first}">개발자</td>
                                                                 </tr>
+
                                                             </table>
+<!--                                                            <div class="smallsection h5">-->
+<!--                                                                <h5>이메일</h5>-->
+<!--                                                                <h6 th:text="${notice.r_manager_email}"></h6>-->
+<!--                                                            </div>-->
+<!--                                                            <div class="smallsection h5">-->
+<!--                                                                <h5>이름</h5>-->
+<!--                                                                <h6 th:text="${notice.r_manager_name}"></h6>-->
+<!--                                                            </div>-->
+
+<!--                                                            <div class="smallsection h5">-->
+<!--                                                                <h5>전화번호</h5>-->
+<!--                                                                <h6 th:text="${notice.r_manager_phone_first}"></h6>-->
+<!--                                                            </div>-->
                                                         </div>
                                                     </div>
                                                 </div>
@@ -213,7 +236,8 @@
                             <li id="expired"></li>
                         </ul>
                         <div class="apply-btn2">
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                            <button type="button" class="btn btn-primary" data-toggle="modal"
+                                    data-target="#exampleModalCenter">
                                 입사 지원
                             </button>
                         </div>
@@ -260,6 +284,7 @@
   }
 }, 1000);
 
+
 </script>
 
 
@@ -270,6 +295,7 @@
 <!-- Jquery, Popper, Bootstrap -->
 <script src="/js/vendor/jquery-1.12.4.min.js"></scrip >
             <script src="./js/popper.min.js">
+
 
 </script>
 <script src="/js/bootstrap.min.js"></script>

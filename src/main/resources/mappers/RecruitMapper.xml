@@ -5,9 +5,7 @@
 <mapper namespace="com.jobfinder.persistence.RecruitMapper">
 
     <select id="notice" parameterType="int" resultType="Recruit">
-        select company_name, r_title, r_career, r_job_pattern, r_salary, r_wide_area, r_part, r_business, r_license, r_detail, r_open_date, r_close_date, company_logo
-        from jobinfo
-        where r_seq = #{r_seq}
+        select * from recruit where r_seq = #{r_seq}
     </select>
 
     <insert id="insertJobPosting" parameterType="Recruit">
