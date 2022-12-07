@@ -89,6 +89,12 @@
                                 </div>
                                 <br>
                                 <table class="notice_table">
+                                    <colgroup>
+                                        <col style="width:20%;">
+                                        <col style="width:30%;">
+                                        <col style="width:20%;">
+                                        <col style="width:30%;">
+                                    </colgroup>
                                     <tr>
                                         <td class="notice_td1"><img src="/img/icon/bag.png" class="img_logo">&nbsp&nbsp모집부문
                                         </td>
@@ -101,7 +107,7 @@
                                             <span th:case="new">신입</span>
                                             <span th:case="car">경력</span>
                                             <span th:case="irr">경력무관</span></td>
-                                        <td class="notice_td1"><img src="/img/icon/sun.png" class="img_logo">&nbsp&nbsp근무형태
+                                        <td class="notice_td3"><img src="/img/icon/sun.png" class="img_logo">&nbsp&nbsp근무형태
                                         </td>
                                         <td th:switch="${notice.r_job_pattern}" class="notice_td2">
                                             <span th:case="full">정규직</span>
@@ -116,7 +122,7 @@
                                         <td class="notice_td1"><img src="/img/icon/education.png" class="img_logo">&nbsp&nbsp학력
                                         </td>
                                         <td th:text="${notice.r_academic_ability}" class="notice_td2">학력무관</td>
-                                        <td class="notice_td1"><img src="/img/icon/pin.png" class="img_logo">&nbsp&nbsp근무지역
+                                        <td class="notice_td3"><img src="/img/icon/pin.png" class="img_logo">&nbsp&nbsp근무지역
                                         </td>
                                         <td th:switch="${notice.r_work_area}" class="notice_td2">
                                             <span th:case="overseas">해외지역 근무</span>
@@ -133,7 +139,10 @@
                                         </td>
                                         <td class="notice_td1"><img src="/img/icon/clock.png" class="img_logo">&nbsp&nbsp근무시간
                                         </td>
-                                        <td th:text="|주 ${notice.r_work_time} 시간|" class="notice_td2">주 5일 9:00~18:00</td>
+                                        <td class="notice_td3">
+                                            <span th:if="${notice.r_work_time !=null}" th:text="|주 ${notice.r_work_time}시간|"></span>
+                                            <span th:if="${notice.r_work_time_after != null}">면접 후 결정</span>
+                                        </td>
                                     </tr>
                                 </table>
                             </div>
@@ -288,20 +297,17 @@
 <script th:inline="javascript">
 /*<![CDATA[*/
 
+  let now = /*[[${notice.r_open_date}]]*/;
   let countDownDate = /*[[${notice.r_close_date}]]*/;
 
-  var x = setInterval(function() {
-
-  let now = /*[[${notice.r_open_date}]]*/;
   var distance = countDownDate - now;
 
   var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-  /*
-  var hours = String(Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, "0");
-  var minutes = String(Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, "0");
-  var seconds = String(Math.floor((distance % (1000 * 60)) / 1000)).padStart(2, "0");
-  */
-  document.getElementById("demo").innerHTML = days + "일 "
+  var hours = String(Math.floor((distance % (1000 * 60 * 60 * 24))  / (1000 * 60 * 60));
+  var minutes = String(Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = String(Math.floor((distance % (1000 * 60)) / 1000);
+
+  document.getElementById("demo").innerHTML = days + "일 " + now + countDownDate
   document.getElementById("expired").innerHTML = days + "일 남았습니다."
 
   // If the count down is over, write some text
@@ -313,8 +319,6 @@
 /*]]*/
 
 
-
-
 </script>
 
 <!-- JS here -->
@@ -324,14 +328,6 @@
 <!-- Jquery, Popper, Bootstrap -->
 <script src="/js/vendor/jquery-1.12.4.min.js"></scrip >
             <script src="./js/popper.min.js">
-
-
-
-
-
-
-
-
 </script>
 <script src="/js/bootstrap.min.js"></script>
 <!-- Jquery Mobile Menu -->
