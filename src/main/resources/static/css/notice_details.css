@@ -131,14 +131,21 @@
 }
 
 .notice_td1{
-    width : 120px;
+    width : 120px !important;
+    table-layout:fixed;
 }
 
 .notice_td2{
-    width : 190px;
-    text-overflow:ellipsis;
+    width : 170px !important;
+    /*text-overflow:ellipsis;
     overflow:hidden;
-    white-space:nowrap;
+    white-space:nowrap;*/
+    table-layout:fixed;
+}
+
+.notice_td3{
+    width : 130px !important;
+    table-layout:fixed;
 }
 
 .deadline{
