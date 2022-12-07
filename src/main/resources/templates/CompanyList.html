@@ -44,20 +44,7 @@
   <!-- Header End -->
 </header>
 <!-- Hero Area Start-->
-<div class="slider-area ">
-  <div class="single-slider section-overly slider-height2 d-flex align-items-center"
-       data-background="assets/img/hero/about.jpg">
-    <div class="container">
-      <div class="row">
-        <div class="col-xl-12">
-          <div class="hero-cap text-center">
-            <h2>Blog Details</h2>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+
 <!-- Hero Area End -->
 <!--================Blog Area =================-->
 <section class="blog_area single-post-area section-padding">
@@ -82,7 +69,7 @@
               <table class="table table-lg">
                 <tbody>
                 <tr th:each="c : ${list}" class="">
-                  <td><img class="c_icon" th:src="${c.company_logo}"></td>
+                  <td style="width:124px;"><img class="c_icon" th:src="${c.company_logo}"></td>
                   <td class="company_list" style="vertical-align:middle;"><a th:href="@{/companyDetail/{company_id}(company_id=${c.company_id})}" class="text-bold-500" th:text="${c.company_name}">한국맥도날드(유)</a>
                   </td>
                   <td class="company_list" style="vertical-align:middle;"><a th:href="@{/companyDetail/{company_id}(company_id=${c.company_id})}" th:text="${c.company_industry}">서비스업</a></td>
@@ -125,10 +112,10 @@
       <div class="col-lg-4">
         <div class="blog_right_sidebar">
           <aside class="single_sidebar_widget search_widget">
-            <form action="#">
+            <form action="/CompanyList">
               <div class="form-group">
                 <div class="input-group mb-3">
-                  <input type="text" class="form-control" placeholder='Search Keyword'
+                  <input type="text" name="keyword" class="form-control" placeholder='Search Keyword'
                          onfocus="this.placeholder = ''"
                          onblur="this.placeholder = 'Search Keyword'">
                   <div class="input-group-append">
