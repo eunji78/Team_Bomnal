@@ -1,15 +1,13 @@
 package com.jobfinder.service;
 
 
-import com.jobfinder.domain.Company_info;
-import com.jobfinder.domain.Criteria;
-import com.jobfinder.domain.Recruit;
-import com.jobfinder.domain.Reviews;
+import com.jobfinder.domain.*;
 import com.jobfinder.repository.CompanyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class CompanyService{
@@ -17,9 +15,19 @@ public class CompanyService{
     @Autowired
     CompanyRepository companyRepository;
 
+    public ArrayList<CompanyList> listmain(Criteria cri) {
+        ArrayList<CompanyList> listmain = companyRepository.listmain(cri);
+        return listmain;
+    }
+
     public ArrayList<Company_info> list(Criteria cri) {
         ArrayList<Company_info> list = companyRepository.list(cri);
         return list;
+    }
+
+    public int countmain() {
+        int countmain = companyRepository.countmain();
+        return countmain;
     }
 
     public int count(String industry_class) {
@@ -60,4 +68,7 @@ public class CompanyService{
         int countreview = companyRepository.countreview(company_id);
         return countreview;
     }
+
+
+
 }

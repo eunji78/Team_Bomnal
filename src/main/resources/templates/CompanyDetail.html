@@ -45,26 +45,9 @@
 </header>
 <main>
 
-    <!-- Hero Area Start-->
-    <div class="slider-area ">
-        <div class="single-slider section-overly slider-height2 d-flex align-items-center" data-background="">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-12">
-                        <div class="hero-cap text-center">
-                            <h2>UI/UX Designer</h2>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Hero Area End -->
-    <!-- job post company Start -->
-
     <div class="job-post-company pt-120 pb-120">
         <div class="container">
-            <div class="row justify-content-between">
+            <div class="row justify-content-between tq">
                 <!-- Left Content -->
                 <div class="">
                     <!-- job single -->
@@ -79,8 +62,13 @@
                                 </a>
                                 <ul>
                                     <li th:text="${detail.company_industry}">전기/전자/제어</li>
-                                    <li th:if="${not #strings.isEmpty(detail.company_address)}" th:text="${#strings.listSplit(detail.company_address,' ')[0]}"><i class="fas fa-map-marker-alt"></i>서울</li>
-                                    <li th:if="${#strings.isEmpty(detail.company_address)}" th:text="''"><i class="fas fa-map-marker-alt"></i>서울</li>
+                                    <li th:if="${not #strings.isEmpty(detail.company_address)}"
+                                        th:text="${#strings.listSplit(detail.company_address,' ')[0]}"><i
+                                            class="fas fa-map-marker-alt"></i>서울
+                                    </li>
+                                    <li th:if="${#strings.isEmpty(detail.company_address)}" th:text="''"><i
+                                            class="fas fa-map-marker-alt"></i>서울
+                                    </li>
                                     <li>대기업</li>
                                 </ul>
                             </div>
@@ -91,8 +79,10 @@
                                class="genric-btn primary radius">기업상세</a>
                             <a th:href="@{/companyReview/{company_id}(company_id=${detail.company_id})}"
                                class="genric-btn success-border radius">기업리뷰</a>
+<!--                            <a th:href="@{/companyRecruit/{company_id}(company_id=${detail.company_id})}"-->
+<!--                               class="genric-btn warning-border radius" th:text="'채용공고('+${countgongo}+')'">채용공고(4)</a>-->
                             <a th:href="@{/companyRecruit/{company_id}(company_id=${detail.company_id})}"
-                               class="genric-btn warning-border radius" th:text="'채용공고('+${countgongo}+')'">채용공고(4)</a>
+                               class="genric-btn warning-border radius" th:text="'채용공고(4)'">채용공고(4)</a>
                         </div>
 
                     </div>
@@ -154,7 +144,7 @@
 
                     <div class="col-lg-8 job-post-details hmcontent">
 
-                        <div class="post-details1 mb-50" th:if="${not #strings.isEmpty(detail.company_intro)}">
+                        <div class="post-details1 mb-50" th:if="${not #strings.isEmpty(detail.company_intro)} and ${not #strings.equals(detail.company_intro, '-')}">
                             <!-- Small Section Tittle -->
                             <div class="small-section-tittle">
                                 <h4>기업 소개</h4>
@@ -166,7 +156,7 @@
                                 2013년에는 수급 안정화로 하락폭이 25%수준으로 둔화 되었음</p>
                         </div>
 
-                        <div class="post-details2  mb-50" th:if="${not #strings.isEmpty(detail.company_owner)}">
+                        <div class="post-details2  mb-50" th:if="${not #strings.isEmpty(detail.company_owner)} and ${not #strings.equals(detail.company_owner, '-')}">
                             <div class="small-section-tittle">
                                 <h4>대표</h4>
                             </div>
@@ -175,7 +165,7 @@
                             </ul>
                         </div>
 
-                        <div class="post-details2  mb-50" th:if="${not #strings.isEmpty(detail.total_sales)}">
+                        <div class="post-details2  mb-50" th:if="${not #strings.isEmpty(detail.total_sales)} and ${not #strings.equals(detail.total_sales, '-')}">
                             <div class="small-section-tittle">
                                 <h4>매출</h4>
                             </div>
@@ -184,7 +174,7 @@
                             </ul>
                         </div>
 
-                        <div class="post-details2  mb-50" th:if="${not #strings.isEmpty(detail.company_history)}">
+                        <div class="post-details2  mb-50" th:if="${not #strings.isEmpty(detail.company_history)} and ${not #strings.equals(detail.company_history, '-')}">
                             <!-- Small Section Tittle -->
                             <div class="small-section-tittle">
                                 <h4>연혁</h4>
@@ -195,23 +185,33 @@
                             </ul>
                         </div>
 
-                        <div class="post-details2  mb-50" th:if="${not #strings.isEmpty(detail.company_address)}">
-                            <div class="small-section-tittle">
-                                <h4>주소</h4>
-                            </div>
-                            <ul>
-                                <li th:text="${detail.company_address}">경기 수원시 영통구 삼성로 129 (매탄동,주차타워)</li>
-                            </ul>
-                        </div>
 
-                        <div class="post-details2  mb-50" th:if="${not #strings.isEmpty(detail.company_url)}">
+                        <div class="post-details2  mb-50" th:if="${not #strings.isEmpty(detail.company_url)} and ${not #strings.equals(detail.company_url, '-')}">
                             <div class="small-section-tittle">
                                 <h4>웹사이트</h4>
                             </div>
                             <ul>
-                                <li><a th:href="@{${detail.company_url}}" th:text="${detail.company_url}" style="color:black;">http://www.samsung.com/sec/</a></li>
+                                <li><a th:href="@{${detail.company_url}}" th:text="${detail.company_url}"
+                                       style="color:black;" target="_blank">http://www.samsung.com/sec/</a></li>
                             </ul>
                         </div>
+
+
+
+                            <div class="post-details2  mb-50" th:if="${not #strings.isEmpty(detail.company_address)} and ${not #strings.equals(detail.company_address, '-')}">
+
+                                <div class="small-section-tittle">
+                                    <h4>주소</h4>
+                                </div>
+                                <ul>
+                                    <li th:text="${detail.company_address}">경기 수원시 영통구 삼성로 129 (매탄동,주차타워)</li>
+                                </ul>
+                                <div id="kakao-map" style="width:425px; height:300px;">
+                                    <button id="button-map"></button>
+                                </div>
+
+                            </div>
+
 
 
                     </div>
@@ -267,6 +267,89 @@
 <!-- Jquery Plugins, main Jquery -->
 <script src="/js/plugins.js"></script>
 <script src="/js/main.js"></script>
+<script type="text/javascript"
+        src="//dapi.kakao.com/v2/maps/sdk.js?appkey=73894d3a79276d1eaae6639487e78793&libraries=services,clusterer,drawing"></script>
+<script type="text/javascript" th:inline="javascript">
+ /*<![CDATA[*/
+    $(document).ready(function(){
 
+    var infowindow = new kakao.maps.InfoWindow({zIndex:1});
+
+    var mapContainer = document.getElementById('kakao-map'), // 지도를 표시할 div
+        mapOption = {
+            center: new kakao.maps.LatLng(37.566826, 126.9786567), // 지도의 중심좌표
+            level: 3 // 지도의 확대 레벨
+        };
+
+    // 지도를 생성합니다
+    var map = new kakao.maps.Map(mapContainer, mapOption);
+
+    // 장소 검색 객체를 생성합니다
+    var ps = new kakao.maps.services.Places();
+
+    //검색어
+
+    if (/*[[${detail.company_address}]]*/ != null){
+        var addr = /*[[${detail.company_address}]]*/
+    }
+
+    if (addr.includes(",")){
+        var addr = /*[[${#strings.listSplit(detail.company_address,',')[0]}]]*/;
+    }else if (addr.includes("(")) {
+        var addr = /*[[${#strings.listSplit(detail.company_address,'(')[0]}]]*/;
+    }
+    console.log(addr);
+
+    // 키워드로 장소를 검색합니다
+    ps.keywordSearch(addr, placesSearchCB);
+
+    $("#button-map").on("click", function(){
+        addr = $("#addr-box").val();
+        $("#kakao-map").html("");
+        map = new kakao.maps.Map(mapContainer, mapOption);
+        ps.keywordSearch(addr, placesSearchCB);
+    })
+
+
+    // 키워드 검색 완료 시 호출되는 콜백함수 입니다
+    function placesSearchCB (data, status, pagination) {
+        if (status === kakao.maps.services.Status.OK) {
+
+            // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
+            // LatLngBounds 객체에 좌표를 추가합니다
+            var bounds = new kakao.maps.LatLngBounds();
+
+            for (var i=0; i<data.length; i++) {
+                displayMarker(data[i]);
+                bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x));
+            }
+
+            // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
+            map.setBounds(bounds);
+        }else{
+            alert("장소를 다시 입력해주세요")
+        }
+    }
+
+    // 지도에 마커를 표시하는 함수입니다
+    function displayMarker(place) {
+
+        // 마커를 생성하고 지도에 표시합니다
+        var marker = new kakao.maps.Marker({
+            map: map,
+            position: new kakao.maps.LatLng(place.y, place.x)
+        });
+
+        // 마커에 클릭이벤트를 등록합니다
+        kakao.maps.event.addListener(marker, 'click', function() {
+            // 마커를 클릭하면 장소명이 인포윈도우에 표출됩니다
+            infowindow.setContent('<div style="padding:5px;font-size:12px;">' + place.place_name + '</div>');
+            infowindow.open(map, marker);
+        });
+    }
+})
+// 마커를 클릭하면 장소명을 표출할 인포윈도우 입니다
+/* ]]> */
+</script>
 </body>
 </html>
