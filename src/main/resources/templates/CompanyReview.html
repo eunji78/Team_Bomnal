@@ -50,7 +50,7 @@
 <!--================Blog Area =================-->
 <section class="single-post-area section-padding">
     <div class="container">
-        <div class="row">
+        <div class="row tq">
             <div class="">
 
                 <!-- 맨 위에 기업 정보 크게 띄워주는거 -->
@@ -94,7 +94,7 @@
                         <div class="blog_details">
                             <h2 th:text="${detail.company_name}+' Review'">삼성전자 Review</h2>
                             <ul class="blog-info-link mt-3 mb-4">
-                                <li><a href="#"><i class="fa fa-comments" th:text="${countreview}+ '개의 리뷰'"></i></a>
+                                <li><a href="#"><i class="fa fa-comments" th:text="' '+${countreview}+ '개의 리뷰'"></i></a>
                                 </li>
                             </ul>
                             <br>
@@ -176,10 +176,24 @@
                             </div>
                             <br>
 
+                            <th:block th:if="${session.VO == null}">
+
+                                <div class="comment-form wrapper">
+                                    <div class="blur">
+                                        <p><b>로그인</b> 하고 리뷰를 남기세요!</p>
+                                    </div>
+                                </div>
+                            </th:block>
+
+
+
+                            <!--리뷰 작성 form-->
+                            <th:block th:if="${session.VO !=null}">
                             <div class="comment-form">
                                 <h4>Leave a Reivew</h4>
                                 <form class="form-contact comment_form" id="myform" method="post"
-                                      th:action="@{/save/{company_id}(company_id=${detail.company_id})/{mem_id}(mem_id=${session.mem_id})}">
+                                      th:action="@{/save/{company_id}(company_id=${detail.company_id})}">
+                                    <input type="hidden" name="mem_id" th:value="${session.VO.mem_id}">
                                     <div class="row">
 
                                         <div class="starform" style="text-align: center;">
@@ -302,6 +316,10 @@
                                     </div>
                                 </form>
                             </div>
+                            </th:block>
+
+
+
                             <h4 class="moabogi">모아보기</h4>
                             <div class="rev">
                                 <!-- 전체 리뷰 보여주기 -->
@@ -472,6 +490,7 @@
 
             element.checked = true;
          }
+
 
 </script>
 </body>
