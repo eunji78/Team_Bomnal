@@ -20,4 +20,9 @@ public class RecruitRepository {
     public void insertJobPosting(Recruit recruit) {
         recruitMapper.insertJobPosting(recruit);
     }
+
+    public List<Recruit> getLatestRecruits(){
+        List<Recruit> recruits = recruitMapper.getLatestRecruits();
+        return recruits;
+    }
 }

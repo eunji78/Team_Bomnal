@@ -1,5 +1,6 @@
 package com.jobfinder.repository;
 
+import com.jobfinder.domain.Company_info;
 import com.jobfinder.domain.Job;
 import com.jobfinder.domain.RegionVO;
 import com.jobfinder.persistence.MainMapper;
@@ -32,5 +33,10 @@ public class MainRepository {
     public List<RegionVO> getRegionDetail(int super_seq){
         List<RegionVO> getRegionDetail = mainMapper.getRegionDetail(super_seq);
         return getRegionDetail;
+    }
+
+    public List<Company_info> getBestCompanies(){
+        List<Company_info> company_info = mainMapper.getBestCompanies();
+        return company_info;
     }
 }
