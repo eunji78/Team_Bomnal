@@ -297,26 +297,21 @@
 <script th:inline="javascript">
 /*<![CDATA[*/
 
-  let now = /*[[${notice.r_open_date}]]*/;
-  let countDownDate = /*[[${notice.r_close_date}]]*/;
+  const now = /*[[${notice.r_open_date}]]*/;
+  const countDownDate = /*[[${notice.r_close_date}]]*/;
 
-  var distance = countDownDate - now;
+/*]]>*/
 
-  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  const distance = countDownDate - now;
+
+  const dresult = Math.floor(distance / (1000 * 60 * 60 * 24));
   var hours = String(Math.floor((distance % (1000 * 60 * 60 * 24))  / (1000 * 60 * 60));
   var minutes = String(Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
   var seconds = String(Math.floor((distance % (1000 * 60)) / 1000);
 
-  document.getElementById("demo").innerHTML = days + "일 " + now + countDownDate
-  document.getElementById("expired").innerHTML = days + "일 남았습니다."
+  document.getElementById("demo").innerHTML = `D-${dresult}`
+  document.getElementById("expired").innerHTML = `${dresult}일 남았습니다.`;
 
-  // If the count down is over, write some text
-  if (distance < 0) {
-    clearInterval(x);
-    document.getElementById("demo").innerHTML = "EXPIRED";
-  }
-}, 1000);
-/*]]*/
 
 
 </script>
