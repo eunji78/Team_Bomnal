@@ -271,11 +271,11 @@
                             <div class="job-items">
 
                                 <div class="company-img">
-                                    <a href="job_details.html"><img th:src="@{${recruit.company_logo }}" alt=""></a>
+                                    <a th:href="@{/noticeDetail/{r_seq}(r_seq=${recruit.r_seq})}"><img th:src="@{${recruit.company_logo }}" alt=""></a>
                                 </div>
                                 <div class="job-tittle">
                                     <p th:text="${recruit.company_name}" class="margin-bottom-none"></p>
-                                    <a href="job_details.html"><h4>[[${recruit.r_title}]]</h4></a>
+                                    <a th:href="@{/noticeDetail/{r_seq}(r_seq=${recruit.r_seq})}"><h4>[[${recruit.r_title}]]</h4></a>
                                     <ul>
                                         <li class="border-right-single">[[${recruit.r_part}]]</li>
                                         <li class="border-right-single"><i class="fas fa-map-marker-alt"></i>[[${recruit.r_work_area}]]</li>
@@ -341,28 +341,6 @@
                                     </div>
                                 </div>
 
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-6 col-lg-6 col-md-6">
-                        <div class="home-blog-single mb-30">
-                            <div class="blog-img-cap">
-                                <div class="blog-img">
-                                    <img src="/img/blog/home-blog2.jpg" alt="">
-                                    <!-- Blog date -->
-                                    <div class="blog-date text-center">
-                                        <span>24</span>
-                                        <p>Now</p>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div class="blog-cap">
-                                        <p>|   Properties</p>
-                                        <h3><a href="single-blog.html">Footprints in Time is perfect House in Kurashiki</a></h3>
-                                        <a href="#" class="more-btn">Read more »</a>
-                                    </div>
-                                </div>
-                                
                             </div>
                         </div>
                     </div>
