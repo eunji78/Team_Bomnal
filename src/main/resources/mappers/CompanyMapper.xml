@@ -4,9 +4,20 @@
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jobfinder.persistence.CompanyMapper">
 
-    <select id="list" parameterType="Criteria"  resultType="Company_info">
-        select * from company_detail
-        where industry_class = #{industry_class} limit #{pageStart}, #{perPageNum}
+    <select id="listmain" parameterType="Criteria" resultType="CompanyList">
+        select a.company_id, company_logo, company_name, company_industry, company_type, count(review_seq) as reviewcount,
+        ifnull(TRUNCATE((avg(welfare)+avg(inner_culture)+avg(work_life_balance)+avg(p_opportunity)+avg(management))/5,1),0) as totalstar, ifnull(truncate(avg(my_salary),0),0) as avgsalary
+        from company_detail a left join reviews b on a.company_id = b.company_id group by a.company_id, company_name, company_industry, company_type, company_logo order by totalstar desc limit #{pageStart}, #{perPageNum}
+    </select>
+
+    <select id="list" parameterType="Criteria"  resultType="CompanyList">
+        select a.company_id, company_logo, company_name, company_industry, company_type, count(review_seq) as reviewcount,
+        ifnull(TRUNCATE((avg(welfare)+avg(inner_culture)+avg(work_life_balance)+avg(p_opportunity)+avg(management))/5,1),0) as totalstar, ifnull(truncate(avg(my_salary),0),0) as avgsalary
+        from company_detail a left join reviews b on a.company_id = b.company_id  where industry_class=#{industry_class} group by a.company_id, company_logo, company_name, company_industry, company_type order by totalstar desc limit #{pageStart}, #{perPageNum};
+    </select>
+
+    <select id="countmain" resultType="int">
+        select count(*) from company_detail
     </select>
     <select id="count" parameterType="String" resultType="int">
         select count(industry_class) as counting from company_detail where industry_class = #{indus_class}
@@ -28,7 +39,7 @@
 
     <select id="avg" parameterType="String" resultType="Reviews">
         select ifnull(TRUNCATE(avg(welfare),1),0) AS welfare, ifnull(TRUNCATE(avg(work_life_balance),1),0) as work_life_balance, ifnull(TRUNCATE(avg(inner_culture),1),0) as inner_culture,ifnull(TRUNCATE(avg(p_opportunity),1),0) as p_opportunity, ifnull(TRUNCATE(avg(management),1),0) as management,
-        ifnull(TRUNCATE((avg(welfare)+avg(inner_culture)+avg(work_life_balance)+avg(p_opportunity)+avg(management))/5,2),0) as totalstar, TRUNCATE(avg(my_salary),0) as avgsalary from reviews where company_id = #{company_id}
+        ifnull(TRUNCATE((avg(welfare)+avg(inner_culture)+avg(work_life_balance)+avg(p_opportunity)+avg(management))/5,2),0) as totalstar, ifnull(TRUNCATE(avg(my_salary),0),0) as avgsalary from reviews where company_id = #{company_id}
     </select>
 
     <insert id="save" parameterType="Reviews">

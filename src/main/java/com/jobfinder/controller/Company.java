@@ -2,6 +2,7 @@ package com.jobfinder.controller;
 
 import com.jobfinder.domain.*;
 import com.jobfinder.service.CompanyService;
+import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,6 +15,21 @@ import java.util.*;
 public class Company {
 	@Autowired
 	CompanyService companyService;
+
+	@GetMapping("/companyList")
+	public String CompanyListMain(Criteria cri, Model model, HttpSession session){
+		ArrayList<CompanyList> list = companyService.listmain(cri);
+		int counting = companyService.countmain();
+
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(cri);
+		pageMaker.setTotalCount((companyService.countmain()));
+
+		model.addAttribute("list",list);
+		model.addAttribute("counting",counting);
+		session.setAttribute("pageMaker",pageMaker);
+		return "CompanyList";
+	}
 
 	@GetMapping("/companyList/{industry_class}")
 	public String CompanyList(@PathVariable String industry_class, Criteria cri, Model model, HttpSession session){
@@ -57,10 +73,12 @@ public class Company {
 		return "CompanyReview";
 	}
 
-	@PostMapping("/save/{company_id}/{mem_id}")
-	public String save(@ModelAttribute Reviews reviews, @PathVariable String company_id,@PathVariable String mem_id){
+	@PostMapping("/save/{company_id}")
+	public String save(@ModelAttribute Reviews reviews, @PathVariable String company_id, HttpSession session){
 		System.out.println("reviews = " + reviews);
+
 		companyService.save(reviews);
+
 
 		return "redirect:/companyReview/{company_id}";
 	}
