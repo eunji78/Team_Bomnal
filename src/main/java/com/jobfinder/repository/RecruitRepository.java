@@ -16,4 +16,8 @@ public class RecruitRepository {
         Recruit notice = recruitMapper.notice(r_seq);
         return notice;
     }
+
+    public void insertJobPosting(Recruit recruit) {
+        recruitMapper.insertJobPosting(recruit);
+    }
 }

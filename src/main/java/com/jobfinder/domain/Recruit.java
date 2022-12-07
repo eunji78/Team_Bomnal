@@ -47,7 +47,7 @@ public class Recruit {
     // 1 : 면접 후 결정
     private String r_work_time_after;
     // 근무 형태
-    // full : 계약직 / contract : 계약직 / alba : 아르바이트 /
+    // full : 정규직 / contract : 계약직 / alba : 아르바이트 /
     // intern : 인턴 / free : 프리랜서 / part : 파트타임
     private String r_job_pattern;
     // 대표근무지역(체크박스)

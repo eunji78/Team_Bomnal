@@ -64,11 +64,11 @@ $(document).ready(function() {
               e.preventDefault();
          })
  
- $('input[type="checkbox"][name="public_email"]').click(function(){
+ $('input[type="checkbox"][name="r_manager_email_public"]').click(function(){
  
   if($(this).prop('checked')){
  
-     $('input[type="checkbox"][name="public_email"]').prop('checked',false);
+     $('input[type="checkbox"][name="r_manager_email_public"]').prop('checked',false);
  
      $(this).prop('checked',true);
  
@@ -76,11 +76,11 @@ $(document).ready(function() {
   
    });
 
-   $('input[type="checkbox"][name="public_name"]').click(function(){
+   $('input[type="checkbox"][name="r_manager_name_public"]').click(function(){
  
     if($(this).prop('checked')){
    
-       $('input[type="checkbox"][name="public_name"]').prop('checked',false);
+       $('input[type="checkbox"][name="r_manager_name_public"]').prop('checked',false);
    
        $(this).prop('checked',true);
    
@@ -88,11 +88,11 @@ $(document).ready(function() {
     
      });
 
-     $('input[type="checkbox"][name="public_tel"]').click(function(){
+     $('input[type="checkbox"][name="r_manager_phone_public"]').click(function(){
  
       if($(this).prop('checked')){
      
-         $('input[type="checkbox"][name="public_tel"]').prop('checked',false);
+         $('input[type="checkbox"][name="r_manager_phone_public"]').prop('checked',false);
      
          $(this).prop('checked',true);
      
@@ -123,11 +123,11 @@ $(document).ready(function() {
 
           });
 
-    $('input[type="checkbox"][name="r_work_place"]').click(function(){
+    $('input[type="checkbox"][name="r_work_area"]').click(function(){
 
              if($(this).prop('checked')){
 
-                $('input[type="checkbox"][name="r_work_place"]').prop('checked',false);
+                $('input[type="checkbox"][name="r_work_area"]').prop('checked',false);
 
                 $(this).prop('checked',true);
 
