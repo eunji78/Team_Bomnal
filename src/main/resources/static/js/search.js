@@ -53,21 +53,21 @@ $(document).ready(function(){
     });
 
     /* 지역 가져오기 */
-//    $(".r-list-button").on('click', function(){
-//        /* active */
-//        $(".r-list-button").removeClass("active");
-//        $(this).toggleClass("active");
-//
-//        var super_seq = document.querySelector('.active #super-region-seq').innerText;
-//            $.ajax({
-//                url : "/get_region_detail",
-//                type : "get",
-//                dataType : "json",
-//                data : {"super_seq":super_seq},
-//                success : result_search_region,
-//                error : function(e){alert(e);}
-//            });
-//    });
+    $(".r-list-button").on('click', function(){
+        /* active */
+        $(".r-list-button").removeClass("active");
+        $(this).toggleClass("active");
+
+        var super_seq = document.querySelector('.active #super-region-seq').innerText;
+            $.ajax({
+                url : "/get_region_detail",
+                type : "get",
+                dataType : "json",
+                data : {"super_seq":super_seq},
+                success : result_search_region,
+                error : function(e){alert(e);}
+            });
+    });
 
     function result_search_region(data){
         var html = "";
