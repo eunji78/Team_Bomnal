@@ -52,4 +52,12 @@
         delete from company where company_id=#{company_id}
     </delete>
 
+    <update id="set_img_per" parameterType="LoginVO">
+        update members set mem_img=#{mem_img} where mem_id=#{mem_id}
+    </update>
+
+    <update id="set_img_com" parameterType="Login_ComVO">
+        update company set company_img=#{company_img} where company_id=#{company_id}
+    </update>
+
 </mapper>
