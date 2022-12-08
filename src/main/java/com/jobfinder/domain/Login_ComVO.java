@@ -22,4 +22,5 @@ public class Login_ComVO {
     private String company_type;
     private String company_joindate;
     private int indus_seq;
+    private String company_img;
 }

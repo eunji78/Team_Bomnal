@@ -5,6 +5,7 @@ import com.jobfinder.persistence.RecruitMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Repository
@@ -15,6 +16,16 @@ public class RecruitRepository {
     public Recruit notice(int r_seq){
         Recruit notice = recruitMapper.notice(r_seq);
         return notice;
+    }
+
+    public ArrayList<Recruit> noticeList(int super_job_seq){
+        ArrayList<Recruit> noticeList = recruitMapper.noticeList(super_job_seq);
+        return noticeList;
+    }
+
+    public ArrayList<Recruit> allList(){
+        ArrayList<Recruit> allList = recruitMapper.allList();
+        return allList;
     }
 
     public void insertJobPosting(Recruit recruit) {

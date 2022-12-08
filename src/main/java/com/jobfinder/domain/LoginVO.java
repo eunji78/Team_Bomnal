@@ -21,4 +21,5 @@ public class LoginVO {
     private String m_agreement4;
     private String m_agreement5;
     private String m_agreement6;
+    private String mem_img;
 }

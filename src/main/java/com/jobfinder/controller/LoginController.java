@@ -1,26 +1,102 @@
 package com.jobfinder.controller;
 
+import com.jobfinder.domain.FileDto;
 import com.jobfinder.domain.LoginVO;
 import com.jobfinder.domain.Login_ComVO;
 import com.jobfinder.domain.Recruit;
 import com.jobfinder.service.LoginService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.UrlResource;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.annotation.Resource;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.UUID;
 
 @Controller
 public class LoginController {
 
     @Autowired
     LoginService loginService;
+
+
+
+
+
+    @PostMapping(value = "/upload")
+    // 업로드하는 파일들을 MultipartFile 형태의 파라미터로 전달된다.
+    @ResponseBody
+    public String upload(@RequestParam(value = "uploadfile", required = false) MultipartFile file, Model model, HttpSession session)
+            throws IllegalStateException, IOException {
+
+        System.out.println("file : " + file);
+
+        List<FileDto> list = new ArrayList<>();
+        FileDto dto = new FileDto(UUID.randomUUID().toString(),
+                file.getOriginalFilename(),
+                file.getContentType());
+        list.add(dto);
+
+//        System.out.println(dto.getFileName());
+//        System.out.println(dto.getUuid());
+
+        File newFileName = new File(dto.getUuid() + "_" + dto.getFileName());
+        // 전달된 내용을 실제 물리적인 파일로 저장해준다.
+        file.transferTo(newFileName);
+
+        model.addAttribute("files", list);
+
+        String fname = "/upload/" + dto.getUuid() + "_" + dto.getFileName();
+        String type = (String) session.getAttribute("type");
+//        System.out.println(type);
+        if (type == "P") {
+            LoginVO vo = (LoginVO) session.getAttribute("VO");
+            session.removeAttribute("VO");
+//            System.out.println(vo.getMem_id());
+            vo.setMem_img(fname);
+            int res = loginService.set_img_per(vo);
+//            System.out.println(res);
+            LoginVO rvo = loginService.login_per(vo);
+            session.setAttribute("VO", rvo);
+            System.out.println("session 가져옴 : " + rvo);
+        } else if (type == "C") {
+            Login_ComVO cvo = (Login_ComVO) session.getAttribute("VO");
+            session.removeAttribute("VO");
+//            System.out.println(cvo.getCompany_id());
+            cvo.setCompany_img(fname);
+            int res = loginService.set_img_com(cvo);
+//            System.out.println(res);
+            Login_ComVO rcvo = loginService.login_com(cvo);
+            session.setAttribute("VO", rcvo);
+            System.out.println("session 가져옴 : " + rcvo);
+        }
+
+        return fname;
+    }
+
+
+
+
+
+
+
+
 
     @RequestMapping(value = "/all_delete_data")
     public int all_delete_data(HttpSession session, Model model){
@@ -118,7 +194,10 @@ public class LoginController {
         return "redirect:/loginform";
     }
     @RequestMapping(value = "/update_my_page_com")
-    public String update_my_page_com(@ModelAttribute("umpform_com") Login_ComVO cvo, HttpSession session){
+    public String update_my_page_com(@ModelAttribute("umpform_com") Login_ComVO cvo, HttpSession session, @RequestParam(value = "file", required = false) MultipartFile file) {
+
+        System.out.println("file : " + file);
+
         System.out.println("session : " + session.getAttribute("VO"));
         System.out.println("update : " + cvo);
 
@@ -165,27 +244,29 @@ public class LoginController {
 
     @RequestMapping(value = "/login_per")
     public String login_per(@RequestParam(value = "mem_id", required=false) String id, @RequestParam(value = "mem_pw", required=false) String pw, HttpSession session){
-        System.out.println("개인로그인시도");
-        System.out.println(id);
-        System.out.println(pw);
+//        System.out.println("개인로그인시도");
+//        System.out.println(id);
+//        System.out.println(pw);
         LoginVO vo = new LoginVO();
         vo.setMem_id(id);
         vo.setMem_pw(pw);
         LoginVO rvo = loginService.login_per(vo);
         session.setAttribute("type","P");
         session.setAttribute("VO", rvo);
-        System.out.println("개인로그인완료");
+        System.out.println("로그인 세션 저장 : " + session.getAttribute("VO"));
+//        System.out.println("개인로그인완료");
         return "redirect:/";
     };
 
     @RequestMapping(value = "/login_com")
     public String login_com(@ModelAttribute("loginform_com") Login_ComVO cvo, HttpSession session){
-        System.out.println("기업로그인시도");
-        System.out.println(cvo);
+//        System.out.println("기업로그인시도");
+//        System.out.println(cvo);
         Login_ComVO rcvo = loginService.login_com(cvo);
         session.setAttribute("type","C");
         session.setAttribute("VO", rcvo);
-        System.out.println("기업로그인완료");
+        System.out.println("로그인 세션 저장 : " + session.getAttribute("VO"));
+//        System.out.println("기업로그인완료");
         return "redirect:/";
     };
 
@@ -245,9 +326,9 @@ public class LoginController {
     @ResponseBody
     public String get_loginVO(@ModelAttribute("loginform_per") LoginVO vo) {
 
-        System.out.println("per 넘어오는 vo값 : " + vo);
+//        System.out.println("per 넘어오는 vo값 : " + vo);
         LoginVO rvo = loginService.login_per(vo);
-        System.out.println("per 받는 vo값 : " + rvo);
+//        System.out.println("per 받는 vo값 : " + rvo);
         String res = "";
         if (rvo == null){ res = "";}
         else { res = "exist";}
@@ -258,9 +339,9 @@ public class LoginController {
     @ResponseBody
     public String get_login_ComVO(@ModelAttribute("loginform_com") Login_ComVO cvo) {
 
-        System.out.println("com 넘어오는 cvo값 : " + cvo);
+//        System.out.println("com 넘어오는 cvo값 : " + cvo);
         Login_ComVO rcvo = loginService.login_com(cvo);
-        System.out.println("com 받는 cvo값 : " + rcvo);
+//        System.out.println("com 받는 cvo값 : " + rcvo);
         String res = "";
         if (rcvo == null){ res = "";}
         else { res = "exist";}
@@ -272,9 +353,9 @@ public class LoginController {
     @ResponseBody
     public String login_id_check_per(@RequestParam("insert_id") String insert_id) {
 
-        System.out.println("per 넘어오는 id값 : " + insert_id);
+//        System.out.println("per 넘어오는 id값 : " + insert_id);
         String mem_id = loginService.id_check_per(insert_id);
-        System.out.println("per 받는 id값 : " + mem_id);
+//        System.out.println("per 받는 id값 : " + mem_id);
         return mem_id;
     }
 
@@ -282,9 +363,9 @@ public class LoginController {
     @ResponseBody
     public String login_id_check_com(@RequestParam("insert_id") String insert_id) {
 
-        System.out.println("com 넘어오는 id값 : " + insert_id);
+//        System.out.println("com 넘어오는 id값 : " + insert_id);
         String com_id = loginService.id_check_com(insert_id);
-        System.out.println("com 받는 id값 : " + com_id);
+//        System.out.println("com 받는 id값 : " + com_id);
         return com_id;
     }
 

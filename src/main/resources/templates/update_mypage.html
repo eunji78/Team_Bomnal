@@ -174,7 +174,23 @@
 
                 <article class="col-lg-12 mb-5 mb-lg-0 blog_item">
                   <div>
-                    <form id="umpform_per" th:action="@{/update_my_page}" th:object="${loginVO}"  method="POST" >
+                    <form id="umpform_per" th:action="@{/update_my_page}" th:object="${loginVO}" enctype="multipart/form-data" method="POST" >
+
+                      <div style="justify-content : center; margin-bottom:30px !important;">
+                        <div class="col-lg-4 mb-5 mb-lg-0" style="display: inline-block; justify-content : center;">
+                          <h6>증명사진</h6>
+                          <div th:if="${not #strings.isEmpty(session.VO)} and ${session.type == 'P'}" >
+                            <img th:if="${not #strings.isEmpty(session.VO.mem_img)}" th:src="${session.VO.mem_img}" id="db_img_per" style="display:inline; width:200px; height:200px;">
+                            <img src="" id="db_img_per2" style="display:none; width:200px; height:200px;">
+                          </div>
+                        </div>
+                        <div class="col-lg-7 mb-5 mb-lg-0" style="display: inline-flex; text-align : center;">
+                          <!--<input readonly id="mem_image" name="mem_image" th:value="${session.VO.company_image}" style="border:none"> </div>-->
+                          <input title = "증명사진 올리기" type="file" multiple="multiple" name="uploadfile" id="uploadfile" style="display:inline; width:250px;">
+                          <div></div>
+                          <a type="button" class="sm-button" style="display:inline-flex; width: 75px;" onclick="uploadPhoto()">업로드</a> </div>
+                        <hr style="border: solid 0.3px #ff87OEEB; background-color: #ff87OEEB; width:645px; display:block; margin:0px !important;">
+                      </div>
 
                       <div style="justify-content : center; margin-bottom:30px !important;">
                         <div class="col-lg-4 mb-5 mb-lg-0" style="display: inline-block; justify-content : center;">
@@ -353,7 +369,39 @@
 <script src="/js/plugins.js"></script>
 <script src="/js/main.js"></script>
 
-<script>
+<script th:inline="javascript">
+
+  function uploadPhoto() {
+
+        $.ajax({
+            type: 'POST',
+            url: '/upload',
+            data: new FormData($("#umpform_per")[0]),
+            enctype: 'multipart/form-data',
+            cache: false,
+            processData: false,
+            contentType: false,
+            dataType: 'text',
+            error : function(error) {
+                console.log("Error!");
+            },
+            success : function(data) {
+                console.log(data);
+                /*<![CDATA[*/
+                var type = /*[[${session.type}]]*/;
+                var img = "";
+                if (type === "P"){
+                  img = data;
+                  console.log(img);
+                  $("#db_img_per").css('display','none');
+                  $("#db_img_per2").css('display','inline-block');
+                  $("#db_img_per2").attr('src', img);
+                }
+                /*]]>*/
+            }
+        });
+    }
+
 
   function real_check_pwd() {
         var pwd = $("#pwd").val();
