@@ -13,7 +13,7 @@
     </select>
 
     <select id="noticeList" parameterType="int" resultType="Recruit">
-        select j.super_job, j.super_job_seq, r.r_title, r.company_name
+        select *
         from job j inner join recruit r
         on j.job_seq = r.r_part
         where j.super_job_seq = #{super_job_seq}

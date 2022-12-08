@@ -1,7 +1,10 @@
 package com.jobfinder.controller;
 
 import com.google.gson.JsonObject;
+import com.jobfinder.domain.Job;
 import com.jobfinder.domain.Recruit;
+import com.jobfinder.domain.RegionVO;
+import com.jobfinder.service.MainService;
 import com.jobfinder.service.RecruitService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,7 +19,8 @@ import java.util.List;
 
 @Controller
 public class RecruitController {
-
+    @Autowired
+    MainService mainService;
     @Autowired
     RecruitService recruitService;
 
@@ -31,8 +35,11 @@ public class RecruitController {
 
     @RequestMapping("/noticeList/{super_job_seq}")
     public String noticeList(@PathVariable int super_job_seq, Model model){
-
-        List<Recruit> noticeList = recruitService.noticeList(super_job_seq);
+        List<Job> job_list = mainService.jobList();
+        model.addAttribute("job_list",job_list);
+        List<RegionVO> region_list = mainService.regionList();
+        model.addAttribute("region_list",region_list);
+        ArrayList<Recruit> noticeList = recruitService.noticeList(super_job_seq);
         model.addAttribute("noticeList", noticeList);
 
         return "noticeList";
@@ -44,6 +51,7 @@ public class RecruitController {
 
         return jsonObject;
     }
+
 
 
 }

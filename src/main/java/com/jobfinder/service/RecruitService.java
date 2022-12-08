@@ -26,8 +26,8 @@ public class RecruitService {
         return notice;
     }
 
-    public List<Recruit> noticeList(int super_job_seq){
-        List<Recruit> noticeList = recruitRepository.noticeList(super_job_seq);
+    public ArrayList<Recruit> noticeList(int super_job_seq){
+        ArrayList<Recruit> noticeList = recruitRepository.noticeList(super_job_seq);
         return noticeList;
     }
 
@@ -68,4 +68,5 @@ public class RecruitService {
         List<Recruit> recruits = recruitRepository.getLatestRecruits();
         return recruits;
     }
+
 }

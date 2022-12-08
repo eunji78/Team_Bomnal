@@ -18,8 +18,8 @@ public class RecruitRepository {
         return notice;
     }
 
-    public List<Recruit> noticeList(int super_job_seq){
-        List<Recruit> noticeList = recruitMapper.noticeList(super_job_seq);
+    public ArrayList<Recruit> noticeList(int super_job_seq){
+        ArrayList<Recruit> noticeList = recruitMapper.noticeList(super_job_seq);
         return noticeList;
     }
 
