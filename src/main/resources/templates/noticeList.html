@@ -178,19 +178,35 @@
                                                  alt=""></th>
                                         </div>
                                         <div class="job-tittle job-tittle2">
-                                            <a href="#">
+                                            <a th:href="@{/noticeDetail/{r_seq}(r_seq=${j.r_seq})}">
                                                 <h5 th:text="${j.r_title}">공고명</h5>
                                             </a>
                                             <ul>
                                                 <li th:text="${j.company_name}">회사이름</li>
-                                                <li th:text="${j.r_career}">지원자격</li>
-                                                <li th:text="${j.r_work_area}">근무지역</li>
-                                                <li th:text="${j.r_job_pattern}">근무형태</li>
+                                                <th:block th:switch="${j.r_career}">
+                                                    <li th:case="new">신입</li>
+                                                    <li th:case="car">경력</li>
+                                                    <li th:case="irr">경력무관</li>
+                                                </th:block>
+                                                <th:block th:switch="${j.r_work_area}">
+                                                    <li th:case="overseas">해외지역 근무</li>
+                                                    <li th:case="home">재택근무</li>
+                                                    <li th:case="*" th:text="${j.r_work_area}"></li>
+                                                </th:block>
+                                                <th:block th:switch="${j.r_job_pattern}">
+                                                    <li th:case="full">정규직</li>
+                                                    <li th:case="contract">계약직</li>
+                                                    <li th:case="alba">아르바이트</li>
+                                                    <li th:case="intern">인턴</li>
+                                                    <li th:case="free">프리랜서</li>
+                                                    <li th:case="part">파트타임</li>
+                                                </th:block>
+
                                             </ul>
                                         </div>
                                     </div>
                                     <div class="items-link items-link2 f-right">
-                                        <a class="genric-btn info radius">입사지원</a>
+                                        <a th:href="@{/noticeDetail/{r_seq}(r_seq=${j.r_seq})}" class="genric-btn info radius">입사지원</a>
                                         <span th:text="${j.r_close_date}">마감일</span>
                                     </div>
                                 </div>

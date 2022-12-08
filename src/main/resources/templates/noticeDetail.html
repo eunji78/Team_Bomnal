@@ -52,8 +52,10 @@
                     <p th:unless="${session.VO != null} and ${session.type == 'P'}">로그인 해주세요~</p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary">입사지원</button>
+                    <th:block>
+                    <button type="button" class="btn btn-primary" th:style="${session.VO != null} and ${session.type == 'P'} ? 'display:block' : 'display:none'">입사지원</button>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </th:block>
                 </div>
             </div>
         </div>
