@@ -8,6 +8,7 @@ import java.util.List;
 @Mapper
 public interface RecruitMapper {
     public Recruit notice(int r_seq);
+    public List<Recruit> noticeList(int super_job_seq);
 
     public void insertJobPosting(Recruit recruit);
 

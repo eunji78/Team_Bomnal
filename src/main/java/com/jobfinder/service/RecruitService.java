@@ -6,12 +6,12 @@ import com.jobfinder.repository.RecruitRepository;
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -25,6 +25,13 @@ public class RecruitService {
         Recruit notice = recruitRepository.notice(r_seq);
         return notice;
     }
+
+    public List<Recruit> noticeList(int super_job_seq){
+        List<Recruit> noticeList = recruitRepository.noticeList(super_job_seq);
+        return noticeList;
+    }
+
+
 
     public JsonObject uploadSummernoteImageFile(MultipartFile multipartFile) {
 

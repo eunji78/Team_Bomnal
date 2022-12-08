@@ -3,7 +3,6 @@ package com.jobfinder.controller;
 import com.google.gson.JsonObject;
 import com.jobfinder.domain.Recruit;
 import com.jobfinder.service.RecruitService;
-import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,10 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.UUID;
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class RecruitController {
@@ -32,10 +29,21 @@ public class RecruitController {
         return "noticeDetail";
     }
 
+    @RequestMapping("/noticeList/{super_job_seq}")
+    public String noticeList(@PathVariable int super_job_seq, Model model){
+
+        List<Recruit> noticeList = recruitService.noticeList(super_job_seq);
+        model.addAttribute("noticeList", noticeList);
+
+        return "noticeList";
+    }
+
     public JsonObject uploadSummernoteImageFile(@RequestParam("file") MultipartFile multipartFile) {
 
         JsonObject jsonObject = recruitService.uploadSummernoteImageFile(multipartFile);
 
         return jsonObject;
     }
+
+
 }

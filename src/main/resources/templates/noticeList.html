@@ -1,0 +1,378 @@
+<!doctype html>
+<html class="no-js" lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Job board HTML-5 Template </title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico">
+
+    <!-- CSS here -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/css/price_rangs.css">
+    <link rel="stylesheet" href="/css/flaticon.css">
+    <link rel="stylesheet" href="/css/slicknav.css">
+    <link rel="stylesheet" href="/css/animate.min.css">
+    <link rel="stylesheet" href="/css/magnific-popup.css">
+    <link rel="stylesheet" href="/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="/css/themify-icons.css">
+    <link rel="stylesheet" href="/css/slick.css">
+    <link rel="stylesheet" href="/css/nice-select.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/d-list.css?after">
+    <link rel="stylesheet" href="/css/my_style.css">
+    <link rel="stylesheet" href="/css/nolist_detail.css">
+</head>
+
+    <body>
+    <script>
+    function add_list(item){
+        var list_name = $("#"+item.id).text();
+        $(".select-option").append("<span class='selected_keyword' id='b_"+item.id+"' onclick='delete_list(this)'>"+list_name+"<button type='button' class='list_item' ></button></span>");
+    }
+
+    function delete_list(item){
+        $("#"+item.id).remove();
+    }
+   </script>
+<!-- Preloader Start -->
+<div id="preloader-active">
+    <div class="preloader d-flex align-items-center justify-content-center">
+        <div class="preloader-inner position-relative">
+            <div class="preloader-circle"></div>
+            <div class="preloader-img pere-text">
+                <img src="/img/logo/logo.png" alt="">
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Preloader Start -->
+<header>
+    <!-- Header Start -->
+    <th:block th:replace="fragments/header :: headerFragment"></th:block>
+    <!-- Header End -->
+</header>
+<main>
+
+    <!-- Job List Area Start -->
+    <div class="our-services section-pad-t30 body-top">
+        <div class="container">
+            <div class="row">
+                <!-- 검색바-->
+                <div class="col-xl-12">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="small-section-tittle2 mb-30">
+                                <div class="ion"> <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width="20px" height="12px">
+                                    <path fill-rule="evenodd"  fill="rgb(27, 207, 107)"
+                                          d="M7.778,12.000 L12.222,12.000 L12.222,10.000 L7.778,10.000 L7.778,12.000 ZM-0.000,-0.000 L-0.000,2.000 L20.000,2.000 L20.000,-0.000 L-0.000,-0.000 ZM3.333,7.000 L16.667,7.000 L16.667,5.000 L3.333,5.000 L3.333,7.000 Z"/>
+                                </svg>
+                                </div>
+                                <h4>Filter Jobs</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Job Category Listing start -->
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <!-- form -->
+                            <form action="#" class="search-box">
+                                <!--지역 검색 버튼-->
+                                <div class="select-form">
+                                    <button class="select-region" type="button" id="select-region"><i class="fas fa-map-marker-alt" style="margin-right:5px;">&nbsp;지역</i></button>
+                                </div>
+                                <!--직무 검색 버튼-->
+                                <div class="select-form">
+                                    <button class="select-region" type="button" id="select-job">직무</button>
+                                </div>
+                                <!--검색어 입력 창-->
+                                <div class="input-form">
+                                    <input id="keywords" type="text" placeholder="검색어를 입력하세요">
+                                </div>
+                                <!--검색 버튼-->
+                                <div class="search-form">
+                                    <a class="search-button" href="#">검색</a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- 검색 창 -->
+                    <div style="border:1px solid rgba(0,0,0,.1); margin-top:30px; display:none" class="row" id="search" >
+                        <div class="col-12" style="float:left">
+
+                            <!-- 지역 -->
+                            <div style="display:flex; width:100%" id="region-list" >
+                                <div class="detail_list" style="width:100%" id="r_detail_list">
+                                    <button th:each="region : ${region_list} " class="detail_button" th:id="${region.region_seq}" onclick="add_list(this)">
+                                        [[${region.region}]]
+                                    </button>
+                                </div>
+                            </div>
+                            <!-- 지역 끝 -->
+
+                            <!-- 직무 -->
+                            <div style="display:flex" id="job-list" >
+                                <!-- 직무 상위 카테고리 -->
+                                <div class="d-category-list" style="width:200px; height:300px; overflow:auto">
+                                    <div class="mt-2 mb-2" style="height:284px">
+                                        <ul th:each="job : ${job_list}">
+                                            <li clsss="d-list">
+                                                <button class="j-list-button" type="button">
+                                                    <span th:text="${job.super_job}">경영·사무</span>
+                                                    <span id="super-job-seq" th:text="${job.super_job_seq}" style="display:none"></span>
+                                                </button>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <!-- 상위 카테고리 끝 -->
+
+                                <!-- 직무 하위 카테고리 -->
+                                <div class="detail_list" id="j_detail_list">
+                                    <button class='detail_button'>
+
+                                    </button>
+                                </div>
+                                <!-- 하위 카테고리 끝-->
+                            </div>
+
+                            <div>
+                                <!-- 선택한 옵션 -->
+                                <div style="border-top:1px solid rgba(0,0,0,.1); padding:20px 15px" class="select-option">
+
+                                </div>
+                                <!-- 옵션 끝 -->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 검색 창 끝 -->
+                </div>
+                <!-- 아래쪽 리스트 -->
+                <div class="col-xl-12 d" style="padding:30px;"></div>
+                <div class="col-xl-9 col-lg-9 col-md-9">
+                    <!-- Featured_job_start -->
+                    <section class="featured-job-area">
+                        <div class="container">
+                            <!-- single-job-content -->
+                            <div class="single-job-items mb-30">
+                                <div class="job-items">
+                                    <div class="company-img company-img-details">
+                                        <!-- 로고 이미지가 없을 때 대체 이미지 적용!-->
+                                        <a href="#"><img src="/img/icon/ee.png"
+                                                         onerror="this.src='/img/icon/logoerror.png'"
+                                                         alt=""></a>
+                                    </div>
+                                    <div class="job-tittle job-tittle2">
+                                        <a href="#">
+                                            <h4>공고명</h4>
+                                        </a>
+                                        <ul>
+                                            <li>회사이름</li>
+                                            <li>지원자격</li>
+                                            <li><i class="fas fa-map-marker-alt"></i>근무지역</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="items-link items-link2 f-right">
+                                    <a href="job_details.html">근무조건</a>
+                                    <span>마감일</span>
+                                </div>
+                            </div>
+                            </th:block>
+                        </div>
+                    </section>
+                    <!-- Featured_job_end -->
+                </div>
+                <!-- 오른쪽 부분-->
+                <div class="col-lg-3">
+                    <div class="blog_right_sidebar">
+                        <!--<aside class="single_sidebar_widget search_widget">
+                            <form action="#">
+                                <div class="form-group">
+                                    <div class="input-group mb-3">
+                                        <input type="text" class="form-control" placeholder='Search Keyword'
+                                               onfocus="this.placeholder = ''"
+                                               onblur="this.placeholder = 'Search Keyword'">
+                                        <div class="input-group-append">
+                                            <button class="btns dbtn" type="button" style="background : #38a4ff"><i class="ti-search"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn dbtn"
+                                        type="submit">Search
+                                </button>
+                            </form>
+                        </aside>-->
+
+                        <aside class="single_sidebar_widget post_category_widget">
+                            <h4 class="widget_title">Category</h4>
+                            <ul class="list cat-list">
+                                <li>
+                                    <a href="#" class="d-flex">
+                                        <p>Resaurant food</p>
+                                        <p>(37)</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="d-flex">
+                                        <p>Travel news</p>
+                                        <p>(10)</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="d-flex">
+                                        <p>Modern technology</p>
+                                        <p>(03)</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="d-flex">
+                                        <p>Product</p>
+                                        <p>(11)</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="d-flex">
+                                        <p>Inspiration</p>
+                                        <p>21</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="d-flex">
+                                        <p>Health Care (21)</p>
+                                        <p>09</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </aside>
+                    </div>
+                </div>
+            </div>
+            <div style="border:1px solid rgba(0,0,0,.1); margin-top:30px; display:none" class="row" id="search">
+                <div class="col-12" style="float:left">
+
+                    <!-- 지역 -->
+                    <div style="display:flex; width:100%" id="region-list">
+                        <div class="detail_list" style="width:100%" id="r_detail_list">
+                            <button th:each="region : ${region_list} " class="detail_button"
+                                    th:id="${region.region_seq}" onclick="add_list(this)">
+                                [[${region.region}]]
+                            </button>
+                        </div>
+                    </div>
+                    <!-- 지역 끝 -->
+
+                    <!-- 직무 -->
+                    <div style="display:flex" id="job-list">
+                        <!-- 직무 상위 카테고리 -->
+                        <div class="d-category-list" style="width:200px; height:300px; overflow:auto">
+                            <div class="mt-2 mb-2" style="height:284px">
+                                <ul th:each="job : ${job_list}">
+                                    <li clsss="d-list">
+                                        <button class="j-list-button" type="button">
+                                            <span th:text="${job.super_job}">경영·사무</span>
+                                            <span id="super-job-seq" th:text="${job.super_job_seq}"
+                                                  style="display:none"></span>
+                                        </button>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- 상위 카테고리 끝 -->
+
+                        <!-- 직무 하위 카테고리 -->
+                        <div class="detail_list" id="j_detail_list">
+                            <button class='detail_button'>
+
+                            </button>
+                        </div>
+                        <!-- 하위 카테고리 끝-->
+                    </div>
+
+                    <div>
+                        <!-- 선택한 옵션 -->
+                        <div style="border-top:1px solid rgba(0,0,0,.1); padding:20px 15px" class="select-option">
+
+                        </div>
+                        <!-- 옵션 끝 -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Job List Area End -->
+    <!--Pagination Start  -->
+    <div class="pagination-area pb-115 text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="single-wrap d-flex justify-content-center">
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination justify-content-start">
+                                <li class="page-item active"><a class="page-link" href="#">01</a></li>
+                                <li class="page-item"><a class="page-link" href="#">02</a></li>
+                                <li class="page-item"><a class="page-link" href="#">03</a></li>
+                                <li class="page-item"><a class="page-link" href="#"><span class="ti-angle-right"></span></a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Pagination End  -->
+</main>
+<footer>
+    <!-- Footer Start-->
+    <th:block th:replace="fragments/footer :: footerFragment"></th:block>
+    <!-- Footer End-->
+</footer>
+    <!-- JS here -->
+
+    <!-- All JS Custom Plugins Link Here here -->
+    <script src="/js/vendor/modernizr-3.5.0.min.js"></script>
+    <!-- Jquery, Popper, Bootstrap -->
+    <script src="/js/vendor/jquery-1.12.4.min.js"></script>
+    <script src="/js/popper.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <!-- Jquery Mobile Menu -->
+    <script src="/js/jquery.slicknav.min.js"></script>
+
+    <!-- Jquery Slick , Owl-Carousel Range -->
+    <script src="/js/owl.carousel.min.js"></script>
+    <script src="/js/slick.min.js"></script>
+    <script src="/js/price_rangs.js"></script>
+    <!-- One Page, Animated-HeadLin -->
+    <script src="/js/wow.min.js"></script>
+    <script src="/js/animated.headline.js"></script>
+    <script src="/js/jquery.magnific-popup.js"></script>
+
+    <!-- Scrollup, nice-select, sticky -->
+    <script src="/js/jquery.scrollUp.min.js"></script>
+    <script src="/js/jquery.nice-select.min.js"></script>
+    <script src="/js/jquery.sticky.js"></script>
+
+    <!-- contact js -->
+    <script src="/js/contact.js"></script>
+    <script src="/js/jquery.form.js"></script>
+    <script src="/js/jquery.validate.min.js"></script>
+    <script src="/js/mail-script.js"></script>
+    <script src="/js/jquery.ajaxchimp.min.js"></script>
+
+    <!-- Jquery Plugins, main Jquery -->
+    <script src="/js/plugins.js"></script>
+    <script src="/js/main.js"></script>
+
+    <script src="/js/main-page.js"></script>
+
+    <!-- 검색창 -->
+    <script src="/js/search.js"></script>
+</body>
+</html>
