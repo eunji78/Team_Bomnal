@@ -271,6 +271,11 @@
 .main-company-detail{
     width:70%;
 }
+.ellipsis {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
 .main-company-logo{
     width:30%;
 }
@@ -289,8 +294,8 @@
     margin-right: 24px !important;
 }
 .margin-left-right{
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: auto !important;
+    margin-right: auto !important;
 }
 .btn_recruit_list{
     color: gray !important;
@@ -331,6 +336,47 @@
     border: 0 !important;
     color: white !important;
     background-color: #38a4ff !important;
+}
+.career-tag::before{
+    background-color: #38a4ff !important;
+}
+.resume-tag{
+    border: 1px lightgray solid !important;
+    color: lightgray !important;
+}
+.resume-tag:hover{
+    border: 0 !important;
+    color: white !important;
+    background-color: #38a4ff !important;
+}
+.resume-tag::before{
+    background-color: #38a4ff !important;
+}
+.border-color-lightgray{
+    border: solid 1px lightgray;
+}
+.single-company-box{
+    padding: 37px 15px 37px 30px !important;
+}
+.single-review-right{
+    display: flex;
+    flex-direction: column;
+    align-items : center;
+
+}
+
+.single-logo-height{
+    height: 100px;
+    margin-bottom: 1em;
+}
+.font-to-sky{
+    color:#38a4ff !important;
+}
+/* 스타일 원본 중복정의*/
+.our-services
+.single-services:hover .services-cap h5 a{color:#38a4ff !important;}
+.single-padding-top{
+    padding-top: 2em;
 }
 /*---------------------Summer Note-----------------------------------*/
 @font-face {

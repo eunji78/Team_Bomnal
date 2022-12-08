@@ -288,17 +288,23 @@
     var ps = new kakao.maps.services.Places();
 
     //검색어
+    var addr = "광주 인공지능 사관학교";
 
-    if (/*[[${detail.company_address}]]*/ != null){
-        var addr = /*[[${detail.company_address}]]*/
+    if (/*[[${detail.company_address}]]*/ != ""){
+        addr = /*[[${detail.company_address}]]*/
+        if (addr.includes(",")){
+            [# th:if="${not #strings.isEmpty(detail.company_address)}"]
+            var addr = /*[[${#strings.listSplit(detail.company_address,',')[0]}]]*/;
+            [/]
+        }else if (addr.includes("(")) {
+            [# th:if="${not #strings.isEmpty(detail.company_address)}"]
+            var addr = /*[[${#strings.listSplit(detail.company_address,'(')[0]}]]*/;
+            [/]
+        }
+
     }
 
-    if (addr.includes(",")){
-        var addr = /*[[${#strings.listSplit(detail.company_address,',')[0]}]]*/;
-    }else if (addr.includes("(")) {
-        var addr = /*[[${#strings.listSplit(detail.company_address,'(')[0]}]]*/;
-    }
-    console.log(addr);
+
 
     // 키워드로 장소를 검색합니다
     ps.keywordSearch(addr, placesSearchCB);
