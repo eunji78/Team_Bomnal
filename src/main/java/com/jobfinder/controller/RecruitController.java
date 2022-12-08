@@ -33,6 +33,18 @@ public class RecruitController {
         return "noticeDetail";
     }
 
+    @RequestMapping("/noticeList")
+    public String allList(Model model) {
+        List<Job> job_list = mainService.jobList();
+        model.addAttribute("job_list", job_list);
+        List<RegionVO> region_list = mainService.regionList();
+        model.addAttribute("region_list", region_list);
+        ArrayList<Recruit> noticeList = recruitService.allList();
+        model.addAttribute("noticeList", noticeList);
+
+        return "noticeList";
+    }
+
     @RequestMapping("/noticeList/{super_job_seq}")
     public String noticeList(@PathVariable int super_job_seq, Model model){
         List<Job> job_list = mainService.jobList();
@@ -44,6 +56,8 @@ public class RecruitController {
 
         return "noticeList";
     }
+
+
 
     public JsonObject uploadSummernoteImageFile(@RequestParam("file") MultipartFile multipartFile) {
 

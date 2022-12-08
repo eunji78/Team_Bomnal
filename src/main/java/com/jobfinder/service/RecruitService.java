@@ -31,6 +31,11 @@ public class RecruitService {
         return noticeList;
     }
 
+    public ArrayList<Recruit> allList(){
+        ArrayList<Recruit> allList = recruitRepository.allList();
+        return allList;
+    }
+
 
 
     public JsonObject uploadSummernoteImageFile(MultipartFile multipartFile) {

@@ -23,6 +23,11 @@ public class RecruitRepository {
         return noticeList;
     }
 
+    public ArrayList<Recruit> allList(){
+        ArrayList<Recruit> allList = recruitMapper.allList();
+        return allList;
+    }
+
     public void insertJobPosting(Recruit recruit) {
         recruitMapper.insertJobPosting(recruit);
     }

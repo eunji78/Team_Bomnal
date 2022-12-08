@@ -19,6 +19,12 @@
         where j.super_job_seq = #{super_job_seq}
     </select>
 
+    <select id="allList" parameterType="int" resultType="Recruit">
+        select *
+        from job j inner join recruit r
+        on j.job_seq = r.r_part
+    </select>
+
     <insert id="insertJobPosting" parameterType="Recruit">
         insert into recruit(company_id, company_name, r_part, r_title, r_business, r_license, r_detail, r_open_date,
         r_open_hour, r_close_date, r_close_hour, r_career, r_academic_ability, r_academic_option, r_academic_candidate,
