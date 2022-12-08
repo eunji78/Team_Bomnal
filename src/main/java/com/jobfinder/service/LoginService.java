@@ -26,13 +26,13 @@ public class LoginService {
 
     public LoginVO login_per(LoginVO vo){
         LoginVO rvo = loginRepository.login_per(vo);
-        System.out.println("service_login_per" + rvo);
+//        System.out.println("service_login_per" + rvo);
         return rvo;
     }
 
     public Login_ComVO login_com(Login_ComVO cvo){
         Login_ComVO rcvo = loginRepository.login_com(cvo);
-        System.out.println("service_login_com" + rcvo);
+//        System.out.println("service_login_com" + rcvo);
         return rcvo;
     }
 
@@ -201,4 +201,13 @@ public class LoginService {
     }
 
 
+    public int set_img_per(LoginVO vo) {
+        int res = loginRepository.set_img_per(vo);
+        return res;
+    }
+
+    public int set_img_com(Login_ComVO cvo) {
+        int res = loginRepository.set_img_com(cvo);
+        return res;
+    }
 }
