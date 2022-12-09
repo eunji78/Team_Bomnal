@@ -297,7 +297,7 @@
                           <p></p> </div>
                         <div class="col-lg-4 mb-5 mb-lg-0" style="display:inline-block; justify-content : center;">
                           <a href="javascript:void(0)" type="button" onclick="document.getElementById('umpform_com').submit()" class="ump-border-btn2" style=" width:70px !important; height:40px !important; padding: 5px 0px 0px 0px !important; text-align:center !important;"><span style="color: #FFOOBFFF; font-size:20px; margin:0px; padding:0px;">수정</span></a>
-                          <a href="/loginform" class="ump-border-btn2" style=" width:70px !important; height:40px !important; padding: 5px 0px 0px 0px !important; text-align:center !important;" type="button"><span style="color: #FFOOBFFF; font-size:20px; margin:0px; padding:0px;">취소</span></a> </div>
+                          <a href="/" class="ump-border-btn2" style=" width:70px !important; height:40px !important; padding: 5px 0px 0px 0px !important; text-align:center !important;" type="button"><span style="color: #FFOOBFFF; font-size:20px; margin:0px; padding:0px;">취소</span></a> </div>
                         <div class="col-lg-4 mb-5 mb-lg-0" style="display: inline; text-align: right !important; position: absolute !important;">
                           <a href="javascript:void(0)" onclick="all_delete()" type="button" class="sm-button" style=" height:30px !important; text-align:center !important;"><span style="color: #FFOOBFFF; font-size:15px; margin:0px; padding:0px;">회원탈퇴</span></a></div>
                       </div>
@@ -424,7 +424,7 @@
           success:function(data){
             console.log("success : " + data)
             if (data == 1){
-              location.href="/loginform";
+              location.href="/";
             }
           },
           error: function(data){
