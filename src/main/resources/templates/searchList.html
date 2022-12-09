@@ -31,8 +31,10 @@
    <body>
    <script>
     function add_list(item){
-        var list_name = $("#"+item.id).text();
-        $(".select-option").append("<span class='selected_keyword' id='b_"+item.id+"' onclick='delete_list(this)'>"+list_name+"<button type='button' class='list_item' ></button></span>");
+        if(!!document.getElementById("b_"+item.id)==false){
+            var list_name = $("#"+item.id).text();
+            $(".select-option").append("<span class='selected_keyword' id='b_"+item.id+"' onclick='delete_list(this)'>"+list_name+"<button type='button' class='list_item' ></button></span>");
+        }
     }
 
     function delete_list(item){

@@ -181,7 +181,9 @@
                         <div class="cv-caption text-center">
                             <p class="pera1">Make a Difference with Your Online Resume!</p>
                             <p class="pera2"> 온라인으로 이력서를 관리하세요</p>
-                            <a th:href="@{/resume_manage}" class="border-btn2 border-btn4 resume-tag">이력서 쓰러 가기</a>
+
+                            <a onclick="goResume()" class="border-btn2 border-btn4 resume-tag">이력서 쓰러 가기</a>
+
                         </div>
                     </div>
                 </div>
@@ -349,6 +351,16 @@
         <script src="/js/main-page.js"></script>
         <script src="/js/search.js"></script>
         <!--<script type="text/javascript" th:src="@{/js/main-page.js}"></script>-->
+       <script th:inline="javascript">
+           function goResume(){
+            if([[${session.VO == null}]]){
+                alert("로그인 후 시도해주세요");
+            }
+            else{
+                location.href="/resume_manage";
+            }
+           }
+       </script>
    </th:block>
     </body>
 </html>
