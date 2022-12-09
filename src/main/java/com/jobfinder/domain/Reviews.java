@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class Reviews {
-    private int review_seq;
+    private String review_seq;
     private String company_id;
     private String review_content;
     private String review_likes;
@@ -22,6 +22,9 @@ public class Reviews {
     private double totalstar;
     private int avgsalary;
     private int countreview;
-    private int countlike;
-    private int like_check;
+    //추가
+    private String company_name;
+    private String company_logo;
+    private String company_url;
+    private  double average;
 }

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jobfinder.persistence.ResumeMapper">
+
+    <insert id="resume_add" parameterType="Resume">
+        insert into resume(sc_type, univ_type, sc_name, sc_sdate, sc_edate, sc_graduate, sc_major, sc_score, max_score, members_mem_id, portfolio, reg_date, resume_name)
+        values(#{sc_type}, #{univ_type}, #{sc_name}, #{sc_sdate}, #{sc_edate}, #{sc_graduate}, #{sc_major}, #{sc_score}, #{max_score}, #{members_mem_id}, #{portfolio}, now(), #{resume_name})
+    </insert>
+
+    <select id="resume_num" parameterType="String" resultType="int">
+        select seq from resume where members_mem_id = #{members_mem_id} order by reg_date desc limit 1;
+    </select>
+
+    <insert id="career_add" parameterType="Career">
+        insert into career(ca_name, ca_sdate, ca_edate, ca_type, ca_dept, ca_position, ca_salary, ca_duty, resume_seq)
+        values(#{ca_name}, #{ca_sdate}, #{ca_edate}, #{ca_type}, #{ca_dept}, #{ca_position}, #{ca_salary}, #{ca_duty}, #{resume_seq})
+    </insert>
+
+    <insert id="cert_add" parameterType="Certificate">
+        insert into certification(ce_name, ce_agency, ce_date, resume_seq)
+        values(#{ce_name}, #{ce_agency}, #{ce_date}, #{resume_seq})
+    </insert>
+
+    <insert id="lang_add" parameterType="Language">
+        insert into language(la_type, la_name, la_score, la_grade, la_check, la_date, resume_seq)
+        values(#{la_type}, #{la_name}, #{la_score}, #{la_grade}, #{la_check}, #{la_date}, #{resume_seq})
+    </insert>
+
+    <insert id="awards_add" parameterType="Awards">
+        insert into awards(aw_name, aw_agency, aw_date, resume_seq)
+        values(#{aw_name}, #{aw_agency}, #{aw_date}, #{resume_seq})
+    </insert>
+</mapper>

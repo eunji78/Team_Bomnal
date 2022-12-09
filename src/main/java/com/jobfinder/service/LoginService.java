@@ -26,13 +26,13 @@ public class LoginService {
 
     public LoginVO login_per(LoginVO vo){
         LoginVO rvo = loginRepository.login_per(vo);
-        System.out.println("service_login_per" + rvo);
+//        System.out.println("service_login_per" + rvo);
         return rvo;
     }
 
     public Login_ComVO login_com(Login_ComVO cvo){
         Login_ComVO rcvo = loginRepository.login_com(cvo);
-        System.out.println("service_login_com" + rcvo);
+//        System.out.println("service_login_com" + rcvo);
         return rcvo;
     }
 
@@ -50,16 +50,12 @@ public class LoginService {
     }
 
     public String id_check_com(String insert_id){
-        System.out.println("com Service in : " + insert_id);
         String com_id = loginRepository.id_check_com(insert_id);
-        System.out.println("com Service in : " + insert_id);
         return com_id;
     }
 
     public String id_check_per(String insert_id){
-        System.out.println("per Service in : " + insert_id);
         String per_id = loginRepository.id_check_per(insert_id);
-        System.out.println("per Service in : " + insert_id);
         return per_id;
     }
 
@@ -91,7 +87,6 @@ public class LoginService {
 
             //    결과 코드가 200이라면 성공
             int responseCode = conn.getResponseCode();
-            System.out.println("responseCode : " + responseCode);
 
             //    요청을 통해 얻은 JSON타입의 Response 메세지 읽어오기
             BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
@@ -101,7 +96,6 @@ public class LoginService {
             while ((line = br.readLine()) != null) {
                 result += line;
             }
-            System.out.println("response body : " + result);
 
             //    Gson 라이브러리에 포함된 클래스로 JSON파싱 객체 생성
             JsonParser parser = new JsonParser();
@@ -110,8 +104,6 @@ public class LoginService {
             access_Token = element.getAsJsonObject().get("access_token").getAsString();
             refresh_Token = element.getAsJsonObject().get("refresh_token").getAsString();
 
-            System.out.println("access_token : " + access_Token);
-            System.out.println("refresh_token : " + refresh_Token);
 
             br.close();
             bw.close();
@@ -137,7 +129,6 @@ public class LoginService {
             conn.setRequestProperty("Authorization", "Bearer " + access_Token);
 
             int responseCode = conn.getResponseCode();
-            System.out.println("responseCode : " + responseCode);
 
             BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
 
@@ -147,7 +138,6 @@ public class LoginService {
             while ((line = br.readLine()) != null) {
                 result += line;
             }
-            System.out.println("response body : " + result);
 
             JsonParser parser = new JsonParser();
             JsonElement element = parser.parse(result);
@@ -201,4 +191,13 @@ public class LoginService {
     }
 
 
+    public int set_img_per(LoginVO vo) {
+        int res = loginRepository.set_img_per(vo);
+        return res;
+    }
+
+    public int set_img_com(Login_ComVO cvo) {
+        int res = loginRepository.set_img_com(cvo);
+        return res;
+    }
 }
