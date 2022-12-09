@@ -54,7 +54,7 @@ public class LoginController {
         list.add(dto);
 
 //        System.out.println(dto.getFileName());
-//        System.out.println(dto.getUuid());
+//         System.out.println(dto.getUuid());
 
         File newFileName = new File(dto.getUuid() + "_" + dto.getFileName());
         // 전달된 내용을 실제 물리적인 파일로 저장해준다.
@@ -99,7 +99,8 @@ public class LoginController {
 
 
     @RequestMapping(value = "/all_delete_data")
-    public int all_delete_data(HttpSession session, Model model){
+    @ResponseBody
+    public int all_delete_data(HttpSession session, Model model, HttpServletResponse response){
         int res = 0;
         String type = (String) session.getAttribute("type");
         if (type == "P"){
@@ -111,6 +112,15 @@ public class LoginController {
             String company_id = cvo.getCompany_id();
             res = loginService.all_delete_data_com(company_id);
         }
+
+        Cookie token = new Cookie("authorize-access-token", null);
+        token.setPath("/");
+        token.setMaxAge(0);
+        response.addCookie(token);
+
+        session.removeAttribute("type");
+        session.removeAttribute("VO");
+
         return res;
     }
 
@@ -126,7 +136,7 @@ public class LoginController {
     public String Com_gonggo_list(HttpSession session, Model model){
 
         Login_ComVO cvo = (Login_ComVO) session.getAttribute("VO");
-        List<Recruit> rec_list = loginService.rec_list(cvo.getCompany_id());
+        List<Recruit> rec_list = loginService.rec_list(cvo.getCompany_name());
         model.addAttribute("rec_list", rec_list);
         return "Com_gonggo_list";
     }
@@ -158,15 +168,16 @@ public class LoginController {
         return "update_mypage_com";
     }
 
+
     @RequestMapping(value = "/update_my_page")
     public String update_my_page(@ModelAttribute("umpform_per") LoginVO vo, HttpSession session){
 
         LoginVO sessionVO = (LoginVO) session.getAttribute("VO");
 
-        if (vo.getMem_pw() == "") {
+        if (vo.getMem_pw() == "" || vo.getMem_pw() == null || vo.getMem_pw().length() == 0) {
             vo.setMem_pw(sessionVO.getMem_pw());
         }
-        if (vo.getMem_phone() == "") {
+        if (vo.getMem_phone() == "" || vo.getMem_phone() == null || vo.getMem_phone().length() == 0) {
             vo.setMem_phone(sessionVO.getMem_phone());
         } else {
             StringBuffer sb = new StringBuffer();
@@ -179,26 +190,27 @@ public class LoginController {
             sb.insert(vo.getMem_phone().length()-3,"-");
             vo.setMem_phone(sb.toString());
         }
-        if (vo.getMem_email() == "") {
+        if (vo.getMem_email() == "" || vo.getMem_email() == null || vo.getMem_email().length() == 0) {
             vo.setMem_email(sessionVO.getMem_email());
         }
-        if (vo.getMem_addr() == "") {
+        if (vo.getMem_addr() == "" || vo.getMem_addr() == null || vo.getMem_addr().length() == 0) {
             vo.setMem_addr(sessionVO.getMem_addr());
         }
-
+        System.out.println("update : " + vo);
         loginService.update_vo(vo);
 
-        return "redirect:/loginform";
+        return "redirect:/";
     }
+
     @RequestMapping(value = "/update_my_page_com")
     public String update_my_page_com(@ModelAttribute("umpform_com") Login_ComVO cvo, HttpSession session){
 
         Login_ComVO sessionVO = (Login_ComVO) session.getAttribute("VO");
 
-        if (cvo.getCompany_pw() == "") {
+        if (cvo.getCompany_pw() == "" || cvo.getCompany_pw() == null || cvo.getCompany_pw().length() == 0) {
             cvo.setCompany_pw(sessionVO.getCompany_pw());
         }
-        if (cvo.getCompany_phone() == "") {
+        if (cvo.getCompany_phone() == "" || cvo.getCompany_phone() == null || cvo.getCompany_phone().length() == 0) {
             cvo.setCompany_phone(sessionVO.getCompany_pw());
         } else {
             StringBuffer sb = new StringBuffer();
@@ -211,16 +223,16 @@ public class LoginController {
             sb.insert(cvo.getCompany_phone().length()-3,"-");
             cvo.setCompany_phone(sb.toString());
         }
-        if (cvo.getCompany_email() == "") {
+        if (cvo.getCompany_email() == "" || cvo.getCompany_email() == null || cvo.getCompany_email().length() == 0) {
             cvo.setCompany_email(sessionVO.getCompany_email());
         }
-        if (cvo.getCompany_addrcompany() == "") {
+        if (cvo.getCompany_addrcompany() == "" || cvo.getCompany_addrcompany() == null || cvo.getCompany_addrcompany().length() == 0) {
             cvo.setCompany_addrcompany(sessionVO.getCompany_addrcompany());
         }
 
         loginService.update_cvo(cvo);
 
-        return "redirect:/loginform";
+        return "redirect:/";
     }
 
 
@@ -279,6 +291,13 @@ public class LoginController {
         sb.insert(cvo.getCompany_phone().length()-3,"-");
         cvo.setCompany_phone(sb.toString());
 
+        if (cvo.getC_agreement4() == "" || cvo.getC_agreement4() == null || cvo.getC_agreement4().length() == 0) {
+            cvo.setC_agreement4("N");
+        }
+        if (cvo.getC_agreement5() == "" || cvo.getC_agreement5() == null || cvo.getC_agreement5().length() == 0) {
+            cvo.setC_agreement5("N");
+        }
+
         int res = loginService.set_signup_com(cvo);
 
         return "redirect:/";
@@ -296,6 +315,16 @@ public class LoginController {
         }
         sb.insert(vo.getMem_phone().length()-3,"-");
         vo.setMem_phone(sb.toString());
+
+        if (vo.getM_agreement3() == "" || vo.getM_agreement3() == null || vo.getM_agreement3().length() == 0) {
+            vo.setM_agreement3("N");
+        }
+        if (vo.getM_agreement4() == "" || vo.getM_agreement4() == null || vo.getM_agreement4().length() == 0) {
+            vo.setM_agreement4("N");
+        }
+        if (vo.getM_agreement5() == "" || vo.getM_agreement5() == null || vo.getM_agreement5().length() == 0) {
+            vo.setM_agreement5("N");
+        }
 
         int res = loginService.set_signup_per(vo);
         return "redirect:/";
@@ -391,7 +420,7 @@ public class LoginController {
             session.setAttribute("type","P");
             session.setAttribute("VO", rvo);
 
-            return "redirect:/loginform";
+            return "redirect:/";
         } else {
             LoginVO vo = new LoginVO();
             vo.setMem_id(mem_id);
@@ -401,13 +430,12 @@ public class LoginController {
 
             session.setAttribute("type","P");
             session.setAttribute("VO", rvo);
-            return "redirect:/loginform";
+            return "redirect:/";
         }
     }
 
     @RequestMapping(value = "/v1/user/unlink")
     public String reset(HttpServletResponse response, HttpSession session) throws Exception {
-
 
         Cookie token = new Cookie("authorize-access-token", null);
         token.setPath("/");

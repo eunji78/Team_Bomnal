@@ -179,7 +179,7 @@
                             <div class="small-section-tittle">
                                 <h4>연혁</h4>
                             </div>
-                            <ul th:each="hist : ${#strings.listSplit(detail.company_history,'\n')}">
+                            <ul th:if="${not #strings.isEmpty(detail.company_history)}" th:each="hist : ${#strings.listSplit(detail.company_history,'\n')}">
                                 <li th:text="${hist}">3 or more years of professional design experience
                                 </li>
                             </ul>
@@ -198,7 +198,7 @@
 
 
 
-                            <div class="post-details2  mb-50" th:if="${not #strings.isEmpty(detail.company_address)} and ${not #strings.equals(detail.company_address, '-')}">
+                            <div class="post-details2  mb-50" th:if="${not #strings.equals(detail.company_address, '')} and ${not #strings.equals(detail.company_address, '-')}">
 
                                 <div class="small-section-tittle">
                                     <h4>주소</h4>
@@ -288,10 +288,10 @@
     var ps = new kakao.maps.services.Places();
 
     //검색어
-    var addr = "광주 인공지능 사관학교";
+
+    var addr = /*[[${detail.company_address}]]*/;
 
     if (/*[[${detail.company_address}]]*/ != ""){
-        addr = /*[[${detail.company_address}]]*/
         if (addr.includes(",")){
             [# th:if="${not #strings.isEmpty(detail.company_address)}"]
             var addr = /*[[${#strings.listSplit(detail.company_address,',')[0]}]]*/;
@@ -301,10 +301,10 @@
             var addr = /*[[${#strings.listSplit(detail.company_address,'(')[0]}]]*/;
             [/]
         }
-
     }
 
 
+    console.log(addr);
 
     // 키워드로 장소를 검색합니다
     ps.keywordSearch(addr, placesSearchCB);
@@ -332,8 +332,6 @@
 
             // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
             map.setBounds(bounds);
-        }else{
-            alert("장소를 다시 입력해주세요")
         }
     }
 
@@ -353,6 +351,7 @@
             infowindow.open(map, marker);
         });
     }
+
 })
 // 마커를 클릭하면 장소명을 표출할 인포윈도우 입니다
 /* ]]> */

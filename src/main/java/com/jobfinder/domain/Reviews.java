@@ -27,4 +27,7 @@ public class Reviews {
     private String company_logo;
     private String company_url;
     private  double average;
+    //추가
+    private int countlike;
+    private int like_check;
 }

@@ -7,7 +7,17 @@
     <select id="listmain" parameterType="Criteria" resultType="CompanyList">
         select a.company_id, company_logo, company_name, company_industry, company_type, count(review_seq) as reviewcount,
         ifnull(TRUNCATE((avg(welfare)+avg(inner_culture)+avg(work_life_balance)+avg(p_opportunity)+avg(management))/5,1),0) as totalstar, ifnull(truncate(avg(my_salary),0),0) as avgsalary
-        from company_detail a left join reviews b on a.company_id = b.company_id group by a.company_id, company_name, company_industry, company_type, company_logo order by totalstar desc limit #{pageStart}, #{perPageNum}
+        from company_detail a left join reviews b on a.company_id = b.company_id
+        group by a.company_id, company_name, company_industry, company_type, company_logo order by totalstar desc limit #{pageStart}, #{perPageNum}
+    </select>
+
+    <select id="listsearch" parameterType="Criteria" resultType="CompanyList">
+        select a.company_id, company_logo, company_name, company_industry, company_type, count(review_seq) as reviewcount,
+        ifnull(TRUNCATE((avg(welfare)+avg(inner_culture)+avg(work_life_balance)+avg(p_opportunity)+avg(management))/5,1),0) as totalstar, ifnull(truncate(avg(my_salary),0),0) as avgsalary
+        from company_detail a left join reviews b on a.company_id = b.company_id
+        where company_name like concat('%',#{keyword},'%')
+        group by a.company_id, company_name, company_industry, company_type, company_logo order by totalstar desc limit #{pageStart}, #{perPageNum}
+
     </select>
 
     <select id="list" parameterType="Criteria"  resultType="CompanyList">
@@ -19,6 +29,11 @@
     <select id="countmain" resultType="int">
         select count(*) from company_detail
     </select>
+
+    <select id="countsearch" parameterType="String" resultType="int">
+        select count(*) from company_detail where company_name like concat('%',#{keyword},'%')
+    </select>
+
     <select id="count" parameterType="String" resultType="int">
         select count(industry_class) as counting from company_detail where industry_class = #{indus_class}
     </select>
@@ -28,8 +43,12 @@
         select * from company_detail where company_id = #{company_id}
     </select>
 
-    <select id="review" parameterType="String" resultType="Reviews">
-        select * from reviews where company_id = #{company_id} order by reg_date desc;
+    <select id="review" parameterType="Reviews" resultType="Reviews">
+        select a.review_seq,company_id,review_content,reg_date,a.mem_id,welfare,work_life_balance,
+        inner_culture,p_opportunity,management,pros,cons,my_salary,current_yn, count(like_seq) as countlike,
+        (select count(*) from review_like where review_seq=a.review_seq and mem_id=#{mem_id}) as like_check
+        from reviews a left join review_like b on a.review_seq = b.review_seq
+        where company_id=#{company_id} group by a.review_seq,company_id,review_content,review_likes,reg_date,a.mem_id,pros;
     </select>
 
     <select id="countreview" parameterType="String" resultType="int">
@@ -55,8 +74,18 @@
     </select>
 
 
-    <sql id="search">
-        where company_name like concat('%',#{keyword},'%')
-    </sql>
+    <select id="likecheck" parameterType="Review_like" resultType="int">
+        select count(*) as like_check from review_like where mem_id = #{mem_id} and review_seq = #{review_seq}
+    </select>
+
+    <insert id="likeinsert" parameterType="Review_like">
+        insert into review_like (mem_id,review_seq) values (#{mem_id},#{review_seq})
+    </insert>
+
+    <delete id="likedelete" parameterType="Review_like">
+        delete from review_like where mem_id = #{mem_id} and review_seq = #{review_seq}
+    </delete>
+
+
 
 </mapper>
