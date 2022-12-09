@@ -13,7 +13,7 @@ public class CompanyRepository {
     @Autowired
     CompanyMapper companyMapper;
 
-    public ArrayList listmain(Criteria cri) {
+    public ArrayList<CompanyList> listmain(Criteria cri) {
         ArrayList<CompanyList> listmain = companyMapper.listmain(cri);
         return listmain;
     }
