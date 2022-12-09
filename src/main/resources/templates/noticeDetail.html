@@ -48,7 +48,7 @@
                 </div>
                 <div class="modal-body">
                     <p th:if="${session.VO != null} and ${session.type == 'P'}"
-                       th:text=" ${session.VO.mem_name} + '님 입사지원하실건가요??'"></p>
+                       th:text=" ${session.VO.mem_name} + '님 입사지원하시겠습니까?'"></p>
                     <p th:unless="${session.VO != null} and ${session.type == 'P'}">로그인을 해야 사용할 수 있습니다.</p>
                 </div>
                 <div class="modal-footer">
@@ -160,9 +160,14 @@
                                         <p th:utext="${notice.r_detail}">기업메시지 넣으세요~</p>
                                     </div>
                                 </div>
+                                <div class="col-xl-8" style="padding:20px;"></div>
+                                <div class="small-section-tittle">
+                                    <h4>회사 위치</h4>
+                                </div>
                                 <div id="kakao-map" style="width:400px; height:300px;"></div>
                                 <button type="button" id="button-map" style="display : none;">지도위치확인
                                 </button>
+                                <div class="col-xl-8" style="padding:20px;"></div>
                             </div>
                             <div class="job-message-dis">
                                 <div class="job-post-details">
@@ -198,9 +203,9 @@
                                                 <div class="card-body">
                                                     <div class="row">
                                                         <div class="col align-self-center" id="dday">
-                                                            <h3> 남은 기간 </h3>
+                                                            <h5> 남은 기간 </h5>
                                                             <br>
-                                                            <h4 id="demo"></h4>
+                                                            <h3 id="demo"></h3>
                                                             <br>
                                                         </div>
                                                         <div class="col-8 align-self-center">
@@ -287,21 +292,35 @@
 </footer>
 <!-- D-day 계산기 -->
 <script th:inline="javascript">
+function diffDay(){
 /*<![CDATA[*/
-  const now = /*[[${notice.r_open_date}]]*/;
+  const now = new Date();
   const countDownDate = /*[[${notice.r_close_date}]]*/;
 
-  nnow = new Date(now);
   ccount = new Date(countDownDate);
+  console.log(now)
+  console.log(ccount)
 
-  const distance = ccount - nnow;
+  const distance = ccount - now;
 
-  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  console.log(distance)
+  const days = String(Math.floor(distance / (1000 * 60 * 60 * 24)));
+  const diffHour = String(Math.floor((distance / (1000*60*60)) % 24)).padStart(2,"0");
+  const diffMin = String(Math.floor((distance / (1000*60)) % 60)).padStart(2,"0");
+  const diffSec = String(Math.floor(distance / 1000 % 60)).padStart(2,"0");
 
-  document.getElementById("demo").innerHTML = days + "일";
+  console.log(days)
+  console.log(diffHour)
+  console.log(diffMin)
+  console.log(diffSec)
+
+
+  document.getElementById("demo").innerHTML = `${days}일 ${diffHour}시간 ${diffMin}분 ${diffSec}초`;
   document.getElementById("expired").innerHTML = days + "일 남았습니다.";
 /*]]>*/
-
+}
+diffDay();
+setInterval(diffDay, 1000);
 </script>
 
 <!-- JS here -->

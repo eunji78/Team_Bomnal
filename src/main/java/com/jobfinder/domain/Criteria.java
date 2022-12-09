@@ -10,8 +10,7 @@ public class Criteria {
     private int perPageNum; // 한 페이지에 보여줄 게시글의 수
     private String industry_class;
     private String keyword;
-    private int super_job_seq;
-    
+
     public Criteria() {
         this.page = 1; // 현재 페이지 = 1
         this.perPageNum = 10; // 한 페이지 당 게시글을 10개씩
