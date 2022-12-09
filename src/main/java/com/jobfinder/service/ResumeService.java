@@ -39,4 +39,9 @@ public class ResumeService {
         resumeRepository.cert_add(certificate);
     }
 
+    public int get_seq(){
+        resumeRepository.get_seq();
+        return 1;
+    }
+
 }

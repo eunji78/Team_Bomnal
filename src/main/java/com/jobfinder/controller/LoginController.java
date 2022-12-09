@@ -100,7 +100,7 @@ public class LoginController {
 
     @RequestMapping(value = "/all_delete_data")
     @ResponseBody
-    public int all_delete_data(HttpSession session, Model model){
+    public int all_delete_data(HttpSession session, Model model, HttpServletResponse response){
         int res = 0;
         String type = (String) session.getAttribute("type");
         if (type == "P"){
@@ -112,6 +112,15 @@ public class LoginController {
             String company_id = cvo.getCompany_id();
             res = loginService.all_delete_data_com(company_id);
         }
+
+        Cookie token = new Cookie("authorize-access-token", null);
+        token.setPath("/");
+        token.setMaxAge(0);
+        response.addCookie(token);
+
+        session.removeAttribute("type");
+        session.removeAttribute("VO");
+
         return res;
     }
 
@@ -411,7 +420,7 @@ public class LoginController {
             session.setAttribute("type","P");
             session.setAttribute("VO", rvo);
 
-            return "redirect:/loginform";
+            return "redirect:/";
         } else {
             LoginVO vo = new LoginVO();
             vo.setMem_id(mem_id);
@@ -421,13 +430,12 @@ public class LoginController {
 
             session.setAttribute("type","P");
             session.setAttribute("VO", rvo);
-            return "redirect:/loginform";
+            return "redirect:/";
         }
     }
 
     @RequestMapping(value = "/v1/user/unlink")
     public String reset(HttpServletResponse response, HttpSession session) throws Exception {
-
 
         Cookie token = new Cookie("authorize-access-token", null);
         token.setPath("/");

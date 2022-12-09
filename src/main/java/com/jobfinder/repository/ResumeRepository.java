@@ -37,5 +37,9 @@ public class ResumeRepository {
          resumeMapper.awards_add(awards);
     }
 
+    public int get_seq(){
+        return resumeMapper.get_seq();
+    }
+
 
 }

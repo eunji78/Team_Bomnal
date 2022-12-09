@@ -16,4 +16,6 @@ public interface ResumeMapper {
     public void cert_add(Certificate certificate);
     public void career_add(Career career);
 
+    public int get_seq();
+
 }
