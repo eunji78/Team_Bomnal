@@ -84,6 +84,8 @@ $(document).ready(function(){
         }
         $("#job-detail").html(html);
     }
-    /* 써머노트 테스트 */
+
+
+
 
 });

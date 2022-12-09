@@ -30,8 +30,10 @@
    <th:block>
    <script>
     function add_list(item){
-        var list_name = $("#"+item.id).text();
-        $(".select-option").append("<span class='selected_keyword' id='b_"+item.id+"' onclick='delete_list(this)'>"+list_name+"<button type='button' class='list_item' ></button></span>");
+        if(!!document.getElementById("b_"+item.id)==false){
+            var list_name = $("#"+item.id).text();
+            $(".select-option").append("<span class='selected_keyword' id='b_"+item.id+"' onclick='delete_list(this)'>"+list_name+"<button type='button' class='list_item' ></button></span>");
+        }
     }
 
     function delete_list(item){
@@ -64,7 +66,7 @@
                 <div class="row">
                     <div class="col-xl-12">
                         <!-- form -->
-                        <form action="#" class="search-box">
+                        <form th:action="@{/list}" class="search-box">
                             <!--지역 검색 버튼-->
                             <div class="select-form">
                                 <button class="select-region" type="button" id="select-region"><i class="fas fa-map-marker-alt" style="margin-right:5px;">지역</i></button>
@@ -223,7 +225,7 @@
                             </div>
                         </div>
                         <div class="single-job-items mb-30">
-                            <button class="genric-btn info-border btn_recruit_list margin-left-right btn-big btn-font-big">채용 공고 모아보기</button>
+                            <button class="genric-btn info-border btn_recruit_list margin-left-right btn-big btn-font-big" th:onclick="|location.href='@{/noticeList}'|">채용 공고 모아보기</button>
                         </div>
                     </div>
                 </div>
@@ -277,7 +279,7 @@
                                             <span th:if="${review.totalstar == 5}" th:text="'⭐⭐⭐⭐⭐ '"></span>
                                         </div>
                                         <div>
-                                            <span th:text="${review.average}"></span>
+                                            <span th:text="${review.totalstar}"></span>
                                         </div>
                                     </div>
                                 </div>

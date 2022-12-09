@@ -378,6 +378,14 @@
 .single-padding-top{
     padding-top: 2em;
 }
+.padding-top-bottom{
+    vertical-align: middle;
+}
+text-box-size1{
+    height:1em;
+}
+
+
 /*---------------------Summer Note-----------------------------------*/
 @font-face {
     font-family: 'NotoSansKR';
