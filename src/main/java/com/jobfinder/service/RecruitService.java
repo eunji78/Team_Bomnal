@@ -1,6 +1,7 @@
 package com.jobfinder.service;
 
 import com.google.gson.JsonObject;
+import com.jobfinder.domain.Criteria;
 import com.jobfinder.domain.Recruit;
 import com.jobfinder.repository.RecruitRepository;
 import org.apache.commons.io.FileUtils;
@@ -31,8 +32,8 @@ public class RecruitService {
         return noticeList;
     }
 
-    public ArrayList<Recruit> allList(){
-        ArrayList<Recruit> allList = recruitRepository.allList();
+    public ArrayList<Recruit> allList(Criteria cri){
+        ArrayList<Recruit> allList = recruitRepository.allList(cri);
         return allList;
     }
 

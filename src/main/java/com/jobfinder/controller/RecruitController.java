@@ -1,6 +1,7 @@
 package com.jobfinder.controller;
 
 import com.google.gson.JsonObject;
+import com.jobfinder.domain.Criteria;
 import com.jobfinder.domain.Job;
 import com.jobfinder.domain.Recruit;
 import com.jobfinder.domain.RegionVO;
@@ -34,12 +35,12 @@ public class RecruitController {
     }
 
     @RequestMapping("/noticeList")
-    public String allList(Model model) {
+    public String allList(Model model, Criteria cri) {
         List<Job> job_list = mainService.jobList();
         model.addAttribute("job_list", job_list);
         List<RegionVO> region_list = mainService.regionList();
         model.addAttribute("region_list", region_list);
-        ArrayList<Recruit> noticeList = recruitService.allList();
+        ArrayList<Recruit> noticeList = recruitService.allList(cri);
         model.addAttribute("noticeList", noticeList);
 
         return "noticeList";

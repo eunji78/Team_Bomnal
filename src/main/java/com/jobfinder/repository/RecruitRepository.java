@@ -1,5 +1,6 @@
 package com.jobfinder.repository;
 
+import com.jobfinder.domain.Criteria;
 import com.jobfinder.domain.Recruit;
 import com.jobfinder.persistence.RecruitMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,8 +24,8 @@ public class RecruitRepository {
         return noticeList;
     }
 
-    public ArrayList<Recruit> allList(){
-        ArrayList<Recruit> allList = recruitMapper.allList();
+    public ArrayList<Recruit> allList(Criteria cri){
+        ArrayList<Recruit> allList = recruitMapper.allList(cri);
         return allList;
     }
 

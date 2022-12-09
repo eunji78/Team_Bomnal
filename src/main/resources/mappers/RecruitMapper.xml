@@ -23,6 +23,13 @@
         select *
         from job j inner join recruit r
         on j.job_seq = r.r_part
+        limit #{pageStart}, #{perPageNum}
+    </select>
+
+    <select id="countNotice" resultType="int">
+        select count(*)
+        from job j inner join recruit r
+        on j.job_seq = r.r_part
     </select>
 
     <insert id="insertJobPosting" parameterType="Recruit">

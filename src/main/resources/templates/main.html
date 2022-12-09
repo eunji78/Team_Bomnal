@@ -67,7 +67,7 @@
                         <form action="#" class="search-box">
                             <!--지역 검색 버튼-->
                             <div class="select-form">
-                                <button class="select-region" type="button" id="select-region"><i class="fas fa-map-marker-alt" style="margin-right:5px;">지역</i></button>
+                                <button class="select-region" type="button" id="select-region"><i class="fas fa-map-marker-alt" style="margin-right:5px;">&nbsp;지역</i></button>
                             </div>
                             <!--직무 검색 버튼-->
                             <div class="select-form">
@@ -223,7 +223,7 @@
                             </div>
                         </div>
                         <div class="single-job-items mb-30">
-                            <button class="genric-btn info-border btn_recruit_list margin-left-right btn-big btn-font-big">채용 공고 모아보기</button>
+                            <button th:onclick="|location.href='@{/noticeList}'|" class="genric-btn info-border btn_recruit_list margin-left-right btn-big btn-font-big">채용 공고 모아보기</button>
                         </div>
                     </div>
                 </div>
