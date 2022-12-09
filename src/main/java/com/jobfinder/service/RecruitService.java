@@ -39,6 +39,7 @@ public class RecruitService {
 
 
 
+
     public JsonObject uploadSummernoteImageFile(MultipartFile multipartFile) {
 
         JsonObject jsonObject = new JsonObject();
@@ -75,4 +76,7 @@ public class RecruitService {
         return recruits;
     }
 
+    public int countNotice(Criteria cri){
+        return recruitRepository.countNotice(cri);
+    };
 }

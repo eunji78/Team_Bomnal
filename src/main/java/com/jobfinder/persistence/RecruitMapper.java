@@ -12,7 +12,7 @@ public interface RecruitMapper {
     public Recruit notice(int r_seq);
     public ArrayList<Recruit> noticeList(int super_job_seq);
     public ArrayList<Recruit> allList(Criteria cri);
-    public int countNotice();
+    public int countNotice(Criteria cri);
 
     public void insertJobPosting(Recruit recruit);
 

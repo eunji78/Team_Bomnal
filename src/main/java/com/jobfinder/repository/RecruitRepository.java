@@ -29,6 +29,10 @@ public class RecruitRepository {
         return allList;
     }
 
+    public int countNotice(Criteria cri){
+        return recruitMapper.countNotice(cri);
+    };
+
     public void insertJobPosting(Recruit recruit) {
         recruitMapper.insertJobPosting(recruit);
     }

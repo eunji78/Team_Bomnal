@@ -19,7 +19,7 @@
         where j.super_job_seq = #{super_job_seq}
     </select>
 
-    <select id="allList" parameterType="int" resultType="Recruit">
+    <select id="allList" parameterType="Criteria" resultType="Recruit">
         select *
         from job j inner join recruit r
         on j.job_seq = r.r_part
