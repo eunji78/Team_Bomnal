@@ -18,6 +18,11 @@ public class CompanyRepository {
         return listmain;
     }
 
+    public ArrayList<CompanyList> listsearch(Criteria cri) {
+        ArrayList<CompanyList> listsearch = companyMapper.listsearch(cri);
+        return listsearch;
+    }
+
     public ArrayList<Company_info> list(Criteria cri) {
         ArrayList<Company_info> list = companyMapper.list(cri);
         return list;
@@ -27,14 +32,19 @@ public class CompanyRepository {
         return detail;
     }
 
-    public ArrayList<Reviews> review(String company_id) {
-        ArrayList<Reviews> review = companyMapper.review(company_id);
+    public ArrayList<Reviews> review(Reviews reviews) {
+        ArrayList<Reviews> review = companyMapper.review(reviews);
         return review;
     }
 
     public int countmain() {
         int countmain = companyMapper.countmain();
         return countmain;
+    }
+
+    public int countsearch(String keywrod) {
+        int countsearch = companyMapper.countsearch(keywrod);
+        return countsearch;
     }
 
     public int count(String industry_class) {
@@ -67,5 +77,14 @@ public class CompanyRepository {
     }
 
 
+    public int likecheck(Review_like like) {
+        return companyMapper.likecheck(like);
+    }
+    public void likeinsert(Review_like like) {
+        companyMapper.likeinsert(like);
+    }
 
+    public void likedelete(Review_like like) {
+        companyMapper.likedelete(like);
+    }
 }

@@ -41,6 +41,11 @@
     overflow: scroll;
 }
 
+.rev::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera*/
+}
+
+
 .totalreview{
     display: flex;
     justify-content: space-between;
