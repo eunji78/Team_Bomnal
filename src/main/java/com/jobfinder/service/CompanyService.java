@@ -6,6 +6,7 @@ import com.jobfinder.repository.CompanyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,6 +21,11 @@ public class CompanyService{
         return listmain;
     }
 
+    public ArrayList<CompanyList> listsearch(Criteria cri) {
+        ArrayList<CompanyList> listsearch = companyRepository.listsearch(cri);
+        return listsearch;
+    }
+
     public ArrayList<Company_info> list(Criteria cri) {
         ArrayList<Company_info> list = companyRepository.list(cri);
         return list;
@@ -28,6 +34,11 @@ public class CompanyService{
     public int countmain() {
         int countmain = companyRepository.countmain();
         return countmain;
+    }
+
+    public int countsearch(String keyword) {
+        int countsearch = companyRepository.countsearch(keyword);
+        return countsearch;
     }
 
     public int count(String industry_class) {
@@ -40,8 +51,8 @@ public class CompanyService{
         return detail;
     }
 
-    public ArrayList<Reviews> review(String company_id) {
-        ArrayList<Reviews> review = companyRepository.review(company_id);
+    public ArrayList<Reviews> review(Reviews reviews) {
+        ArrayList<Reviews> review = companyRepository.review(reviews);
         return  review;
     }
 
@@ -68,6 +79,20 @@ public class CompanyService{
         int countreview = companyRepository.countreview(company_id);
         return countreview;
     }
+
+
+    public int likecheck(Review_like like){
+        return companyRepository.likecheck(like);
+    }
+    public void likeinsert(Review_like like){
+        companyRepository.likeinsert(like);
+    }
+
+    public void likedelete(Review_like like){
+        companyRepository.likedelete(like);
+    }
+
+
 
 
 

@@ -3,6 +3,7 @@ package com.jobfinder.service;
 import com.jobfinder.domain.Company_info;
 import com.jobfinder.domain.Job;
 import com.jobfinder.domain.RegionVO;
+import com.jobfinder.domain.Reviews;
 import com.jobfinder.repository.MainRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -39,5 +40,10 @@ public class MainService{
     public List<Company_info> getBestCompanies(){
         List<Company_info> company_info = mainRepository.getBestCompanies();
         return company_info;
+    }
+
+    public List<Reviews> getBestCompaniesReview() {
+        List<Reviews> reviews = mainRepository.getBestCompaniesReview();
+        return reviews;
     }
 }

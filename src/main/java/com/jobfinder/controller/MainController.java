@@ -1,9 +1,6 @@
 package com.jobfinder.controller;
 
-import com.jobfinder.domain.Company_info;
-import com.jobfinder.domain.Job;
-import com.jobfinder.domain.Recruit;
-import com.jobfinder.domain.RegionVO;
+import com.jobfinder.domain.*;
 import com.jobfinder.service.MainService;
 import com.jobfinder.service.RecruitService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,8 +32,8 @@ public class MainController {
         model.addAttribute("company_info_list", company_info);
         List<Recruit> recruits = recruitService.getLatestRecruits();
         model.addAttribute("recruit_list", recruits);
-        System.out.println("recruit list의 개수"+recruits.size());
-        System.out.println(recruits.get(1));
+        List<Reviews> reviews = mainService.getBestCompaniesReview();
+        model.addAttribute("review_list", reviews);
         return "main";
     }
 

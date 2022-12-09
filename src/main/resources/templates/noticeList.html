@@ -27,8 +27,8 @@
     <link rel="stylesheet" href="/css/nolist_detail.css">
 </head>
 
-    <body>
-    <script>
+<body>
+<script>
     function add_list(item){
         var list_name = $("#"+item.id).text();
         $(".select-option").append("<span class='selected_keyword' id='b_"+item.id+"' onclick='delete_list(this)'>"+list_name+"<button type='button' class='list_item' ></button></span>");
@@ -37,7 +37,9 @@
     function delete_list(item){
         $("#"+item.id).remove();
     }
-   </script>
+
+
+</script>
 <!-- Preloader Start -->
 <div id="preloader-active">
     <div class="preloader d-flex align-items-center justify-content-center">
@@ -66,12 +68,13 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="small-section-tittle2 mb-30">
-                                <div class="ion"> <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width="20px" height="12px">
-                                    <path fill-rule="evenodd"  fill="rgb(27, 207, 107)"
-                                          d="M7.778,12.000 L12.222,12.000 L12.222,10.000 L7.778,10.000 L7.778,12.000 ZM-0.000,-0.000 L-0.000,2.000 L20.000,2.000 L20.000,-0.000 L-0.000,-0.000 ZM3.333,7.000 L16.667,7.000 L16.667,5.000 L3.333,5.000 L3.333,7.000 Z"/>
-                                </svg>
+                                <div class="ion">
+                                    <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            width="20px" height="12px">
+                                        <path fill-rule="evenodd" fill="rgb(27, 207, 107)"
+                                              d="M7.778,12.000 L12.222,12.000 L12.222,10.000 L7.778,10.000 L7.778,12.000 ZM-0.000,-0.000 L-0.000,2.000 L20.000,2.000 L20.000,-0.000 L-0.000,-0.000 ZM3.333,7.000 L16.667,7.000 L16.667,5.000 L3.333,5.000 L3.333,7.000 Z"/>
+                                    </svg>
                                 </div>
                                 <h4>Filter Jobs</h4>
                             </div>
@@ -84,7 +87,9 @@
                             <form action="#" class="search-box">
                                 <!--지역 검색 버튼-->
                                 <div class="select-form">
-                                    <button class="select-region" type="button" id="select-region"><i class="fas fa-map-marker-alt" style="margin-right:5px;">&nbsp;지역</i></button>
+                                    <button class="select-region" type="button" id="select-region"><i
+                                            class="fas fa-map-marker-alt" style="margin-right:5px;">&nbsp;지역</i>
+                                    </button>
                                 </div>
                                 <!--직무 검색 버튼-->
                                 <div class="select-form">
@@ -103,13 +108,14 @@
                     </div>
 
                     <!-- 검색 창 -->
-                    <div style="border:1px solid rgba(0,0,0,.1); margin-top:30px; display:none" class="row" id="search" >
+                    <div style="border:1px solid rgba(0,0,0,.1); margin-top:30px; display:none" class="row" id="search">
                         <div class="col-12" style="float:left">
 
                             <!-- 지역 -->
-                            <div style="display:flex; width:100%" id="region-list" >
+                            <div style="display:flex; width:100%" id="region-list">
                                 <div class="detail_list" style="width:100%" id="r_detail_list">
-                                    <button th:each="region : ${region_list} " class="detail_button" th:id="${region.region_seq}" onclick="add_list(this)">
+                                    <button th:each="region : ${region_list} " class="detail_button"
+                                            th:id="${region.region_seq}" onclick="add_list(this)">
                                         [[${region.region}]]
                                     </button>
                                 </div>
@@ -117,7 +123,7 @@
                             <!-- 지역 끝 -->
 
                             <!-- 직무 -->
-                            <div style="display:flex" id="job-list" >
+                            <div style="display:flex" id="job-list">
                                 <!-- 직무 상위 카테고리 -->
                                 <div class="d-category-list" style="width:200px; height:300px; overflow:auto">
                                     <div class="mt-2 mb-2" style="height:284px">
@@ -125,7 +131,8 @@
                                             <li clsss="d-list">
                                                 <button class="j-list-button" type="button">
                                                     <span th:text="${job.super_job}">경영·사무</span>
-                                                    <span id="super-job-seq" th:text="${job.super_job_seq}" style="display:none"></span>
+                                                    <span id="super-job-seq" th:text="${job.super_job_seq}"
+                                                          style="display:none"></span>
                                                 </button>
                                             </li>
                                         </ul>
@@ -144,7 +151,8 @@
 
                             <div>
                                 <!-- 선택한 옵션 -->
-                                <div style="border-top:1px solid rgba(0,0,0,.1); padding:20px 15px" class="select-option">
+                                <div style="border-top:1px solid rgba(0,0,0,.1); padding:20px 15px"
+                                     class="select-option">
 
                                 </div>
                                 <!-- 옵션 끝 -->
@@ -160,30 +168,48 @@
                     <section class="featured-job-area">
                         <div class="container">
                             <!-- single-job-content -->
-                            <div class="single-job-items mb-30">
-                                <div class="job-items">
-                                    <div class="company-img company-img-details">
-                                        <!-- 로고 이미지가 없을 때 대체 이미지 적용!-->
-                                        <a href="#"><img src="/img/icon/ee.png"
-                                                         onerror="this.src='/img/icon/logoerror.png'"
-                                                         alt=""></a>
+                            <th:block th:each="j : ${noticeList}">
+                                <div class="single-job-items mb-30">
+                                    <div class="job-items">
+                                        <div class="company-img company-img-details">
+                                            <!-- 로고 이미지가 없을 때 대체 이미지 적용!-->
+                                            <img class="img_logo" th:src="${j.company_logo}"
+                                                 onerror="this.src='/img/icon/logoerror.png'"
+                                                 alt=""></th>
+                                        </div>
+                                        <div class="job-tittle job-tittle2">
+                                            <a th:href="@{/noticeDetail/{r_seq}(r_seq=${j.r_seq})}">
+                                                <h5 th:text="${j.r_title}">공고명</h5>
+                                            </a>
+                                            <ul>
+                                                <li th:text="${j.company_name}">회사이름</li>
+                                                <th:block th:switch="${j.r_career}">
+                                                    <li th:case="new">신입</li>
+                                                    <li th:case="car">경력</li>
+                                                    <li th:case="irr">경력무관</li>
+                                                </th:block>
+                                                <th:block th:switch="${j.r_work_area}">
+                                                    <li th:case="overseas">해외지역 근무</li>
+                                                    <li th:case="home">재택근무</li>
+                                                    <li th:case="*" th:text="${j.r_work_area}"></li>
+                                                </th:block>
+                                                <th:block th:switch="${j.r_job_pattern}">
+                                                    <li th:case="full">정규직</li>
+                                                    <li th:case="contract">계약직</li>
+                                                    <li th:case="alba">아르바이트</li>
+                                                    <li th:case="intern">인턴</li>
+                                                    <li th:case="free">프리랜서</li>
+                                                    <li th:case="part">파트타임</li>
+                                                </th:block>
+
+                                            </ul>
+                                        </div>
                                     </div>
-                                    <div class="job-tittle job-tittle2">
-                                        <a href="#">
-                                            <h4>공고명</h4>
-                                        </a>
-                                        <ul>
-                                            <li>회사이름</li>
-                                            <li>지원자격</li>
-                                            <li><i class="fas fa-map-marker-alt"></i>근무지역</li>
-                                        </ul>
+                                    <div class="items-link items-link2 f-right">
+                                        <a th:href="@{/noticeDetail/{r_seq}(r_seq=${j.r_seq})}" class="genric-btn info radius">입사지원</a>
+                                        <span th:text="${j.r_close_date}">마감일</span>
                                     </div>
                                 </div>
-                                <div class="items-link items-link2 f-right">
-                                    <a href="job_details.html">근무조건</a>
-                                    <span>마감일</span>
-                                </div>
-                            </div>
                             </th:block>
                         </div>
                     </section>
@@ -214,39 +240,48 @@
                             <h4 class="widget_title">Category</h4>
                             <ul class="list cat-list">
                                 <li>
-                                    <a href="#" class="d-flex">
-                                        <p>Resaurant food</p>
-                                        <p>(37)</p>
+                                    <a th:href="@{/noticeList/{super_job_seq}(super_job_seq=2)}" class="d-flex">
+                                        <p>IT개발·데이터</p>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="#" class="d-flex">
-                                        <p>Travel news</p>
-                                        <p>(10)</p>
+                                        <p>회계·세무·재무</p>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="#" class="d-flex">
-                                        <p>Modern technology</p>
-                                        <p>(03)</p>
+                                        <p>의료</p>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="#" class="d-flex">
-                                        <p>Product</p>
-                                        <p>(11)</p>
+                                        <p>영업·판매·무역</p>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="#" class="d-flex">
-                                        <p>Inspiration</p>
-                                        <p>21</p>
+                                        <p>마케팅·홍보·조사</p>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="#" class="d-flex">
-                                        <p>Health Care (21)</p>
-                                        <p>09</p>
+                                        <p>디자인</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="d-flex">
+                                        <p>기획·전략</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="d-flex">
+                                        <p>구매·자재·물류</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="d-flex">
+                                        <p>고객상담·PM</p>
                                     </a>
                                 </li>
                             </ul>
@@ -334,45 +369,45 @@
     <th:block th:replace="fragments/footer :: footerFragment"></th:block>
     <!-- Footer End-->
 </footer>
-    <!-- JS here -->
+<!-- JS here -->
 
-    <!-- All JS Custom Plugins Link Here here -->
-    <script src="/js/vendor/modernizr-3.5.0.min.js"></script>
-    <!-- Jquery, Popper, Bootstrap -->
-    <script src="/js/vendor/jquery-1.12.4.min.js"></script>
-    <script src="/js/popper.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
-    <!-- Jquery Mobile Menu -->
-    <script src="/js/jquery.slicknav.min.js"></script>
+<!-- All JS Custom Plugins Link Here here -->
+<script src="/js/vendor/modernizr-3.5.0.min.js"></script>
+<!-- Jquery, Popper, Bootstrap -->
+<script src="/js/vendor/jquery-1.12.4.min.js"></script>
+<script src="/js/popper.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<!-- Jquery Mobile Menu -->
+<script src="/js/jquery.slicknav.min.js"></script>
 
-    <!-- Jquery Slick , Owl-Carousel Range -->
-    <script src="/js/owl.carousel.min.js"></script>
-    <script src="/js/slick.min.js"></script>
-    <script src="/js/price_rangs.js"></script>
-    <!-- One Page, Animated-HeadLin -->
-    <script src="/js/wow.min.js"></script>
-    <script src="/js/animated.headline.js"></script>
-    <script src="/js/jquery.magnific-popup.js"></script>
+<!-- Jquery Slick , Owl-Carousel Range -->
+<script src="/js/owl.carousel.min.js"></script>
+<script src="/js/slick.min.js"></script>
+<script src="/js/price_rangs.js"></script>
+<!-- One Page, Animated-HeadLin -->
+<script src="/js/wow.min.js"></script>
+<script src="/js/animated.headline.js"></script>
+<script src="/js/jquery.magnific-popup.js"></script>
 
-    <!-- Scrollup, nice-select, sticky -->
-    <script src="/js/jquery.scrollUp.min.js"></script>
-    <script src="/js/jquery.nice-select.min.js"></script>
-    <script src="/js/jquery.sticky.js"></script>
+<!-- Scrollup, nice-select, sticky -->
+<script src="/js/jquery.scrollUp.min.js"></script>
+<script src="/js/jquery.nice-select.min.js"></script>
+<script src="/js/jquery.sticky.js"></script>
 
-    <!-- contact js -->
-    <script src="/js/contact.js"></script>
-    <script src="/js/jquery.form.js"></script>
-    <script src="/js/jquery.validate.min.js"></script>
-    <script src="/js/mail-script.js"></script>
-    <script src="/js/jquery.ajaxchimp.min.js"></script>
+<!-- contact js -->
+<script src="/js/contact.js"></script>
+<script src="/js/jquery.form.js"></script>
+<script src="/js/jquery.validate.min.js"></script>
+<script src="/js/mail-script.js"></script>
+<script src="/js/jquery.ajaxchimp.min.js"></script>
 
-    <!-- Jquery Plugins, main Jquery -->
-    <script src="/js/plugins.js"></script>
-    <script src="/js/main.js"></script>
+<!-- Jquery Plugins, main Jquery -->
+<script src="/js/plugins.js"></script>
+<script src="/js/main.js"></script>
 
-    <script src="/js/main-page.js"></script>
+<script src="/js/main-page.js"></script>
 
-    <!-- 검색창 -->
-    <script src="/js/search.js"></script>
+<!-- 검색창 -->
+<script src="/js/search.js"></script>
 </body>
 </html>
