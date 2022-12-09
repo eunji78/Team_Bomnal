@@ -100,7 +100,6 @@ public class LoginController {
 
     @RequestMapping(value = "/all_delete_data")
     public int all_delete_data(HttpSession session, Model model){
-        System.out.println("회원탈퇴진행!");
         int res = 0;
         String type = (String) session.getAttribute("type");
         if (type == "P"){
@@ -161,8 +160,6 @@ public class LoginController {
 
     @RequestMapping(value = "/update_my_page")
     public String update_my_page(@ModelAttribute("umpform_per") LoginVO vo, HttpSession session){
-        System.out.println("session : " + session.getAttribute("VO"));
-        System.out.println("update : " + vo);
 
         LoginVO sessionVO = (LoginVO) session.getAttribute("VO");
 
@@ -194,12 +191,7 @@ public class LoginController {
         return "redirect:/loginform";
     }
     @RequestMapping(value = "/update_my_page_com")
-    public String update_my_page_com(@ModelAttribute("umpform_com") Login_ComVO cvo, HttpSession session, @RequestParam(value = "file", required = false) MultipartFile file) {
-
-        System.out.println("file : " + file);
-
-        System.out.println("session : " + session.getAttribute("VO"));
-        System.out.println("update : " + cvo);
+    public String update_my_page_com(@ModelAttribute("umpform_com") Login_ComVO cvo, HttpSession session){
 
         Login_ComVO sessionVO = (Login_ComVO) session.getAttribute("VO");
 
@@ -244,29 +236,21 @@ public class LoginController {
 
     @RequestMapping(value = "/login_per")
     public String login_per(@RequestParam(value = "mem_id", required=false) String id, @RequestParam(value = "mem_pw", required=false) String pw, HttpSession session){
-//        System.out.println("개인로그인시도");
-//        System.out.println(id);
-//        System.out.println(pw);
+
         LoginVO vo = new LoginVO();
         vo.setMem_id(id);
         vo.setMem_pw(pw);
         LoginVO rvo = loginService.login_per(vo);
         session.setAttribute("type","P");
         session.setAttribute("VO", rvo);
-        System.out.println("로그인 세션 저장 : " + session.getAttribute("VO"));
-//        System.out.println("개인로그인완료");
         return "redirect:/";
     };
 
     @RequestMapping(value = "/login_com")
     public String login_com(@ModelAttribute("loginform_com") Login_ComVO cvo, HttpSession session){
-//        System.out.println("기업로그인시도");
-//        System.out.println(cvo);
         Login_ComVO rcvo = loginService.login_com(cvo);
         session.setAttribute("type","C");
         session.setAttribute("VO", rcvo);
-        System.out.println("로그인 세션 저장 : " + session.getAttribute("VO"));
-//        System.out.println("기업로그인완료");
         return "redirect:/";
     };
 
@@ -284,8 +268,6 @@ public class LoginController {
 
     @RequestMapping(value = "/signup_com")
     public String signup_com(@ModelAttribute Login_ComVO cvo) {
-        System.out.println("signup_com");
-        System.out.println(cvo);
 
         StringBuffer sb = new StringBuffer();
         sb.append(cvo.getCompany_phone());
@@ -298,14 +280,12 @@ public class LoginController {
         cvo.setCompany_phone(sb.toString());
 
         int res = loginService.set_signup_com(cvo);
-        System.out.println(res);
+
         return "redirect:/";
     };
 
     @RequestMapping(value = "/signup_per")
     public String signup_per(@ModelAttribute LoginVO vo) {
-        System.out.println("signup_per");
-        System.out.println(vo);
 
         StringBuffer sb = new StringBuffer();
         sb.append(vo.getMem_phone());
@@ -318,7 +298,6 @@ public class LoginController {
         vo.setMem_phone(sb.toString());
 
         int res = loginService.set_signup_per(vo);
-        System.out.println(res);
         return "redirect:/";
     };
 
@@ -372,12 +351,9 @@ public class LoginController {
     @RequestMapping(value = "/kakaologin")
     public String login(@RequestParam(value = "code", required = false) String code, HttpSession session, HttpServletResponse response) throws Exception{
 
-        System.out.println("loginController!!");
 
-        System.out.println("####code#####" + code);
 
         String access_Token = loginService.getAccessToken(code);
-        System.out.println("###access_Token#### : " + access_Token);
 
         Cookie token = new Cookie("authorize-access-token", access_Token);
         token.setPath("/");
@@ -385,7 +361,6 @@ public class LoginController {
 
         //*
         HashMap<String, String> userInfo = loginService.getUserInfo(access_Token);
-        System.out.println("###user_info### : " + userInfo);
 
         String mem_id = userInfo.get("id");
         String mem_pw = userInfo.get("id");
@@ -395,9 +370,6 @@ public class LoginController {
         String check = loginService.id_check_per(mem_id);
 
         if ( check == null ){
-            System.out.println(mem_id);
-            System.out.println(mem_name);
-            System.out.println(mem_email);
 
             LoginVO vo = new LoginVO();
             vo.setMem_id(mem_id);
@@ -436,7 +408,6 @@ public class LoginController {
     @RequestMapping(value = "/v1/user/unlink")
     public String reset(HttpServletResponse response, HttpSession session) throws Exception {
 
-        System.out.println("Reset code");
 
         Cookie token = new Cookie("authorize-access-token", null);
         token.setPath("/");
