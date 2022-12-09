@@ -206,6 +206,7 @@
                                                             <h5> 남은 기간 </h5>
                                                             <br>
                                                             <h3 id="demo"></h3>
+                                                            <h3 id="dtime"></h3>
                                                             <br>
                                                         </div>
                                                         <div class="col-8 align-self-center">
@@ -298,8 +299,6 @@ function diffDay(){
   const countDownDate = /*[[${notice.r_close_date}]]*/;
 
   ccount = new Date(countDownDate);
-  console.log(now)
-  console.log(ccount)
 
   const distance = ccount - now;
 
@@ -309,13 +308,8 @@ function diffDay(){
   const diffMin = String(Math.floor((distance / (1000*60)) % 60)).padStart(2,"0");
   const diffSec = String(Math.floor(distance / 1000 % 60)).padStart(2,"0");
 
-  console.log(days)
-  console.log(diffHour)
-  console.log(diffMin)
-  console.log(diffSec)
-
-
-  document.getElementById("demo").innerHTML = `${days}일 ${diffHour}시간 ${diffMin}분 ${diffSec}초`;
+  document.getElementById("demo").innerHTML = `${days}일`;
+  document.getElementById("dtime").innerHTML = `${diffHour}:${diffMin}:${diffSec}`;
   document.getElementById("expired").innerHTML = days + "일 남았습니다.";
 /*]]>*/
 }
