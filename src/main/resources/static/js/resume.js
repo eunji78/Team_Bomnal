@@ -276,7 +276,7 @@ $(document).ready(function(){
     /* 경력 추가 */
      $("#add_career").on("click",function(){
 
-        var html = '<form name="career_'+career+' id="ca_'+career+'">'
+        var html = '<form name="career_'+career+'" id="ca_'+career+'" method="post">'
         html += '<div class="resume-section" id="c_'+career+'">'
         html += '<div class="resume_row">'
         html += '<div class="input_title">회사명</div>'
@@ -374,7 +374,8 @@ $(document).ready(function(){
         html += '<div class="form-select" style="display:inline-block; width:400px;">'
         html += '<input class="input_text" name="ca_duty" type="text" placeholder="담당업무 입력">'
         html += '</div>'
-        html += '<div style="text-align:center">'
+        html += '</div>'
+        html += '<div style="text-align:center; margin-top:40px">'
         html += '<div style="display:inline-block">'
         html += '<button type="button" class="genric-btn info radius" onclick="career_add(this)">'
         html += '<span>저장</span>'
@@ -382,8 +383,8 @@ $(document).ready(function(){
         html += '</div>'
         html += '</div>'
         html += '</div>'
-        html += '</div>'
         html += '</form>'
+        html += '</div>'
 
         $("#career").append(html);
 

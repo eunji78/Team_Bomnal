@@ -271,8 +271,9 @@
                         <p class="txt_error"></p>
                     </div>
 
-                    <form name="career_1" id="career_1" method="post">
-                        <div id="career" style="display:none">
+
+                    <div id="career" style="display:none">
+                        <form name="career_1" id="career_1" method="post">
                             <div class="resume-section" style="">
                                 <div class="resume_row">
                                     <div class="input_title">회사명</div>
@@ -379,8 +380,8 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
                 </div>
                 <!-- 경력 End -->
 
@@ -693,42 +694,68 @@
     }
 
 
+    function add_num(data, num){
+
+        let tmp = data.split("&");
+        tmp.push("resume_seq="+num);
+        let result = "{";
+
+        for(let i = 0; i < tmp.length; i++){
+            let tmp2 = tmp[i].split("=");
+
+            if(i==tmp.length-1){
+                result += '"'+tmp2[0]+'":"'+tmp2[1]+'"';
+            }
+            else{
+                result += '"'+tmp2[0]+'":"'+tmp2[1]+'",';
+            }
+        };
+
+
+        result += "}";
+
+        return result;
+
+    }
+
+
     <!-- 경력 등록 -->
-    let career = {};
+    let career;
 
     function career_add(num){
-        let num_id = num.parentNode.parentNode.parentNode.parentNode.parentNode.id;
-        career = $("#"+num_id).serializeObject();
+        let num_id = num.parentNode.parentNode.parentNode.parentNode.id;
+        career = $("#"+num_id).serialize();
     }
 
     <!-- 자격증 등록 -->
-    let certificate = {};
+    let certificate;
 
     function cert_add(num){
         let num_id = num.parentNode.parentNode.parentNode.parentNode.id;
-        certificate = $("#"+num_id).serializeObject();
+        certificate = $("#"+num_id).serialize();
+
     }
 
     <!-- 수상 등록 -->
-    let awards = {};
+    let awards;
 
     function awards_add(num){
         let num_id = num.parentNode.parentNode.parentNode.parentNode.id;
-        awards = $("#"+num_id).serializeObject();
+        awards = $("#"+num_id).serialize();
     }
 
     <!-- 어학 등록 -->
-    let language = {};
+    let language;
 
     function lang_add(num){
         let num_id = num.parentNode.parentNode.parentNode.parentNode.id;
-        language = $("#"+num_id).serializeObject();
+        language = $("#"+num_id).serialize();
     }
 
 
     function register(){
 
-        let resume_num;
+        let resume_seq;
 
         let education = $("#education").serialize();
         let portfolio = $("#portfolio_").serialize();
@@ -736,92 +763,110 @@
 
         let data = add_pofol(education, portfolio, resume_name);
 
-        language = JSON.stringify(language)
-        awards = JSON.stringify(awards)
-        certificate = JSON.stringify(certificate)
-        career = JSON.stringify(career)
 
         console.log(data);
 
         $.ajax({
             type:"post",
             url:"/resume",
+            async : false,
             data:data,
             contentType:"application/json",
             dataType: "json",
             success: function(num){
                 console.log(num)
-                resume_num=num;
+                resume_seq=num;
+                console.log(resume_seq);
             },
             error : function(){
                 console.log("error");
             }
         });
 
+        console.log(career)
+
+
         <!-- 경력 -->
-        $.ajax({
+        console.log(career);
+        if(career){
+        career = add_num(career, resume_seq)
+
+            $.ajax({
             type:"post",
             url:"/resume/career",
-            data:data,
+            async : false,
+            data:career,
             contentType:"application/json",
             dataType: "json",
-            success: function(num){
-                console.log(num)
-                resume_num=num;
+            success: function(){
+                console.log("경력 성공");
             },
             error : function(){
-                console.log("error");
+                console.log("경력 error");
             }
-        })
+            })
+        }
+
 
         <!-- 자격증 -->
-        $.ajax({
-            type:"post",
-            url:"/resume/cert",
-            data:data,
-            contentType:"application/json",
-            dataType: "json",
-            success: function(num){
-                console.log(num)
-                resume_num=num;
-            },
-            error : function(){
-                console.log("error");
-            }
-        })
+        console.log(certificate);
+        if(certificate){
+        certificate = add_num(certificate, resume_seq)
+            $.ajax({
+                type:"post",
+                url:"/resume/cert",
+                async : false,
+                data:certificate,
+                contentType:"application/json",
+                dataType: "json",
+                success: function(num){
+                },
+                error : function(){
+                    console.log("cert error");
+                }
+            })
+        }
+
 
         <!-- 수상 -->
-        $.ajax({
-            type:"post",
-            url:"/resume/awards",
-            data:data,
-            contentType:"application/json",
-            dataType: "json",
-            success: function(num){
-                console.log(num)
-                resume_num=num;
-            },
-            error : function(){
-                console.log("error");
-            }
-        })
+        console.log(awards);
+        if(awards){
+        awards = add_num(awards, resume_seq)
+            $.ajax({
+                type:"post",
+                url:"/resume/awards",
+                async : false,
+                data:awards,
+                contentType:"application/json",
+                dataType: "json",
+                success: function(num){
+                },
+                error : function(){
+                    console.log("error");
+                }
+            })
+        }
 
         <!-- 어학 -->
-        $.ajax({
-            type:"post",
-            url:"/resume/lang",
-            data:data,
-            contentType:"application/json",
-            dataType: "json",
-            success: function(num){
-                console.log(num)
-                resume_num=num;
-            },
-            error : function(){
-                console.log("error");
-            }
-        })
+        console.log(language);
+        if(language){
+        language = add_num(language, resume_seq)
+            $.ajax({
+                type:"post",
+                url:"/resume/lang",
+                async : false,
+                data:language,
+                contentType:"application/json",
+                dataType: "json",
+                success: function(num){
+                },
+                error : function(){
+                    console.log("error");
+                }
+            })
+        }
 
+        location.href="/resume_manage";
 
 
     }

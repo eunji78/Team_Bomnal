@@ -30,8 +30,10 @@
    <th:block>
    <script>
     function add_list(item){
-        var list_name = $("#"+item.id).text();
-        $(".select-option").append("<span class='selected_keyword' id='b_"+item.id+"' onclick='delete_list(this)'>"+list_name+"<button type='button' class='list_item' ></button></span>");
+        if(!!document.getElementById("b_"+item.id)==false){
+            var list_name = $("#"+item.id).text();
+            $(".select-option").append("<span class='selected_keyword' id='b_"+item.id+"' onclick='delete_list(this)'>"+list_name+"<button type='button' class='list_item' ></button></span>");
+        }
     }
 
     function delete_list(item){
@@ -64,7 +66,7 @@
                 <div class="row">
                     <div class="col-xl-12">
                         <!-- form -->
-                        <form action="#" class="search-box">
+                        <form th:action="@{/list}" class="search-box">
                             <!--지역 검색 버튼-->
                             <div class="select-form">
                                 <button class="select-region" type="button" id="select-region"><i class="fas fa-map-marker-alt" style="margin-right:5px;">&nbsp;지역</i></button>
@@ -137,18 +139,27 @@
                 <!-- 검색 창 끝 -->
 
                 <div class="row d-flex justify-contnet-center single-padding-top">
-                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6" th:each="company:${company_info_list}">
-                        <div class="single-services text-center mb-30 single-company_item">
-                            <div class="services-ion single-logo-height">
-                                <img th:src="@{${company.company_logo}}">
-                            </div>
+                    <th:block th:each="company:${company_info_list}">
+                        <a th:href="@{/companyDetail/{company_id}(company_id=${company.company_id})}">
+                        <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6" >
 
-                            <div class="services-cap">
-                               <h5><a th:href="@{/companyDetail/{company_id}(company_id=${company.company_id})}" th:text="${company.company_name}">메타넷(주)</a></h5>
-                                <span th:text="${company.company_industry}" class="font-to-sky">신입 인턴 채용</span>
-                            </div>
+                                <div class="single-services text-center mb-30 single-company_item">
+                                    <div class="services-ion single-logo-height">
+                                        <img th:src="@{${company.company_logo}}">
+                                    </div>
+
+                                    <div class="services-cap">
+                                        <h5>
+                                            <a th:href="@{/companyDetail/{company_id}(company_id=${company.company_id})}" th:text="${company.company_name}">메타넷(주)</a>
+                                        </h5>
+                                        <span th:text="${company.company_industry}" class="font-to-sky">신입 인턴 채용</span>
+                                    </div>
+                                </div>
+
                         </div>
-                    </div>
+                        </a>
+                    </th:block>
+
                 </div>
                 <!-- More Btn -->
                 <!-- Section Button -->
@@ -212,18 +223,18 @@
                             </div>
                             <div class="items-link f-right text-to-center">
                                 <th:block th:switch="${recruit.r_job_pattern}">
-                                    <a href="job_details.html" class="career-tag" th:case="full">정규직</a>
-                                    <a href="job_details.html" class="career-tag" th:case="contract">계약직</a>
-                                    <a href="job_details.html" class="career-tag" th:case="alba">아르바이트</a>
-                                    <a href="job_details.html" class="career-tag" th:case="intern">인턴</a>
-                                    <a href="job_details.html" class="career-tag" th:case="free">프리랜서</a>
-                                    <a href="job_details.html" class="career-tag" th:case="part">파트타임</a>
+                                    <a th:href="@{/noticeList}" class="career-tag" th:case="full">정규직</a>
+                                    <a th:href="@{/noticeList}" class="career-tag" th:case="contract">계약직</a>
+                                    <a th:href="@{/noticeList}" class="career-tag" th:case="alba">아르바이트</a>
+                                    <a th:href="@{/noticeList}" class="career-tag" th:case="intern">인턴</a>
+                                    <a th:href="@{/noticeList}" class="career-tag" th:case="free">프리랜서</a>
+                                    <a th:href="@{/noticeList}" class="career-tag" th:case="part">파트타임</a>
                                 </th:block>
                                 <span th:text="${recruit.r_close_date}+'days ago'"></span>
                             </div>
                         </div>
                         <div class="single-job-items mb-30">
-                            <button th:onclick="|location.href='@{/noticeList}'|" class="genric-btn info-border btn_recruit_list margin-left-right btn-big btn-font-big">채용 공고 모아보기</button>
+                            <button class="genric-btn info-border btn_recruit_list margin-left-right btn-big btn-font-big" th:onclick="|location.href='@{/noticeList}'|">채용 공고 모아보기</button>
                         </div>
                     </div>
                 </div>
@@ -277,7 +288,7 @@
                                             <span th:if="${review.totalstar == 5}" th:text="'⭐⭐⭐⭐⭐ '"></span>
                                         </div>
                                         <div>
-                                            <span th:text="${review.average}"></span>
+                                            <span th:text="${review.totalstar}"></span>
                                         </div>
                                     </div>
                                 </div>
