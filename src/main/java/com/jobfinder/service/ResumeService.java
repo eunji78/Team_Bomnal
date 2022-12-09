@@ -8,6 +8,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 @Service
@@ -16,37 +18,25 @@ public class ResumeService {
 
     private final ResumeRepository resumeRepository;
 
-    public int resume_add(Map<String, String> param){
-
-        ObjectMapper objectMapper = new ObjectMapper();
-        Resume resume = objectMapper.convertValue(param, Resume.class);
+    public int resume_add(Resume resume){
         resumeRepository.resume_add(resume);
-
         return resumeRepository.resume_num(resume.getMembers_mem_id());
     }
 
-    public void lang_add(Map<String, String> param){
-        ObjectMapper objectMapper = new ObjectMapper();
-        Language lang = objectMapper.convertValue(param, Language.class);
-        resumeRepository.lang_add(lang);
+    public void lang_add(Language language){
+        resumeRepository.lang_add(language);
     }
 
-    public void career_add(Map<String, String> param){
-        ObjectMapper objectMapper = new ObjectMapper();
-        Career career = objectMapper.convertValue(param, Career.class);
+    public void career_add(Career career){
         resumeRepository.career_add(career);
     }
 
-    public void awards_add(Map<String, String> param){
-        ObjectMapper objectMapper = new ObjectMapper();
-        Awards awards = objectMapper.convertValue(param, Awards.class);
+    public void awards_add(Awards awards){
         resumeRepository.awards_add(awards);
     }
 
-    public void cert_add(Map<String, String> param){
-        ObjectMapper objectMapper = new ObjectMapper();
-        Certificate cert = objectMapper.convertValue(param, Certificate.class);
-        resumeRepository.cert_add(cert);
+    public void cert_add(Certificate certificate){
+        resumeRepository.cert_add(certificate);
     }
 
 }

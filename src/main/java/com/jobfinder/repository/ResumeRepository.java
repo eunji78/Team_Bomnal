@@ -5,6 +5,8 @@ import com.jobfinder.persistence.ResumeMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 @RequiredArgsConstructor
 public class ResumeRepository {
@@ -20,7 +22,7 @@ public class ResumeRepository {
     }
 
     public void lang_add(Language lang){
-         resumeMapper.lang_add(lang);
+            resumeMapper.lang_add(lang);
     }
 
     public void cert_add(Certificate cert){

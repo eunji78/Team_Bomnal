@@ -1,5 +1,6 @@
 package com.jobfinder.controller;
 
+import com.jobfinder.domain.*;
 import com.jobfinder.service.ResumeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -16,42 +17,37 @@ public class ResumeController {
 
     @PostMapping("/resume")
     @ResponseBody
-    public int resume_add(@RequestBody Map<String, String> param){
-
-        int num = resumeService.resume_add(param);
-
+    public int resume_add(@RequestBody Resume resume){
+        int num = resumeService.resume_add(resume);
         return num ;
     }
 
     @PostMapping("/resume/lang")
     @ResponseBody
-    public void lang_add(@RequestBody Map<String, String> param){
-
-        resumeService.lang_add(param);
-
+    public String lang_add(@RequestBody Language language){
+        resumeService.lang_add(language);
+        return null;
     }
 
     @PostMapping("/resume/career")
     @ResponseBody
-    public void career_add(@RequestBody Map<String, String> param){
-
-        resumeService.career_add(param);
-
+    public String career_add(@RequestBody Career career){
+        System.out.println( "career = " + career);
+        resumeService.career_add(career);
+        return null;
     }
 
     @PostMapping("/resume/cert")
     @ResponseBody
-    public void cert_add(@RequestBody Map<String, String> param){
-
-        resumeService.cert_add(param);
-
+    public String cert_add(@RequestBody Certificate certificate){
+        resumeService.cert_add(certificate);
+        return null;
     }
 
     @PostMapping("/resume/awards")
     @ResponseBody
-    public void awards_add(@RequestBody Map<String, String> param){
-
-        resumeService.awards_add(param);
-
+    public String awards_add(@RequestBody Awards awards){
+        resumeService.awards_add(awards);
+        return null;
     }
 }
