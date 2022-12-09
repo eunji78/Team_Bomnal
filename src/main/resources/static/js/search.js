@@ -52,40 +52,5 @@ $(document).ready(function(){
         $(this).toggleClass("active");
     });
 
-    /* 지역 가져오기 */
-    $(".r-list-button").on('click', function(){
-        /* active */
-        $(".r-list-button").removeClass("active");
-        $(this).toggleClass("active");
-
-        var super_seq = document.querySelector('.active #super-region-seq').innerText;
-            $.ajax({
-                url : "/get_region_detail",
-                type : "get",
-                dataType : "json",
-                data : {"super_seq":super_seq},
-                success : result_search_region,
-                error : function(e){alert(e);}
-            });
-    });
-
-    function result_search_region(data){
-        var html = "";
-        for (i=0; i<data.length; i++){
-            html += "<button class='detail_button' id='"+data[i].region_seq+"' onclick='add_list(this)'>";
-            if(data[i].region_seq == data[i].super_region_seq){
-                html += data[i].region+"전체";
-            }
-            else{
-                html += data[i].region;
-            }
-            html += "</button>";
-        }
-        $("#r_detail_list").html(html);
-    };
-
-
-
-
 
 })

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jobfinder.persistence.ResumeMapper">
+
+    <insert id="resume_add" parameterType="Resume">
+        insert into resume(sc_type, univ_type, sc_name, sc_sdate, sc_edate, sc_graduate, sc_major, sc_score, max_score, members_mem_id, portfolio, reg_date, resume_name)
+        values(#{sc_type}, #{univ_type}, #{sc_name}, #{sc_sdate}, #{sc_edate}, #{sc_graduate}, #{sc_major}, #{sc_score}, #{max_score}, #{members_mem_id}, #{portfolio}, now(), #{resume_name})
+    </insert>
+
+    <select id="resume_num" parameterType="String" resultType="int">
+        select seq from resume where members_mem_id = #{members_mem_id} order by reg_date asc limit 1;
+    </select>
+
+</mapper>
