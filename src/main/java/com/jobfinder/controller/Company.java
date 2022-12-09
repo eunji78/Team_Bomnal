@@ -2,7 +2,6 @@ package com.jobfinder.controller;
 
 import com.jobfinder.domain.*;
 import com.jobfinder.service.CompanyService;
-import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,6 +26,22 @@ public class Company {
 
 		model.addAttribute("list",list);
 		model.addAttribute("counting",counting);
+		session.setAttribute("pageMaker",pageMaker);
+		return "CompanyList";
+	}
+
+	@GetMapping("/companySearchList")
+	public String CompanySearchList(@RequestParam String keyword,Criteria cri, Model model, HttpSession session){
+		cri.setKeyword(keyword);
+		ArrayList<CompanyList> list = companyService.listsearch(cri);
+		int counting = companyService.countsearch(keyword);
+
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(cri);
+		pageMaker.setTotalCount((companyService.countmain()));
+		model.addAttribute("list",list);
+		model.addAttribute("counting",counting);
+		model.addAttribute("keyword",keyword);
 		session.setAttribute("pageMaker",pageMaker);
 		return "CompanyList";
 	}
@@ -58,9 +73,18 @@ public class Company {
 	}
 
 	@GetMapping("/companyReview/{company_id}")
-	public String CompanyReview(@PathVariable String company_id, Model model) {
+	public String CompanyReview(@PathVariable String company_id, Model model, HttpSession session, Reviews reviews) {
 		Company_info detail = companyService.detail(company_id);
-		ArrayList<Reviews> review = companyService.review(company_id);
+
+
+		LoginVO vo = (LoginVO)session.getAttribute("VO");
+		reviews.setCompany_id(company_id);
+
+		if (vo != null) {
+			reviews.setMem_id(vo.getMem_id());
+		}
+
+		ArrayList<Reviews> review = companyService.review(reviews);
 		Reviews avg = companyService.avg(company_id);
 //		int countgongo = companyService.countgongo(company_id);
 		int countreview = companyService.countreview(company_id);
@@ -70,8 +94,28 @@ public class Company {
 //		model.addAttribute("countgongo",countgongo);
 		model.addAttribute("countreview",countreview);
 
+
 		return "CompanyReview";
 	}
+
+	@PostMapping("/likeclick")
+	public Review_like like_click(Review_like like, HttpSession session, Model model){
+		LoginVO vo = (LoginVO) session.getAttribute("VO");
+		like.setMem_id(vo.getMem_id());
+		int like_check = companyService.likecheck(like);
+
+		if (like_check == 0){
+			companyService.likeinsert(like);
+		} else if (like_check == 1) {
+			companyService.likedelete(like);
+		}
+
+
+		return null;
+	}
+
+
+
 
 	@PostMapping("/save/{company_id}")
 	public String save(@ModelAttribute Reviews reviews, @PathVariable String company_id, HttpSession session){

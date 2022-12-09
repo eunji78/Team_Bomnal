@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class Reviews {
-    private String review_seq;
+    private int review_seq;
     private String company_id;
     private String review_content;
     private String review_likes;
@@ -22,4 +22,6 @@ public class Reviews {
     private double totalstar;
     private int avgsalary;
     private int countreview;
+    private int countlike;
+    private int like_check;
 }
