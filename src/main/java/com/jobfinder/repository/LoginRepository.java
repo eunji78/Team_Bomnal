@@ -17,13 +17,13 @@ public class LoginRepository {
 
     public LoginVO login_per(LoginVO vo){
         LoginVO rvo = loginMapper.login_per(vo);
-        System.out.println("Repository_login_per" + rvo);
+//        System.out.println("Repository_login_per" + rvo);
         return rvo;
     }
 
     public Login_ComVO login_com(Login_ComVO cvo){
         Login_ComVO rcvo = loginMapper.login_com(cvo);
-        System.out.println("Repository_login_com" + rcvo);
+//        System.out.println("Repository_login_com" + rcvo);
         return rcvo;
     }
 
@@ -77,6 +77,16 @@ public class LoginRepository {
 
     public int all_delete_data_com(String company_id) {
         int res = loginMapper.all_delete_data_com(company_id);
+        return res;
+    }
+
+    public int set_img_per(LoginVO vo) {
+        int res = loginMapper.set_img_per(vo);
+        return res;
+    }
+
+    public int set_img_com(Login_ComVO cvo) {
+        int res = loginMapper.set_img_com(cvo);
         return res;
     }
 }

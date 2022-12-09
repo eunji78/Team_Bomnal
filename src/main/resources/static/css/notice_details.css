@@ -76,7 +76,7 @@
 
 #slidemenu{
     width : 290px;
-    height : 310px;
+    height : 330px;
     position : absolute;
 }
 #dday{
@@ -131,14 +131,21 @@
 }
 
 .notice_td1{
-    width : 120px;
+    width : 120px !important;
+    table-layout:fixed;
 }
 
 .notice_td2{
-    width : 190px;
-    text-overflow:ellipsis;
+    width : 170px !important;
+    /*text-overflow:ellipsis;
     overflow:hidden;
-    white-space:nowrap;
+    white-space:nowrap;*/
+    table-layout:fixed;
+}
+
+.notice_td3{
+    width : 130px !important;
+    table-layout:fixed;
 }
 
 .deadline{
@@ -147,3 +154,30 @@
     overflow:hidden;
     white-space:nowrap;
 }
+
+.notice_table2{
+     width : 440px;
+     height : 120px;
+     table-layout : fixed;
+ }
+
+/* #detail_title{
+    display:none;
+    border:1px solid black;
+    width: 720px;
+    height : 930px;
+ }
+
+ .detail_img{
+    display:table-cell;
+    vertical-align:middle;
+ }
+
+ .detail_img>img{
+    max-width : 700px;
+    max-height : 900px;
+ }*/
+
+.detail_box{
+    overflow : hidden;
+ }

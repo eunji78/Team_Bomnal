@@ -22,4 +22,9 @@ public class Reviews {
     private double totalstar;
     private int avgsalary;
     private int countreview;
+    //추가
+    private String company_name;
+    private String company_logo;
+    private String company_url;
+    private  double average;
 }

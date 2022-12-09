@@ -1,7 +1,9 @@
 package com.jobfinder.repository;
 
+import com.jobfinder.domain.Company_info;
 import com.jobfinder.domain.Job;
 import com.jobfinder.domain.RegionVO;
+import com.jobfinder.domain.Reviews;
 import com.jobfinder.persistence.MainMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -32,5 +34,15 @@ public class MainRepository {
     public List<RegionVO> getRegionDetail(int super_seq){
         List<RegionVO> getRegionDetail = mainMapper.getRegionDetail(super_seq);
         return getRegionDetail;
+    }
+
+    public List<Company_info> getBestCompanies(){
+        List<Company_info> company_info = mainMapper.getBestCompanies();
+        return company_info;
+    }
+
+    public List<Reviews> getBestCompaniesReview() {
+        List<Reviews> reviews = mainMapper.getBestCompaniesReview();
+        return reviews;
     }
 }

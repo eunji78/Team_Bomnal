@@ -152,9 +152,7 @@
                       <th>지원자</th>
                       <th>자소서 & 이력서</th>
                       <th>
-                        <button class="sm-button" type="button"> View </button>
-                        <button class="sm-button" type="button"> 확인 </button>
-                        <button class="sm-button" type="button"> 거절 </button>
+
                       </th>
                     </tr>
                     </thead>
@@ -163,10 +161,10 @@
                     <tr th:each="rm : ${resume_list}">
                       <td class="col-2" th:text="${rm.mem_id}" style="text-align:center;">지원자</td>
                       <td class="col-8" th:text="${rm.resume_title}">제목</td>
-                      <td class="col-2" >
-                        <button class="sm-button" type="button"> View </button>
-                        <button class="sm-button" type="button"> 확인 </button>
-                        <button class="sm-button" type="button"> 거절 </button>
+                      <td class="col-2" style="text-align: right !important;">
+                        <button class="sm-button" type="button" style="display:inline-block;"> View </button>
+                        <button class="sm-button" type="button" style="display:inline-block;"> 확인 </button>
+                        <button class="sm-button" type="button" style="display:inline-block;"> 거절 </button>
                       </td>
                     </tr>
 

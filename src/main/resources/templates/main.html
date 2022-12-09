@@ -27,7 +27,7 @@
             <link rel="stylesheet" href="/css/header.css">
    </head>
    <body>
-
+   <th:block>
    <script>
     function add_list(item){
         var list_name = $("#"+item.id).text();
@@ -136,92 +136,16 @@
                 </div>
                 <!-- 검색 창 끝 -->
 
-                <div class="row d-flex justify-contnet-center">
-                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
-                        <div class="single-services text-center mb-30">
-                            <div class="services-ion">
-                                <span class="flaticon-tour"></span>
+                <div class="row d-flex justify-contnet-center single-padding-top">
+                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6" th:each="company:${company_info_list}">
+                        <div class="single-services text-center mb-30 single-company_item">
+                            <div class="services-ion single-logo-height">
+                                <img th:src="@{${company.company_logo}}">
                             </div>
+
                             <div class="services-cap">
-                               <h5><a href="job_listing.html">메타넷(주)</a></h5>
-                                <span>신입 인턴 채용</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
-                        <div class="single-services text-center mb-30">
-                            <div class="services-ion">
-                                <span class="flaticon-cms"></span>
-                            </div>
-                            <div class="services-cap">
-                               <h5><a href="job_listing.html">현대오토에버(주)</a></h5>
-                                <span>레드팀(모의해킹) 채용</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
-                        <div class="single-services text-center mb-30">
-                            <div class="services-ion">
-                                <span class="flaticon-report"></span>
-                            </div>
-                            <div class="services-cap">
-                               <h5><a href="job_listing.html">Sales & Marketing</a></h5>
-                                <span>(658)</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
-                        <div class="single-services text-center mb-30">
-                            <div class="services-ion">
-                                <span class="flaticon-app"></span>
-                            </div>
-                            <div class="services-cap">
-                               <h5><a href="job_listing.html">Mobile Application</a></h5>
-                                <span>(658)</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
-                        <div class="single-services text-center mb-30">
-                            <div class="services-ion">
-                                <span class="flaticon-helmet"></span>
-                            </div>
-                            <div class="services-cap">
-                               <h5><a href="job_listing.html">Construction</a></h5>
-                                <span>(658)</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
-                        <div class="single-services text-center mb-30">
-                            <div class="services-ion">
-                                <span class="flaticon-high-tech"></span>
-                            </div>
-                            <div class="services-cap">
-                               <h5><a href="job_listing.html">Information Technology</a></h5>
-                                <span>(658)</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
-                        <div class="single-services text-center mb-30">
-                            <div class="services-ion">
-                                <span class="flaticon-real-estate"></span>
-                            </div>
-                            <div class="services-cap">
-                               <h5><a href="job_listing.html">Real Estate</a></h5>
-                                <span>(658)</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
-                        <div class="single-services text-center mb-30">
-                            <div class="services-ion">
-                                <span class="flaticon-content"></span>
-                            </div>
-                            <div class="services-cap">
-                               <h5><a href="job_listing.html">Content Writer</a></h5>
-                                <span>(658)</span>
+                               <h5><a th:href="@{/companyDetail/{company_id}(company_id=${company.company_id})}" th:text="${company.company_name}">메타넷(주)</a></h5>
+                                <span th:text="${company.company_industry}" class="font-to-sky">신입 인턴 채용</span>
                             </div>
                         </div>
                     </div>
@@ -231,7 +155,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="browse-btn2 text-center mt-50">
-                            <a href="job_listing.html" class="border-btn2">채용 공고 모아 보기</a>
+                            <a href="/companyList" class="border-btn2 career-tag">기업 정보 모아 보기</a>
                         </div>
                     </div>
                 </div>
@@ -246,7 +170,7 @@
                         <div class="cv-caption text-center">
                             <p class="pera1">Make a Difference with Your Online Resume!</p>
                             <p class="pera2"> 온라인으로 이력서를 관리하세요</p>
-                            <a th:href="@{/resume_manage}" class="border-btn2 border-btn4">이력서 쓰러 가기</a>
+                            <a th:href="@{/resume_manage}" class="border-btn2 border-btn4 resume-tag">이력서 쓰러 가기</a>
                         </div>
                     </div>
                 </div>
@@ -254,7 +178,7 @@
         </div>
         <!-- Online CV Area End-->
         <!-- Featured_job_start -->
-        <section class="featured-job-area feature-padding">
+        <section class="featured-job-area feature-padding background-navy">
             <div class="container">
                 <!-- Section Tittle -->
                 <div class="row">
@@ -264,87 +188,42 @@
                         </div>
                     </div>
                 </div>
-                <div class="row justify-content-center">
+                <div class="row justify-content-center border-recruit white-board2">
                     <div class="col-xl-10">
                         <!-- single-job-content -->
-                        <div class="single-job-items mb-30">
+                        <div th:each="recruit,i:${recruit_list}" class="single-job-items mb-30 border-bottom-sing-job">
                             <div class="job-items">
+
                                 <div class="company-img">
-                                    <a href="job_details.html"><img src="/img/icon/job-list1.png" alt=""></a>
+                                    <a th:href="@{/noticeDetail/{r_seq}(r_seq=${recruit.r_seq})}"><img th:src="@{${recruit.company_logo }}" alt=""></a>
                                 </div>
                                 <div class="job-tittle">
-                                    <a href="job_details.html"><h4>Digital Marketer</h4></a>
+                                    <p th:text="${recruit.company_name}" class="margin-bottom-none"></p>
+                                    <a th:href="@{/noticeDetail/{r_seq}(r_seq=${recruit.r_seq})}"><h4>[[${recruit.r_title}]]</h4></a>
                                     <ul>
-                                        <li>Creative Agency</li>
-                                        <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>
-                                        <li>$3500 - $4000</li>
+                                        <li class="border-right-single">[[${recruit.r_part}]]</li>
+                                        <li class="border-right-single"><i class="fas fa-map-marker-alt"></i>[[${recruit.r_work_area}]]</li>
+                                        <li >
+                                            <span th:text="${recruit.r_salary}"></span>
+                                            <span th:if="${#strings. isEmpty(recruit.r_salary)}" th:text="'회사 내규에 따름'"></span>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
-                            <div class="items-link f-right">
-                                <a href="job_details.html">Full Time</a>
-                                <span>7 hours ago</span>
+                            <div class="items-link f-right text-to-center">
+                                <th:block th:switch="${recruit.r_job_pattern}">
+                                    <a href="job_details.html" class="career-tag" th:case="full">정규직</a>
+                                    <a href="job_details.html" class="career-tag" th:case="contract">계약직</a>
+                                    <a href="job_details.html" class="career-tag" th:case="alba">아르바이트</a>
+                                    <a href="job_details.html" class="career-tag" th:case="intern">인턴</a>
+                                    <a href="job_details.html" class="career-tag" th:case="free">프리랜서</a>
+                                    <a href="job_details.html" class="career-tag" th:case="part">파트타임</a>
+                                </th:block>
+                                <span th:text="${recruit.r_close_date}+'days ago'"></span>
                             </div>
                         </div>
-                        <!-- single-job-content -->
                         <div class="single-job-items mb-30">
-                            <div class="job-items">
-                                <div class="company-img">
-                                    <a href="job_details.html"><img src="/img/icon/job-list2.png" alt=""></a>
-                                </div>
-                                <div class="job-tittle">
-                                    <a href="job_details.html"><h4>Digital Marketer</h4></a>
-                                    <ul>
-                                        <li>Creative Agency</li>
-                                        <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>
-                                        <li>$3500 - $4000</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="items-link f-right">
-                                <a href="job_details.html">Full Time</a>
-                                <span>7 hours ago</span>
-                            </div>
-                        </div>
-                         <!-- single-job-content -->
-                        <div class="single-job-items mb-30">
-                            <div class="job-items">
-                                <div class="company-img">
-                                    <a href="job_details.html"><img src="/img/icon/job-list3.png" alt=""></a>
-                                </div>
-                                <div class="job-tittle">
-                                    <a href="job_details.html"><h4>Digital Marketer</h4></a>
-                                    <ul>
-                                        <li>Creative Agency</li>
-                                        <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>
-                                        <li>$3500 - $4000</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="items-link f-right">
-                                <a href="job_details.html">Full Time</a>
-                                <span>7 hours ago</span>
-                            </div>
-                        </div>
-                         <!-- single-job-content -->
-                        <div class="single-job-items mb-30">
-                            <div class="job-items">
-                                <div class="company-img">
-                                    <a href="job_details.html"><img src="/img/icon/job-list4.png" alt=""></a>
-                                </div>
-                                <div class="job-tittle">
-                                    <a href="job_details.html"><h4>Digital Marketer</h4></a>
-                                    <ul>
-                                        <li>Creative Agency</li>
-                                        <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>
-                                        <li>$3500 - $4000</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="items-link f-right">
-                                <a href="job_details.html">Full Time</a>
-                                <span>7 hours ago</span>
-                            </div>
+                            <button class="genric-btn info-border btn_recruit_list margin-left-right btn-big btn-font-big">채용 공고 모아보기</button>
                         </div>
                     </div>
                 </div>
@@ -358,13 +237,13 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="section-tittle text-center">
-                            <span>Our latest blog</span>
-                            <h2>Recent news</h2>
+                            <span>Latest company reviews</span>
+                            <h2>최신 기업 리뷰</h2>
                         </div>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-xl-6 col-lg-6 col-md-6">
+                    <div th:each="review:${review_list}"  class="col-xl-6 col-lg-6 col-md-6">
                         <div class="home-blog-single mb-30">
                             <div class="blog-img-cap">
                                 <div class="blog-img">
@@ -375,30 +254,34 @@
                                         <p>Now</p>
                                     </div>
                                 </div>
-                                <div class="blog-cap">
-                                    <p>|   Properties</p>
-                                    <h3><a href="single-blog.html">Footprints in Time is perfect House in Kurashiki</a></h3>
-                                    <a href="#" class="more-btn">Read more »</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-6 col-lg-6 col-md-6">
-                        <div class="home-blog-single mb-30">
-                            <div class="blog-img-cap">
-                                <div class="blog-img">
-                                    <img src="/img/blog/home-blog2.jpg" alt="">
-                                    <!-- Blog date -->
-                                    <div class="blog-date text-center">
-                                        <span>24</span>
-                                        <p>Now</p>
+                                <div class="box-flex">
+                                    <div class="blog-cap main-company-detail border-right-none single-company-box ellipsis">
+                                        <p th:text="${review.company_name}">|   Properties</p>
+                                        <a th:if="${session.VO == null}" th:href="@{/companyDetail/{company_id}(company_id=${review.company_id})}"><p class="btn-font-big ellipsis">[[${review.review_content}]]</p></a>
+                                        <a th:if="${session.VO != null}" th:href="@{/companyReview/{company_id}(company_id=${review.company_id})}"><p class="btn-font-big ellipsis">[[${review.review_content}]]</p></a>
+
+                                        <a th:href="@{/companyDetail/{company_id}(company_id=${review.company_id})}" class="more-btn">홈페이지 바로가기</a>
+                                    </div>
+                                    <div class="main-company-logo single-review-right">
+                                        <div>
+                                            <img th:src="@{${review.company_logo}}" class="margin-left-right">
+                                        </div>
+                                        <div>
+                                            <span th:if="${review.totalstar < 2}" th:text="'⭐'"></span>
+                                            <span th:if="${review.totalstar >= 2} and ${review.totalstar < 3}"
+                                                  th:text="'⭐⭐ '"></span>
+                                            <span th:if="${review.totalstar >= 3} and ${review.totalstar < 4}"
+                                                  th:text="'⭐⭐⭐ '"></span>
+                                            <span th:if="${review.totalstar >= 4} and ${review.totalstar < 5}"
+                                                  th:text="'⭐⭐⭐⭐ '"></span>
+                                            <span th:if="${review.totalstar == 5}" th:text="'⭐⭐⭐⭐⭐ '"></span>
+                                        </div>
+                                        <div>
+                                            <span th:text="${review.average}"></span>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="blog-cap">
-                                    <p>|   Properties</p>
-                                    <h3><a href="single-blog.html">Footprints in Time is perfect House in Kurashiki</a></h3>
-                                    <a href="#" class="more-btn">Read more »</a>
-                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -455,5 +338,6 @@
         <script src="/js/main-page.js"></script>
         <script src="/js/search.js"></script>
         <!--<script type="text/javascript" th:src="@{/js/main-page.js}"></script>-->
+   </th:block>
     </body>
 </html>

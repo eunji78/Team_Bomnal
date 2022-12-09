@@ -40,6 +40,7 @@
     margin-bottom: 1em;
     align-items: center;
 }
+
 .inner-text{
     height: 2.5em;
 }
@@ -261,6 +262,121 @@
 .make-scroll{
     height: 10em;
     overflow: auto !important;
+}
+.textarea-box{
+    width: 100% !important;
+    height: 100px !important;
+    resize: none !important;
+}
+.main-company-detail{
+    width:70%;
+}
+.ellipsis {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+.main-company-logo{
+    width:30%;
+}
+.border-right-none{
+    border-right: 0 !important;
+}
+.border-recruit{
+    border: lightgray solid 0.5px;
+}
+.border-bottom-sing-job{
+    border-bottom: lightgray solid 0.5px;
+}
+.border-right-single{
+    border-right: lightgray solid 0.5px;
+    padding-right: 24px !important;
+    margin-right: 24px !important;
+}
+.margin-left-right{
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+.btn_recruit_list{
+    color: gray !important;
+    border: 1px solid gray !important;
+}
+.btn_recruit_list:hover{
+    color: white !important;
+    background-color:#38a4ff !important;
+    border: 0 !important;
+}
+.btn-big{
+    height: 2.5em;
+}
+.btn-font-big{
+    font-size: 1.5em;
+}
+.index-color{
+    color: gray;
+}
+.box-items-index{
+    width:2.5em;
+}
+.margin-bottom-none{
+    margin-bottom: 0 !important;
+}
+.margin-top-bottom{
+    margin-top: auto;
+    margin-bottom: auto;
+}
+.text-to-center{
+    text-align: center;
+}
+.career-tag{
+    border: 1px #38a4ff solid !important;
+    color: #38a4ff !important;
+}
+.career-tag:hover{
+    border: 0 !important;
+    color: white !important;
+    background-color: #38a4ff !important;
+}
+.career-tag::before{
+    background-color: #38a4ff !important;
+}
+.resume-tag{
+    border: 1px lightgray solid !important;
+    color: lightgray !important;
+}
+.resume-tag:hover{
+    border: 0 !important;
+    color: white !important;
+    background-color: #38a4ff !important;
+}
+.resume-tag::before{
+    background-color: #38a4ff !important;
+}
+.border-color-lightgray{
+    border: solid 1px lightgray;
+}
+.single-company-box{
+    padding: 37px 15px 37px 30px !important;
+}
+.single-review-right{
+    display: flex;
+    flex-direction: column;
+    align-items : center;
+
+}
+
+.single-logo-height{
+    height: 100px;
+    margin-bottom: 1em;
+}
+.font-to-sky{
+    color:#38a4ff !important;
+}
+/* 스타일 원본 중복정의*/
+.our-services
+.single-services:hover .services-cap h5 a{color:#38a4ff !important;}
+.single-padding-top{
+    padding-top: 2em;
 }
 /*---------------------Summer Note-----------------------------------*/
 @font-face {

@@ -18,4 +18,19 @@
     <select id="getJobDetail" resultType="Job">
         select * from job where super_job_seq = #{super_seq}
     </select>
+
+    <select id="getBestCompanies" resultType="Company_info">
+        select *, ifnull((select round((avg(welfare)+avg(work_life_balance)+avg(inner_culture)+avg(p_opportunity)+avg(management))/5,2) as average
+        from reviews as b where a.company_id = b.company_id group by company_id),0) as average
+        from company_detail as a order by average desc limit 8
+    </select>
+
+    <select id="getBestCompaniesReview" resultType="Reviews">
+        select *
+        from company_detail as a,
+        (select company_id, round((avg(welfare)+avg(work_life_balance)+avg(inner_culture)+avg(p_opportunity)+avg(management))/5,2) as average
+        from reviews group by company_id) as b,
+        (select *, round((welfare + work_life_balance + inner_culture + p_opportunity + management)/5,1) as totalstar from reviews order by totalstar desc) as c
+        where a.company_id = b.company_id and a.company_id = c.company_id order by reg_date desc limit 10;
+    </select>
 </mapper>

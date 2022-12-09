@@ -29,4 +29,8 @@ public interface LoginMapper {
     public int all_delete_data_per(String mem_id);
 
     public int all_delete_data_com(String company_id);
+
+    public int set_img_per(LoginVO vo);
+
+    public int set_img_com(Login_ComVO cvo);
 }
