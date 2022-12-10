@@ -98,18 +98,23 @@ public class Company {
 		return "CompanyReview";
 	}
 
-	@PostMapping("/likeclick")
-	public Review_like like_click(Review_like like, HttpSession session, Model model){
+	@PostMapping("/likeinsert")
+	@ResponseBody
+	public Review_like likeinsert(Review_like like, HttpSession session, Model model){
 		LoginVO vo = (LoginVO) session.getAttribute("VO");
 		like.setMem_id(vo.getMem_id());
-		int like_check = companyService.likecheck(like);
+		companyService.likeinsert(like);
 
-		if (like_check == 0){
-			companyService.likeinsert(like);
-		} else if (like_check == 1) {
-			companyService.likedelete(like);
-		}
+		return null;
+	}
 
+	@PostMapping("likedelete")
+	@ResponseBody
+	public Review_like likedelete(Review_like like, HttpSession session, Model model){
+		LoginVO vo = (LoginVO) session.getAttribute("VO");
+		like.setMem_id(vo.getMem_id());
+
+		companyService.likedelete(like);
 
 		return null;
 	}

@@ -342,18 +342,21 @@
                                             th:text="${#strings.substring(r.reg_date,0,10)}+ ' | '">2022.12.02 |
                                     </medium>
                                     <medium>연봉 <b th:text="${r.my_salary} +'만원'">4700만원</b></medium>
-                                    <button th:if="${session.VO == null}" id="btn_like" style="display:inline;">🖤<small
+                                    <a th:if="${session.VO == null}" id="btn_like" style="display:inline;">🤍<small
                                             style="color:black;" id="countLike"
                                             th:if="${not #strings.isEmpty(r.countlike)}"
-                                            th:text="${r.countlike}"></small></button>
+                                            th:text="${r.countlike}"></small></a>
 
-                                    <button th:if="${session.VO != null} and ${r.like_check ==0}" id="btn_like" style="display:inline;"
-                                            th:attr="onclick=|clickLike('${r.review_seq}')|">🖤
-                                        <small style="color:black;" id="countLike" th:if="${not #strings.isEmpty(r.countlike)}" th:text="${r.countlike}"></small></button>
 
-                                    <button th:if="${session.VO != null} and ${r.like_check ==1}" id="btn_like" style="display:inline; color:red;"
-                                            th:attr="onclick=|clickLike('${r.review_seq}')|">❤
-                                        <small style="color:black;" id="countLike" th:if="${not #strings.isEmpty(r.countlike)}" th:text="${r.countlike}"></small></button>
+                                    <a href='javascript:void(0);' th:if="${session.VO != null} and ${r.like_check ==0}" th:id="'btn_like'+${r.review_seq}" style="display:inline; color:black;"
+                                            th:attr="onclick=|clickLike1('${r.review_seq}')|">🤍
+                                        <small style="color:black;" th:id="'countLike'+${r.review_seq}" th:if="${not #strings.isEmpty(r.countlike)}" th:text="${r.countlike}"></small></a>
+
+                                    <a href='javascript:void(0);' th:if="${session.VO != null} and ${r.like_check ==1}" th:id="'btn_like'+${r.review_seq}" style="display:inline; color:red;"
+                                            th:attr="onclick=|clickLike2('${r.review_seq}')|">❤
+                                        <small style="color:black;" th:id="'countLike'+${r.review_seq}" th:if="${not #strings.isEmpty(r.countlike)}" th:text="${r.countlike}"></small></a>
+
+
                                     <br>
                                     <br>
                                     <table>
@@ -518,22 +521,48 @@
 </script>
 <script th:inline="javascript">
 /*<![CDATA[*/
-    function clickLike(review_seq) {
+    function clickLike1(review_seq) {
 		console.log(review_seq)
 
         $.ajax({
-         url : "/likeclick",
+         url : "/likeinsert",
          type : "post",
          data :
          {
             "review_seq" : review_seq
          },
          success : function() {
-            let text = $("#countLike").html()
-            $("#btn_like").html('🧡<small style="display:inline;" id="countLike">'+(text*1+1)+'</small>')
+            let text = $("#countLike"+review_seq).html()
+            $("#btn_like"+review_seq).html('🧡<small style="display:inline; color:black" id="countLike'+review_seq+'">'+(text*1+1)+'</small>')
+            $("#btn_like"+review_seq).attr("onclick","clickLike2("+review_seq+")")
          },
-         error : function() {
-            alert("error")
+         error : function(request, status, error) {
+            alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+         }
+      })
+	}
+/*]]*/
+
+</script>
+<script th:inline="javascript">
+/*<![CDATA[*/
+    function clickLike2(review_seq) {
+		console.log(review_seq)
+
+        $.ajax({
+         url : "/likedelete",
+         type : "post",
+         data :
+         {
+            "review_seq" : review_seq
+         },
+         success : function() {
+            let text = $("#countLike"+review_seq).html()
+            $("#btn_like"+review_seq).html('🤍<small style="display:inline; color:black;" id="countLike'+review_seq+'">'+(text*1-1)+'</small>')
+            $("#btn_like"+review_seq).attr("onclick","clickLike1("+review_seq+")")
+         },
+         error : function(request, status, error) {
+            alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
          }
       })
 	}
