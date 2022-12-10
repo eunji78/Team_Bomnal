@@ -15,6 +15,9 @@ public class ResumeController {
 
     private final ResumeService resumeService;
 
+    /**
+     *  이력서 등록
+     */
     @PostMapping("/resume")
     @ResponseBody
     public int resume_add(@RequestBody Resume resume){
@@ -49,5 +52,39 @@ public class ResumeController {
     public String awards_add(@RequestBody Awards awards){
         resumeService.awards_add(awards);
         return null;
+    }
+
+
+    /**
+     *  이력서 수정
+     */
+    @PostMapping("/resume_edit")
+    @ResponseBody
+    public void resume_edit(@RequestBody Resume resume){
+        resumeService.resume_edit(resume);
+    }
+
+    @PostMapping("/resume/lang_edit")
+    @ResponseBody
+    public void lang_edit(@RequestBody Language language){
+        resumeService.lang_edit(language);
+    }
+
+    @PostMapping("/resume/career_edit")
+    @ResponseBody
+    public void career_edit(@RequestBody Career career){
+        resumeService.career_edit(career);
+    }
+
+    @PostMapping("/resume/cert_edit")
+    @ResponseBody
+    public void cert_edit(@RequestBody Certificate certificate){
+        resumeService.cert_edit(certificate);
+    }
+
+    @PostMapping("/resume/awards_edit")
+    @ResponseBody
+    public void awards_edit(@RequestBody Awards awards){
+        resumeService.awards_edit(awards);
     }
 }

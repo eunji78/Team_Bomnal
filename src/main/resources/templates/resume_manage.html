@@ -103,16 +103,16 @@
                                 <div class="col01" style="text-align:center">이력서 제목</div>
                                 <div class="col02" style="padding-right:40px">이력서 관리</div>
                             </div>
-                            <div class="resume_list">
+                            <div th:each="list : ${resume}" class="resume_list">
                                 <ul>
                                     <li style="display:table">
                                         <div class="col01">
-                                            <div class="tit">이력서</div>
-                                            <div class="date">2022.02.22</div>
+                                            <div th:text="${list.resume_name}" class="tit">이력서</div>
+                                            <div th:text="${list.reg_date}" class="date">2022.02.22</div>
                                         </div>
                                         <div class="col02">
                                             <div class="btnCell">
-                                                <a class="r-btn" th:href="@{/resume_form}">수정</a>
+                                                <a class="r-btn" th:href="@{/resume_edit/{seq}(seq=${list.seq})}">수정</a>
                                                 <a class="r-btn" th:href="@{/resume_delete}">삭제</a>
                                             </div>
                                         </div>
