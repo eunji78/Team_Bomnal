@@ -6,12 +6,17 @@ import com.jobfinder.domain.Login_ComVO;
 import com.jobfinder.domain.Recruit;
 import com.jobfinder.service.LoginService;
 
+import lombok.extern.slf4j.Slf4j;
+import org.codehaus.groovy.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.UrlResource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -29,6 +34,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
 
+@Slf4j
 @Controller
 public class LoginController {
 
@@ -266,7 +272,7 @@ public class LoginController {
         return "redirect:/";
     };
 
-    @RequestMapping(value = "/signup_local")
+    @GetMapping(value = "/signup_local")
     public String signup_local(Model model, LoginVO loginVO) {
         model.addAttribute("LoginVO", loginVO);
         return "signup_local";
@@ -303,8 +309,35 @@ public class LoginController {
         return "redirect:/";
     };
 
-    @RequestMapping(value = "/signup_per")
-    public String signup_per(@ModelAttribute LoginVO vo) {
+    @PostMapping(value = "/signup_local")
+    public String signup_per(@ModelAttribute LoginVO vo, BindingResult bindingResult) {
+
+
+        // 데이터 검증
+        if(!StringUtils.hasText(vo.getMem_id())){
+            bindingResult.addError(new FieldError("vo", "mem_id","아이디는 필수로 입력해야합니다."));
+        }
+
+        if(vo.getMem_pw() == null || vo.getMem_pw().length() < 8){
+            bindingResult.addError(new FieldError("vo", "mem_pw","비밀번호는 8자 이상 입력해주세요."));
+        }
+
+        if(!StringUtils.hasText(vo.getMem_name())){
+            bindingResult.addError(new FieldError("vo", "mem_name","이름는 필수로 입력해야합니다."));
+        }
+
+        if(!StringUtils.hasText(vo.getMem_gender())){
+            bindingResult.addError(new FieldError("vo", "mem_gender","성별을 체크해주세요."));
+        }
+
+
+        //검증 실패시 다시 폼으로
+        if(bindingResult.hasErrors()){
+            log.info("errors={}", bindingResult);
+            return "/signup_local";
+        }
+
+
 
         StringBuffer sb = new StringBuffer();
         sb.append(vo.getMem_phone());

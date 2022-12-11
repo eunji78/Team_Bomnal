@@ -37,7 +37,7 @@
                             </div>
                             <!-- Header-btn -->
                             <div th:if="${session.VO == null}" class="header-btn d-none f-right d-lg-block">
-                                <a th:if="${session.VO == null}" th:href="@{/loginform}" class="btn head-btn1" style="width: 100px !important; height: 30px !important; padding: 18px 5px !important;" >회원가입</a>
+                                <a th:if="${session.VO == null}" th:href="@{/signup_local}" class="btn head-btn1" style="width: 100px !important; height: 30px !important; padding: 18px 5px !important;" >회원가입</a>
                                 <a th:if="${session.VO == null}" th:href="@{/loginform}" class="btn head-btn2" style="width: 100px !important; height: 30px !important; padding: 18px 5px !important;" >로그인</a>
                             </div>
                             <div th:if="${session.VO != null}" style="padding: 5px 10px 5px 15px!important;">
