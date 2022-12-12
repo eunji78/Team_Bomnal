@@ -38,16 +38,39 @@
         r_salary_type, r_salary, r_salary_bylaws, r_work_time, r_work_time_after, r_job_pattern, r_work_area,
         r_work_addr, r_manager_email, r_manager_name, r_manager_phone_first, r_manager_phone_second,
         r_manager_phone_third, r_manager_email_public, r_manager_name_public, r_manager_phone_public, company_logo)
-        values ( 'test_id', 'test_name', #{r_part}, #{r_title}, #{r_business}, #{r_license}, #{r_detail}, #{r_open_date},
+        values ( #{company_id}, #{company_name}, #{r_part}, #{r_title}, #{r_business}, #{r_license}, #{r_detail}, #{r_open_date},
         #{r_open_hour}, #{r_close_date}, #{r_close_hour}, #{r_career}, #{r_academic_ability}, #{r_academic_option}, #{r_academic_candidate},
-        #{r_salary_type}, #{r_salary}, #{r_salary_bylaws}, #{r_work_time}, #{r_work_time_after}, #{r_job_pattern}, #{r_work_area},
-        #{r_work_addr}, #{r_manager_email}, #{r_manager_name}, #{r_manager_phone_first}, #{r_manager_phone_second},
-        #{r_manager_phone_third}, #{r_manager_email_public}, #{r_manager_name_public}, #{r_manager_phone_public}, #{company_logo})
+        #{r_salary_type}, nullif(#{r_salary},''), #{r_salary_bylaws}, nullif(#{r_work_time},''), #{r_work_time_after}, #{r_job_pattern}, #{r_work_area},
+        #{r_work_addr}, #{r_manager_email}, #{r_manager_name}, nullif(#{r_manager_phone_first},''), nullif(#{r_manager_phone_second},''),
+        nullif(#{r_manager_phone_third},''), #{r_manager_email_public}, #{r_manager_name_public}, #{r_manager_phone_public}, #{company_logo})
     </insert>
 
     <select id="getLatestRecruits" resultType="Recruit">
         select r_seq, company_name, r_title, (select job from job where job_seq = r_part) as r_part, r_work_area, r_salary_type, r_salary,
         r_salary_bylaws, r_job_pattern, datediff(sysdate(), r_open_date) as r_close_date, company_logo
         from recruit order by r_close_date limit 2,10;
+    </select>
+
+    <update id="updateJobPosting" parameterType="Recruit">
+        update recruit set company_id = #{company_id}, company_name = #{company_name}, r_part = #{r_part},
+        r_title = #{r_title}, r_business = #{r_business}, r_license = #{r_license}, r_detail = #{r_detail},
+        r_open_date = nullif(#{r_open_date},''), r_open_hour = #{r_open_hour}, r_close_date = nullif(#{r_close_date},''),
+        r_close_hour = #{r_close_hour}, r_career = #{r_career}, r_academic_ability = #{r_academic_ability},
+        r_academic_option = #{r_academic_option}, r_academic_candidate = #{r_academic_candidate},
+        r_salary_type = #{r_salary_type}, r_salary = nullif(#{r_salary},''), r_salary_bylaws = #{r_salary_bylaws},
+        r_work_time = nullif(#{r_work_time},''), r_work_time_after = #{r_work_time_after}, r_job_pattern = #{r_job_pattern},
+        r_work_area = #{r_work_area}, r_work_addr = #{r_work_addr}, r_manager_email = #{r_manager_email},
+        r_manager_name = #{r_manager_name}, r_manager_phone_first = nullif(#{r_manager_phone_first},''),
+        r_manager_phone_second = nullif(#{r_manager_phone_second},''), r_manager_phone_third = nullif(#{r_manager_phone_third},''),
+        r_manager_email_public = #{r_manager_email_public}, r_manager_name_public = #{r_manager_name_public},
+        r_manager_phone_public = #{r_manager_phone_public}, company_logo = #{company_logo} where r_seq = #{r_seq}
+    </update>
+
+    <select id="getRecruit" parameterType="int" resultType="Recruit">
+        select * from recruit where r_seq = 26;
+    </select>
+
+    <select id="getJobName" parameterType="String" resultType="String">
+        select job as job_name from job where job_seq = #{r_part}
     </select>
 </mapper>

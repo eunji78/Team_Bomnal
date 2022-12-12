@@ -17,4 +17,10 @@ public interface RecruitMapper {
     public void insertJobPosting(Recruit recruit);
 
     public List<Recruit> getLatestRecruits();
+
+    public Recruit getRecruit(int r_seq);
+
+    public void updateJobPosting(Recruit recruit);
+
+    String getJobName(String r_part);
 }
