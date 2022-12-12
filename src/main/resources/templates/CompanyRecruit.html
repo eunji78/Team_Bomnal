@@ -90,10 +90,10 @@
                             <div class="">
 
 
-                                <h2 th:text="${detail.company_name}+' 채용공고'">삼성전자 채용공고</h2>
+                                <h2 th:text="${detail.company_name}+' 채용공고'" style="font-size:24px; font-weight:600;">삼성전자 채용공고</h2>
 
                                 <ul class="blog-info-link mt-3 mb-4">
-                                    <li><a href="#"><i class="fa fa-comments" th:text="' 4개의 채용공고'"></i></a>
+                                    <li><a href="#"><i class="fa fa-comments" th:text="${countgongo}+'개의 채용공고'"></i></a>
                                     </li>
                                 </ul>
 
@@ -109,20 +109,12 @@
                                                         <div class="card-body">
                                                             <h4 class="card-title" th:text="${r.r_title}">Card
                                                                 title</h4>
-                                                            <p class="card-text" th:text="${r.r_business}">
-                                                                This card has supporting text below as a natural lead-in
-                                                                to additional
-                                                                content.</p>
-                                                            <p class="card-text" th:text="${r.r_job_pattern}">
-                                                                This card has supporting text below as a natural lead-in
-                                                                to additional
-                                                                content.</p>
-                                                            <p class="card-text" th:text="${r.r_part}">
-                                                                This card has supporting text below as a natural lead-in
-                                                                to additional
-                                                                content.</p>
+                                                            <p class="card-text" th:if="${r.r_job_pattern} == 'full'" th:text="'정규직'">
+                                                                This card has supporting text below as a natural lead-in</p>
+                                                            <p class="card-text" th:if="${r.r_job_pattern} == 'contract'" th:text="'비정규직/계약직'">
+                                                                This card has supporting text below as a natural lead-in</p>
                                                             <small class="text-muted"
-                                                                   th:text="${#strings.substring(r.r_reg_date,0,10)}+' 등록'">Last
+                                                                   th:text="${#strings.substring(r.r_open_date,0,10)}+' 등록'">Last
                                                                 updated 3 mins ago</small><br>
                                                             <small class="text-muted"
                                                                    th:text="${#strings.substring(r.r_close_date,0,10)}+' 마감'">Last

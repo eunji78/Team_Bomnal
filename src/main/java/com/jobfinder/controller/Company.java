@@ -66,9 +66,9 @@ public class Company {
 	@GetMapping("/companyDetail/{company_id}")
 	public String CompanyDetail(@PathVariable String company_id, Model model) {
 		Company_info detail = companyService.detail(company_id);
-//		int countgongo = companyService.countgongo(company_id);
+		int countgongo = companyService.countgongo(company_id);
 		model.addAttribute("detail",detail);
-//		model.addAttribute("countgongo",countgongo);
+		model.addAttribute("countgongo",countgongo);
 		return "CompanyDetail";
 	}
 
@@ -86,12 +86,12 @@ public class Company {
 
 		ArrayList<Reviews> review = companyService.review(reviews);
 		Reviews avg = companyService.avg(company_id);
-//		int countgongo = companyService.countgongo(company_id);
+		int countgongo = companyService.countgongo(company_id);
 		int countreview = companyService.countreview(company_id);
 		model.addAttribute("review",review);
 		model.addAttribute("detail",detail);
 		model.addAttribute("avg",avg);
-//		model.addAttribute("countgongo",countgongo);
+		model.addAttribute("countgongo",countgongo);
 		model.addAttribute("countreview",countreview);
 
 
@@ -135,11 +135,11 @@ public class Company {
 	@GetMapping("/companyRecruit/{company_id}")
 	public String Recruit(@PathVariable String company_id, Model model){
 		Company_info detail = companyService.detail(company_id);
-//		ArrayList<Recruit> gongo = companyService.gongo(company_id);
-//		int countgongo = companyService.countgongo(company_id);
+		ArrayList<Recruit> gongo = companyService.gongo(company_id);
+		int countgongo = companyService.countgongo(company_id);
 		model.addAttribute("detail",detail);
-//		model.addAttribute("gongo",gongo);
-//		model.addAttribute("countgongo",countgongo);
+		model.addAttribute("gongo",gongo);
+		model.addAttribute("countgongo",countgongo);
 		return "CompanyRecruit";
 	}
 

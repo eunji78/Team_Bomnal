@@ -78,10 +78,8 @@
                            class="genric-btn primary-border radius">기업상세</a>
                         <a th:href="@{/companyReview/{company_id}(company_id=${detail.company_id})}"
                            class="genric-btn success radius">기업리뷰</a>
-                        <!--                        <a th:href="@{/companyRecruit/{company_id}(company_id=${detail.company_id})}"-->
-                        <!--                           class="genric-btn warning-border radius" th:text="'채용공고('+${countgongo}+')'">채용공고(4)</a>-->
-                        <a th:href="@{/companyRecruit/{company_id}(company_id=${detail.company_id})}"
-                           class="genric-btn warning-border radius" th:text="'채용공고(4)'">채용공고(4)</a>
+                                                <a th:href="@{/companyRecruit/{company_id}(company_id=${detail.company_id})}"
+                                                   class="genric-btn warning-border radius" th:text="'채용공고('+${countgongo}+')'">채용공고(4)</a>
                     </div>
 
                 </div>
