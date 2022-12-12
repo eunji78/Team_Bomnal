@@ -48,7 +48,7 @@
         inner_culture,p_opportunity,management,pros,cons,my_salary,current_yn, count(like_seq) as countlike,
         (select count(*) from review_like where review_seq=a.review_seq and mem_id=#{mem_id}) as like_check
         from reviews a left join review_like b on a.review_seq = b.review_seq
-        where company_id=#{company_id} group by a.review_seq,company_id,review_content,review_likes,reg_date,a.mem_id,pros;
+        where company_id=#{company_id} group by a.review_seq,company_id,review_content,review_likes,reg_date,a.mem_id,pros order by countlike desc, reg_date desc;
     </select>
 
     <select id="countreview" parameterType="String" resultType="int">
