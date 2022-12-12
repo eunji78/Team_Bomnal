@@ -11,7 +11,16 @@
 
     <!-- CSS here -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/css/flaticon.css">
+    <link rel="stylesheet" href="/css/price_rangs.css">
+    <link rel="stylesheet" href="/css/slicknav.css">
+    <link rel="stylesheet" href="/css/animate.min.css">
+    <link rel="stylesheet" href="/css/magnific-popup.css">
+    <link rel="stylesheet" href="/css/fontawesome-all.min.css">
     <link rel="stylesheet" href="/css/themify-icons.css">
+    <link rel="stylesheet" href="/css/slick.css">
+    <link rel="stylesheet" href="/css/nice-select.css">
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/notice_details.css">
 </head>
@@ -53,7 +62,7 @@
                 </div>
                 <div class="modal-footer">
                     <th:block>
-                    <button type="button" class="btn btn-primary" th:style="${session.VO != null} and ${session.type == 'P'} ? 'display:block' : 'display:none'">입사지원</button>
+                    <button type="button" onclick="location.href='https://www.saramin.co.kr/zf_user/'" class="btn btn-primary" th:style="${session.VO != null} and ${session.type == 'P'} ? 'display:block' : 'display:none'">입사지원</button>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     </th:block>
                 </div>
@@ -160,6 +169,7 @@
                                     <div class="detail_box">
                                         <p th:utext="${notice.r_detail}">기업메시지 넣으세요~</p>
                                     </div>
+                                    <span th:if = "${notice.r_work_addr != null}" th:text="|근무지 위치 : ${notice.r_work_addr}|"></span>
                                 </div>
                                 <div class="col-xl-8" style="padding:20px;"></div>
                                 <div class="small-section-tittle">
@@ -309,7 +319,7 @@ function diffDay(){
   const diffSec = String(Math.floor(distance / 1000 % 60)).padStart(2,"0");
 
   document.getElementById("demo").innerHTML = `${days}일`;
-  document.getElementById("dtime").innerHTML = `${diffHour}:${diffMin}:${diffSec}`;
+  document.getElementById("dtime").innerHTML = `${diffHour} : ${diffMin} : ${diffSec}`;
   document.getElementById("expired").innerHTML = days + "일 남았습니다.";
 /*]]>*/
 }
