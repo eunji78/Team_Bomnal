@@ -63,11 +63,9 @@
                                     <h1 th:text="${detail.company_name}">삼성전자(주)</h1>
                                 </a>
                                 <ul>
-                                    <li th:text="${detail.company_industry}">전기/전자/제어</li>
-                                    <li th:text="${#strings.listSplit(detail.company_address,' ')[0]}"><i
-                                            class="fas fa-map-marker-alt"></i>서울
-                                    </li>
-                                    <li>대기업</li>
+                                    <img src="/img/settings.png"><li th:text="${detail.company_industry}">전기/전자/제어</li>
+                                    <img src="/img/icon/pin.png"><li th:text="${#strings.listSplit(detail.company_address,' ')[0]}">서울</li>
+                                    <img src="/img/home.png"><li th:text="${detail.company_type}">대기업</li>
                                 </ul>
                             </div>
                         </div>
@@ -104,21 +102,23 @@
                                     <div class="row match-height">
                                         <div class="col-12">
                                             <div class="card-group">
-                                                <div class="card" th:each="r:${gongo}">
+                                                <div class="card" th:each="r, i:${gongo}">
                                                     <div class="card-content">
                                                         <div class="card-body">
-                                                            <h4 class="card-title" th:text="${r.r_title}">Card
-                                                                title</h4>
+                                                            <a th:href="@{/noticeDetail/{r_seq}(r_seq=${r.r_seq})}"><h4 class="card-title" th:text="${r.r_title}">Card
+                                                                title</h4></a>
                                                             <p class="card-text" th:if="${r.r_job_pattern} == 'full'" th:text="'정규직'">
                                                                 This card has supporting text below as a natural lead-in</p>
                                                             <p class="card-text" th:if="${r.r_job_pattern} == 'contract'" th:text="'비정규직/계약직'">
                                                                 This card has supporting text below as a natural lead-in</p>
-                                                            <small class="text-muted"
-                                                                   th:text="${#strings.substring(r.r_open_date,0,10)}+' 등록'">Last
-                                                                updated 3 mins ago</small><br>
-                                                            <small class="text-muted"
+                                                            <small class="text-muted" th:id="'expired'+${i.index}"
                                                                    th:text="${#strings.substring(r.r_close_date,0,10)}+' 마감'">Last
+                                                                updated 3 mins ago</small><br>
+                                                            <small class="text-muted" th:id="'demo'+${i.index}">Last
                                                                 updated 3 mins ago</small>
+                                                            <small class="text-muted" th:id="'dtime'+${i.index}">Last
+                                                                updated 3 mins ago</small>
+
                                                         </div>
                                                     </div>
                                                 </div>
@@ -184,6 +184,34 @@
 <!-- Jquery Plugins, main Jquery -->
 <script src="/js/plugins.js"></script>
 <script src="/js/main.js"></script>
+<script th:inline="javascript">
+function diffDay(){
+/*<![CDATA[*/
+  const now = new Date();
+
+  $(".card-body").each(function(index) {
+  const countDownDate = $("#expired"+index).html().substr(0,10);
+
+  ccount = new Date(countDownDate);
+
+  const distance = ccount - now;
+
+  console.log(distance)
+  const days = String(Math.floor(distance / (1000 * 60 * 60 * 24)));
+  const diffHour = String(Math.floor((distance / (1000*60*60)) % 24)).padStart(2,"0");
+  const diffMin = String(Math.floor((distance / (1000*60)) % 60)).padStart(2,"0");
+  const diffSec = String(Math.floor(distance / 1000 % 60)).padStart(2,"0");
+
+
+  document.getElementById("demo"+index).innerHTML = `${days}일`;
+  document.getElementById("dtime"+index).innerHTML = `D-day ${diffHour}:${diffMin}:${diffSec}`;
+})
+/*]]>*/
+
+}
+diffDay();
+setInterval(diffDay, 1000);
+</script>
 
 </body>
 </html>

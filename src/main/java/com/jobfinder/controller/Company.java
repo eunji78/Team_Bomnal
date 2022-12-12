@@ -22,7 +22,7 @@ public class Company {
 
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(cri);
-		pageMaker.setTotalCount((companyService.countmain()));
+		pageMaker.setTotalCount(counting);
 
 		model.addAttribute("list",list);
 		model.addAttribute("counting",counting);
@@ -38,7 +38,7 @@ public class Company {
 
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(cri);
-		pageMaker.setTotalCount((companyService.countmain()));
+		pageMaker.setTotalCount(counting);
 		model.addAttribute("list",list);
 		model.addAttribute("counting",counting);
 		model.addAttribute("keyword",keyword);
@@ -54,7 +54,7 @@ public class Company {
 
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(cri);
-		pageMaker.setTotalCount((companyService.count(industry_class)));
+		pageMaker.setTotalCount(counting);
 
 
 		model.addAttribute("list",list);
