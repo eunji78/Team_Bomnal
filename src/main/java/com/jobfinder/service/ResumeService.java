@@ -18,6 +18,12 @@ public class ResumeService {
 
     private final ResumeRepository resumeRepository;
 
+
+    //이력서 삭제
+    public void delete_resume(int seq){
+        resumeRepository.delete_resume(seq);
+    }
+
     /**
      *  이력서 등록
      */

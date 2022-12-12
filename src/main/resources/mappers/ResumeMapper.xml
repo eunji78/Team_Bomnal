@@ -41,7 +41,7 @@
     </select>
 
     <delete id="delete_resume">
-
+        delete from resume where seq = #{seq};
     </delete>
 
 

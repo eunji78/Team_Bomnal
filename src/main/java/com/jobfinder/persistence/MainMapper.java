@@ -21,4 +21,6 @@ public interface MainMapper {
     public List<Company_info> getBestCompanies();
 
     List<Reviews> getBestCompaniesReview();
+
+
 }
