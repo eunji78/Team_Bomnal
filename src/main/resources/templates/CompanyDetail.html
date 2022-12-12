@@ -61,15 +61,9 @@
                                     <h1 th:text="${detail.company_name}">삼성전자(주)</h1>
                                 </a>
                                 <ul>
-                                    <li th:text="${detail.company_industry}">전기/전자/제어</li>
-                                    <li th:if="${not #strings.isEmpty(detail.company_address)}"
-                                        th:text="${#strings.listSplit(detail.company_address,' ')[0]}"><i
-                                            class="fas fa-map-marker-alt"></i>서울
-                                    </li>
-                                    <li th:if="${#strings.isEmpty(detail.company_address)}" th:text="''"><i
-                                            class="fas fa-map-marker-alt"></i>서울
-                                    </li>
-                                    <li>대기업</li>
+                                    <img src="/img/settings.png"><li th:text="${detail.company_industry}">전기/전자/제어</li>
+                                    <img src="/img/icon/pin.png"><li th:text="${#strings.listSplit(detail.company_address,' ')[0]}">서울</li>
+                                    <img src="/img/home.png"><li th:text="${detail.company_type}">대기업</li>
                                 </ul>
                             </div>
                         </div>
@@ -79,10 +73,8 @@
                                class="genric-btn primary radius">기업상세</a>
                             <a th:href="@{/companyReview/{company_id}(company_id=${detail.company_id})}"
                                class="genric-btn success-border radius">기업리뷰</a>
-<!--                            <a th:href="@{/companyRecruit/{company_id}(company_id=${detail.company_id})}"-->
-<!--                               class="genric-btn warning-border radius" th:text="'채용공고('+${countgongo}+')'">채용공고(4)</a>-->
                             <a th:href="@{/companyRecruit/{company_id}(company_id=${detail.company_id})}"
-                               class="genric-btn warning-border radius" th:text="'채용공고(4)'">채용공고(4)</a>
+                               class="genric-btn warning-border radius" th:text="'채용공고('+${countgongo}+')'">채용공고(4)</a>
                         </div>
 
                     </div>
@@ -91,45 +83,37 @@
 
                     <div class="untree_co-section">
                         <div class="container">
-                            <div class="row">
+                            <div class="row bigcont">
                                 <div class="col-6 col-md-6 col-lg-3">
                                     <div class="service text-center">
                                         <span class="icon-paper-plane"></span>
-                                        <a href="">
                                             <img src="/img/settings.png" class="detail4">
                                             <h3 th:text="${detail.industry_class}" class="detail4">전기/전자/제어</h3>
                                             <p>산업</p>
-                                        </a>
                                     </div>
                                 </div>
                                 <div class="col-6 col-md-6 col-lg-3">
                                     <div class="service text-center">
                                         <span class="icon-tag"></span>
-                                        <a href="">
                                             <img src="/img/home.png" class="detail4">
-                                            <h3 th:text="${detail.company_type}" class="detail4">대기업</h3>
+                                            <h3 th:text="${detail.company_type}" class="detail4" style="font-size:1.7em;">대기업</h3>
                                             <p>기업형태</p>
-                                        </a>
                                     </div>
                                 </div>
                                 <div class="col-6 col-md-6 col-lg-3">
                                     <div class="service text-center">
                                         <span class="icon-user"></span>
-                                        <a href="">
                                             <img src="/img/users.png" class="detail4">
                                             <h3 th:text="${detail.staff_volume}" class="detail4">98,387명 (2013)</h3>
                                             <p>사원수</p>
-                                        </a>
                                     </div>
                                 </div>
                                 <div class="col-6 col-md-6 col-lg-3">
                                     <div class="service text-center">
                                         <span class="icon-support"></span>
-                                        <a href="">
                                             <img src="/img/calendar.png" class="detail4">
                                             <h3 th:text="${detail.foundation_dt}" class="detail4">1969.01.13</h3>
                                             <p>설립</p>
-                                        </a>
                                     </div>
                                 </div>
                             </div>

@@ -22,7 +22,7 @@ public class Company {
 
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(cri);
-		pageMaker.setTotalCount((companyService.countmain()));
+		pageMaker.setTotalCount(counting);
 
 		model.addAttribute("list",list);
 		model.addAttribute("counting",counting);
@@ -38,7 +38,7 @@ public class Company {
 
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(cri);
-		pageMaker.setTotalCount((companyService.countmain()));
+		pageMaker.setTotalCount(counting);
 		model.addAttribute("list",list);
 		model.addAttribute("counting",counting);
 		model.addAttribute("keyword",keyword);
@@ -54,7 +54,7 @@ public class Company {
 
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(cri);
-		pageMaker.setTotalCount((companyService.count(industry_class)));
+		pageMaker.setTotalCount(counting);
 
 
 		model.addAttribute("list",list);
@@ -66,9 +66,9 @@ public class Company {
 	@GetMapping("/companyDetail/{company_id}")
 	public String CompanyDetail(@PathVariable String company_id, Model model) {
 		Company_info detail = companyService.detail(company_id);
-//		int countgongo = companyService.countgongo(company_id);
+		int countgongo = companyService.countgongo(company_id);
 		model.addAttribute("detail",detail);
-//		model.addAttribute("countgongo",countgongo);
+		model.addAttribute("countgongo",countgongo);
 		return "CompanyDetail";
 	}
 
@@ -86,30 +86,35 @@ public class Company {
 
 		ArrayList<Reviews> review = companyService.review(reviews);
 		Reviews avg = companyService.avg(company_id);
-//		int countgongo = companyService.countgongo(company_id);
+		int countgongo = companyService.countgongo(company_id);
 		int countreview = companyService.countreview(company_id);
 		model.addAttribute("review",review);
 		model.addAttribute("detail",detail);
 		model.addAttribute("avg",avg);
-//		model.addAttribute("countgongo",countgongo);
+		model.addAttribute("countgongo",countgongo);
 		model.addAttribute("countreview",countreview);
 
 
 		return "CompanyReview";
 	}
 
-	@PostMapping("/likeclick")
-	public Review_like like_click(Review_like like, HttpSession session, Model model){
+	@PostMapping("/likeinsert")
+	@ResponseBody
+	public Review_like likeinsert(Review_like like, HttpSession session, Model model){
 		LoginVO vo = (LoginVO) session.getAttribute("VO");
 		like.setMem_id(vo.getMem_id());
-		int like_check = companyService.likecheck(like);
+		companyService.likeinsert(like);
 
-		if (like_check == 0){
-			companyService.likeinsert(like);
-		} else if (like_check == 1) {
-			companyService.likedelete(like);
-		}
+		return null;
+	}
 
+	@PostMapping("likedelete")
+	@ResponseBody
+	public Review_like likedelete(Review_like like, HttpSession session, Model model){
+		LoginVO vo = (LoginVO) session.getAttribute("VO");
+		like.setMem_id(vo.getMem_id());
+
+		companyService.likedelete(like);
 
 		return null;
 	}
@@ -130,11 +135,11 @@ public class Company {
 	@GetMapping("/companyRecruit/{company_id}")
 	public String Recruit(@PathVariable String company_id, Model model){
 		Company_info detail = companyService.detail(company_id);
-//		ArrayList<Recruit> gongo = companyService.gongo(company_id);
-//		int countgongo = companyService.countgongo(company_id);
+		ArrayList<Recruit> gongo = companyService.gongo(company_id);
+		int countgongo = companyService.countgongo(company_id);
 		model.addAttribute("detail",detail);
-//		model.addAttribute("gongo",gongo);
-//		model.addAttribute("countgongo",countgongo);
+		model.addAttribute("gongo",gongo);
+		model.addAttribute("countgongo",countgongo);
 		return "CompanyRecruit";
 	}
 
