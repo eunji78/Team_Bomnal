@@ -67,10 +67,14 @@
     </update>
 
     <select id="getRecruit" parameterType="int" resultType="Recruit">
-        select * from recruit where r_seq = 26;
+        select * from recruit where r_seq = #{r_seq}
     </select>
 
     <select id="getJobName" parameterType="String" resultType="String">
         select job as job_name from job where job_seq = #{r_part}
     </select>
+
+    <delete id="deleteJobPosting" parameterType="int">
+        delete from recruit where r_seq = #{r_seq}
+    </delete>
 </mapper>

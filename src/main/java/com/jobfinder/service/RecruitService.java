@@ -91,4 +91,7 @@ public class RecruitService {
     }
 
 
+    public void deleteJobPosting(int r_seq) {
+        recruitRepository.deleteJobPosting(r_seq);
+    }
 }
