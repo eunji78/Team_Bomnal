@@ -122,7 +122,8 @@
                                         <td th:switch="${notice.r_work_area}" class="notice_td2">
                                             <span th:case="overseas">해외지역 근무</span>
                                             <span th:case="home">재택근무</span>
-                                            <span th:case="*"><span th:text="${notice.r_work_area}"></span></span>
+                                            <span th:if="${notice.r_work_area != null}" th:text="${notice.r_work_area}"></span>
+                                            <span th:unless="${notice.r_work_area != null}">일본</span>
                                         </td>
                                     </tr>
                                     <tr>
@@ -262,7 +263,7 @@
                         </div>
                         <ul>
                             <li><span th:text="${notice.r_title}"></span></li>
-                            <li>공고 시작&nbsp:&nbsp<span th:text="${notice.r_open_date}">2022.12.06</span></li>
+                            <li th:if = "${notice.r_open_date != null}" th:text = "|공고 시작&nbsp:&nbsp${notice.r_open_date}|"></li>
                             <li>공고 마감&nbsp:&nbsp<span th:text="${notice.r_close_date}"
                                                       class="deadline">12 Dec 2022</span></li>
                             <li id="expired"></li>
@@ -302,7 +303,6 @@ function diffDay(){
 
   const distance = ccount - now;
 
-  console.log(distance)
   const days = String(Math.floor(distance / (1000 * 60 * 60 * 24)));
   const diffHour = String(Math.floor((distance / (1000*60*60)) % 24)).padStart(2,"0");
   const diffMin = String(Math.floor((distance / (1000*60)) % 60)).padStart(2,"0");

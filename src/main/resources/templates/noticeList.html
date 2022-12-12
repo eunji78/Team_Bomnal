@@ -191,7 +191,8 @@
                                                 <th:block th:switch="${j.r_work_area}">
                                                     <li th:case="overseas">해외지역 근무</li>
                                                     <li th:case="home">재택근무</li>
-                                                    <li th:case="*" th:text="${j.r_work_area}"></li>
+                                                    <li th:if="${j.r_work_area != null}" th:text="${j.r_work_area}"></li>
+                                                    <li th:unless="${j.r_work_area != null}">일본</li>
                                                 </th:block>
                                                 <th:block th:switch="${j.r_job_pattern}">
                                                     <li th:case="full">정규직</li>
