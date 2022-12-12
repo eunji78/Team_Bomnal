@@ -28,6 +28,7 @@
   <link rel="stylesheet" href="/css/nice-select.css">
   <link rel="stylesheet" href="/css/style.css">
   <link rel="stylesheet" href="/css/resume.css">
+  <link rel="stylesheet" href="/css/login-style.css">
 
   <style>
     .ump-border-btn2 {
@@ -116,7 +117,7 @@
             <div class="asideSection">
               기업정보관리
               <ul>
-                <li class="aside-list"><a th:href="@{/ump}">기업회원 정보 수정</a></li>
+                <li class="aside-list"><a th:href="@{/umpc}">기업회원 정보 수정</a></li>
               </ul>
             </div>
 
@@ -160,14 +161,16 @@
                     <tbody>
 
                     <tr th:each="rc : ${rec_list}">
-                      <td class="col-2" th:text="${rc.r_seq}">글번호</td>
-                      <td class="col-8" th:text="${rc.r_title}">제목</td>
+                      <td class="col-2"><input type="checkbox" th:id="${'check_box' + rcStat.index}" style="margin-right: 10px;"><span th:text="${rc.r_seq}"></span></td>
+                      <td class="col-8" ><a href="javascript:void(0)" th:text="${rc.r_title}">제목</a></td>
                       <td class="col-2" th:text="${rc.company_id}">작성자</td>
                     </tr>
-
                     </tbody>
                   </table>
-
+                  <div style="text-align : right;">
+                    <button class="sm-button" type="button" style="display:inline-block;"> 수정 </button>
+                    <button class="sm-button" type="button" style="display:inline-block;"> 삭제 </button>
+                  </div>
                 </div>
 
               </div>

@@ -128,3 +128,8 @@
 .search-box > div{
     padding:15px;
 }
+
+.field-error{
+    color:red;
+    font-size:13px;
+}

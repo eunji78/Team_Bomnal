@@ -69,7 +69,7 @@
                         <form th:action="@{/list}" class="search-box">
                             <!--지역 검색 버튼-->
                             <div class="select-form">
-                                <button class="select-region" type="button" id="select-region"><i class="fas fa-map-marker-alt" style="margin-right:5px;">지역</i></button>
+                                <button class="select-region" type="button" id="select-region"><i class="fas fa-map-marker-alt" style="margin-right:5px;">&nbsp;지역</i></button>
                             </div>
                             <!--직무 검색 버튼-->
                             <div class="select-form">
@@ -181,7 +181,9 @@
                         <div class="cv-caption text-center">
                             <p class="pera1">Make a Difference with Your Online Resume!</p>
                             <p class="pera2"> 온라인으로 이력서를 관리하세요</p>
-                            <a th:href="@{/resume_manage}" class="border-btn2 border-btn4 resume-tag">이력서 쓰러 가기</a>
+
+                            <a onclick="goResume()" class="border-btn2 border-btn4 resume-tag">이력서 쓰러 가기</a>
+
                         </div>
                     </div>
                 </div>
@@ -349,6 +351,16 @@
         <script src="/js/main-page.js"></script>
         <script src="/js/search.js"></script>
         <!--<script type="text/javascript" th:src="@{/js/main-page.js}"></script>-->
+       <script th:inline="javascript">
+           function goResume(){
+            if([[${session.VO == null}]]){
+                alert("로그인 후 시도해주세요");
+            }
+            else{
+                location.href="/resume_manage";
+            }
+           }
+       </script>
    </th:block>
     </body>
 </html>

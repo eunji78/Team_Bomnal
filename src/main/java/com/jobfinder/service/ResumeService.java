@@ -18,6 +18,9 @@ public class ResumeService {
 
     private final ResumeRepository resumeRepository;
 
+    /**
+     *  이력서 등록
+     */
     public int resume_add(Resume resume){
         resumeRepository.resume_add(resume);
         return resumeRepository.resume_num(resume.getMembers_mem_id());
@@ -38,5 +41,54 @@ public class ResumeService {
     public void cert_add(Certificate certificate){
         resumeRepository.cert_add(certificate);
     }
+
+
+    /**
+     *  이력서 목록
+     */
+    public List<Resume> resume_list(String mem_id){
+        return resumeRepository.resume_list(mem_id);
+    }
+
+    public Resume get_resume(int seq){
+        return resumeRepository.get_resume(seq);
+    }
+    public Awards get_awards(int seq){
+        return resumeRepository.get_awards(seq);
+    }
+    public Certificate get_cert(int seq){
+        return resumeRepository.get_cert(seq);
+    }
+    public Career get_career(int seq){
+        return resumeRepository.get_career(seq);
+    }
+    public Language get_lang(int seq){
+        return resumeRepository.get_lang(seq);
+    }
+
+
+    /**
+     *  이력서 수정
+     */
+    public void resume_edit(Resume resume){
+        resumeRepository.resume_edit(resume);
+    }
+
+    public void lang_edit(Language language){
+        resumeRepository.lang_edit(language);
+    }
+
+    public void career_edit(Career career){
+        resumeRepository.career_edit(career);
+    }
+
+    public void awards_edit(Awards awards){
+        resumeRepository.awards_edit(awards);
+    }
+
+    public void cert_edit(Certificate certificate){
+        resumeRepository.cert_edit(certificate);
+    }
+
 
 }

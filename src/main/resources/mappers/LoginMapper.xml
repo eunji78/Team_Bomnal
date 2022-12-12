@@ -42,13 +42,13 @@
     </update>
 
     <select id="rec_list" parameterType="String" resultType="Recruit">
-        select * from recruit where company_id=#{company_id}
+        select * from recruit where company_name=#{company_id}
     </select>
 
-    <delete id="all_delete_date_per">
+    <delete id="all_delete_data_per" parameterType="String">
         delete from members where mem_id=#{mem_id}
     </delete>
-    <delete id="all_delete_date_com">
+    <delete id="all_delete_data_com" parameterType="String">
         delete from company where company_id=#{company_id}
     </delete>
 

@@ -23,7 +23,7 @@
                                         <li><a th:href="@{/}">Home</a></li>
                                         <li><a th:href="@{/noticeList}">취업 공고</a></li>
                                         <li><a th:href="@{/companyList}">기업 정보</a></li>
-                                        <li><a th:if="${not #strings.isEmpty(session.VO)}" th:href="@{/}">마이페이지</a>
+                                        <li><a th:if="${not #strings.isEmpty(session.VO)}" th:href="@{/ump}">마이페이지</a>
                                             <!--<ul class="submenu">
                                                 <li><a href="blog.html">Blog</a></li>
                                                 <li><a href="single-blog.html">Blog Details</a></li>
@@ -37,7 +37,7 @@
                             </div>
                             <!-- Header-btn -->
                             <div th:if="${session.VO == null}" class="header-btn d-none f-right d-lg-block">
-                                <a th:if="${session.VO == null}" th:href="@{/loginform}" class="btn head-btn1" style="width: 100px !important; height: 30px !important; padding: 18px 5px !important;" >회원가입</a>
+                                <a th:if="${session.VO == null}" th:href="@{/signup_local}" class="btn head-btn1" style="width: 100px !important; height: 30px !important; padding: 18px 5px !important;" >회원가입</a>
                                 <a th:if="${session.VO == null}" th:href="@{/loginform}" class="btn head-btn2" style="width: 100px !important; height: 30px !important; padding: 18px 5px !important;" >로그인</a>
                             </div>
                             <div th:if="${session.VO != null}" style="padding: 5px 10px 5px 15px!important;">
@@ -48,7 +48,7 @@
                                     <a th:href="@{/ump}" style="margin-right:10px;"><p th:if="${session.VO != null} and ${session.type == 'P'}" th:text=" ${session.VO.mem_name} + '님 '" style="display:inline !important; line-height:0px !important;"> name</p></a>
 <!--                                <a th:if="${session.VO != null} and ${session.type == 'C'}" th:href="@{/umpc}" ><img src="/img/icon-gear2.png" style="width:30px; height:23px;" alt="gear.png" onmouseover="this.src='/img/icon-gear.png'" onmouseout="this.src='/img/icon-gear2.png'"></a>-->
 <!--                                <a th:if="${session.VO != null} and ${session.type == 'P'}" th:href="@{/ump}" ><img src="/img/icon-gear2.png" style="width:30px; height:23px;" alt="gear.png" onmouseover="this.src='/img/icon-gear.png'" onmouseout="this.src='/img/icon-gear2.png'"></a>-->
-                                    <a th:if="${session.VO != null}" th:href="@{/v1/user/unlink}" class="btn head-btn2" id="logout-btn" type="button" style="display:inline !important; width: 100px !important; height: 30px !important; padding: 11px 5px !important;">로그아웃</a>
+                                    <a th:if="${session.VO != null}" th:href="@{/v1/user/unlink}" class="btn head-btn2" id="logout-btn" type="button" style="display:inline !important; width: 100px !important; height: 30px !important; padding: 15px 5px !important;">로그아웃</a>
                                 </div>
                             </div>
 

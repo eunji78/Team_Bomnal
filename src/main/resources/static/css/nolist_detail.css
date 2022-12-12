@@ -63,3 +63,8 @@
     background: #38a4ff;
     border: 1px solid transparent
 }
+.single_sidebar_widget {
+    background: #f9f9f9 !important;
+    padding: 30px !important;
+    margin-bottom: 30px !important
+}
