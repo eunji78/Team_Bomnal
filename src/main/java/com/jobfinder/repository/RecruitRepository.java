@@ -41,4 +41,19 @@ public class RecruitRepository {
         List<Recruit> recruits = recruitMapper.getLatestRecruits();
         return recruits;
     }
+
+    public Recruit getRecruit(int r_seq) {
+        Recruit recruit = recruitMapper.getRecruit(r_seq);
+        return recruit;
+    }
+
+    public void updateJobPosting(Recruit recruit) {
+        recruitMapper.updateJobPosting(recruit);
+    }
+
+
+    public String getJobName(String r_part) {
+        String job_name = recruitMapper.getJobName(r_part);
+        return job_name;
+    }
 }

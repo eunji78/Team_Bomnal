@@ -69,4 +69,5 @@ public class Recruit {
     private String r_manager_phone_public;
     // 회사 로고
     private String company_logo;
+    private String job_name;
 }

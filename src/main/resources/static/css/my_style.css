@@ -385,7 +385,10 @@ text-box-size1{
     height:1em;
 }
 
-
+.logo-single{
+    width: 100px;
+    height: 100px;
+}
 /*---------------------Summer Note-----------------------------------*/
 @font-face {
     font-family: 'NotoSansKR';
