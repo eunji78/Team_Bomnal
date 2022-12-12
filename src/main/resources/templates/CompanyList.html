@@ -78,7 +78,7 @@
                   <td><a th:href="@{/companyDetail/{company_id}(company_id=${c.company_id})}" class="text-bold-500" th:text="${c.company_type}">대기업</a></td>
                 </tr>
                 <tr class="tab2">
-                  <td><small th:text="${c.reviewcount}+' 기업리뷰'">2893 기업리뷰</small></td>
+                  <td><a th:href="@{/companyReview/{company_id}(company_id=${c.company_id})}"><small th:text="${c.reviewcount}+' 기업리뷰'">2893 기업리뷰</small></a></td>
                   <td><small th:text="'평균연봉 '+${c.avgsalary}+'만원'">평균연봉 3368 만원</small></td>
                   <td th:if="${c.totalstar < 2}" th:text="'⭐ '+${c.totalstar}">⭐⭐⭐ 3.3</td>
                   <td th:if="${c.totalstar >=2 and c.totalstar <3}" th:text="'⭐⭐ '+${c.totalstar}">⭐⭐⭐ 3.3</td>
@@ -94,27 +94,33 @@
           </div>
         </div>
 
+        <div class="pagination-area pb-115 text-center" style="margin-top:70px;">
+          <div class="container">
+            <div class="row">
+              <div class="col-xl-12">
+                <div class="single-wrap d-flex justify-content-center">
+                  <nav aria-label="Page navigation example">
+                    <ul class="pagination justify-content-start">
 
-         <!--페이징-->
-        <div style="text-align:center;">
-          <ul class="btn-group pagination">
+                      <!-- 이전페이지 -->
+                      <li class="page-item" th:if="${session.pageMaker.prev}"><a class="page-link" th:href="@{${session.pageMaker.startPage-1}}"><span class="ti-angle-left"></span></a></li>
 
-            <!-- 이전페이지 -->
-              <li><i class="fa"><a th:if="${session.pageMaker.prev}" th:href="@{${session.pageMaker.startPage-1}}" th:text="'◀'">◀️</a></i></li>
+                      <th:block th:each="pageNum : ${#numbers.sequence(session.pageMaker.startPage,session.pageMaker.endPage)}">
+                      <li class="page-item active" th:if="${session.pageMaker.cri.page == pageNum}"><a class="page-link"  th:href="@{${pageNum}}" th:text="${pageNum}">01</a></li>
+                      <li class="page-item" th:if="${session.pageMaker.cri.page!=pageNum}"><a class="page-link" th:href="@{${pageNum}}" th:text="${pageNum}">02</a></li>
+                      </th:block>
 
-
-                <li th:each="pageNum : ${#numbers.sequence(session.pageMaker.startPage,session.pageMaker.endPage)}">
-                  <i class="fa"><a th:if="${session.pageMaker.cri.page == pageNum}" th:href="@{${pageNum}}" th:text="${pageNum}"><font color="red">${pageNum}</font></a></i>
-                <i class="fa"><a th:if="${session.pageMaker.cri.page!=pageNum}" th:href="@{${pageNum}}" th:text="${pageNum}">${pageNum}</a></i>
-                </li>
-
-
-            <!-- 다음페이지 -->
-              <li><i class="fa"><a th:if="${session.pageMaker.cri.page!=pageNum}" th:href="@{${session.pageMaker.endPage+1}}" th:text="'▶'">▶️</a></i></li>
-
-          </ul>
+                      <!-- 다음페이지 -->
+                      <li class="page-item" th:if="${session.pageMaker.cri.page!=pageNum}"><a class="page-link" th:href="@{${session.pageMaker.endPage+1}}"><span class="ti-angle-right"></span></a>
+                      </li>
+                    </ul>
+                  </nav>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-
+        <input type="hidden" name="page" th:value="${session.pageMaker.cri.page}"/>
 
 
 
@@ -139,7 +145,7 @@
                       type="submit">Search</button>
             </form>
           </aside>
-          <aside class="single_sidebar_widget post_category_widget">
+          <aside class="single_sidebar_widget post_category_widget" style="margin:30px;">
             <h4 class="widget_title">Category</h4>
             <ul class="list cat-list">
               <li>
@@ -244,7 +250,7 @@
 <!-- Jquery Plugins, main Jquery -->
 <script src="/js/plugins.js"></script>
 <script src="/js/main.js"></script>
-<script th:inline="javascript">
+<script type="text/javascript">
 	$(document).ready(function(){
 		$(".pagination a").click(function(e){
 			e.preventDefault();

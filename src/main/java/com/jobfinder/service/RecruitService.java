@@ -79,4 +79,19 @@ public class RecruitService {
     public int countNotice(Criteria cri){
         return recruitRepository.countNotice(cri);
     };
+
+    public Recruit getRecruit(int r_seq) {
+        Recruit recruit = recruitRepository.getRecruit(r_seq);
+        recruit.setJob_name(recruitRepository.getJobName(recruit.getR_part()));
+        return recruit;
+    }
+
+    public void updateJobPosting(Recruit recruit) {
+        recruitRepository.updateJobPosting(recruit);
+    }
+
+
+    public void deleteJobPosting(int r_seq) {
+        recruitRepository.deleteJobPosting(r_seq);
+    }
 }

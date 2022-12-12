@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-         <title>Job board HTML-5 Template </title>
+         <title>Bomnal</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="manifest" href="site.webmanifest">
@@ -208,14 +208,14 @@
                             <div class="job-items">
 
                                 <div class="company-img">
-                                    <a th:href="@{/noticeDetail/{r_seq}(r_seq=${recruit.r_seq})}"><img th:src="@{${recruit.company_logo }}" alt=""></a>
+                                    <a th:href="@{/noticeDetail/{r_seq}(r_seq=${recruit.r_seq})}"><img th:src="@{${recruit.company_logo }}" alt="" class="logo-single" onerror="this.src='/img/icon/logoerror.png'"></a>
                                 </div>
                                 <div class="job-tittle">
                                     <p th:text="${recruit.company_name}" class="margin-bottom-none"></p>
                                     <a th:href="@{/noticeDetail/{r_seq}(r_seq=${recruit.r_seq})}"><h4>[[${recruit.r_title}]]</h4></a>
                                     <ul>
-                                        <li class="border-right-single">[[${recruit.r_part}]]</li>
-                                        <li class="border-right-single"><i class="fas fa-map-marker-alt"></i>[[${recruit.r_work_area}]]</li>
+                                        <li class="border-right-single" th:text="${recruit.r_part}"></li>
+                                        <li class="border-right-single" th:if="${recruit.r_work_area != null}"><i class="fas fa-map-marker-alt" th:text="${recruit.r_work_area}"></i></li>
                                         <li >
                                             <span th:text="${recruit.r_salary}"></span>
                                             <span th:if="${#strings. isEmpty(recruit.r_salary)}" th:text="'회사 내규에 따름'"></span>
@@ -232,7 +232,8 @@
                                     <a th:href="@{/noticeList}" class="career-tag" th:case="free">프리랜서</a>
                                     <a th:href="@{/noticeList}" class="career-tag" th:case="part">파트타임</a>
                                 </th:block>
-                                <span th:text="${recruit.r_close_date}+'days ago'"></span>
+                                <span th:if="${recruit.r_close_date} != null" th:text="${recruit.r_close_date}+'days ago'"></span>
+                                <span th:unset="${recruit.r_close_date} != null" th:text="'날짜미정'"></span>
                             </div>
                         </div>
                         <div class="single-job-items mb-30">

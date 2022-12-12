@@ -90,3 +90,21 @@ a: hover{
 .single_sidebar_widget {
     background-color: white !important;
 }
+
+.moabogi button {
+    color : black !important;
+}
+
+.job-tittle img{
+    width:20px;
+    margin-right:5px;
+    pointer-events:none;
+}
+
+.job-tittle ul {
+    margin-top:17px;
+}
+
+.bigcont {
+    pointer-events : none;
+}

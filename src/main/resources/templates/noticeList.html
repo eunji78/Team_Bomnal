@@ -191,7 +191,8 @@
                                                 <th:block th:switch="${j.r_work_area}">
                                                     <li th:case="overseas">해외지역 근무</li>
                                                     <li th:case="home">재택근무</li>
-                                                    <li th:case="*" th:text="${j.r_work_area}"></li>
+                                                    <li th:if="${j.r_work_area != null}" th:text="${j.r_work_area}"></li>
+                                                    <li th:unless="${j.r_work_area != null}">일본</li>
                                                 </th:block>
                                                 <th:block th:switch="${j.r_job_pattern}">
                                                     <li th:case="full">정규직</li>
@@ -250,13 +251,38 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a th:href="@{/noticeList/{super_job_seq}(super_job_seq=6)}" class="d-flex">
-                                        <p>의료</p>
+                                    <a th:href="@{/noticeList/{super_job_seq}(super_job_seq=5)}" class="d-flex">
+                                        <p>인사·노무·HRD</p>
                                     </a>
                                 </li>
                                 <li>
                                     <a th:href="@{/noticeList/{super_job_seq}(super_job_seq=8)}" class="d-flex">
                                         <p>영업·판매·무역</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a th:href="@{/noticeList/{super_job_seq}(super_job_seq=9)}" class="d-flex">
+                                        <p>연구·R&D</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a th:href="@{/noticeList/{super_job_seq}(super_job_seq=10)}" class="d-flex">
+                                        <p>서비스</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a th:href="@{/noticeList/{super_job_seq}(super_job_seq=11)}" class="d-flex">
+                                        <p>생산</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a th:href="@{/noticeList/{super_job_seq}(super_job_seq=12)}" class="d-flex">
+                                        <p>상품기획·MD</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a th:href="@{/noticeList/{super_job_seq}(super_job_seq=13)}" class="d-flex">
+                                        <p>미디어·문화·스포츠</p>
                                     </a>
                                 </li>
                                 <li>
@@ -350,6 +376,7 @@
                     <div class="single-wrap d-flex justify-content-center">
                         <nav aria-label="Page navigation example">
                             <ul class="pagination justify-content-start">
+                                <li class="page-item"><a class="page-link" href="#"><span class="ti-angle-left"></span></a>
                                 <li class="page-item active"><a class="page-link" href="#">01</a></li>
                                 <li class="page-item"><a class="page-link" href="#">02</a></li>
                                 <li class="page-item"><a class="page-link" href="#">03</a></li>

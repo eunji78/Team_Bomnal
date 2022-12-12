@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.ArrayList;
@@ -61,7 +62,8 @@ public class RecruitController {
     }
 
 
-
+    @ResponseBody
+    @RequestMapping("/uploadSummernoteImageFile")
     public JsonObject uploadSummernoteImageFile(@RequestParam("file") MultipartFile multipartFile) {
 
         JsonObject jsonObject = recruitService.uploadSummernoteImageFile(multipartFile);
@@ -69,6 +71,28 @@ public class RecruitController {
         return jsonObject;
     }
 
+    @RequestMapping("/updateJobPostingForm/{r_seq}")
+    public String updateJobPostingForm(@PathVariable int r_seq, Model model){
+        List<Job> job_list = mainService.jobList();
+        model.addAttribute("job_list",job_list);
+        Recruit recruit = recruitService.getRecruit(r_seq);
+        model.addAttribute("recruit", recruit);
+        return "/job_posting_edit";
+    }
 
+    @RequestMapping("/updateJobPosting")
+    public String updateJobPosting(Recruit recruit){
+        System.out.println(recruit);
+        recruitService.updateJobPosting(recruit);
+        System.out.println("수정완료!");
+        return "redirect:/noticeDetail/"+recruit.getR_seq();
+    }
+
+    @RequestMapping("/deleteJobPosting/{r_seq}")
+    public String deleteJobPosting(@PathVariable int r_seq){
+        recruitService.deleteJobPosting(r_seq);
+        System.out.println("삭제 완료");
+        return "redirect:/";
+    }
 
 }
