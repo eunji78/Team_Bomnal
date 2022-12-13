@@ -1,6 +1,6 @@
 # Project Bomnal
 # 🌷봄날
-![image](https://user-images.githubusercontent.com/101463273/207202384-642563a7-6797-4a38-9cc5-832b0ab0f81e.png)
+![image](https://user-images.githubusercontent.com/101463273/207202384-642563a7-6797-4a38-9cc5-832b0ab0f81e.png){: width="100" height="100"}
 
 
 ## 👽 서비스 소개
@@ -115,7 +115,7 @@
 <summary>🖥 화면 구성</summary>
 
 ### 메인화면
-![image](https://user-images.githubusercontent.com/101463273/207217638-db4cd8f0-c2d8-4b96-81d3-a5d9a7a3452a.png)
+![image](https://user-images.githubusercontent.com/101463273/207217638-db4cd8f0-c2d8-4b96-81d3-a5d9a7a3452a.png){: width="100%" height="100%"}
 
 
 
