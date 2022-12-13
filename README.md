@@ -1,6 +1,6 @@
 # Project Bomnal
 # 🌷봄날
-![image](https://user-images.githubusercontent.com/101463273/190317107-76a99a4d-1867-4f7e-b09c-082a66407dcb.png)
+![image](https://user-images.githubusercontent.com/101463273/207202384-642563a7-6797-4a38-9cc5-832b0ab0f81e.png)
 
 
 ## 👽 서비스 소개
@@ -17,45 +17,33 @@
 ![피그마](https://user-images.githubusercontent.com/108074336/189464650-29e9035b-4efe-4939-ab41-2d59db4cb26c.png)
 
 ## ⭐ 주요 기능
-* <b>지출 입력</b>
-  * 챌린지 기간 중 지출 발생 내역입력  
+* <b>채용공고 검색</b>
+  * 사용자가 원하는 지역, 직무를 선택하고 찾는 검색어를 입력한다.
 <br>![지출반성](https://user-images.githubusercontent.com/108074336/189464195-39227081-06f4-4d89-951e-3202f9ac4f76.png)
 
-* <b>챌린지 진행 상황 관리</b>
+* <b>입사지원</b>
 <br>![레벨게시판](https://user-images.githubusercontent.com/108074336/189463412-0943d186-6a19-40f6-9936-e53dd9c17a73.png)
-  * 지출 입력자료를 토대로 사용자의 챌린지 달성도확인
-  * 등급 간 전체 달성도 현황확인
-  * 챌린지 기간 중 TOP 5 순위확인
+  * 개인회원 사용자는 입사지원 페이지에서 이력서, 자기소개서를 확인한 후 최종 입사지원 버튼을 클릭힌다.
  
-* <b>소비 분석</b>
+* <b>기업회원 채용공고 등록</b>
 <br>![3주소비차트](https://user-images.githubusercontent.com/108074336/189464267-72eb3c3d-9650-4020-b5c5-9f351ca2e428.png)
-  * 챌린지 진행 기간 중 지출금 차트 확인
-  
-<br>![소비항목차트](https://user-images.githubusercontent.com/108074336/189464301-483c753b-3122-4d96-923d-158caa40c565.png)
-  * 챌린지 진행 기간 중 지출이 많은 항목에 대한 차트확인
-  * 쇼핑, 식비, 교통, 여가, 기타 총 5가지 항목에 따른 소비분석
-  * 1년 소비차트를 통한 1년간의 소비 항목분석 
-  
-<br>![카드추천](https://user-images.githubusercontent.com/108074336/189464103-de6c996b-490b-4bba-b519-4914366b91fc.png)
-  * 차트에서 많은 비율을 차지하는 항목에 대한 카드 추천
-  
-<br>![무지출달력](https://user-images.githubusercontent.com/108074336/189464337-b7d92062-dacb-48f1-9d1c-62901e0b4f0c.png)
-  * 무지출에 성공한 날을 달력에 표시
+  * 기업회원 사용자는 채용공고 페이지에서 정보를 입력하여 채용공고를 등록할 수 있다.
 
-* <b>등급 게시판</b>
-  * '챌린지 목표금액'에 따른 사용자 등급분류
-  <br> (본 개발에서의 등급분류는 아래와 같음)
-<br>![등급분류표](https://user-images.githubusercontent.com/108074336/189463205-f90be6c5-f2e5-447c-97c1-ade4af176df1.png)
-  * 등급 간 프라이빗 커뮤니티 존재
-  
-* <b>절약정보 게시판</b>
-<br>![보조금](https://user-images.githubusercontent.com/108074336/189464067-79e591c9-3285-4a03-b6c5-cbc73373d28e.png)
-  * 정부 보조금 정보 확인 
-  * 기업이나 단체에서 진행하는 무료 이벤트 정보 확인
+* <b>개인회원 이력서, 자기소개서 등록</b>
+<br>![3주소비차트](https://user-images.githubusercontent.com/108074336/189464267-72eb3c3d-9650-4020-b5c5-9f351ca2e428.png)
+  * 개인회원 사용자는 마이페이지에서 이력서와 자기소개서를 등록할 수 있고, 수정할 수 있다.
 
-* <b>절약정보 게시판</b>
-  * 전체 이용자간 커뮤니티를 통한 소통 가능 
-<br>
+* <b>채용공고, 기업 상세정보</b>
+<br>![3주소비차트](https://user-images.githubusercontent.com/108074336/189464267-72eb3c3d-9650-4020-b5c5-9f351ca2e428.png)
+  * 사용자는 채용공고 검색으로 나온 채용 공고 중 마음에 드는 채용공고를 선택하여 상세내용, 담당업무, 담당자 정보 등을 화면에서 확인한다.
+  * 사용자는 원하는 산업군을 선택하여 나온 기업 리스트 중 마음에 드는 기업을 선택하여 설립일, 사원수, 연혁 등의 정보를 화면에서 확인한다.
+
+* <b>기업리뷰</b>
+<br>![3주소비차트](https://user-images.githubusercontent.com/108074336/189464267-72eb3c3d-9650-4020-b5c5-9f351ca2e428.png)
+  * 사용자는 기업복지, 워라벨, 사내문화, 승진기회, 경영진 5가지 기준에 대해서 별점을 선택한다.
+  * 사용자는 기업에 대해서 장점, 단점, 한줄평, 연봉, 재직여부에 대해서 선택하고 그 결과를 제출한다.
+  * 해당 기업에 사용자가 남긴 별점들의 평균을 구해서 기업의 평균 별점을 시각화한다.
+
 
 ## ⛏ 기술스택
 <table>
@@ -81,7 +69,7 @@
     <tr>
         <td>개발도구</td>
         <td>
-            <img src="https://img.shields.io/badge/Eclipse-2C2255?style=for-the-badge&logo=Eclipse&logoColor=white"/>
+            <img src="https://img.shields.io/badge/-IntelliJ-blue"/>
             <img src="https://img.shields.io/badge/VSCode-007ACC?style=for-the-badge&logo=VisualStudioCode&logoColor=white"/>
         </td>
     </tr>
