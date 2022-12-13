@@ -1,6 +1,6 @@
 # Project Bomnal
 # 🌷봄날
-![image](https://user-images.githubusercontent.com/101463273/207202384-642563a7-6797-4a38-9cc5-832b0ab0f81e.png)
+![image](https://user-images.githubusercontent.com/101463273/207202384-642563a7-6797-4a38-9cc5-832b0ab0f81e.png){: width="100" height="100"}
 
 
 ## 👽 서비스 소개
@@ -13,9 +13,6 @@
 2022.11.08 ~ 2022.12.14 (5주)
 <br>
 
-## UI설계도 : 피그마
-<br>
-
 ## ⭐ 주요 기능
 * <b>채용공고 검색</b>
   * 사용자가 원하는 지역, 직무를 선택하고 찾는 검색어를 입력한다.
@@ -24,7 +21,7 @@
 
 * <b>입사지원</b>
   * 개인회원 사용자는 입사지원 페이지에서 이력서, 자기소개서를 확인한 후 최종 입사지원 버튼을 클릭힌다.
-![image](https://user-images.githubusercontent.com/101463273/207209516-ba74982b-0e04-4e9b-a924-d6a8a7097708.png)
+![image](https://user-images.githubusercontent.com/101463273/207219461-f44814cc-80d1-460e-991d-67457bd9c487.png)
 <br>
 
  
@@ -32,7 +29,6 @@
   * 기업회원 사용자는 채용공고 페이지에서 정보를 입력하여 채용공고를 등록할 수 있다.
 ![image](https://user-images.githubusercontent.com/101463273/207209995-23d39d2a-8b35-4598-a4e6-0714f201a069.png)
 <br>
-
 
 
 * <b>개인회원 이력서, 자기소개서 등록</b>
@@ -47,7 +43,7 @@
   * 사용자는 기업에 대해서 장점, 단점, 한줄평, 연봉, 재직여부에 대해서 선택하고 그 결과를 제출한다.
   * 해당 기업에 사용자가 남긴 별점들의 평균을 구해서 기업의 평균 별점을 시각화한다.
 
-
+<br><br>
 ## ⛏ 기술스택
 <table>
     <tr>
@@ -99,31 +95,35 @@
 </table>
 
 
-<br>
+<br><br>
 
 ## 📌 SW유스케이스
-![image](https://user-images.githubusercontent.com/101463273/207206619-5e7d9bbd-6c86-470d-b610-dc3300fdf5e5.png)
-
+<img src="/봄날 페이지/설계/유스케이스.png" style="width:80%;">
 <br>
 
 ## 📌 서비스 흐름도
-![image](https://user-images.githubusercontent.com/101463273/207202250-3a9e9be3-0b1e-4143-a139-89e21f3acda1.png)
+<img src="/봄날 페이지/설계/서비스흐름도.png" style="width:80%;">
 <br>
 
 ## 📌 ER다이어그램
-![ERD](https://user-images.githubusercontent.com/101463273/207206471-abf98854-b507-4660-8032-25b52641b3c1.png)
+<img src="/봄날 페이지/설계/ERD.png" style="width:80%;">
 <br>
 <br>
 
-## 🖥 화면 구성
+
+<details>
+<summary>🖥 화면 구성</summary>
 
 ### 메인화면
-![image](https://user-images.githubusercontent.com/101463273/207217638-db4cd8f0-c2d8-4b96-81d3-a5d9a7a3452a.png)
+![image](https://user-images.githubusercontent.com/101463273/207217638-db4cd8f0-c2d8-4b96-81d3-a5d9a7a3452a.png){: width="100%" height="100%"}
 
 
 
-### 회원가입/로그인/회원수정/회원탈퇴
+### 회원가입/로그인/회원수정
+![image](https://user-images.githubusercontent.com/101463273/207220763-7d472784-35d0-42d3-aceb-d65591ec586b.png)
 ![image](https://user-images.githubusercontent.com/101463273/207217753-29a3f516-2a57-4e03-8ca0-1f86c9688332.png)
+![image](https://user-images.githubusercontent.com/101463273/207220636-66ab4f3c-dbab-4ae0-821a-e936f125e96c.png)
+
 
 <br>
 
@@ -141,6 +141,9 @@
 <br>
 <br>
 
+ 
+ </details>
+ 
 ## 시연 영상
 https://youtu.be/or-fU9-e654
 ## 👨‍👩‍👦‍👦 팀원 역할
@@ -151,7 +154,6 @@ https://youtu.be/or-fU9-e654
     <td align="center"><img src="https://cdn-icons-png.flaticon.com/512/4440/4440873.png" width="100" height="100"/></td>
     <td align="center"><img src="https://cdn-icons-png.flaticon.com/512/4440/4440953.png" width="100" height="100"/></td>
     <td align="center"><img src="https://cdn-icons-png.flaticon.com/512/4440/4440876.png" width="100" height="100"/></td>
-    <td align="center"><img src="https://cdn-icons-png.flaticon.com/512/4439/4439947.png" width="100" height="100"/></td>
 
   </tr>
   <tr>
@@ -168,13 +170,11 @@ https://youtu.be/or-fU9-e654
     <td align="center"><b>Backend</b></td>
     <td align="center"><b>Backend</b></td>
     <td align="center"><b>Backend</b></td>
-    <td align="center"><b>Backend</b></td>
 
   </tr>
     <tr>
     <td align="center"><b>팀장<br></b></td>
     <td align="center"><b></b></td>
-    <td align="center"><b>기업 상세보기 페이지<br>기업 리뷰페이지 Front, Back</b></td>
     <td align="center"><b></b></td>
     <td align="center"><b></b></td>
     <td align="center"><b></b></td>
@@ -185,11 +185,8 @@ https://youtu.be/or-fU9-e654
     <td align="center"><a href="https://github.com/100geun10000" target='_blank'>github</a></td>
     <td align="center"><a href="https://github.com/jaegangkim" target='_blank'>github</a></td>
     <td align="center"><a href="https://github.com/bingomangsoo" target='_blank'>github</a></td>
-    <td align="center"><a href="https://github.com/Tiel0043" target='_blank'>github</a></td>
 
   </tr>
 </table>
 
 ## 🤾‍♂️ 트러블슈팅
-  
-* 멘토링 문제<br>
