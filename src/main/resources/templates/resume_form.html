@@ -762,7 +762,7 @@
         let resume_name = $("#name_").serialize();
 
         let data = add_pofol(education, portfolio, resume_name);
-
+        data = decodeURIComponent(data);
 
         console.log(data);
 
@@ -789,7 +789,8 @@
         <!-- 경력 -->
         console.log(career);
         if(career){
-        career = add_num(career, resume_seq)
+        career = add_num(career, resume_seq);
+        career = decodeURIComponent(career);
 
             $.ajax({
             type:"post",
@@ -811,7 +812,8 @@
         <!-- 자격증 -->
         console.log(certificate);
         if(certificate){
-        certificate = add_num(certificate, resume_seq)
+        certificate = add_num(certificate, resume_seq);
+        certificate = decodeURIComponent(certificate);
             $.ajax({
                 type:"post",
                 url:"/resume/cert",
@@ -831,7 +833,8 @@
         <!-- 수상 -->
         console.log(awards);
         if(awards){
-        awards = add_num(awards, resume_seq)
+        awards = add_num(awards, resume_seq);
+        awards = decodeURIComponent(awards);
             $.ajax({
                 type:"post",
                 url:"/resume/awards",
@@ -850,7 +853,8 @@
         <!-- 어학 -->
         console.log(language);
         if(language){
-        language = add_num(language, resume_seq)
+        language = add_num(language, resume_seq);
+        language = decodeURIComponent(language);
             $.ajax({
                 type:"post",
                 url:"/resume/lang",
