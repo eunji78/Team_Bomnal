@@ -119,17 +119,20 @@
 ## 🖥 화면 구성
 
 ### 메인화면
-![image](https://user-images.githubusercontent.com/101463273/207205794-cda57018-01ad-4891-b399-f7cc4bdec621.png)
+![image](https://user-images.githubusercontent.com/101463273/207217638-db4cd8f0-c2d8-4b96-81d3-a5d9a7a3452a.png)
 
 
 
 ### 회원가입/로그인/회원수정/회원탈퇴
+![image](https://user-images.githubusercontent.com/101463273/207217753-29a3f516-2a57-4e03-8ca0-1f86c9688332.png)
+
 <br>
 
 ### 취업 공고
 <br>
 
 ### 기업 정보
+![image](https://user-images.githubusercontent.com/101463273/207218013-447da326-ef68-4ddd-9734-8de81d37c89c.png)
 <br>
 <br>
 
