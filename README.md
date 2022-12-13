@@ -99,7 +99,7 @@
 <br>
 
 ## 📌 SW유스케이스
-![image](https://user-images.githubusercontent.com/101463273/207202111-2072a0c0-15dd-4f76-9345-5e4672880fa9.png)
+![image](https://user-images.githubusercontent.com/101463273/207206619-5e7d9bbd-6c86-470d-b610-dc3300fdf5e5.png)
 
 <br>
 
