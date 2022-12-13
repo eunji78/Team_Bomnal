@@ -11,7 +11,7 @@
                     <div class="col-lg-3 col-md-2">
                         <!-- Logo -->
                         <div class="logo">
-                            <a href="index.html"><img src="/img/logo/logoT.png" style="width:260px; height:75px;" alt=""></a>
+                            <a th:href="@{/}"><img src="/img/logo/logoT.png" style="width:260px; height:75px;" alt=""></a>
                         </div>
                     </div>
                     <div class="col-lg-9 col-md-9">
@@ -21,9 +21,9 @@
                                 <nav class="d-none d-lg-block">
                                     <ul id="navigation">
                                         <li><a th:href="@{/}">Home</a></li>
-                                        <li><a th:href="@{/noticeList}">취업 공고</a></li>
-                                        <li><a th:href="@{/companyList}">기업 정보</a></li>
-                                        <li><a th:if="${not #strings.isEmpty(session.VO)}" th:href="@{/ump}">마이페이지</a>
+                                        <li><a th:href="@{/noticeList}">Job Posting</a></li>
+                                        <li><a th:href="@{/companyList}">Corporate Information</a></li>
+                                        <li><a th:if="${not #strings.isEmpty(session.VO)}" th:href="@{/ump}">My Page</a>
                                             <!--<ul class="submenu">
                                                 <li><a href="blog.html">Blog</a></li>
                                                 <li><a href="single-blog.html">Blog Details</a></li>
