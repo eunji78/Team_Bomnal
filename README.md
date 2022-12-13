@@ -13,9 +13,6 @@
 2022.11.08 ~ 2022.12.14 (5주)
 <br>
 
-## UI설계도 : 피그마
-<br>
-
 ## ⭐ 주요 기능
 * <b>채용공고 검색</b>
   * 사용자가 원하는 지역, 직무를 선택하고 찾는 검색어를 입력한다.
@@ -34,7 +31,6 @@
 <br>
 
 
-
 * <b>개인회원 이력서, 자기소개서 등록</b>
   * 개인회원 사용자는 마이페이지에서 이력서와 자기소개서를 등록할 수 있고, 수정할 수 있다.
 
@@ -47,7 +43,7 @@
   * 사용자는 기업에 대해서 장점, 단점, 한줄평, 연봉, 재직여부에 대해서 선택하고 그 결과를 제출한다.
   * 해당 기업에 사용자가 남긴 별점들의 평균을 구해서 기업의 평균 별점을 시각화한다.
 
-
+<br><br>
 ## ⛏ 기술스택
 <table>
     <tr>
@@ -102,8 +98,7 @@
 <br><br>
 
 ## 📌 SW유스케이스
-![image](https://user-images.githubusercontent.com/101463273/207206619-5e7d9bbd-6c86-470d-b610-dc3300fdf5e5.png)
-
+![image](https://user-images.githubusercontent.com/101463273/207220133-a082c781-d641-43a3-8659-688b30ed7470.png)
 <br>
 
 ## 📌 서비스 흐름도
@@ -168,14 +163,12 @@ https://youtu.be/or-fU9-e654
     <td align="center"><b>Backend</b></td>
     <td align="center"><b>Backend</b></td>
     <td align="center"><b>Backend</b></td>
-    <td align="center"><b>Backend</b></td>
 
   </tr>
     <tr>
     <td align="center"><b>팀장<br></b></td>
     <td align="center"><b></b></td>
     <td align="center"><b>기업 상세보기 페이지<br>기업 리뷰페이지 Front, Back</b></td>
-    <td align="center"><b></b></td>
     <td align="center"><b></b></td>
     <td align="center"><b></b></td>
   </tr>
@@ -185,11 +178,8 @@ https://youtu.be/or-fU9-e654
     <td align="center"><a href="https://github.com/100geun10000" target='_blank'>github</a></td>
     <td align="center"><a href="https://github.com/jaegangkim" target='_blank'>github</a></td>
     <td align="center"><a href="https://github.com/bingomangsoo" target='_blank'>github</a></td>
-    <td align="center"><a href="https://github.com/Tiel0043" target='_blank'>github</a></td>
 
   </tr>
 </table>
 
 ## 🤾‍♂️ 트러블슈팅
-  
-* 멘토링 문제<br>
