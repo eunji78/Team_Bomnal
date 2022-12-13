@@ -20,19 +20,19 @@
 * <b>채용공고 검색</b>
   * 사용자가 원하는 지역, 직무를 선택하고 찾는 검색어를 입력한다.
 ![image](https://user-images.githubusercontent.com/101463273/207209428-386171bd-7d37-4295-865b-7d7e7996bd5c.png)
-
+<br>
 
 * <b>입사지원</b>
   * 개인회원 사용자는 입사지원 페이지에서 이력서, 자기소개서를 확인한 후 최종 입사지원 버튼을 클릭힌다.
 ![image](https://user-images.githubusercontent.com/101463273/207209516-ba74982b-0e04-4e9b-a924-d6a8a7097708.png)
-
+<br>
 
  
 * <b>기업회원 채용공고 등록</b>
   * 기업회원 사용자는 채용공고 페이지에서 정보를 입력하여 채용공고를 등록할 수 있다.
 ![image](https://user-images.githubusercontent.com/101463273/207209995-23d39d2a-8b35-4598-a4e6-0714f201a069.png)
 ![image](https://user-images.githubusercontent.com/101463273/207209968-733a3ec5-7309-4686-9cef-b784cc19270c.png)
-
+<br>
 
 
 
@@ -73,7 +73,7 @@
     <tr>
         <td>개발도구</td>
         <td>
-            <img src="https://img.shields.io/badge/-IntelliJ-blue"/>
+            <img src="https://img.shields.io/badge/IntelliJ IDEA-000000?style=for-the-badge&logo=IntelliJ IDEA&logoColor=white"/>
             <img src="https://img.shields.io/badge/VSCode-007ACC?style=for-the-badge&logo=VisualStudioCode&logoColor=white"/>
         </td>
     </tr>
@@ -150,30 +150,29 @@ https://youtu.be/or-fU9-e654
 
   </tr>
   <tr>
-    <td align="center"><strong>김유리</strong></td>
-    <td align="center"><strong>이윤호</strong></td>
-    <td align="center"><strong>백근만</strong></td>
-    <td align="center"><strong>김재강</strong></td>
+    <td align="center"><strong>박의민</strong></td>
+    <td align="center"><strong>김은지</strong></td>
     <td align="center"><strong>박혜민</strong></td>
-    <td align="center"><strong>김민우</strong></td>
+    <td align="center"><strong>정대일</strong></td>
+    <td align="center"><strong>최성민</strong></td>
 
   </tr>
   <tr>
-    <td align="center"><b>Frontend</b></td>
     <td align="center"><b>Backend</b></td>
-    <td align="center"><b>Frontend</b></td>
+    <td align="center"><b>Backend</b></td>
+    <td align="center"><b>Backend</b></td>
     <td align="center"><b>Backend</b></td>
     <td align="center"><b>Backend</b></td>
     <td align="center"><b>Backend</b></td>
 
   </tr>
     <tr>
-    <td align="center"><b>팀장<br>게시판 서비스 구현<br>레벨 화면 구현<br>DB 설계</b></td>
-    <td align="center"><b>게시판 서비스 구현<br>달성도 차트 구현<br>DB 설계</b></td>
-    <td align="center"><b>회원 관리<br>마이챌린지<br>메인화면 구현<br>DB 설계</b></td>
-    <td align="center"><b>회원 관리<br>마이챌린지<br>메인화면 구현<br>DB 설계</b></td>
-    <td align="center"><b>회원 관리<br>마이챌린지<br>메인화면 구현<br>DB 설계</b></td>
-    <td align="center"><b>게시판 서비스<br>레벨 화면 구현<br>DB 설계</b></td>
+    <td align="center"><b>팀장<br></b></td>
+    <td align="center"><b></b></td>
+    <td align="center"><b>기업 상세보기 페이지<br>기업 리뷰페이지 Front, Back</b></td>
+    <td align="center"><b></b></td>
+    <td align="center"><b></b></td>
+    <td align="center"><b></b></td>
   </tr>
   <tr>
     <td align="center"><a href="https://github.com/kimpizza" target='_blank'>github</a></td>
