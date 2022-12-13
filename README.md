@@ -98,15 +98,15 @@
 <br><br>
 
 ## 📌 SW유스케이스
-![image](https://user-images.githubusercontent.com/101463273/207220133-a082c781-d641-43a3-8659-688b30ed7470.png)
+<img src="/봄날 페이지/설계/유스케이스.png" style="width:80%;">
 <br>
 
 ## 📌 서비스 흐름도
-![image](https://user-images.githubusercontent.com/101463273/207202250-3a9e9be3-0b1e-4143-a139-89e21f3acda1.png)
+<img src="/봄날 페이지/설계/서비스흐름도.png" style="width:80%;">
 <br>
 
 ## 📌 ER다이어그램
-![ERD](https://user-images.githubusercontent.com/101463273/207206471-abf98854-b507-4660-8032-25b52641b3c1.png)
+<img src="/봄날 페이지/설계/ERD.png" style="width:80%;">
 <br>
 <br>
 
