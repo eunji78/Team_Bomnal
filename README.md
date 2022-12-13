@@ -150,30 +150,29 @@ https://youtu.be/or-fU9-e654
 
   </tr>
   <tr>
-    <td align="center"><strong>김유리</strong></td>
-    <td align="center"><strong>이윤호</strong></td>
-    <td align="center"><strong>백근만</strong></td>
-    <td align="center"><strong>김재강</strong></td>
+    <td align="center"><strong>박의민</strong></td>
+    <td align="center"><strong>김은지</strong></td>
     <td align="center"><strong>박혜민</strong></td>
-    <td align="center"><strong>김민우</strong></td>
+    <td align="center"><strong>정대일</strong></td>
+    <td align="center"><strong>최성민</strong></td>
 
   </tr>
   <tr>
-    <td align="center"><b>Frontend</b></td>
     <td align="center"><b>Backend</b></td>
-    <td align="center"><b>Frontend</b></td>
+    <td align="center"><b>Backend</b></td>
+    <td align="center"><b>Backend</b></td>
     <td align="center"><b>Backend</b></td>
     <td align="center"><b>Backend</b></td>
     <td align="center"><b>Backend</b></td>
 
   </tr>
     <tr>
-    <td align="center"><b>팀장<br>게시판 서비스 구현<br>레벨 화면 구현<br>DB 설계</b></td>
-    <td align="center"><b>게시판 서비스 구현<br>달성도 차트 구현<br>DB 설계</b></td>
-    <td align="center"><b>회원 관리<br>마이챌린지<br>메인화면 구현<br>DB 설계</b></td>
-    <td align="center"><b>회원 관리<br>마이챌린지<br>메인화면 구현<br>DB 설계</b></td>
-    <td align="center"><b>회원 관리<br>마이챌린지<br>메인화면 구현<br>DB 설계</b></td>
-    <td align="center"><b>게시판 서비스<br>레벨 화면 구현<br>DB 설계</b></td>
+    <td align="center"><b>팀장<br></b></td>
+    <td align="center"><b></b></td>
+    <td align="center"><b>기업 상세보기 페이지<br>기업 리뷰페이지 Front, Back</b></td>
+    <td align="center"><b></b></td>
+    <td align="center"><b></b></td>
+    <td align="center"><b></b></td>
   </tr>
   <tr>
     <td align="center"><a href="https://github.com/kimpizza" target='_blank'>github</a></td>
