@@ -73,7 +73,7 @@
     <tr>
         <td>개발도구</td>
         <td>
-            <img src="https://img.shields.io/badge/-IntelliJ-blue"/>
+            <img src="https://img.shields.io/badge/IntelliJ IDEA-000000?style=for-the-badge&logo=IntelliJ IDEA&logoColor=lightgrey"/>
             <img src="https://img.shields.io/badge/VSCode-007ACC?style=for-the-badge&logo=VisualStudioCode&logoColor=white"/>
         </td>
     </tr>
