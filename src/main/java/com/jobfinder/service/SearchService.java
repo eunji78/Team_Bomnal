@@ -1,7 +1,7 @@
 package com.jobfinder.service;
 
+import com.jobfinder.domain.Criteria;
 import com.jobfinder.domain.Recruit;
-import com.jobfinder.repository.MainRepository;
 import com.jobfinder.repository.SearchRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -14,14 +14,14 @@ public class SearchService {
 
     private final SearchRepository searchRepository;
 
-    public List<Recruit> search(List<String> keywords){
+    public List<Recruit> search(Criteria cri){
 
-        String keyword = keywords.get(keywords.size()-1);
-        keywords.remove(keywords.size()-1);
-
-        List<Recruit> result = searchRepository.search(keywords, keyword);
+        List<Recruit> result = searchRepository.search(cri);
 
         return result;
+    }
+    public int count_search(String keyword){
+        return searchRepository.count_search(keyword);
     }
 
 }
