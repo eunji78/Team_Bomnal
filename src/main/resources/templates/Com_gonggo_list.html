@@ -161,7 +161,7 @@
                     <tbody>
 
                     <tr th:each="rc : ${rec_list}">
-                      <td class="col-2"><input type="checkbox" th:id="${'check_box' + rcStat.index}" name="r_seq" style="margin-right: 10px;" th:value="rc.r_seq"><span th:text="${rc.r_seq}"></span></td>
+                      <td class="col-2"><input type="checkbox" th:id="${'check_box' + rcStat.index}" name="r_seq" style="margin-right: 10px;" th:value="${rc.r_seq}"><span th:text="${rc.r_seq}"></span></td>
                       <td class="col-8" ><a th:href="@{/noticeDetail/{r_seq}(r_seq=${rc.r_seq})}" th:text="${rc.r_title}">제목</a></td>
                       <td class="col-2" th:text="${rc.company_id}">작성자</td>
                     </tr>
@@ -243,6 +243,16 @@
             $("#check_pwd_ptag").html( "<p id='check_pwd_ptag' style=' color: red; visibility: visible; text-align: left !important; margin:0px !important;'> 비밀번호가 일치하지 않습니다! </p>" );
         }
     };
+
+    function goUpdate(){
+        console.log($("input[type=checkbox][name=r_seq]:checked").val());
+        location.href="/updateJobPostingForm/"+$("input[type=checkbox][name=r_seq]:checked").val();
+      }
+
+    function goDelete(){
+      console.log($("input[type=checkbox][name=r_seq]:checked").val());
+      location.href="/deleteJobPosting/"+$("input[type=checkbox][name=r_seq]:checked").val();
+    }
 
 </script>
 

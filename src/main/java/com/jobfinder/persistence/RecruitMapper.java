@@ -22,5 +22,7 @@ public interface RecruitMapper {
 
     public void updateJobPosting(Recruit recruit);
 
-    String getJobName(String r_part);
+    public String getJobName(String r_part);
+
+    public void deleteJobPosting(int r_seq);
 }

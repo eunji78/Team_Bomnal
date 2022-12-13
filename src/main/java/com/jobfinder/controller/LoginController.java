@@ -42,9 +42,6 @@ public class LoginController {
     LoginService loginService;
 
 
-
-
-
     @PostMapping(value = "/upload")
     // 업로드하는 파일들을 MultipartFile 형태의 파라미터로 전달된다.
     @ResponseBody
@@ -333,7 +330,6 @@ public class LoginController {
 
         //검증 실패시 다시 폼으로
         if(bindingResult.hasErrors()){
-            log.info("errors={}", bindingResult);
             return "/signup_local";
         }
 

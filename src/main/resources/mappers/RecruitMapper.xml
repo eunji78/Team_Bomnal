@@ -8,7 +8,7 @@
         select company_name, r_title, (select job from job where job_seq = r_part) as r_part, r_business, r_license, r_detail,
         r_open_date, r_close_date, r_career, r_academic_ability, r_academic_option, r_academic_candidate, r_salary_type, r_salary, r_salary_bylaws,
         r_work_time, r_work_time_after, r_job_pattern, r_work_area, r_manager_email, r_manager_name, r_manager_phone_first, r_manager_phone_second,
-        r_manager_phone_third, r_manager_email_public, r_manager_name_public, r_manager_phone_public, company_logo
+        r_manager_phone_third, r_manager_email_public, r_manager_name_public, r_manager_phone_public, company_logo, r_work_addr
         from recruit where r_seq = #{r_seq}
     </select>
 
@@ -17,12 +17,14 @@
         from job j inner join recruit r
         on j.job_seq = r.r_part
         where j.super_job_seq = #{super_job_seq}
+        order by r_close_date
     </select>
 
     <select id="allList" parameterType="Criteria" resultType="Recruit">
         select *
         from job j inner join recruit r
         on j.job_seq = r.r_part
+        order by r_close_date
         limit #{pageStart}, #{perPageNum}
     </select>
 
@@ -67,10 +69,14 @@
     </update>
 
     <select id="getRecruit" parameterType="int" resultType="Recruit">
-        select * from recruit where r_seq = 26;
+        select * from recruit where r_seq = #{r_seq}
     </select>
 
     <select id="getJobName" parameterType="String" resultType="String">
         select job as job_name from job where job_seq = #{r_part}
     </select>
+
+    <delete id="deleteJobPosting" parameterType="int">
+        delete from recruit where r_seq = #{r_seq}
+    </delete>
 </mapper>

@@ -10,6 +10,8 @@ public interface ResumeMapper {
 
     public int resume_num(String mem_id);
 
+    public int delete_resume(int seq);
+
     // 이력서 등록
     public void resume_add(Resume resume);
     public void lang_add(Language language);

@@ -56,4 +56,8 @@ public class RecruitRepository {
         String job_name = recruitMapper.getJobName(r_part);
         return job_name;
     }
+
+    public void deleteJobPosting(int r_seq) {
+        recruitMapper.deleteJobPosting(r_seq);
+    }
 }

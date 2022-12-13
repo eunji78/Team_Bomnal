@@ -87,4 +87,12 @@ public class RecruitController {
         System.out.println("수정완료!");
         return "redirect:/noticeDetail/"+recruit.getR_seq();
     }
+
+    @RequestMapping("/deleteJobPosting/{r_seq}")
+    public String deleteJobPosting(@PathVariable int r_seq){
+        recruitService.deleteJobPosting(r_seq);
+        System.out.println("삭제 완료");
+        return "redirect:/";
+    }
+
 }

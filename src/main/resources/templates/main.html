@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-         <title>Job board HTML-5 Template </title>
+         <title>Bomnal</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="manifest" href="site.webmanifest">
@@ -81,7 +81,7 @@
                             </div>
                             <!--검색 버튼-->
                             <div class="search-form">
-                                <a class="search-button" href="#">검색</a>
+                                <a class="search-button" onclick="keywords_search()">검색</a>
                             </div>
                         </form>
                     </div>
@@ -352,16 +352,46 @@
         <script src="/js/main-page.js"></script>
         <script src="/js/search.js"></script>
         <!--<script type="text/javascript" th:src="@{/js/main-page.js}"></script>-->
-       <script th:inline="javascript">
-           function goResume(){
-            if([[${session.VO == null}]]){
-                alert("로그인 후 시도해주세요");
+        <script th:inline="javascript">
+            function goResume(){
+                if([[${session.VO == null}]]){
+                    alert("로그인 후 시도해주세요");
+                }
+                else{
+                    location.href="/resume_manage";
+                }
             }
-            else{
-                location.href="/resume_manage";
+        </script>
+
+        <script>
+            function keywords_search(){
+                let keywords = [];
+                var matches =  document.getElementsByClassName('selected_keyword');
+
+                for(let i=0; i<matches.length ; i++){
+                    keywords.push(matches[i].innerText);
+                }
+
+                var keyword =  document.getElementById('keywords').value;
+                keywords.push(keyword);
+
+                $.ajax({
+                    type:"get",
+                    url:"/search",
+                    data:{search:keywords},
+                    dataType: "json",
+                    success: function(){
+                    },
+                    error : function(){
+                        console.log("error");
+                    }
+                });
+
+
+
+                console.log(keywords);
             }
-           }
-       </script>
+        </script>
    </th:block>
     </body>
 </html>
