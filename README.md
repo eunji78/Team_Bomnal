@@ -117,8 +117,11 @@
 
 
 
-### 회원가입/로그인/회원수정/회원탈퇴
+### 회원가입/로그인/회원수정
+![image](https://user-images.githubusercontent.com/101463273/207220763-7d472784-35d0-42d3-aceb-d65591ec586b.png)
 ![image](https://user-images.githubusercontent.com/101463273/207217753-29a3f516-2a57-4e03-8ca0-1f86c9688332.png)
+![image](https://user-images.githubusercontent.com/101463273/207220636-66ab4f3c-dbab-4ae0-821a-e936f125e96c.png)
+
 
 <br>
 
