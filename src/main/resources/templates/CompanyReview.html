@@ -64,9 +64,12 @@
                                 <h1 th:text="${detail.company_name}">삼성전자(주)</h1>
                             </a>
                             <ul>
-                                <img src="/img/settings.png"><li th:text="${detail.company_industry}">전기/전자/제어</li>
-                                <img src="/img/icon/pin.png"><li th:text="${#strings.listSplit(detail.company_address,' ')[0]}">서울</li>
-                                <img src="/img/home.png"><li th:text="${detail.company_type}">대기업</li>
+                                <img src="/img/settings.png">
+                                <li th:text="${detail.company_industry}">전기/전자/제어</li>
+                                <img src="/img/icon/pin.png">
+                                <li th:text="${#strings.listSplit(detail.company_address,' ')[0]}">서울</li>
+                                <img src="/img/home.png">
+                                <li th:text="${detail.company_type}">대기업</li>
                             </ul>
                         </div>
                     </div>
@@ -76,8 +79,8 @@
                            class="genric-btn primary-border radius">기업상세</a>
                         <a th:href="@{/companyReview/{company_id}(company_id=${detail.company_id})}"
                            class="genric-btn success radius">기업리뷰</a>
-                                                <a th:href="@{/companyRecruit/{company_id}(company_id=${detail.company_id})}"
-                                                   class="genric-btn warning-border radius" th:text="'채용공고('+${countgongo}+')'">채용공고(4)</a>
+                        <a th:href="@{/companyRecruit/{company_id}(company_id=${detail.company_id})}"
+                           class="genric-btn warning-border radius" th:text="'채용공고('+${countgongo}+')'">채용공고(4)</a>
                     </div>
 
                 </div>
@@ -181,149 +184,203 @@
                                 </div>
                             </th:block>
 
-
-                            <!--리뷰 작성 form-->
                             <th:block th:if="${session.VO !=null}">
-                                <div class="comment-form">
-                                    <h4>Leave a Reivew</h4>
-                                    <form class="form-contact comment_form" id="myform" method="post"
+                            <!--리뷰 작성 form-->
+                            <div style="text-align: -webkit-center; margin-top: 50px; margin-bottom: 30px;">
+                            <button type="button" class="btn btn-primary" data-toggle="modal"
+                                    data-target="#exampleModal"
+                                    data-whatever="@getbootstrap">리뷰 작성하기
+                            </button>
+                            </div>
+
+
+                            <div class="modal fade bd-example-modal-lg" id="exampleModal" tabindex="-1" role="dialog"
+                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-lg" role="document">
+                                    <form method="post"
                                           th:action="@{/save/{company_id}(company_id=${detail.company_id})}">
-                                        <input type="hidden" name="mem_id" th:value="${session.VO.mem_id}">
-                                        <div class="row">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">기업리뷰 작성</h5>
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
 
-                                            <div class="starform" style="text-align: center;">
-                                                <fieldset>
-                                                    <legend>기업 복지</legend>
-                                                    <input type="radio" name="welfare" value="5" id="wel1"><label
-                                                        for="wel1">⭐</label>
-                                                    <input type="radio" name="welfare" value="4" id="wel2"><label
-                                                        for="wel2">⭐</label>
-                                                    <input type="radio" name="welfare" value="3" id="wel3"><label
-                                                        for="wel3">⭐</label>
-                                                    <input type="radio" name="welfare" value="2" id="wel4"><label
-                                                        for="wel4">⭐</label>
-                                                    <input type="radio" name="welfare" value="1" id="wel5"><label
-                                                        for="wel5">⭐</label>
-                                                </fieldset>
-                                                <fieldset>
-                                                    <legend>워라벨</legend>
-                                                    <input type="radio" name="work_life_balance" value="5"
-                                                           id="wor1"><label
-                                                        for="wor1">⭐</label>
-                                                    <input type="radio" name="work_life_balance" value="4"
-                                                           id="wor2"><label
-                                                        for="wor2">⭐</label>
-                                                    <input type="radio" name="work_life_balance" value="3"
-                                                           id="wor3"><label
-                                                        for="wor3">⭐</label>
-                                                    <input type="radio" name="work_life_balance" value="2"
-                                                           id="wor4"><label
-                                                        for="wor4">⭐</label>
-                                                    <input type="radio" name="work_life_balance" value="1"
-                                                           id="wor5"><label
-                                                        for="wor5">⭐</label>
-                                                </fieldset>
-                                                <fieldset>
-                                                    <legend>사내 문화</legend>
-                                                    <input type="radio" name="inner_culture" value="5" id="cul1"><label
-                                                        for="cul1">⭐</label>
-                                                    <input type="radio" name="inner_culture" value="4" id="cul2"><label
-                                                        for="cul2">⭐</label>
-                                                    <input type="radio" name="inner_culture" value="3" id="cul3"><label
-                                                        for="cul3">⭐</label>
-                                                    <input type="radio" name="inner_culture" value="2" id="cul4"><label
-                                                        for="cul4">⭐</label>
-                                                    <input type="radio" name="inner_culture" value="1" id="cul5"><label
-                                                        for="cul5">⭐</label>
-                                                </fieldset>
-                                                <fieldset>
-                                                    <legend>승진 기회</legend>
-                                                    <input type="radio" name="p_opportunity" value="5"
-                                                           id="promo1"><label
-                                                        for="promo1">⭐</label>
-                                                    <input type="radio" name="p_opportunity" value="4"
-                                                           id="promo2"><label
-                                                        for="promo2">⭐</label>
-                                                    <input type="radio" name="p_opportunity" value="3"
-                                                           id="promo3"><label
-                                                        for="promo3">⭐</label>
-                                                    <input type="radio" name="p_opportunity" value="2"
-                                                           id="promo4"><label
-                                                        for="promo4">⭐</label>
-                                                    <input type="radio" name="p_opportunity" value="1"
-                                                           id="promo5"><label
-                                                        for="promo5">⭐</label>
-                                                </fieldset>
-                                                <fieldset>
-                                                    <legend>경영진</legend>
-                                                    <input type="radio" name="management" value="5" id="manage1"><label
-                                                        for="manage1">⭐</label>
-                                                    <input type="radio" name="management" value="4" id="manage2"><label
-                                                        for="manage2">⭐</label>
-                                                    <input type="radio" name="management" value="3" id="manage3"><label
-                                                        for="manage3">⭐</label>
-                                                    <input type="radio" name="management" value="2" id="manage4"><label
-                                                        for="manage4">⭐</label>
-                                                    <input type="radio" name="management" value="1" id="manage5"><label
-                                                        for="manage5">⭐</label>
-                                                </fieldset>
+                                                <img class="c_icon" th:src="${detail.company_logo}">
+                                                <h4 th:text="${detail.company_name} + ' | '" style="display: inline; padding-left: 20px;"></h4><medium th:text="${detail.company_industry}"></medium>
+                                                <br><br><medium>입력하신 정보는 모두 익명으로 처리되니 걱정마세요.</medium><br>
+                                                <div class="comment-form" style="margin-top:0px;">
+                                                    <div class="" id="myform">
+                                                        <input type="hidden" name="mem_id" th:value="${session.VO.mem_id}">
+
+                                                        <div id="starform" style="text-align: center;">
+                                                            <fieldset>
+                                                                <legend>기업 복지</legend>
+                                                                <input type="radio" name="welfare" value="5"
+                                                                       id="wel1"><label
+                                                                    for="wel1">⭐</label>
+                                                                <input type="radio" name="welfare" value="4"
+                                                                       id="wel2"><label
+                                                                    for="wel2">⭐</label>
+                                                                <input type="radio" name="welfare" value="3"
+                                                                       id="wel3"><label
+                                                                    for="wel3">⭐</label>
+                                                                <input type="radio" name="welfare" value="2"
+                                                                       id="wel4"><label
+                                                                    for="wel4">⭐</label>
+                                                                <input type="radio" name="welfare" value="1"
+                                                                       id="wel5"><label
+                                                                    for="wel5">⭐</label>
+                                                            </fieldset>
+                                                            <fieldset>
+                                                                <legend>워라벨</legend>
+                                                                <input type="radio" name="work_life_balance" value="5"
+                                                                       id="wor1"><label
+                                                                    for="wor1">⭐</label>
+                                                                <input type="radio" name="work_life_balance" value="4"
+                                                                       id="wor2"><label
+                                                                    for="wor2">⭐</label>
+                                                                <input type="radio" name="work_life_balance" value="3"
+                                                                       id="wor3"><label
+                                                                    for="wor3">⭐</label>
+                                                                <input type="radio" name="work_life_balance" value="2"
+                                                                       id="wor4"><label
+                                                                    for="wor4">⭐</label>
+                                                                <input type="radio" name="work_life_balance" value="1"
+                                                                       id="wor5"><label
+                                                                    for="wor5">⭐</label>
+                                                            </fieldset>
+                                                            <fieldset>
+                                                                <legend>사내 문화</legend>
+                                                                <input type="radio" name="inner_culture" value="5"
+                                                                       id="cul1"><label
+                                                                    for="cul1">⭐</label>
+                                                                <input type="radio" name="inner_culture" value="4"
+                                                                       id="cul2"><label
+                                                                    for="cul2">⭐</label>
+                                                                <input type="radio" name="inner_culture" value="3"
+                                                                       id="cul3"><label
+                                                                    for="cul3">⭐</label>
+                                                                <input type="radio" name="inner_culture" value="2"
+                                                                       id="cul4"><label
+                                                                    for="cul4">⭐</label>
+                                                                <input type="radio" name="inner_culture" value="1"
+                                                                       id="cul5"><label
+                                                                    for="cul5">⭐</label>
+                                                            </fieldset>
+                                                            <fieldset>
+                                                                <legend>승진 기회</legend>
+                                                                <input type="radio" name="p_opportunity" value="5"
+                                                                       id="promo1"><label
+                                                                    for="promo1">⭐</label>
+                                                                <input type="radio" name="p_opportunity" value="4"
+                                                                       id="promo2"><label
+                                                                    for="promo2">⭐</label>
+                                                                <input type="radio" name="p_opportunity" value="3"
+                                                                       id="promo3"><label
+                                                                    for="promo3">⭐</label>
+                                                                <input type="radio" name="p_opportunity" value="2"
+                                                                       id="promo4"><label
+                                                                    for="promo4">⭐</label>
+                                                                <input type="radio" name="p_opportunity" value="1"
+                                                                       id="promo5"><label
+                                                                    for="promo5">⭐</label>
+                                                            </fieldset>
+                                                            <fieldset>
+                                                                <legend>경영진</legend>
+                                                                <input type="radio" name="management" value="5"
+                                                                       id="manage1"><label
+                                                                    for="manage1">⭐</label>
+                                                                <input type="radio" name="management" value="4"
+                                                                       id="manage2"><label
+                                                                    for="manage2">⭐</label>
+                                                                <input type="radio" name="management" value="3"
+                                                                       id="manage3"><label
+                                                                    for="manage3">⭐</label>
+                                                                <input type="radio" name="management" value="2"
+                                                                       id="manage4"><label
+                                                                    for="manage4">⭐</label>
+                                                                <input type="radio" name="management" value="1"
+                                                                       id="manage5"><label
+                                                                    for="manage5">⭐</label>
+                                                            </fieldset>
+
+                                                            <div class="col-sm-12">
+                                                                <div class="form-group">
+                                                                    <h4 style="display: inline;">나의 연봉은</h4>
+                                                                    <input class="form-control" name="my_salary"
+                                                                           id="email"
+                                                                           type="number"
+                                                                           placeholder="연봉"
+                                                                           style="display: inline; width:90px;">만원
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-12">
+                                                                <div class="form-group">
+                                                                    <h4 style="display: inline;">나는 지금</h4>
+                                                                    <input type="checkbox" name="current_yn" value="y"
+                                                                           onclick="checkOnlyOne(this)"
+                                                                           style="display: inline;"/>현직자
+                                                                    <input type="checkbox" name="current_yn" value="n"
+                                                                           onclick="checkOnlyOne(this)"
+                                                                           style="display: inline;"/>전직자
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="recipient-name" class="col-form-label">기업 한줄평</label>
+                                                    <input type="text" class="form-control" id="recipient-name"
+                                                           name="review_content">
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="message-text" class="col-form-label">기업의 장점</label>
+                                                    <textarea class="form-control" id="message-text"
+                                                              name="pros"></textarea>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="message-text" class="col-form-label">기업의 단점</label>
+                                                    <textarea class="form-control" id="message-text"
+                                                              name="cons"></textarea>
+                                                </div>
+
+                                                <div class="col-sm-12" style="padding-left:0px;">
+                                                    <div class="form-group">
+                                                        <h4 style="display: inline;">이 기업을 친구에게 추천하시겠습니까?</h4>
+                                                        <input type="checkbox" name="recommend_yn" value="y"
+                                                               onclick="checkOnlyOne1(this)" style="display: inline;"/>예
+                                                        <input type="checkbox" name="recommend_yn" value="n"
+                                                               onclick="checkOnlyOne1(this)" style="display: inline;"/>아니요
+                                                    </div>
+                                                </div>
+
 
                                             </div>
-                                            <br><br>
-
-                                            <div class="col-12">
-                                                <div class="form-group">
-                                                    <h4 style="color: orangered;">단점</h4>
-                                                    <textarea class="form-control w-100" name="cons" id="comment"
-                                                              cols="30" rows="9"
-                                                              placeholder="단점을 입력하세요"></textarea>
-                                                </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                                    Close
+                                                </button>
+                                                <button type="submit" class="btn btn-primary">Share
+                                                </button>
                                             </div>
-                                            <br><br>
-                                            <div class="col-12">
-                                                <div class="form-group">
-                                                    <h4 style="color: royalblue;">장점</h4>
-                                                    <textarea class="form-control w-100" name="pros" id="comment"
-                                                              cols="30" rows="9"
-                                                              placeholder="장점을 입력하세요"></textarea>
-                                                </div>
-                                            </div>
-                                            <div class="col-12">
-                                                <div class="form-group">
-                                                    <h4 style="color: green;">전체 리뷰</h4>
-                                                    <textarea class="form-control w-100" name="review_content"
-                                                              id="comment"
-                                                              cols="30" rows="9"
-                                                              placeholder="Write Comment"></textarea>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-12">
-                                                <div class="form-group">
-                                                    <h4 style="display: inline;">나의 연봉은</h4>
-                                                    <input class="form-control" name="my_salary" id="email"
-                                                           type="number"
-                                                           placeholder="연봉" style="display: inline; width:90px;">만원
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-12">
-                                                <div class="form-group">
-                                                    <h4 style="display: inline;">나는 지금</h4>
-                                                    <input type="checkbox" name="current_yn" value="y"
-                                                           onclick="checkOnlyOne(this)" style="display: inline;"/>현직자
-                                                    <input type="checkbox" name="current_yn" value="n"
-                                                           onclick="checkOnlyOne(this)" style="display: inline;"/>전직자
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                        <div class="form-group" style="text-align: center;">
-                                            <button type="submit" class="button button-contactForm btn_1 boxed-btn"
-                                                    style="color:#38a4ff!important;">Share
-                                            </button>
                                         </div>
                                     </form>
                                 </div>
+                            </div>
                             </th:block>
+
+                            <!-- 리뷰작성 폼 끝-->
+
+                            <br><br><br>
 
 
                             <h4 class="moabogi">모아보기</h4>
@@ -344,13 +401,19 @@
                                             th:text="${r.countlike}"></small></a>
 
 
-                                    <a href='javascript:void(0);' th:if="${session.VO != null} and ${r.like_check ==0}" th:id="'btn_like'+${r.review_seq}" style="display:inline; color:black;"
-                                            th:attr="onclick=|clickLike1('${r.review_seq}')|">🤍
-                                        <small style="color:black;" th:id="'countLike'+${r.review_seq}" th:if="${not #strings.isEmpty(r.countlike)}" th:text="${r.countlike}"></small></a>
+                                    <a href='javascript:void(0);' th:if="${session.VO != null} and ${r.like_check ==0}"
+                                       th:id="'btn_like'+${r.review_seq}" style="display:inline; color:black;"
+                                       th:attr="onclick=|clickLike1('${r.review_seq}')|">🤍
+                                        <small style="color:black;" th:id="'countLike'+${r.review_seq}"
+                                               th:if="${not #strings.isEmpty(r.countlike)}"
+                                               th:text="${r.countlike}"></small></a>
 
-                                    <a href='javascript:void(0);' th:if="${session.VO != null} and ${r.like_check ==1}" th:id="'btn_like'+${r.review_seq}" style="display:inline; color:red;"
-                                            th:attr="onclick=|clickLike2('${r.review_seq}')|">❤
-                                        <small style="color:black;" th:id="'countLike'+${r.review_seq}" th:if="${not #strings.isEmpty(r.countlike)}" th:text="${r.countlike}"></small></a>
+                                    <a href='javascript:void(0);' th:if="${session.VO != null} and ${r.like_check ==1}"
+                                       th:id="'btn_like'+${r.review_seq}" style="display:inline; color:red;"
+                                       th:attr="onclick=|clickLike2('${r.review_seq}')|">❤
+                                        <small style="color:black;" th:id="'countLike'+${r.review_seq}"
+                                               th:if="${not #strings.isEmpty(r.countlike)}"
+                                               th:text="${r.countlike}"></small></a>
 
 
                                     <br>
@@ -397,10 +460,10 @@
                                             <td th:if="${r.management == 5}" th:text="'⭐⭐⭐⭐⭐'"></td>
                                         </tr>
                                     </table>
-                                    <br>
+                                    <br><br>
 
-                                    <h6 style="color: orangered;">단점</h6>
-                                    <p class="excert" th:text="${r.cons}">
+                                    <h6 style="color: royalblue;">기업의 장점</h6>
+                                    <p class="excert" th:text="${r.pros}">
                                         MCSE boot camps have its supporters and its detractors. Some people do not
                                         understand why you
                                         should have to spend money on boot camp when you can get the MCSE study
@@ -409,8 +472,8 @@
                                         fraction of the camp price. However, who has the willpower
                                     </p>
                                     <br>
-                                    <h6 style="color: royalblue;">장점</h6>
-                                    <p th:text="${r.pros}">
+                                    <h6 style="color: orangered;">기업의 단점</h6>
+                                    <p th:text="${r.cons}">
                                         MCSE boot camps have its supporters and its detractors. Some people do not
                                         understand why you
                                         should have to spend money on boot camp when you can get the MCSE study
@@ -421,7 +484,7 @@
                                         self-imposed MCSE training. who has the willpower to actually
                                     </p>
                                     <br>
-                                    <h6 style="color: green;">종합 리뷰</h6>
+                                    <h6 style="color: green;">기업 한줄평</h6>
                                     <div class="quote-wrapper">
                                         <div class="quotes" th:text="${r.review_content}">
                                             MCSE boot camps have its supporters and its detractors. Some people do not
@@ -513,8 +576,24 @@
             element.checked = true;
          }
 
+</script>
+
+<script>
+         function checkOnlyOne1(element) {
+
+            const checkboxes
+                = document.getElementsByName("recommend_yn");
+
+            checkboxes.forEach((cb) => {
+              cb.checked = false;
+            })
+
+            element.checked = true;
+         }
 
 </script>
+
+
 <script th:inline="javascript">
 /*<![CDATA[*/
     function clickLike1(review_seq) {
@@ -538,6 +617,8 @@
       })
 	}
 /*]]*/
+
+
 
 </script>
 <script th:inline="javascript">
@@ -563,6 +644,8 @@
       })
 	}
 /*]]*/
+
+
 
 </script>
 
