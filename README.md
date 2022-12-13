@@ -115,7 +115,7 @@
 <br>
 
 ## 📌 서비스 흐름도
-![서비스흐름도](https://user-images.githubusercontent.com/101463273/189019753-1cbc1489-5b71-4980-9c90-6fbec84b6923.png)
+![image](https://user-images.githubusercontent.com/101463273/207202250-3a9e9be3-0b1e-4143-a139-89e21f3acda1.png)
 <br>
 
 ## 📌 ER다이어그램
