@@ -31,7 +31,6 @@
 * <b>기업회원 채용공고 등록</b>
   * 기업회원 사용자는 채용공고 페이지에서 정보를 입력하여 채용공고를 등록할 수 있다.
 ![image](https://user-images.githubusercontent.com/101463273/207209995-23d39d2a-8b35-4598-a4e6-0714f201a069.png)
-![image](https://user-images.githubusercontent.com/101463273/207209968-733a3ec5-7309-4686-9cef-b784cc19270c.png)
 <br>
 
 
@@ -128,10 +127,12 @@
 
 <br>
 
-### 취업 공고
+### 채용공고 등록/조회
+![image](https://user-images.githubusercontent.com/101463273/207218963-cd52d1e8-eadd-47ee-bd68-a232a616fcea.png)
+![image](https://user-images.githubusercontent.com/101463273/207219163-16e3b8ed-eabe-4e66-b550-e83629e9f9aa.png)
 <br>
 
-### 기업 정보
+### 기업정보
 ![image](https://user-images.githubusercontent.com/101463273/207218013-447da326-ef68-4ddd-9734-8de81d37c89c.png)
 <br>
 <br>
