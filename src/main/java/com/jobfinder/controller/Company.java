@@ -143,5 +143,10 @@ public class Company {
 		return "CompanyRecruit";
 	}
 
+	@GetMapping("/a")
+	public String a(){
+		return "modal";
+	}
+
 
 }
