@@ -110,7 +110,9 @@
 <br>
 <br>
 
-## 🖥 화면 구성
+
+<details>
+<summary>🖥 화면 구성</summary>
 
 ### 메인화면
 ![image](https://user-images.githubusercontent.com/101463273/207217638-db4cd8f0-c2d8-4b96-81d3-a5d9a7a3452a.png)
@@ -139,6 +141,9 @@
 <br>
 <br>
 
+ 
+ </details>
+ 
 ## 시연 영상
 https://youtu.be/or-fU9-e654
 ## 👨‍👩‍👦‍👦 팀원 역할
@@ -149,7 +154,6 @@ https://youtu.be/or-fU9-e654
     <td align="center"><img src="https://cdn-icons-png.flaticon.com/512/4440/4440873.png" width="100" height="100"/></td>
     <td align="center"><img src="https://cdn-icons-png.flaticon.com/512/4440/4440953.png" width="100" height="100"/></td>
     <td align="center"><img src="https://cdn-icons-png.flaticon.com/512/4440/4440876.png" width="100" height="100"/></td>
-    <td align="center"><img src="https://cdn-icons-png.flaticon.com/512/4439/4439947.png" width="100" height="100"/></td>
 
   </tr>
   <tr>
@@ -171,7 +175,7 @@ https://youtu.be/or-fU9-e654
     <tr>
     <td align="center"><b>팀장<br></b></td>
     <td align="center"><b></b></td>
-    <td align="center"><b>기업 상세보기 페이지<br>기업 리뷰페이지 Front, Back</b></td>
+    <td align="center"><b></b></td>
     <td align="center"><b></b></td>
     <td align="center"><b></b></td>
   </tr>
