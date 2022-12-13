@@ -108,7 +108,7 @@
 <br>
 
 ## 📌 ER다이어그램
-![db](https://user-images.githubusercontent.com/101463273/189014345-19668b19-1a6e-43bb-8f2b-97d5075e86d5.png)
+![ERD](https://user-images.githubusercontent.com/101463273/207206471-abf98854-b507-4660-8032-25b52641b3c1.png)
 <br>
 <br>
 
