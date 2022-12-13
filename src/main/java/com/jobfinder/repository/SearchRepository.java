@@ -1,5 +1,6 @@
 package com.jobfinder.repository;
 
+import com.jobfinder.domain.Criteria;
 import com.jobfinder.domain.Recruit;
 import com.jobfinder.persistence.SearchMapper;
 import lombok.RequiredArgsConstructor;
@@ -13,7 +14,11 @@ public class SearchRepository {
 
     private final SearchMapper searchMapper;
 
-    public List<Recruit> search(List<String> tags, String keyword){
-        return searchMapper.search(tags, keyword);
+    public List<Recruit> search(Criteria cri){
+        return searchMapper.search(cri);
+    }
+
+    public int count_search(String keyword){
+        return searchMapper.count_search(keyword);
     }
 }

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,7 +34,8 @@ public class RecruitController {
     }
 
     @RequestMapping("/noticeList")
-    public String allList(Model model, Criteria cri) {
+    public String allList(Model model, Criteria cri, HttpSession session) {
+
         List<Job> job_list = mainService.jobList();
         model.addAttribute("job_list", job_list);
         List<RegionVO> region_list = mainService.regionList();
@@ -44,6 +46,7 @@ public class RecruitController {
         PageMaker pageMaker = new PageMaker();
         pageMaker.setCri(cri);
         pageMaker.setTotalCount(recruitService.countNotice(cri));
+        session.setAttribute("pageMaker",pageMaker);
         model.addAttribute("pageMaker",pageMaker);
 
         return "noticeList";

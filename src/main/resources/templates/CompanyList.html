@@ -103,15 +103,15 @@
                     <ul class="pagination justify-content-start">
 
                       <!-- 이전페이지 -->
-                      <li class="page-item" th:if="${session.pageMaker.prev}"><a class="page-link" th:href="@{${session.pageMaker.startPage-1}}"><span class="ti-angle-left"></span></a></li>
+                      <li class="page-item" th:if="${session.pageMaker.prev}"><a class="page-link" th:href="@{/companyList(page=${session.pageMaker.startPage-1})}"><span class="ti-angle-left"></span></a></li>
 
                       <th:block th:each="pageNum : ${#numbers.sequence(session.pageMaker.startPage,session.pageMaker.endPage)}">
-                      <li class="page-item active" th:if="${session.pageMaker.cri.page == pageNum}"><a class="page-link"  th:href="@{${pageNum}}" th:text="${pageNum}">01</a></li>
-                      <li class="page-item" th:if="${session.pageMaker.cri.page!=pageNum}"><a class="page-link" th:href="@{${pageNum}}" th:text="${pageNum}">02</a></li>
+                      <li class="page-item active" th:if="${session.pageMaker.cri.page == pageNum}"><a class="page-link"  th:text="${pageNum}">01</a></li>
+                      <li class="page-item" th:if="${session.pageMaker.cri.page!=pageNum}"><a class="page-link" th:href="@{/companyList(page=${pageNum})}" th:text="${pageNum}">02</a></li>
                       </th:block>
 
                       <!-- 다음페이지 -->
-                      <li class="page-item" th:if="${session.pageMaker.cri.page!=pageNum}"><a class="page-link" th:href="@{${session.pageMaker.endPage+1}}"><span class="ti-angle-right"></span></a>
+                      <li class="page-item" th:if="${session.pageMaker.next}"><a class="page-link" th:href="@{/companyList(page=${session.pageMaker.endPage+1})}"><span class="ti-angle-right"></span></a>
                       </li>
                     </ul>
                   </nav>
@@ -251,14 +251,7 @@
 <script src="/js/plugins.js"></script>
 <script src="/js/main.js"></script>
 <script type="text/javascript">
-	$(document).ready(function(){
-		$(".pagination a").click(function(e){
-			e.preventDefault();
-		var page=$(this).attr("href");
-		document.frm.page.value=page;
-		document.frm.submit();
-		});
-	});
+
 </script>
 
 </body>

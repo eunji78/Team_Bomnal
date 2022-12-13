@@ -66,7 +66,7 @@
                 <div class="row">
                     <div class="col-xl-12">
                         <!-- form -->
-                        <form th:action="@{/list}" class="search-box">
+                        <form th:action="@{/search}" id="search_box" class="search-box">
                             <!--지역 검색 버튼-->
                             <div class="select-form">
                                 <button class="select-region" type="button" id="select-region"><i class="fas fa-map-marker-alt" style="margin-right:5px;">&nbsp;지역</i></button>
@@ -77,11 +77,11 @@
                             </div>
                             <!--검색어 입력 창-->
                             <div class="input-form">
-                                <input id="keywords" type="text" placeholder="검색어를 입력하세요">
+                                <input id="keywords" name="keyword" type="text" placeholder="검색어를 입력하세요">
                             </div>
                             <!--검색 버튼-->
                             <div class="search-form">
-                                <a class="search-button" onclick="keywords_search()">검색</a>
+                                <a class="search-button" href="javascript:void(0)" type="button" onclick="document.getElementById('search_box').submit()">검색</a>
                             </div>
                         </form>
                     </div>

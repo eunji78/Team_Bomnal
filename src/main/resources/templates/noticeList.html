@@ -84,12 +84,10 @@
                     <div class="row">
                         <div class="col-xl-12">
                             <!-- form -->
-                            <form action="#" class="search-box">
+                            <form th:action="@{/search}" id="search_box" class="search-box">
                                 <!--지역 검색 버튼-->
                                 <div class="select-form">
-                                    <button class="select-region" type="button" id="select-region"><i
-                                            class="fas fa-map-marker-alt" style="margin-right:5px;">&nbsp;지역</i>
-                                    </button>
+                                    <button class="select-region" type="button" id="select-region"><i class="fas fa-map-marker-alt" style="margin-right:5px;">&nbsp;지역</i></button>
                                 </div>
                                 <!--직무 검색 버튼-->
                                 <div class="select-form">
@@ -97,11 +95,11 @@
                                 </div>
                                 <!--검색어 입력 창-->
                                 <div class="input-form">
-                                    <input id="keywords" type="text" placeholder="검색어를 입력하세요">
+                                    <input id="keywords" name="keyword" type="text" placeholder="검색어를 입력하세요">
                                 </div>
                                 <!--검색 버튼-->
                                 <div class="search-form">
-                                    <a class="search-button" href="#">검색</a>
+                                    <a class="search-button" href="javascript:void(0)" type="button" onclick="document.getElementById('search_box').submit()">검색</a>
                                 </div>
                             </form>
                         </div>
@@ -315,72 +313,29 @@
                     </div>
                 </div>
             </div>
-            <div style="border:1px solid rgba(0,0,0,.1); margin-top:30px; display:none" class="row" id="search">
-                <div class="col-12" style="float:left">
 
-                    <!-- 지역 -->
-                    <div style="display:flex; width:100%" id="region-list">
-                        <div class="detail_list" style="width:100%" id="r_detail_list">
-                            <button th:each="region : ${region_list} " class="detail_button"
-                                    th:id="${region.region_seq}" onclick="add_list(this)">
-                                [[${region.region}]]
-                            </button>
-                        </div>
-                    </div>
-                    <!-- 지역 끝 -->
-
-                    <!-- 직무 -->
-                    <div style="display:flex" id="job-list">
-                        <!-- 직무 상위 카테고리 -->
-                        <div class="d-category-list" style="width:200px; height:300px; overflow:auto">
-                            <div class="mt-2 mb-2" style="height:284px">
-                                <ul th:each="job : ${job_list}">
-                                    <li clsss="d-list">
-                                        <button class="j-list-button" type="button">
-                                            <span th:text="${job.super_job}">경영·사무</span>
-                                            <span id="super-job-seq" th:text="${job.super_job_seq}"
-                                                  style="display:none"></span>
-                                        </button>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <!-- 상위 카테고리 끝 -->
-
-                        <!-- 직무 하위 카테고리 -->
-                        <div class="detail_list" id="j_detail_list">
-                            <button class='detail_button'>
-
-                            </button>
-                        </div>
-                        <!-- 하위 카테고리 끝-->
-                    </div>
-
-                    <div>
-                        <!-- 선택한 옵션 -->
-                        <div style="border-top:1px solid rgba(0,0,0,.1); padding:20px 15px" class="select-option">
-
-                        </div>
-                        <!-- 옵션 끝 -->
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
     <!-- Job List Area End -->
     <!--Pagination Start  -->
-    <div class="pagination-area pb-115 text-center">
+    <div class="pagination-area pb-115 text-center" style="margin-top:70px;">
         <div class="container">
             <div class="row">
                 <div class="col-xl-12">
                     <div class="single-wrap d-flex justify-content-center">
                         <nav aria-label="Page navigation example">
                             <ul class="pagination justify-content-start">
-                                <li class="page-item"><a class="page-link" href="#"><span class="ti-angle-left"></span></a>
-                                <li class="page-item active"><a class="page-link" href="#">01</a></li>
-                                <li class="page-item"><a class="page-link" href="#">02</a></li>
-                                <li class="page-item"><a class="page-link" href="#">03</a></li>
-                                <li class="page-item"><a class="page-link" href="#"><span class="ti-angle-right"></span></a>
+
+                                <!-- 이전페이지 -->
+                                <li class="page-item" th:if="${session.pageMaker.prev}"><a class="page-link" th:href="@{/noticeList(page=${session.pageMaker.startPage-1})}"><span class="ti-angle-left"></span></a></li>
+
+                                <th:block th:each="pageNum : ${#numbers.sequence(session.pageMaker.startPage,session.pageMaker.endPage)}">
+                                    <li class="page-item active" th:if="${session.pageMaker.cri.page == pageNum}"><a class="page-link"  th:text="${pageNum}">01</a></li>
+                                    <li class="page-item" th:if="${session.pageMaker.cri.page!=pageNum}"><a class="page-link" th:href="@{/noticeList(page=${pageNum})}" th:text="${pageNum}">02</a></li>
+                                </th:block>
+
+                                <!-- 다음페이지 -->
+                                <li class="page-item" th:if="${session.pageMaker.next}"><a class="page-link" th:href="@{/noticeList(page=${session.pageMaker.endPage+1})}"><span class="ti-angle-right"></span></a>
                                 </li>
                             </ul>
                         </nav>
@@ -389,6 +344,7 @@
             </div>
         </div>
     </div>
+    <input type="hidden" name="page" th:value="${session.pageMaker.cri.page}"/>
     <!--Pagination End  -->
 </main>
 <footer>

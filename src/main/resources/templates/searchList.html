@@ -25,6 +25,7 @@
             <link rel="stylesheet" href="/css/style.css">
             <link rel="stylesheet" href="/css/d-list.css?after">
             <link rel="stylesheet" href="/css/my_style.css">
+            <link rel="stylesheet" href="/css/nolist_detail.css">
 
    </head>
 
@@ -86,10 +87,10 @@
                         <div class="row">
                             <div class="col-xl-12">
                                 <!-- form -->
-                                <form action="#" class="search-box">
+                                <form th:action="@{/search}" id="search_box" class="search-box">
                                     <!--지역 검색 버튼-->
                                     <div class="select-form">
-                                        <button class="select-region" type="button" id="select-region"><i class="fas fa-map-marker-alt" style="margin-right:5px;">지역</i></button>
+                                        <button class="select-region" type="button" id="select-region"><i class="fas fa-map-marker-alt" style="margin-right:5px;">&nbsp;지역</i></button>
                                     </div>
                                     <!--직무 검색 버튼-->
                                     <div class="select-form">
@@ -97,11 +98,11 @@
                                     </div>
                                     <!--검색어 입력 창-->
                                     <div class="input-form">
-                                        <input id="keywords" type="text" placeholder="검색어를 입력하세요">
+                                        <input id="keywords" name="keyword" type="text" placeholder="검색어를 입력하세요">
                                     </div>
                                     <!--검색 버튼-->
                                     <div class="search-form">
-                                        <a class="search-button" href="#">검색</a>
+                                        <a class="search-button" href="javascript:void(0)" type="button" onclick="document.getElementById('search_box').submit()">검색</a>
                                     </div>
                                 </form>
                             </div>
@@ -159,76 +160,56 @@
                         <!-- 검색 창 끝 -->
                     </div>
 
-                    <!-- Right content -->
-                    <div class="col-xl-12 col-lg-9">
+                    <div class="col-xl-12 d" style="padding:30px;"></div>
+                    <div class="col-xl-12 col-lg-12 col-md-9">
                         <!-- Featured_job_start -->
                         <section class="featured-job-area">
                             <div class="container">
-                                <!-- Count of Job list Start -->
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="count-job mt-30 mb-35">
-                                            <span>1 Jobs found</span>
-                                            <!-- Select job items start -->
-                                            <div class="select-job-items">
-                                                <span>Sort by</span>
-                                                <select name="select">
-                                                    <option value="">None</option>
-                                                    <option value="">job list</option>
-                                                    <option value="">job list</option>
-                                                    <option value="">job list</option>
-                                                </select>
-                                            </div>
-                                            <!--  Select job items End-->
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Count of Job list End -->
                                 <!-- single-job-content -->
-                                <div th:each="list : ${searchList}" class="single-job-items mb-30">
-                                    <div class="job-items">
-                                        <div class="company-img">
-                                            <a href="#"><img src="/img/icon/job-list1.png" alt=""></a>
-                                        </div>
-                                        <div class="job-tittle job-tittle2">
-                                            <a href="#">
-                                                <h4 th:text="${list.title}">서버/백엔드</h4>
-                                            </a>
-                                            <ul>
-                                                <li th:text="${list.company}">(주)언플러</li>
-                                                <li th:text="${list.location}"><i class="fas fa-map-marker-alt"></i>광주광역시</li>
-                                                <li th:text="${list.pay}">회사내규에 따름</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="items-link items-link2 f-right">
-                                        <a href="job_details.html">Full Time</a>
-                                        <span>7 hours ago</span>
-                                    </div>
-                                </div>
-                                <div class="single-job-items mb-30">
-                                    <div class="job-items">
-                                        <div class="company-img">
-                                            <a href="#"><img src="/img/icon/job-list1.png" alt=""></a>
-                                        </div>
-                                        <div class="job-tittle job-tittle2">
-                                            <a href="#">
-                                                <h4 >서버/백엔드</h4>
-                                            </a>
-                                            <ul>
-                                                <li>(주)언플러</li>
-                                                <li><i class="fas fa-map-marker-alt"></i>광주광역시</li>
-                                                <li>회사내규에 따름</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="items-link items-link2 f-right">
-                                        <a href="job_details.html">Full Time</a>
-                                        <span>7 hours ago</span>
-                                    </div>
-                                </div>
+                                <th:block th:each="j : ${noticeList}">
+                                    <div class="single-job-items mb-30">
+                                        <div class="job-items">
+                                            <div class="company-img company-img-details">
+                                                <!-- 로고 이미지가 없을 때 대체 이미지 적용!-->
+                                                <img class="img_logo" th:src="${j.company_logo}"
+                                                     onerror="this.src='/img/icon/logoerror.png'"
+                                                     alt=""></th>
+                                            </div>
+                                            <div class="job-tittle job-tittle2">
+                                                <a th:href="@{/noticeDetail/{r_seq}(r_seq=${j.r_seq})}">
+                                                    <h5 th:text="${j.r_title}">공고명</h5>
+                                                </a>
+                                                <ul>
+                                                    <li th:text="${j.company_name}">회사이름</li>
+                                                    <th:block th:switch="${j.r_career}">
+                                                        <li th:case="new">신입</li>
+                                                        <li th:case="car">경력</li>
+                                                        <li th:case="irr">경력무관</li>
+                                                    </th:block>
+                                                    <th:block th:switch="${j.r_work_area}">
+                                                        <li th:case="overseas">해외지역 근무</li>
+                                                        <li th:case="home">재택근무</li>
+                                                        <li th:if="${j.r_work_area != null}" th:text="${j.r_work_area}"></li>
+                                                        <li th:unless="${j.r_work_area != null}">일본</li>
+                                                    </th:block>
+                                                    <th:block th:switch="${j.r_job_pattern}">
+                                                        <li th:case="full">정규직</li>
+                                                        <li th:case="contract">계약직</li>
+                                                        <li th:case="alba">아르바이트</li>
+                                                        <li th:case="intern">인턴</li>
+                                                        <li th:case="free">프리랜서</li>
+                                                        <li th:case="part">파트타임</li>
+                                                    </th:block>
 
-
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="items-link items-link2 f-right">
+                                            <a th:href="@{/noticeDetail/{r_seq}(r_seq=${j.r_seq})}" class="genric-btn info radius">입사지원</a>
+                                            <span th:text="${j.r_close_date}">마감일</span>
+                                        </div>
+                                    </div>
+                                </th:block>
                             </div>
                         </section>
                         <!-- Featured_job_end -->
@@ -238,17 +219,25 @@
         </div>
         <!-- Job List Area End -->
         <!--Pagination Start  -->
-        <div class="pagination-area pb-115 text-center">
+        <div class="pagination-area pb-115 text-center" style="margin-top:70px;">
             <div class="container">
                 <div class="row">
                     <div class="col-xl-12">
                         <div class="single-wrap d-flex justify-content-center">
                             <nav aria-label="Page navigation example">
                                 <ul class="pagination justify-content-start">
-                                    <li class="page-item active"><a class="page-link" href="#">01</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">02</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">03</a></li>
-                                <li class="page-item"><a class="page-link" href="#"><span class="ti-angle-right"></span></a></li>
+
+                                    <!-- 이전페이지 -->
+                                    <li class="page-item" th:if="${session.pageMaker.prev}"><a class="page-link" th:href="@{/search(keyword=${session.pageMaker.startPage-1})}"><span class="ti-angle-left"></span></a></li>
+
+                                    <th:block th:each="pageNum : ${#numbers.sequence(session.pageMaker.startPage,session.pageMaker.endPage)}">
+                                        <li class="page-item active" th:if="${session.pageMaker.cri.page == pageNum}"><a class="page-link" th:text="${pageNum}">01</a></li>
+                                        <li class="page-item" th:if="${session.pageMaker.cri.page!=pageNum}"><a class="page-link" th:href="@{/search(keyword=${session.pageMaker.cri.keyword}, page=${pageNum})}" th:text="${pageNum}">02</a></li>
+                                    </th:block>
+
+                                    <!-- 다음페이지 -->
+                                    <li class="page-item" th:if="${session.pageMaker.next}"><a class="page-link" th:href="@{/search(keyword=${session.pageMaker.endPage+1})}"><span class="ti-angle-right"></span></a>
+                                    </li>
                                 </ul>
                             </nav>
                         </div>
@@ -256,6 +245,7 @@
                 </div>
             </div>
         </div>
+        <input type="hidden" name="page" th:value="${session.pageMaker.cri.page}"/>
         <!--Pagination End  -->
 
     </main>
