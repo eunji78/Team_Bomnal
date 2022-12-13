@@ -14,7 +14,7 @@
 }
 
 #myform label:hover{
-    text-shadow: 0 0 0 #38a4ff;; /* 마우스 호버 */
+    text-shadow: 0 0 0 #38a4ff; /* 마우스 호버 */
 }
 #myform label:hover ~ label{
     text-shadow: 0 0 0 #38a4ff; /* 마우스 호버 뒤에오는 이모지들 */
@@ -28,11 +28,12 @@
     text-shadow: 0 0 0 #38a4ff; /* 마우스 클릭 체크 */
 }
 
-.starform {
-    margin-bottom: 50px;
+#starform {
+    margin-bottom: 50pxt;
 }
-.form-group h4{
-    margin-bottom : 10px!important;
+
+.form-group {
+    margin-bottom : 10px;
 }
 
 .rev {
@@ -53,11 +54,15 @@
 
 .comment-form {
     border-bottom: 1px solid #eee;
-    margin-bottom: 50px!important;
+    margin-bottom: 30px;
 }
 
 .moabogi {
     padding-bottom: 10px;
     border-bottom: 1px solid #f0e9ff;
     margin-bottom: 10px;
+}
+
+.form-group {
+    margin-top:30px;
 }
