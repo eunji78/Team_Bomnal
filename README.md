@@ -24,7 +24,7 @@
 
 * <b>입사지원</b>
   * 개인회원 사용자는 입사지원 페이지에서 이력서, 자기소개서를 확인한 후 최종 입사지원 버튼을 클릭힌다.
-![image](https://user-images.githubusercontent.com/101463273/207209516-ba74982b-0e04-4e9b-a924-d6a8a7097708.png)
+![image](https://user-images.githubusercontent.com/101463273/207219461-f44814cc-80d1-460e-991d-67457bd9c487.png)
 <br>
 
  
@@ -99,7 +99,7 @@
 </table>
 
 
-<br>
+<br><br>
 
 ## 📌 SW유스케이스
 ![image](https://user-images.githubusercontent.com/101463273/207206619-5e7d9bbd-6c86-470d-b610-dc3300fdf5e5.png)
