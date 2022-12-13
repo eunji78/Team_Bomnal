@@ -16,7 +16,7 @@ public class ResumeController {
     private final ResumeService resumeService;
 
     //이력서 삭제
-    @PostMapping("/delete_resume/{seq}")
+    @PostMapping("/resume_delete/{seq}")
     public void delete_resume(@PathVariable int seq){
         resumeService.delete_resume(seq);
     }
