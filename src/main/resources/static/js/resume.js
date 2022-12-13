@@ -458,9 +458,9 @@ $(document).ready(function(){
         html += '</div>'
 
         html += '<div class="resume_row">'
-        html += '<div class="input_title">연봉</div>'
+        html += '<div class="input_title">취득일</div>'
         html += '<div class="form-select" style="display:inline-block; width:400px;">'
-        html += '<input class="input_text" name="ce_date" type="text" placeholder="연봉">'
+        html += '<input class="input_text" name="ce_date" type="text" placeholder="취득일">'
         html += '</div>'
         html += '</div>'
         html += '<div style="text-align:center; margin-top:40px">'
