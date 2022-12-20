@@ -149,11 +149,11 @@ https://youtu.be/or-fU9-e654
 ## 👨‍👩‍👦‍👦 팀원 역할
 <table>
   <tr>
-    <td align="center"><img src="https://cdn-icons-png.flaticon.com/512/4439/4439959.png" height="100"/></td>
-    <td align="center"><img src="https://cdn-icons-png.flaticon.com/512/4439/4439968.png" width="100" height="100"/></td>
-    <td align="center"><img src="https://cdn-icons-png.flaticon.com/512/4440/4440873.png" width="100" height="100"/></td>
-    <td align="center"><img src="https://cdn-icons-png.flaticon.com/512/4440/4440953.png" width="100" height="100"/></td>
+    <td align="center"><img src="https://cdn-icons-png.flaticon.com/512/4439/4439968.png" height="100"/></td>
+    <td align="center"><img src="https://cdn-icons-png.flaticon.com/512/4439/4439959.png" width="100" height="100"/></td>
     <td align="center"><img src="https://cdn-icons-png.flaticon.com/512/4440/4440876.png" width="100" height="100"/></td>
+    <td align="center"><img src="https://cdn-icons-png.flaticon.com/512/4440/4440953.png" width="100" height="100"/></td>
+    <td align="center"><img src="https://cdn-icons-png.flaticon.com/512/4440/4440873.png" width="100" height="100"/></td>
 
   </tr>
   <tr>
