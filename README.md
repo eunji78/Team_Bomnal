@@ -42,6 +42,8 @@
   * 사용자는 기업복지, 워라벨, 사내문화, 승진기회, 경영진 5가지 기준에 대해서 별점을 선택한다.
   * 사용자는 기업에 대해서 장점, 단점, 한줄평, 연봉, 재직여부에 대해서 선택하고 그 결과를 제출한다.
   * 해당 기업에 사용자가 남긴 별점들의 평균을 구해서 기업의 평균 별점을 시각화한다.
+  <img src="/봄날 페이지/리뷰작성폼.png">
+
 
 <br><br>
 ## ⛏ 기술스택
@@ -115,7 +117,7 @@
 <summary>🖥 화면 구성</summary>
 
 ### 메인화면
-![image](https://user-images.githubusercontent.com/101463273/207217638-db4cd8f0-c2d8-4b96-81d3-a5d9a7a3452a.png){: width="100%" height="100%"}
+<img src="/봄날 페이지/main.png" style="width:80%;">
 
 
 
@@ -129,12 +131,18 @@
 
 ### 채용공고 등록/조회
 ![image](https://user-images.githubusercontent.com/101463273/207218963-cd52d1e8-eadd-47ee-bd68-a232a616fcea.png)
-![image](https://user-images.githubusercontent.com/101463273/207219163-16e3b8ed-eabe-4e66-b550-e83629e9f9aa.png)
+<img src="/봄날 페이지/채용공고.png" style="width:40%; display:inline-block;">
+<img src="/봄날 페이지/채용공고상세.png" style="width:40%; display:inline-block;">
+
 <br>
 
 ### 기업정보
-![image](https://user-images.githubusercontent.com/101463273/207218013-447da326-ef68-4ddd-9734-8de81d37c89c.png)
+<img src="/봄날 페이지/기업리스트.png" style="width:40%; display:inline-block;">
+<img src="/봄날 페이지/기업디테일.png" style="width:40%; display:inline-block;">
+<img src="/봄날 페이지/기업리뷰.png" style="width:40%; display:inline-block;">
+<img src="/봄날 페이지/기업별채용공고.png" style="width:40%; display:inline-block;">
 <br>
+
 <br>
 
 ### 마이페이지
